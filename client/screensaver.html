@@ -1,0 +1,495 @@
+<head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			color: grey;
+			background: black;
+			font-family: sans-serif;
+		}
+
+		#topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			height: 5%;
+			width: 100%;
+			border: grey solid 1px;
+		}
+
+		#midContent {
+			display: flex;
+			justify-content: space-evenly;
+			flex-direction: row;
+			align-items: center;
+			height: 95%;
+			width: 100%;
+			border: grey solid 1px;		
+		}
+
+		#roomList {
+			height: 100%;
+			width: 25%;
+			overflow-y: auto;
+			border: grey solid 1px;
+		}
+
+		#graphCanvas {
+			height: 100%;
+			width: 75%;
+			border: grey solid 1px;
+		}
+
+		.room-item {
+			cursor: pointer;
+			padding: 5px;
+			transition: background 0.2s;
+			border: grey solid 1px;
+		}
+
+		.room-item:hover {
+			background: rgba(128, 128, 128, 0.2);
+		}
+
+		.room-item.selected {
+			background: rgba(50, 150, 250, 0.3);
+			color: rgb(50, 150, 250);
+		}
+
+		#settingsContainer {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 1000;
+			border: 0px;
+			background: transparent;
+		}
+
+		#settings {
+			background: rgba(0, 0, 0, 0.95);
+			padding: 15px;
+			border: 1px solid grey;
+			min-width: 250px;
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+
+		#settingsContainer:hover #settings {
+			opacity: 1;
+		}
+ 
+
+		#settings > button {
+			border: grey solid 1px;
+		}
+
+		.setting-row {
+			margin-bottom: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 10px;
+		}
+
+		.setting-row:last-child {
+			margin-bottom: 0;
+		}
+
+		.setting-row label {
+			font-size: 13px;
+			white-space: nowrap;
+			color: lightgrey;
+		}
+
+		.setting-row input {
+			width: 90px;
+			padding: 4px 8px;
+			background: rgba(0, 0, 0, 0.8);
+			border: 1px solid grey;
+			color: lightgrey;
+			font-size: 13px;
+			border-radius: 3px;
+		}
+
+		.setting-row input:focus {
+			outline: none;
+			border-color: rgb(50, 150, 250);
+			background: rgba(0, 0, 0, 1);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="settingsContainer">
+		<div id="settings">
+			<div class="setting-row">
+				<label>History Entries:</label>
+				<input type="number" id="maxEntriesInput" min="10" max="200" value="50">
+			</div>
+			<div class="setting-row">
+				<label>Update Interval (ms):</label>
+				<input type="number" id="updateIntervalInput" min="500" max="10000" step="100" value="1000">
+			</div>
+			<div class="setting-row">
+				<label>Random Select (ms):</label>
+				<input type="number" id="randomSelectInput" min="1000" max="60000" step="1000" value="5000">
+			</div>
+			<button id="fullscreenBtn">Toggle Fullscreen</button>
+		</div>
+	</div>
+	<div id="topbar">
+		<p>Webserver Latency: <span id="webserverLatency">0</span>ms</p>
+		<p>Rooms: <span id="roomAmount">0</span></p>
+		<p>Players: <span id="playerAmount">0</span></p>
+		<p>Init Time: <span id="initTime">0</span>ms</p>
+		<p>Estab Time: <span id="estabTime">0</span>ms</p>
+	</div>
+	<div id="midContent">
+		<div id="roomList">
+		</div>
+		<canvas id="graphCanvas" width="1000" height="500"></canvas>
+	</div>
+	<script async>
+		// Configuration
+		const CONFIG = {
+			MAX_ENTRIES: 50,
+			UPDATE_INTERVAL: 500,      // How often to fetch room data (ms)
+			RANDOM_SELECT_INTERVAL: 5000 // How often to randomly select a room (ms)
+		};
+
+		// DOM Elements
+		const canvas = document.getElementById("graphCanvas");
+		const ctx = canvas.getContext("2d");
+		const roomList = document.getElementById("roomList");
+		const webserverLatencyEl = document.getElementById('webserverLatency');
+		const roomAmountEl = document.getElementById('roomAmount');
+		const playerAmountEl = document.getElementById('playerAmount');
+		const initTimeEl = document.getElementById('initTime');
+		const estabTimeEl = document.getElementById('estabTime');
+
+		// DOM Elements - Settings
+		const maxEntriesInput = document.getElementById('maxEntriesInput');
+		const updateIntervalInput = document.getElementById('updateIntervalInput');
+		const randomSelectInput = document.getElementById('randomSelectInput');
+
+		// State
+	const roomData = new Map();
+	let selectedRoomId = undefined;
+	let updateIntervalId = null;
+	let randomSelectIntervalId = null;
+
+		// Fetch and update room data from API
+		async function updateRoomData() {
+			const startTime = performance.now();
+			
+			try {
+				const res = await fetch("/api/list");
+				const data = await res.json();
+				const latency = Math.round(performance.now() - startTime);
+				webserverLatencyEl.innerText = latency;
+
+				// Fetch connection times
+				try {
+					const connRes = await fetch("/api/getConnectionTimes");
+					const connData = await connRes.json();
+					initTimeEl.innerText = Math.round(connData.init);
+					estabTimeEl.innerText = Math.round(connData.estab);
+				} catch (err) {
+					console.error('Failed to fetch connection times:', err);
+				}
+
+				// Track active rooms and remove stale ones
+				const activeRoomIds = new Set(data.map(room => room.id));
+				for (let roomId of roomData.keys()) {
+					if (!activeRoomIds.has(roomId)) {
+						roomData.delete(roomId);
+						if (selectedRoomId === roomId) {
+							selectedRoomId = undefined;
+						}
+					}
+				}
+
+				// Update room histories with entry limit
+				for (let room of data) {
+					let savedData = roomData.get(room.id);
+					if (!savedData) {
+						roomData.set(room.id, [room]);
+					} else {
+						savedData.push(room);
+						if (savedData.length > CONFIG.MAX_ENTRIES) {
+							savedData.shift();
+						}
+					}
+				}
+
+				updateUI();
+			} catch (error) {
+				console.error('Failed to fetch room data:', error);
+			}
+		}
+
+		// Update all UI elements
+		function updateUI() {
+			updateTopbar();
+			updateRoomList();
+			renderGraph();
+		}
+
+		// Update topbar statistics
+		function updateTopbar() {
+			const rooms = Array.from(roomData.values()).map(history => history[history.length - 1]);
+			roomAmountEl.innerText = roomData.size;
+			const totalPlayers = rooms.reduce((sum, room) => sum + room.players, 0);
+			playerAmountEl.innerText = totalPlayers;
+		}
+
+		// Update sidebar room list
+		function updateRoomList() {
+			const sortedRooms = Array.from(roomData.values())
+				.map(history => history[history.length - 1])
+				.sort((a, b) => b.players - a.players);
+
+			roomList.innerHTML = "";
+			for (let room of sortedRooms) {
+				const ele = document.createElement("p");
+				ele.className = "room-item";
+				if (selectedRoomId === room.id) {
+					ele.classList.add("selected");
+				}
+				ele.innerText = `${room.players} | ${room.gamemodeCode} | ${room.id} | ${room.maxPlayers}`;
+				ele.onclick = () => {
+					selectedRoomId = room.id;
+					updateRoomList();
+					renderGraph();
+				};
+				roomList.appendChild(ele);
+			}
+		}
+
+		// Render the player history graph
+		function renderGraph() {
+			ctx.fillStyle = "black";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+			if (!selectedRoomId || !roomData.has(selectedRoomId)) {
+				ctx.fillStyle = "grey";
+				ctx.font = `${canvas.height * 0.05}px Arial`;
+				ctx.textAlign = "center";
+				ctx.fillText("Select a room to view its player history", canvas.width / 2, canvas.height / 2);
+				return;
+			}
+
+			const roomHistory = roomData.get(selectedRoomId);
+			const currentRoom = roomHistory[roomHistory.length - 1];
+		
+		// Find the highest player count across all room histories
+		let maxPlayers = 0;
+		for (let history of roomData.values()) {
+			for (let entry of history) {
+				if (entry.players > maxPlayers) {
+					maxPlayers = entry.players;
+				}
+			}
+		}
+		// Ensure at least 1 to avoid division by zero
+		if (maxPlayers === 0) maxPlayers = 1;
+		
+			const padding = canvas.width * 0.08;
+			const graphWidth = canvas.width - padding * 2;
+			const graphHeight = canvas.height - padding * 2;
+
+			// Draw Y axis
+			ctx.strokeStyle = "grey";
+			ctx.lineWidth = 2;
+			ctx.beginPath();
+			ctx.moveTo(padding, padding);
+			ctx.lineTo(padding, canvas.height - padding);
+			ctx.stroke();
+
+			// Draw X axis
+			ctx.beginPath();
+			ctx.moveTo(padding, canvas.height - padding);
+			ctx.lineTo(canvas.width - padding, canvas.height - padding);
+			ctx.stroke();
+
+			// Draw Y scale labels (0 to maxPlayers)
+			ctx.fillStyle = "grey";
+			ctx.font = `${canvas.height * 0.025}px Arial`;
+			ctx.textAlign = "right";
+			const ySteps = 5;
+			for (let i = 0; i <= ySteps; i++) {
+				const playerCount = Math.round((maxPlayers / ySteps) * i);
+				const y = canvas.height - padding - (graphHeight / ySteps) * i;
+				ctx.fillText(playerCount.toString(), padding - 10, y + 5);
+
+				// Draw grid line
+				ctx.strokeStyle = "rgba(128, 128, 128, 0.2)";
+				ctx.lineWidth = 1;
+				ctx.beginPath();
+				ctx.moveTo(padding, y);
+				ctx.lineTo(canvas.width - padding, y);
+				ctx.stroke();
+			}
+
+			// Draw X scale (data point indices)
+			ctx.textAlign = "center";
+			const xSteps = Math.min(5, roomHistory.length - 1);
+			if (xSteps > 0) {
+				for (let i = 0; i <= xSteps; i++) {
+					const dataIndex = Math.round((roomHistory.length - 1) / xSteps * i);
+					const x = padding + (graphWidth / xSteps) * i;
+					ctx.fillStyle = "grey";
+					ctx.fillText(`#${dataIndex}`, x, canvas.height - padding + 20);
+				}
+			}
+
+			// Draw the player count line graph
+			if (roomHistory.length > 1) {
+				ctx.strokeStyle = "rgb(50, 150, 250)";
+				ctx.lineWidth = 3;
+				ctx.beginPath();
+
+				for (let i = 0; i < roomHistory.length; i++) {
+					const x = padding + (graphWidth / (roomHistory.length - 1)) * i;
+					const playerRatio = roomHistory[i].players / maxPlayers;
+					const y = canvas.height - padding - (graphHeight * playerRatio);
+
+					if (i === 0) {
+						ctx.moveTo(x, y);
+					} else {
+						ctx.lineTo(x, y);
+					}
+				}
+				ctx.stroke();
+
+				// Draw data points
+				ctx.fillStyle = "rgb(50, 150, 250)";
+				for (let i = 0; i < roomHistory.length; i++) {
+					const x = padding + (graphWidth / (roomHistory.length - 1)) * i;
+					const playerRatio = roomHistory[i].players / maxPlayers;
+					const y = canvas.height - padding - (graphHeight * playerRatio);
+
+					ctx.beginPath();
+					ctx.arc(x, y, 4, 0, Math.PI * 2);
+					ctx.fill();
+				}
+			}
+
+			// Overlay room information
+			ctx.globalAlpha = .25;
+			ctx.fillStyle = "white";
+			ctx.textAlign = "left";
+			ctx.font = `${canvas.height * 0.03}px Arial`;
+			ctx.fillText(`Room ID: ${currentRoom.id}`, padding + 20, padding + 30);
+			ctx.fillText(`Gamemode: ${currentRoom.gamemodeCode}`, padding + 20, padding + 55);
+			ctx.fillText(`Players: ${currentRoom.players}/${currentRoom.maxPlayers}`, padding + 20, padding + 80);
+			ctx.fillText(`Description: ${currentRoom.description || 'N/A'}`, padding + 20, padding + 105);
+
+			ctx.globalAlpha = 1;
+		}
+
+		// Randomly select a room to display
+		function selectRandomRoom() {
+			if (roomData.size > 0) {
+				const roomIds = Array.from(roomData.keys());
+				selectedRoomId = roomIds[Math.floor(Math.random() * roomIds.length)];
+				updateRoomList();
+				renderGraph();
+			}
+		}
+
+	// Start/restart update interval
+	function startUpdateInterval() {
+		if (updateIntervalId) clearInterval(updateIntervalId);
+		updateIntervalId = setInterval(updateRoomData, CONFIG.UPDATE_INTERVAL);
+	}
+
+	// Start/restart random select interval
+	function startRandomSelectInterval() {
+		if (randomSelectIntervalId) clearInterval(randomSelectIntervalId);
+		randomSelectIntervalId = setInterval(selectRandomRoom, CONFIG.RANDOM_SELECT_INTERVAL);
+	}
+
+	// Settings change handlers (on change/blur)
+	maxEntriesInput.addEventListener('change', (e) => {
+		const value = parseInt(e.target.value);
+		if (value >= 10 && value <= 200) {
+			CONFIG.MAX_ENTRIES = value;
+			// Trim existing room histories to new max
+			for (let history of roomData.values()) {
+				while (history.length > CONFIG.MAX_ENTRIES) {
+					history.shift();
+				}
+			}
+		} else {
+			e.target.value = CONFIG.MAX_ENTRIES;
+		}
+	});
+
+	updateIntervalInput.addEventListener('change', (e) => {
+		const value = parseInt(e.target.value);
+		if (value >= 500 && value <= 10000) {
+			CONFIG.UPDATE_INTERVAL = value;
+			startUpdateInterval();
+		} else {
+			e.target.value = CONFIG.UPDATE_INTERVAL;
+		}
+	});
+
+	randomSelectInput.addEventListener('change', (e) => {
+		const value = parseInt(e.target.value);
+		if (value >= 1000 && value <= 60000) {
+			CONFIG.RANDOM_SELECT_INTERVAL = value;
+			startRandomSelectInterval();
+		} else {
+			e.target.value = CONFIG.RANDOM_SELECT_INTERVAL;
+		}
+	});
+
+	// Real-time input handlers (as user types)
+	maxEntriesInput.addEventListener('input', (e) => {
+		const value = parseInt(e.target.value);
+		if (!isNaN(value) && value >= 10 && value <= 200) {
+			CONFIG.MAX_ENTRIES = value;
+			// Trim existing room histories to new max
+			for (let history of roomData.values()) {
+				while (history.length > CONFIG.MAX_ENTRIES) {
+					history.shift();
+				}
+			}
+		}
+	});
+
+	updateIntervalInput.addEventListener('input', (e) => {
+		const value = parseInt(e.target.value);
+		if (!isNaN(value) && value >= 500 && value <= 10000) {
+			CONFIG.UPDATE_INTERVAL = value;
+			startUpdateInterval();
+		}
+	});
+
+	randomSelectInput.addEventListener('input', (e) => {
+		const value = parseInt(e.target.value);
+		if (!isNaN(value) && value >= 1000 && value <= 60000) {
+			CONFIG.RANDOM_SELECT_INTERVAL = value;
+			startRandomSelectInterval();
+		}
+	});
+
+	// Fullscreen button handler
+	document.getElementById('fullscreenBtn').addEventListener('click', () => {
+		if (!document.fullscreenElement) {
+			document.documentElement.requestFullscreen();
+		} else {
+			if (document.exitFullscreen) {
+				document.exitFullscreen();
+			}
+		}
+	});
+
+	// Initialize intervals
+	startUpdateInterval();
+	startRandomSelectInterval();
+	</script>
+</body>
