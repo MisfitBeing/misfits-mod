@@ -41,7 +41,7 @@ class Room {
     constructor(ws) {
         this.ws = ws;
         this.id = genCode();
-        this.gamemodeCode = "4tdm.json";
+        this.gamemodeCode = "ffa.js";
         this.players = 1;
         this.maxPlayers = 99;
         rooms.set(this.id, this);
