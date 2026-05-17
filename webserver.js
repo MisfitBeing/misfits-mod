@@ -7,7 +7,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require('node:crypto'); // <<< ADDED for TURN credentials
 
-const PORT = 6698;
+const PORT = 3000;
 
 // =================================================================
 // <<< ADDED: TURN Server Configuration >>>
