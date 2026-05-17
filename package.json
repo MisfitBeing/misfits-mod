@@ -1,0 +1,15 @@
+{
+  "name": "woomy-online-revitalized",
+  "version": "1.0.0",
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./webserver.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ws": "^8.18.2"
+  }
+}
