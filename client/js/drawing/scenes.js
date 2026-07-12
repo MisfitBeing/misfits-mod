@@ -12,14 +12,26 @@ const gameDrawDead = function () {
 	let getKillIcon = function () {
 		let finalKills = [Math.round(global.finalKills[0].get()), Math.round(global.finalKills[1].get()), Math.round(global.finalKills[2].get())];
 		let b = finalKills[0] + .5 * finalKills[1] + 3 * finalKills[2];
-		return (0 === b ? "🌼" : 4 > b ? "🎯" : 8 > b ? "💥" : 15 > b ? "💢" : 25 > b ? "🔥" : 50 > b ? "💣" : 75 > b ? "👺" : 100 > b ? "🌶️" : "💯") + (finalKills[0] || finalKills[1] || finalKills[2] ? " " + (finalKills[0] ? finalKills[0] + " kill" + (1 === finalKills[0] ? "" : "s") : "") + (finalKills[0] && finalKills[1] ? " and " : "") + (finalKills[1] ? finalKills[1] + " assist" + (1 === finalKills[1] ? "" : "s") : "") + ((finalKills[0] || finalKills[1]) && finalKills[2] ? " and " : "") + (finalKills[2] ? finalKills[2] + " boss" + (1 === finalKills[2] ? "" : "es") + " defeated" : "") : " A true pacifist") + ".";
+		return (
+			0 === b ? "🌼" 
+			: 4 > b ? "🎯" 
+			: 8 > b ? "💥" 
+			: 15 > b ? "💢" 
+			: 25 > b ? "🔥" 
+			: 50 > b ? "💣" 
+			: 75 > b ? "👺" 
+			: 100 > b ? "🌶️" 
+			: "💯"
+		) + (
+			finalKills[0] || finalKills[1] || finalKills[2] ? " " + (finalKills[0] ? finalKills[0] + " kill" + (1 === finalKills[0] ? "" : "s") : "") + (finalKills[0] && finalKills[1] ? " and " : "") + (finalKills[1] ? finalKills[1] + " assist" + (1 === finalKills[1] ? "" : "s") : "") + ((finalKills[0] || finalKills[1]) && finalKills[2] ? " and " : "") + (finalKills[2] ? finalKills[2] + " boss" + (1 === finalKills[2] ? "" : "es") + " defeated" : "") 
+			: " 0 kills. You're ass") + ".";
 	};
 	let getDeathIcon = function getDeath() {
 		let txt = "🔪 Succumbed to";
 		if (global.finalKillers.length) {
 			for (let i = 0; i < global.finalKillers.length; i++) txt += " " + util._addArticle(mockups.get(global.finalKillers[i]).name) + " and";
 			txt = txt.slice(0, -4) + ".";
-		} else txt += " natural causes";
+		} else txt += " miscellaneous forces";
 		return txt;
 	};
 	return function () {
@@ -69,17 +81,19 @@ const gameDrawDead = function () {
 			delay = Math.ceil((global._diedAt - Date.now()) / 1000);
 		global.player.pepperspray.apply = false;
 		global.player.lsd = false;
+		global.player.confuse.apply = false;
 		// Mini render - death
-		drawEntity(xx - 190 - len / 2, (yy - 10) * getGlide(), picture, 1.5, getAlpha(), .5 * scale / picture.realSize, -Math.PI / 4);
-		ctx.globalAlpha = getAlpha()
-		drawText(global._deathSplashOverride || global._deathSplash[global._deathSplashChoice], x, (y - 80) * getGlide(), 10, color.guiwhite, "center");
-		drawText("Level " + _gui._skill.getLevel() + " " + global.player._label, x - 170, (y - 30) * getGlide(), 24, color.guiwhite);
-		drawText("Final Score: " + util._formatLargeNumber(Math.round(global.finalScore.get())), (x - 170), (y + 25) * getGlide(), 50, color.guiwhite);
-		drawText("⌛ Survived for " + util._formatTime(Math.round(global.finalLifetime.get())) + ".", (x - 170), (y + 55) * getGlide(), 16, color.guiwhite);
-		drawText(getKillIcon(), (x - 170), (y + 77) * getGlide(), 16, color.guiwhite);
-		drawText(getDeathIcon(), (x - 170), (y + 99) * getGlide(), 16, color.guiwhite);
-		drawText("⌚ Died on " + global.deathDate, (x - 170), (y + 121) * getGlide(), 16, color.guiwhite);
-		drawText(delay > 0 ? "You may respawn in " + delay + " second" + (delay === 1 ? "" : "s") + "." : "Press enter to respawn!", x, (y + 147) * getGlide(), 16, color.guiwhite, "center");
+		//drawEntity(xx - 190 - len / 2, (yy - 10) * getGlide(), picture, 1.5, getAlpha(), .5 * scale / picture.realSize, -Math.PI / 4);
+		//ctx.globalAlpha = getAlpha()
+		//drawText(global._deathSplashOverride || global._deathSplash[global._deathSplashChoice], x, (y - 80) * getGlide(), 10, color.guiwhite, "center");
+		drawText("Level " + _gui._skill.getLevel() + " " + global.player._label, x, (y - 260) * getGlide(), 24, color.guiwhite, "center");
+		drawText("Final Score: " + util._formatLargeNumber(Math.round(global.finalScore.get())), x, (y - 320) * getGlide(), 50, color.guiwhite, "center");
+		drawText("--------------------------------------------------------", x, (y - 290) * getGlide(), 29, color.guiwhite, "center");
+		drawText("⌛ Survived for " + util._formatTime(Math.round(global.finalLifetime.get())) + ".", x, (y - 230) * getGlide(), 16, color.guiwhite, "center");
+		drawText(getKillIcon(), x, (y - 200) * getGlide(), 16, color.guiwhite, "center");
+		drawText(getDeathIcon(), x, (y - 170) * getGlide(), 16, color.guiwhite, "center");
+		//drawText("⌚ Died on " + global.deathDate, x, (y + 121) * getGlide(), 16, color.guiwhite);
+		drawText(delay > 0 ? "You may respawn in " + delay + " second" + (delay === 1 ? "" : "s") + "." : "Press enter to respawn!", x, (y + 390) * getGlide(), 30, color.guiwhite, "center");
 		global._forceTwiggle = false;
 	};
 }();
