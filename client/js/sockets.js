@@ -28,7 +28,7 @@ let lag = function () {
 		add: function (l) {
 			sum += l;
 			entries++;
-			if (entries > config.memory){
+			if (entries > config.memory) {
 				sum -= sum/entries;
 				entries--;
 			}
@@ -47,7 +47,7 @@ const convert = {
 				throw new Error("Trying to crawl past the end of the provided data!");
 			} else return convert.reader.crawlData[convert.reader.index++];
 		},
-		current: function(){
+		current: function() {
 			if (convert.reader.index >= convert.reader.crawlData.length) {
 				logger.norm(convert.reader.crawlData);
 				throw new Error("Trying to crawl past the end of the provided data!");
@@ -77,7 +77,7 @@ const GunContainer = function () {
 	function physics(g) {
 		g.isUpdated = 1;
 		if (g.motion || g.position) {
-			g.motion -= 0.005
+			g.motion -= 0.05;
 			g.position += g.motion;
 			if (g.position < 0) {
 				g.position = 0;
@@ -150,12 +150,12 @@ function Status() {
 	};
 }
 
-class RopePoint{
-	constructor(x, y){
+class RopePoint {
+	constructor(x, y) {
 		this.pos = {x: x, y: y};
 		this.vel = {x: 0, y: 0};
 	}
-	tick(){
+	tick() {
 		this.vel.x *= .7;
 		this.vel.y *= .7;
 		this.pos.x += this.vel.x;
@@ -186,8 +186,8 @@ const process = function () {
 				}
 				const flags = convert.reader.next();
 				entity.index = convert.reader.next();
-				entity.x = isNew?convert.reader.next():lerp(entity.render.lastx, convert.reader.next(), config.movementSmoothing);
-				entity.y = isNew?convert.reader.next():lerp(entity.render.lasty, convert.reader.next(), config.movementSmoothing);
+				entity.x = isNew ? convert.reader.next() : lerp(entity.render.lastx, convert.reader.next(), config.movementSmoothing);
+				entity.y = isNew ? convert.reader.next() : lerp(entity.render.lasty, convert.reader.next(), config.movementSmoothing);
 				entity.size = convert.reader.next();
 				entity.facing = convert.reader.next();
 				entity.twiggle = (flags & 1);
@@ -213,30 +213,33 @@ const process = function () {
 				entity.nameColor = flags & 64 ? convert.reader.next() : "#FFFFFF";
 				entity.label = flags & 128 ? convert.reader.next() : mockups.get(entity.index).name
 				entity.widthHeightRatio = [(flags & 256) ? convert.reader.next() : 1, (flags & 512) ? convert.reader.next() : 1];
-				if(flags & 1024){
-					if(!entity.leash){
+				if (flags & 1024) {
+					if (!entity.leash) {
 						entity.leash = {x: 0, y: 0, points: [], fadeOverride: 1};
 						entity.leash.x = convert.reader.next()
 						entity.leash.y = convert.reader.next()
 						for(let i = 0; i < 10; i++){
-							entity.leash.points.push(new RopePoint((entity.x+entity.leash.x)/2, (entity.y+entity.leash.y)/2))
+							entity.leash.points.push(new RopePoint((entity.x + entity.leash.x) / 2, (entity.y + entity.leash.y) / 2))
 						}
-					}else{
+					} else {
 						entity.leash.fadeOverride = 1;
 						entity.leash.x = lerp(entity.leash.x, convert.reader.next(), config.movementSmoothing)
 						entity.leash.y = lerp(entity.leash.y, convert.reader.next(), config.movementSmoothing)
 					}
-				}else{
-					if(entity.leash){
+				} else {
+					if (entity.leash) {
 						entity.leash.fadeOverride *= .7;
-						if(entity.leash.fadeOverride <= .01){
+						if(entity.leash.fadeOverride <= .01) {
 							entity.leash = undefined;
 						}
 					}
 				}
-				entity.drawsHealth = type & 0x02;
+				entity.drawHealth = type & 0x02;
 				entity.nameplate = type & 0x04;
 				entity.invuln = (type & 0x08 ? entity.invuln || Date.now() : 0);
+				entity.blending = type & 0x010;
+				/*entity.blendColor = (type & 0x16 ? entity.blend[0] || Date.now() : 0)
+				entity.blendAmount = (type & 0x32 ? entity.blend[1] || Date.now() : 0)*/
 				if (type & 0x04) {
 					entity.name = convert.reader.next();
 					entity.score = convert.reader.next();
@@ -245,7 +248,7 @@ const process = function () {
 					entity.render = {
 						real: true,
 						draws: false,
-						expandsWithDeath: entity.drawsHealth,
+						expandsWithDeath: true,//entity.drawHealth,
 						x: entity.x,
 						y: entity.y,
 						lastx: entity.x,
@@ -263,7 +266,7 @@ const process = function () {
 					};
 
 					let mockup = mockups.get(entity.index);
-					if (mockup != null && mockup.shape > 2 && mockup.shape < 6) {
+					/*if (mockup != null && mockup.shape > 2 && mockup.shape < 6) {
 						switch (mockup.color) {
 							case 207:
 								rewardManager.unlockAchievement("hot");
@@ -278,7 +281,7 @@ const process = function () {
 					}
 					if (entity.color === -1) {
 						rewardManager.unlockAchievement("realShiny")
-					}
+					}*/
 				}
 				entity.render.health.set(entity.health);
 				entity.render.shield.set(entity.shield);
@@ -365,11 +368,11 @@ function convertLasers(){
 		laserMap.set(id, laser);
 	}
 
-	for(let [_, laser] of laserMap){
+	for(let [_, laser] of laserMap) {
 		laser.shouldDie++;
-		if(laser.shouldDie > 1){
+		if(laser.shouldDie > 1) {
 			laser.fade = lerp(laser.fade, 0, config.movementSmoothing)
-			if(laser.fade < 0.01){
+			if(laser.fade < 0.01) {
 				laserMap.delete(laser.id);
 			}
 		}
@@ -536,7 +539,7 @@ function convertSlowGui(data) {
 // SOCKET // 
 let socketInit = function () {
 	return async function ag(roomId) {
-		let url = "ws://localhost:3001/"
+		let url = "ws://localhost:3000/"
 		await multiplayer.joinRoom(roomId, socket);
 
 		let fakeWebsocket = (url, roomHost) => {
@@ -635,7 +638,6 @@ let socketInit = function () {
 								break;
 							case 3:
 								switch (rewardManager._statistics[3]) {
-									case 1: return void rewardManager.unlockAchievement("polynotagon");
 									case 250: return void rewardManager.unlockAchievement("polygon_hater");
 									case 1000: return void rewardManager.unlockAchievement("these_polygons_gotta_go");
 									case 1000000: return void rewardManager.unlockAchievement("polygont");
@@ -661,6 +663,7 @@ let socketInit = function () {
 					config.roomSpeed = m[5];
 					global._mapType = m[6] || 0;
 					global._blackout = m[7];
+					global._space = m[8];
 					logger.info("Room data recieved! Starting game...");
 					global._gameStart = true;
 					global.message = "";
@@ -732,7 +735,7 @@ let socketInit = function () {
 					break;
 				case "u": {
 					global.isScoping = !!m[0];
-					if (global.isScoping) rewardManager.unlockAchievement("im_still_single");
+					//if (global.isScoping) rewardManager.unlockAchievement("im_still_single");
 					let cam = {
 						time: m[1],
 						x: m[2],
@@ -781,7 +784,7 @@ let socketInit = function () {
 				case "p": {
 					doingPing = false;
 					metrics._latency = global.time - lastPing;
-					if (metrics._latency > 999) rewardManager.unlockAchievement("laaaaaag");
+					//if (metrics._latency > 999) rewardManager.unlockAchievement("laaaaaag");
 				}
 					break;
 				case "F": {
@@ -792,7 +795,7 @@ let socketInit = function () {
 
 					global._deathSplashChoice = Math.floor(Math.random() * global._deathSplash.length);
 					let mockupname = (mockups.get(_gui._type).name || "").toLowerCase();
-					if (!mockupname.includes("mothership") && !mockupname.includes("dominator")) {
+					/*if (!mockupname.includes("mothership") && !mockupname.includes("dominator")) {
 						rewardManager.increaseStatistic(6, m[0]);
 						if (rewardManager._statistics[6] >= 1_000_000) rewardManager.unlockAchievement("millionaire");
 						if (rewardManager._statistics[6] >= 10_000_000) rewardManager.unlockAchievement("you_can_now_afford_a_lamborghini_veneno");
@@ -822,7 +825,7 @@ let socketInit = function () {
 								rewardManager.unlockAchievement("it_became_sad");
 								break;
 						};
-					}
+					}*/
 					global.finalScore = Smoothbar(0);
 					global.finalScore.set(m[0]);
 					global.finalLifetime = Smoothbar(0);
@@ -857,11 +860,16 @@ let socketInit = function () {
 				case "lsd":
 					global.player.lsd = m[0];
 					break;
+				case "confuse":
+					global.player.confuse.apply = m[0];
+					global.player.confuse.intensity = m[1];
+					break;
 				case "displayText": {
 					global.displayTextUI.enabled = m[0];
 					if (m[0]) {
 						global.displayTextUI.text = m[1].toString()
 						global.displayTextUI.color = m[2].toString()
+						global.displayTextUI.barColor = m[3].toString()
 					}
 				}
 					break;
