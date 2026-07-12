@@ -6,12 +6,13 @@ import { util } from "./util.js";
 import { mixColors } from "../shared/mix_colors.js"
 
 let color = {
+	"magic": "#b653bc", // use this for both tele-trappers and kazams
 	"teal": "#7ADBBC",
 	"lgreen": "#B9E87E",
 	"orange": "#E7896D",
 	"yellow": "#FDF380",
 	"lavender": "#B58EFD",
-	"pink": "#EF99C3",
+	"pink": "#eb8cba",
 	"vlgrey": "#E8EBF7",
 	"lgrey": "#AA9F9E",
 	"guiwhite": "#FFFFFF",
@@ -26,6 +27,70 @@ let color = {
 	"dgrey": "#726F6F",
 	"white": "#DBDBDB",
 	"guiblack": "#000000",
+	"vibgreen": "#56E012",
+	"amalgrey": "#5A574D",
+	"azure": "#08A3FC",
+	"redbetter": "#F21E34",
+	"springgreen": "#4AE86E",
+	"dullnavy": "#202060",
+	"shieldorange": "#FFA200",
+	"wood": "#C19A6B",
+	"lwood": "#EAB57A",
+	"dwood": "#74502F",
+	"chart": "#8BFE6A",
+	"knockOut": "#6B1B0E",
+	"deepazure": "#2676cb",
+	"puregold": "#E8CA23",
+	"homingred": "#D16161",
+	"lteal": "#A6E1DE",
+	"amber": "#FDA54D",
+	"lpurple": "#A177FC",
+	"hlcyan": "#65F0EC",
+	"navy": "#3761D1",
+	"brown": "#CB6F3C",
+	"guiblue": "#0000FF",
+	"lcyan": "#6CF1EE",
+	"guilavender": "#AB6AB5",
+	"offgold": "#FAC577",
+	"offwhite": "#c6d9ef",
+	"offorange": "#c65f51",
+	"offpurple": "#956db0",
+	"ancestral": "#00FFA5",
+	"coffee": "#473F39",
+	"voideye": "#3B00FF",
+	"waterblue": "#3D79EF",
+	"drose": "#CD004C",
+	"accelred": "#d0412b",
+	"ins_1": mixColors("#A7A7AF", "#d0412b", .2),
+	"ins_2": mixColors("#A7A7AF", "#d0412b", .4),
+	"ins_3": mixColors("#A7A7AF", "#d0412b", .6),
+	"ins_4": mixColors("#A7A7AF", "#d0412b", .8),
+	"silence": "#395547",
+	"infobox": "#756C6C",
+	"turquoise": "#57C8C2",
+	"spore1": "#c7f6d9",
+	"spore2": "#b0e0c0",
+	"spore3": "#afc7c7",
+	"spore4": "#7fb193",
+	"winduglow": "#6A00FF",
+	"guiazure": "#00AEFF",
+	"fire": "#FF8000",
+	"flamegun": "#1D00FF",
+	"welder": "#F20010",
+	"nadeshiko": "#F6ADC6",
+	"dgreyalt": "#666666",
+	"sound": "#63E291",
+	"waller": "#44AA34",
+	"guiviolet": "#9000FF",
+	"fruittree": "#7C5F46",
+	"teleport": "#D000FF",
+	"starfish": "#F4B82F",
+	"seaweed": "#8BE82C",
+	"grouper": "#FC8208",
+	"trout": "#BD6034",
+	"shark": "#8DC7F7",
+	"whale": "#455368",
+	"guisalmon": "#FA8072",
 	"paletteSize": 10,
 	"border": 0.65
 };
@@ -34,12 +99,13 @@ function setColor(obj) {
 }
 let themes = {
 	"normal": {
+		"magic": "#b653bc",
 		"teal": "#7ADBBC",
 		"lgreen": "#B9E87E",
 		"orange": "#E7896D",
 		"yellow": "#FDF380",
 		"lavender": "#B58EFD",
-		"pink": "#EF99C3",
+		"pink": "#eb8cba",
 		"vlgrey": "#E8EBF7",
 		"lgrey": "#AA9F9E",
 		"guiwhite": "#FFFFFF",
@@ -54,10 +120,78 @@ let themes = {
 		"dgrey": "#726F6F",
 		"white": "#DBDBDB",
 		"guiblack": "#000000",
+		"vibgreen": "#56E012",
+		"amalgrey": "#5A574D",
+		"azure": "#08A3FC",
+		"redbetter": "#F21E34",
+		"springgreen": "#4AE86E",
+		"dullnavy": "#202060",
+		"shieldorange": "#FF9900",
+		"wood": "#C19A6B",
+		"lwood": "#EAB57A",
+		"dwood": "#74502F",
+		"chart": "#8BFE6A",
+		"knockOut": "#6B1B0E",
+		"deepazure": "#2676cb",
+		"puregold": "#E8CA23",
+		"homingred": "#D16161",
+		"lteal": "#A6E1DE",
+		"amber": "#FDA54D",
+		"lpurple": "#A177FC",
+		"hlcyan": "#65F0EC",
+		"navy": "#3761D1",
+		"brown": "#CB6F3C",
+		"guiblue": "#0000FF",
+		"lcyan": "#6CF1EE",
+		"guilavender": "#AB6AB5",
+		"offgold": "#FAC577",
+	    "offwhite": "#c6d9ef",
+	    "offorange": "#c65f51",
+	    "offpurple": "#956db0",
+		"ancestral": "#00FFA5",
+		"coffee": "#473F39",
+		"voideye": "#3B00FF",
+		"waterblue": "#3D79EF",
+		"drose": "#CD004C",
+		"accelred": "#d0412b",
+		"ins_1": mixColors("#A7A7AF", "#d0412b", .2),
+		"ins_2": mixColors("#A7A7AF", "#d0412b", .4),
+		"ins_3": mixColors("#A7A7AF", "#d0412b", .6),
+		"ins_4": mixColors("#A7A7AF", "#d0412b", .8),
+		"silence": "#395547",
+		"infobox": "#756C6C",
+		"turquoise": "#57C8C2",
+	    "spore1": "#c7f6d9",
+	    "spore2": "#b0e0c0",
+	    "spore3": "#afc7c7",
+	    "spore4": "#7fb193",
+		"winduglow": "#6A00FF",
+		"guiazure": "#00AEFF",
+		"fire": "#FF8000",
+		"flamegun": "#1D00FF",
+	    "welder": "#F20010",
+		"nadeshiko": "#F6ADC6",
+		"dgreyalt": "#666666",
+		"sound": "#63E291",
+		"waller": "#44AA34",
+		"guiviolet": "#9000FF",
+		"fruittree": "#7C5F46",
+		"teleport": "#D000FF",
+		"starfish": "#F4B82F",
+		"seaweed": "#8BE82C",
+		"grouper": "#FC8208",
+		"trout": "#BD6034",
+	    "shark": "#8DC7F7",
+	    "whale": "#455368",
+	    "guisalmon": "#FA8072",
 		"paletteSize": 10,
 		"border": 0.575
 	},
 	"classic": {
+		"magic": "#b643bc",
+	    "shark": "#89b8dd",
+	    "whale": "#465f83",
+	    "guisalmon": "#e6786c",
 		"teal": "#8EFFFB",
 		"lgreen": "#85E37D",
 		"orange": "#FC7676",
@@ -65,7 +199,7 @@ let themes = {
 		"lavender": "#B58EFF",
 		"pink": "#F177DD",
 		"vlgrey": "#CDCDCD",
-		"lgrey": "#999999",
+		"lgrey": "#998F88",
 		"guiwhite": "#FFFFFF",
 		"black": "#525252",
 		"blue": "#00B0E1",
@@ -78,202 +212,164 @@ let themes = {
 		"dgrey": "#545454",
 		"white": "#C0C0C0",
 		"guiblack": "#000000",
+		"vibgreen": "#47D440",
+		"amalgrey": "#605E58",
+		"azure": "#1F6DEC",
+		"redbetter": "#F0343D",
+		"springgreen": "#51E78D",
+		"dullnavy": "#332255",
+		"shieldorange": "#f07f2f",
+		"wood": "#c3965f",
+		"lwood": "#f3bc7d",
+		"dwood": "#675646",
+		"chart": "#b9fc71",
+		"knockOut": "#871212",
+		"deepazure": "#373ec8",
+		"puregold": "#EABC14",
+		"homingred": "#E76868",
+		"lteal": "#9CEBE7",
+		"amber": "#ffb651",
+		"lpurple": "#a185ef",
+		"hlcyan": "#80dcf3",
+		"navy": "#2856d4",
+		"brown": "#a75b25",
+		"guiblue": "#1304E3",
+		"lcyan": "#4ae5e8",
+		"guilavender": "#c96fce",
+		"offgold": "#ebc75d",
+	    "offwhite": "#cfe5ff",
+	    "offorange": "#e27e4c",
+	    "offpurple": "#7c5dab",
+		"ancestral": "#39e5a9",
+		"coffee": "#4e3f34",
+		"voideye": "#7929e8",
+		"waterblue": "#2166f0",
+		"drose": "#b50a48",
+		"accelred": "#df3333",
+		"ins_1": mixColors("#999999", "#df3333", .2),
+		"ins_2": mixColors("#999999", "#df3333", .4),
+		"ins_3": mixColors("#999999", "#df3333", .6),
+		"ins_4": mixColors("#999999", "#df3333", .8),
+		"silence": "#3f745b",
+		"infobox": "#817367",
+		"turquoise": "#30ccc4",
+	    "spore1": "#9be4b7",
+	    "spore2": "#b0e0c0",
+	    "spore3": "#9dbdb8",
+	    "spore4": "#7fb193",
+		"winduglow": "#9832f7",
+		"guiazure": "#1f98d0",
+		"fire": "#ef680d",
+		"flamegun": "#2531df",
+	    "welder": "#ed2f2f",
+		"nadeshiko": "#e68baa",
+		"dgreyalt": "#575759",
+		"sound": "#6fc69f",
+		"waller": "#6bb739",
+		"guiviolet": "#8e15eb",
+		"fruittree": "#80604a",
+		"teleport": "#c124e8",
+		"starfish": "#f2bc29",
+		"seaweed": "#a5d521",
+		"grouper": "#f48d26",
+		"trout": "#c47547",
 		"paletteSize": 10,
 		"border": 0.5
 	},
 	"dark": {
-		"teal": "#8975B7",
+		"magic": "#c022b2",
+	    "shark": "#53697a",
+	    "whale": "#2b2a35",
+	    "guisalmon": "#8b5e64",
+		"teal": "#7883A5",
 		"lgreen": "#1BA01F",
 		"orange": "#C46748",
 		"yellow": "#B2B224",
 		"lavender": "#7D56C5",
 		"pink": "#B24FAE",
 		"vlgrey": "#1E1E1E",
-		"lgrey": "#3C3A3A",
-		"guiwhite": "#000000",
-		"black": "#E5E5E5",
-		"blue": "#379FC6",
-		"green": "#30B53B",
-		"red": "#FF6C6E",
-		"gold": "#FFC665",
-		"purple": "#9673E8",
+		"lgrey": "#7b7772",
+		"guiwhite": "#5c6060",
+		"black": "#0B011A",
+		"blue": "#266c85",
+		"green": "#1e892e",
+		"red": "#a02c2e",
+		"gold": "#9B7128",
+		"purple": "#764a8b",
 		"magenta": "#C8679B",
 		"grey": "#635F5F",
 		"dgrey": "#73747A",
-		"white": "#11110F",
-		"guiblack": "#FFFFFF",
+		"white": "#40403C",
+		"guiblack": "#000000",
+		"vibgreen": "#3D6F24",
+		"amalgrey": "#32322D",
+		"azure": "#2A1F4D",
+		"redbetter": "#A7072F",
+		"springgreen": "#3C6f3C",
+		"dullnavy": "#2E2E82",
+		"shieldorange": "#CC5506",
+		"wood": "#786752",
+		"lwood": "#b38963",
+		"dwood": "#513e21",
+		"chart": "#5b7e15",
+		"knockOut": "#380611",
+		"deepazure": "#131629",
+		"puregold": "#9A6C12",
+		"homingred": "#603E3E",
+		"lteal": "#6D7DA4",
+		"amber": "#905637",
+		"lpurple": "#7c5893",
+		"hlcyan": "#4a6982",
+		"navy": "#153d7a",
+		"brown": "#734524",
+		"guiblue": "#214AF0",
+		"lcyan": "#357b71",
+		"guilavender": "#7e3c6d",
+		"offgold": "#83663a",
+	    "offwhite": "#363638",
+	    "offorange": "#923434",
+	    "offpurple": "#63406d",
+		"ancestral": "#166d55",
+		"coffee": "#6b5444",
+		"voideye": "#8e07e3",
+		"waterblue": "#1c59a8",
+		"drose": "#630d34",
+		"accelred": "#6d0c0c",
+		"ins_1": mixColors("#635F5F", "#6d0c0c", .2),
+		"ins_2": mixColors("#635F5F", "#6d0c0c", .4),
+		"ins_3": mixColors("#635F5F", "#6d0c0c", .6),
+		"ins_4": mixColors("#635F5F", "#6d0c0c", .8),
+		"silence": "#32965d",
+		"infobox": "#52463c",
+		"turquoise": "#257c87",
+	    "spore1": "#a0c4ad",
+	    "spore2": "#80a895",
+	    "spore3": "#728290",
+	    "spore4": "#7fb193",
+		"winduglow": "#6c20cf",
+		"guiazure": "#0cabc4",
+		"fire": "#ee821d",
+		"flamegun": "#1f6ec8",
+	    "welder": "#ee4019",
+		"nadeshiko": "#a6365d",
+		"dgreyalt": "#7b797d",
+		"sound": "#90eec9",
+		"waller": "#406a1c",
+		"guiviolet": "#63087d",
+		"fruittree": "#56493e",
+		"teleport": "#b23cc9",
+		"starfish": "#b3791c",
+		"seaweed": "#3ba116",
+		"grouper": "#805020",
+		"trout": "#8a4936",
 		"paletteSize": 10,
 		"border": 0.15
 	},
-	"natural": {
-		"teal": "#76C1BB",
-		"lgreen": "#AAD35D",
-		"orange": "#E09545",
-		"yellow": "#FFD993",
-		"lavender": "#939FFF",
-		"pink": "#D87FB2",
-		"vlgrey": "#C4B6B6",
-		"lgrey": "#7F7F7F",
-		"guiwhite": "#FFFFFF",
-		"black": "#373834",
-		"blue": "#4F93B5",
-		"green": "#00B659",
-		"red": "#E14F65",
-		"gold": "#E5BF42",
-		"purple": "#8053A0",
-		"magenta": "#B67CAA",
-		"grey": "#998F8F",
-		"dgrey": "#494954",
-		"white": "#A5B2A5",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.2
-	},
-	"ayu": {
-		"teal": "#7ADBBC",
-		"lgreen": "#B9E87E",
-		"orange": "#E7896D",
-		"yellow": "#FDF380",
-		"lavender": "#B58EFD",
-		"pink": "#EF99C3",
-		"vlgrey": "#01060e",
-		"lgrey": "#AA9F9E",
-		"guiwhite": "#FFFFFF",
-		"black": "#0a0e14",
-		"blue": "#72674f",
-		"green": "#8ABC3F",
-		"red": "#626a73",
-		"gold": "#EFC74B",
-		"purple": "#8D6ADF",
-		"magenta": "#ae81ff",
-		"grey": "#ffffff",
-		"dgrey": "#726F6F",
-		"white": "#0a0e14",
-		"guiblack": "#FFFFFF",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"forest": {
-		"teal": "#884AA5",
-		"lgreen": "#8C9B3E",
-		"orange": "#D16A80",
-		"yellow": "#97596D",
-		"lavender": "#499855",
-		"pink": "#60294F",
-		"vlgrey": "#DDC6B8",
-		"lgrey": "#7E949E",
-		"guiwhite": "#FFFFE8",
-		"black": "#665750",
-		"blue": "#807BB6",
-		"green": "#A1BE55",
-		"red": "#E5B05B",
-		"gold": "#FF4747",
-		"purple": "#BAC674",
-		"magenta": "#BA78D1",
-		"grey": "#998866",
-		"dgrey": "#529758",
-		"white": "#7DA060",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.7
-	},
-	"boreal": {
-		"teal": "#c342ff",
-		"lgreen": "#4ee92f",
-		"orange": "#bb687a",
-		"yellow": "#97596D",
-		"lavender": "#499855",
-		"pink": "#e8e3e6",
-		"vlgrey": "#dfcbbf",
-		"lgrey": "#7E949E",
-		"guiwhite": "#FFFFE8",
-		"black": "#6f584d",
-		"blue": "#9c98c3",
-		"green": "#bbd57c",
-		"red": "#eac180",
-		"gold": "#f48080",
-		"purple": "#ccdb7b",
-		"magenta": "#ca98dd",
-		"grey": "#b7946c",
-		"dgrey": "#529758",
-		"white": "#ecf4f2",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"midnight": {
-		"teal": "#2B9098",
-		"lgreen": "#4BAA5D",
-		"orange": "#345678",
-		"yellow": "#CDC684",
-		"lavender": "#89778E",
-		"pink": "#A85C90",
-		"vlgrey": "#CCCCCC",
-		"lgrey": "#A7B2B7",
-		"guiwhite": "#BAC6FF",
-		"black": "#091F28",
-		"blue": "#123455",
-		"green": "#098765",
-		"red": "#000013",
-		"gold": "#566381",
-		"purple": "#743784",
-		"magenta": "#B29098",
-		"grey": "#555555",
-		"dgrey": "#649EB7",
-		"white": "#444444",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.6
-	},
-	"pastel": {
-		"teal": "#89BFBA",
-		"lgreen": "#B5D17D",
-		"orange": "#E5E0E0",
-		"yellow": "#B5BBE5",
-		"lavender": "#939FFF",
-		"pink": "#646DE5",
-		"vlgrey": "#B2B2B2",
-		"lgrey": "#7F7F7F",
-		"guiwhite": "#FFFFFF",
-		"black": "#383835",
-		"blue": "#AEAEFF",
-		"green": "#AEFFAE",
-		"red": "#FFAEAE",
-		"gold": "#FFFFFF",
-		"purple": "#C3C3D8",
-		"magenta": "#FFB5FF",
-		"grey": "#CCCCCC",
-		"dgrey": "#A0A0B2",
-		"white": "#F2F2F2",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.35
-	},
-	"space": {
-		"teal": "#4788F3",
-		"lgreen": "#AF1010",
-		"orange": "#FF0000",
-		"yellow": "#82F850",
-		"lavender": "#FFFFFF",
-		"pink": "#57006C",
-		"vlgrey": "#FFFFFF",
-		"lgrey": "#272727",
-		"guiwhite": "#000000",
-		"black": "#7F7F7F",
-		"blue": "#0E1B92",
-		"green": "#0AEB80",
-		"red": "#C2B90A",
-		"gold": "#3E7E8C",
-		"purple": "#285911",
-		"magenta": "#A9707E",
-		"grey": "#6F6A68",
-		"dgrey": "#2D0738",
-		"white": "#000000",
-		"guiblack": "#FFFFFF",
-		"paletteSize": 10,
-		"border": 0.25
-	},
 	"factory": {
+		"magic": "#cf6cdc",
+	    "shark": "#7b8f9e",
+	    "whale": "#40444a",
+	    "guisalmon": "#a37a7c",
 		"teal": "#8686ab",
 		"lgreen": "#e4ca49",
 		"orange": "#c8b5b8",
@@ -294,303 +390,159 @@ let themes = {
 		"dgrey": "#535b5f",
 		"white": "#8a9195",
 		"guiblack": "#000000",
+		"vibgreen": "#7da960",
+		"amalgrey": "#564f51",
+		"azure": "#3D756A",
+		"redbetter": "#DE576B",
+		"springgreen": "#73D09B",
+		"dullnavy": "#39394E",
+		"shieldorange": "#E08E2A",
+		"wood": "#aca397",
+		"lwood": "#ebdbc8",
+		"dwood": "#70603c",
+		"chart": "#7bb267",
+		"knockOut": "#a15228",
+		"deepazure": "#315357",
+		"puregold": "#A29D83",
+		"homingred": "#B37373",
+		"lteal": "#98BAC2",
+		"amber": "#d3bc87",
+		"lpurple": "#736daf",
+		"hlcyan": "#83c4cd",
+		"navy": "#3f4f8b",
+		"brown": "#b67451",
+		"guiblue": "#7EECFB",
+		"lcyan": "#98cbca",
+		"guilavender": "#947a98",
+		"offgold": "#8d867d",
+	    "offwhite": "#677581",
+	    "offorange": "#736765",
+	    "offpurple": "#746d8c",
+		"ancestral": "#95a99d",
+		"coffee": "#3f3c3a",
+		"voideye": "#6d4898",
+		"waterblue": "#598eaf",
+		"drose": "#9c6076",
+		"accelred": "#d59388",
+		"ins_1": mixColors("#8e8ca5", "#d59388", .2),
+		"ins_2": mixColors("#8e8ca5", "#d59388", .4),
+		"ins_3": mixColors("#8e8ca5", "#d59388", .6),
+		"ins_4": mixColors("#8e8ca5", "#d59388", .8),
+		"silence": "#404e47",
+		"infobox": "#8e8e8e",
+		"turquoise": "#5fad9a",
+	    "spore1": "#a6bdaf",
+	    "spore2": "#8bab8e",
+	    "spore3": "#b6e5da",
+	    "spore4": "#5f8681",
+		"winduglow": "#694ad2",
+		"guiazure": "#5e9dd8",
+		"fire": "#f49331",
+		"flamegun": "#733cd8",
+	    "welder": "#b63d0d",
+		"nadeshiko": "#e58c94",
+		"dgreyalt": "#5c5961",
+		"sound": "#c3d0c8",
+		"waller": "#618f4a",
+		"guiviolet": "#9f51dc",
+		"fruittree": "#67625d",
+		"teleport": "#ac5ed2",
+		"starfish": "#cda850",
+		"seaweed": "#5d6655",
+		"grouper": "#94795f",
+		"trout": "#885f4c",
 		"paletteSize": 10,
 		"border": 0.75
 	},
-	"nebula": {
-		"teal": "#38B06E",
-		"lgreen": "#22882E",
-		"orange": "#D28E7F",
-		"yellow": "#D5D879",
-		"lavender": "#E084EB",
-		"pink": "#DF3E3E",
-		"vlgrey": "#F0F2CC",
-		"lgrey": "#7D7D7D",
-		"guiwhite": "#C2C5EF",
-		"black": "#161616",
-		"blue": "#9274E6",
-		"green": "#89F470",
-		"red": "#E08E5D",
-		"gold": "#ECDC58",
-		"purple": "#58CBEC",
-		"magenta": "#EA58EC",
-		"grey": "#7E5713",
-		"dgrey": "#303030",
-		"white": "#555555",
-		"guiblack": "#EAEAEA",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"bleach": {
-		"teal": "#00FFFF",
-		"lgreen": "#00FF00",
-		"orange": "#FF3200",
-		"yellow": "#FFEC00",
-		"lavender": "#FF24A7",
-		"pink": "#FF3CBD",
-		"vlgrey": "#FFF186",
-		"lgrey": "#918181",
-		"guiwhite": "#F1F1F1",
-		"black": "#5F5F5F",
-		"blue": "#0025FF",
-		"green": "#00FF00",
-		"red": "#FF0000",
-		"gold": "#FFFA23",
-		"purple": "#3100FF",
-		"magenta": "#D4D3D3",
-		"grey": "#838383",
-		"dgrey": "#4C4C4C",
-		"white": "#FFFEFE",
-		"guiblack": "#080808",
-		"paletteSize": 10,
-		"border": 0.4
-	},
-	"ocean": {
-		"teal": "#76EEC6",
-		"lgreen": "#41AA78",
-		"orange": "#FF7F50",
-		"yellow": "#FFD250",
-		"lavender": "#DC3388",
-		"pink": "#FA8072",
-		"vlgrey": "#8B8886",
-		"lgrey": "#BFC1C2",
-		"guiwhite": "#FFFFFF",
-		"black": "#12466B",
-		"blue": "#4200AE",
-		"green": "#0D6338",
-		"red": "#DC4333",
-		"gold": "#FEA904",
-		"purple": "#7B4BAB",
-		"magenta": "#5C246E",
-		"grey": "#656884",
-		"dgrey": "#D4D7D9",
-		"white": "#3283BC",
+	"forest": {
+		"magic": "#b415db",
+	    "shark": "#8f9ca6",
+	    "whale": "#2d2f31",
+	    "guisalmon": "#c2c9d6",
+		"teal": "#884AA5",
+		"lgreen": "#8C9B3E",
+		"orange": "#D16A80",
+		"yellow": "#97596D",
+		"lavender": "#499855",
+		"pink": "#60294F",
+		"vlgrey": "#DDC6B8",
+		"lgrey": "#666767",
+		"guiwhite": "#FFFFE8",
+		"black": "#665750",
+		"blue": "#807BB6",
+		"green": "#A1BE55",
+		"red": "#E5B05B",
+		"gold": "#FF4747",
+		"purple": "#BAC674",
+		"magenta": "#BA78D1",
+		"grey": "#998866",
+		"dgrey": "#529758",
+		"white": "#7DA060",
 		"guiblack": "#000000",
+		"vibgreen": "#50972c",
+		"amalgrey": "#6c6658",
+		"azure": "#27687a",
+		"redbetter": "#ae5f83",
+		"springgreen": "#39b195",
+		"dullnavy": "#35435f",
+		"shieldorange": "#69512f",
+		"wood": "#C19A6B",
+		"lwood": "#EAB57A",
+		"dwood": "#74502F",
+		"chart": "#6d5576",
+		"knockOut": "#8E463B",
+		"deepazure": "#1b4863",
+		"puregold": "#ad470c",
+		"homingred": "#F1582A",
+		"lteal": "#C8B7D2",
+		"amber": "#f7bc0a",
+		"lpurple": "#69923a",
+		"hlcyan": "#7d2294",
+		"navy": "#463274",
+		"brown": "#cd794b",
+		"guiblue": "#5C53D5",
+		"lcyan": "#bafffe",
+		"guilavender": "#ca45fb",
+		"offgold": "#c3603c",
+	    "offwhite": "#e3dbd1",
+	    "offorange": "#885058",
+	    "offpurple": "#769a59",
+		"ancestral": "#09382c",
+		"coffee": "#0f0f0f",
+		"voideye": "#5f518a",
+		"waterblue": "#16598a",
+		"drose": "#a9144b",
+		"accelred": "#f04419",
+		"ins_1": mixColors("#998866", "#f04419", .2),
+		"ins_2": mixColors("#998866", "#f04419", .4),
+		"ins_3": mixColors("#998866", "#f04419", .6),
+		"ins_4": mixColors("#998866", "#f04419", .8),
+		"silence": "#425a2c",
+		"infobox": "#988e8e",
+		"turquoise": "#8cb7b5",
+	    "spore1": "#abe8c2",
+	    "spore2": "#ae5e5b",
+	    "spore3": "#c5ae8c",
+	    "spore4": "#94141f",
+		"winduglow": "#9acb44",
+		"guiazure": "#7ddfdd",
+		"fire": "#ffae00",
+		"flamegun": "#0095ff",
+	    "welder": "#ff0033",
+		"nadeshiko": "#e0b7d3",
+		"dgreyalt": "#435e25",
+		"sound": "#cfcfcf",
+		"waller": "#a2c958",
+		"guiviolet": "#76367b",
+		"fruittree": "#7C5F46",
+		"teleport": "#32028c",
+		"starfish": "#e8e526",
+		"seaweed": "#384022",
+		"grouper": "#A69888",
+		"trout": "#A6A588",
 		"paletteSize": 10,
-		"border": 0.3
+		"border": 0.575
 	},
-	"mariana": {
-		"teal": "#e02e1a",
-		"lgreen": "#abfe10",
-		"orange": "#49a437",
-		"yellow": "#FFD250",
-		"lavender": "#DC3388",
-		"pink": "#e16d60",
-		"vlgrey": "#878482",
-		"lgrey": "#BFC1C2",
-		"guiwhite": "#99d8ff",
-		"black": "#3856f0",
-		"blue": "#576dc1",
-		"green": "#1daa63",
-		"red": "#bf703b",
-		"gold": "#b65449",
-		"purple": "#6e642b",
-		"magenta": "#9c47b8",
-		"grey": "#4d4d6a",
-		"dgrey": "#D4D7D9",
-		"white": "#0c3755",
-		"guiblack": "#FFFFFF",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"badlands": {
-		"teal": "#F9CB9C",
-		"lgreen": "#F1C232",
-		"orange": "#38761D",
-		"yellow": "#E69138",
-		"lavender": "#B7B7B7",
-		"pink": "#78866B",
-		"vlgrey": "#6AA84F",
-		"lgrey": "#B7B7B7",
-		"guiwhite": "#A4C2F4",
-		"black": "#000000",
-		"blue": "#0C5A9E",
-		"green": "#6E8922",
-		"red": "#5B0000",
-		"gold": "#783F04",
-		"purple": "#591C77",
-		"magenta": "#20124D",
-		"grey": "#2F1C16",
-		"dgrey": "#999999",
-		"white": "#543517",
-		"guiblack": "#CFE2F3",
-		"paletteSize": 10,
-		"border": 0.4
-	},
-	"beta_arras": {
-		"teal": "#1F3D80",
-		"lgreen": "#39A016",
-		"orange": "#760D10",
-		"yellow": "#DBA015",
-		"lavender": "#820A66",
-		"pink": "#820A66",
-		"vlgrey": "#888888",
-		"lgrey": "#888888",
-		"guiwhite": "#FFFFFF",
-		"black": "#484848",
-		"blue": "#3762D1",
-		"green": "#22600D",
-		"red": "#C4151B",
-		"gold": "#83600D",
-		"purple": "#4E063D",
-		"magenta": "#CC669C",
-		"grey": "#A7A7AF",
-		"dgrey": "#525252",
-		"white": "#DBDBDB",
-		"guiblack": "#525252",
-		"paletteSize": 10,
-		"border": 0.65
-	},
-	"neon": {
-		"teal": "#00FFF2",
-		"lgreen": "#04FF00",
-		"orange": "#FF9D00",
-		"yellow": "#FFFA00",
-		"lavender": "#7D56C5",
-		"pink": "#FF89D7",
-		"vlgrey": "#161616",
-		"lgrey": "#3d3d3d",
-		"guiwhite": "#000000",
-		"black": "#E5E5E5",
-		"blue": "#0090FF",
-		"green": "#26D100",
-		"red": "#FF0000",
-		"gold": "#FFD400",
-		"purple": "#7b00ff",
-		"magenta": " #ff00e1",
-		"grey": "#635F5F",
-		"dgrey": "#73747A",
-		"white": "#000000",
-		"guiblack": "#FFFFFF",
-		"paletteSize": 10,
-		"border": 0.15
-	},
-	"haunted_house": {
-		"teal": "#000000",
-		"lgreen": "#841c93",
-		"orange": "#963518",
-		"yellow": "#cdbe03",
-		"lavender": "#9d5ffc",
-		"pink": "#f3b6d5",
-		"vlgrey": "#ffffff",
-		"lgrey": "#aa9f9e",
-		"guiwhite": "#ffffff",
-		"black": "#484848",
-		"blue": "#647aa4",
-		"green": "#81a259",
-		"red": "#9e031f",
-		"gold": "#b48b10",
-		"purple": "#351a75",
-		"magenta": "#b77b9a",
-		"grey": "#dcccdd",
-		"dgrey": "#77067d",
-		"white": "#020202",
-		"guiblack": "#ffffff",
-		"paletteSize": 10,
-		"border": 0.6
-	},
-	"pumpkin_theme": {
-		"teal": "#721970",
-		"lgreen": "#ff6347",
-		"orange": "#1b713a",
-		"yellow": "#fdf380",
-		"lavender": "#941100",
-		"pink": "#194417",
-		"vlgrey": "#1b713a",
-		"lgrey": "#aa9f9e",
-		"guiwhite": "#fed8b1",
-		"black": "#484848",
-		"blue": "#3ca4cb",
-		"green": "#8abc3f",
-		"red": "#e03e41",
-		"gold": "#1b713a",
-		"purple": "#1b713a",
-		"magenta": "#cc669c",
-		"grey": "#ffffff",
-		"dgrey": "#726f6f",
-		"white": "#ff9b58",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 3
-	},
-	"solarized_dark": {
-		"teal": "#B58900",
-		"lgreen": "#2AA198",
-		"orange": "#CB4B16",
-		"yellow": "#657B83",
-		"lavender": "#EEE8D5",
-		"pink": "#D33682",
-		"vlgrey": "#E0E2E4",
-		"lgrey": "#073642",
-		"guiwhite": "#ffffff",
-		"black": "#000000",
-		"blue": "#268BD2",
-		"green": "#869600",
-		"red": "#DC322F",
-		"gold": "#B58900",
-		"purple": "#678CB1",
-		"magenta": "#A082BD",
-		"grey": "#839496",
-		"dgrey": "#073642",
-		"white": "#002B36",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"christmas": {
-		"teal": "#00d200",
-		"lgreen": "#ce0000",
-		"orange": "#d94d24",
-		"yellow": "#f3e103",
-		"lavender": "#5004dd",
-		"pink": "#e86aa9",
-		"vlgrey": "#ff0000",
-		"lgrey": "#00ae00",
-		"guiwhite": "#00f400",
-		"black": "#484848",
-		"blue": "#f2f200",
-		"green": "#8abc3f",
-		"red": "#e03e41",
-		"gold": "#ffff28",
-		"purple": "#6c3fd6",
-		"magenta": "#ffffff",
-		"grey": "#c0c0c0",
-		"dgrey": "#008000",
-		"white": "#00b300",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"bubblegum": {
-		"teal": "#7adbbc",
-		"lgreen": "#b9e87e",
-		"orange": "#e7896d",
-		"yellow": "#fdf380",
-		"lavender": "#b58efd",
-		"pink": "#ef99c3",
-		"vlgrey": "#e8ebf7",
-		"lgrey": "#e761a4",
-		"guiwhite": "#ffffff",
-		"black": "#7d1348",
-		"blue": "#3ca4cb",
-		"green": "#8abc3f",
-		"red": "#e03e41",
-		"gold": "#efc74b",
-		"purple": "#8d6adf",
-		"magenta": "#cc669c",
-		"grey": "#e96dab",
-		"dgrey": "#c21f71",
-		"white": "#f5c0db",
-		"guiblack": "#000000",
-		"paletteSize": 10,
-		"border": 0.5
-	},
-	"amethyst": {
-		"teal": "#467b7c", "lgreen": "#79a05a", "orange": "#8a5b42", "yellow": "#FDF380", "lavender": "#B58EFD", "pink": "#a66e8e", "vlgrey": "#888891", "lgrey": "#AA9F9E", "guiwhite": "#a48ec2", "black": "#000000", "blue": "#254b74", "green": "#417e2a", "red": "#7e2525", "gold": "#8e862e", "purple": "#5c4186", "magenta": "#3d1764", "grey": "#58575b", "dgrey": "#726F6F", "white": "#665a87", "guiblack": "#000000", "paletteSize": 10, "border": 0.5
-	},
-	"fantasy": {
-		"teal": "#e43939", "lgreen": "#77ec6c", "orange": "#ed657a", "yellow": "#fdf380", "lavender": "#8c00ff", "pink": "#ff8bff", "vlgrey": "#f2f4fd", "lgrey": "#000000", "guiwhite": "#ffffff", "black": "#191919", "blue": "#3e67f4", "green": "#02cf05", "red": "#ca0020", "gold": "#fdef75", "purple": "#7a8bf4", "magenta": "#d952ff", "grey": "#4e4d50", "dgrey": "#353535", "white": "#646262", "guiblack": "#000000", "border": 0.5
-	}
 };
 
 const specialColors = {}
@@ -647,29 +599,29 @@ function getColor(colorID) {
 		case 22:
 			return "#9264EF";
 		case 23:
-			return "#1D00FF";
+			return color.flamegun;
 		case 24:
 			return "#B35ED8";
 		case 25:
 			return "#0531CB";
 		case 26:
-			return "#FDA54D";
+			return color.amber;
 		case 27:
-			return "#3761D1";
+			return color.navy;
 		case 28:
 			return "#AB1515";
 		case 29:
-			return "#44AA34";
+			return color.waller;
 		case 30:
 			return "#EEF5A7";
 		case 31:
-			return "#8BFE6A";
+			return color.chart;
 		case 32:
-			return "#FAC577";
+			return color.offgold;
 		case 33:
 			return "#8AFF8A";
 		case 34:
-			return "#666666";
+			return color.dgreyalt;
 		case 35:
 			return "#F37C20";
 		case 36:
@@ -681,9 +633,9 @@ function getColor(colorID) {
 		case 39:
 			return "#FFBF00";
 		case 40:
-			return "#57C8C2";
+			return color.turquoise;
 		case 41:
-			return "#A6E1DE";
+			return color.lteal;
 		case 42:
 			return "#BF0731";
 		case 43:
@@ -694,6 +646,82 @@ function getColor(colorID) {
 			return mixColors(color.red, color.grey, .8);
 		case 46: // Red team trench warfare door color (open) and sporulator colors
 			return mixColors(color.green, color.grey, .8);
+		case 47:
+			return color.amalgrey;
+		case 48:
+			return color.azure;
+		case 49:
+			return color.redbetter;
+		case 50:
+			return color.springgreen;
+		case 51:
+			return color.dullnavy;
+		case 52:
+			return color.wood;
+		case 53:
+			return color.dwood;
+		case 54: 
+		    return color.knockOut;
+		case 55:
+			return color.dullazure;
+		case 56:
+			return color.puregold;
+		case 57:
+			return color.coffee;
+		case 58: 
+			return mixColors(color.waterblue, color.guiblack, .5);
+		case 59:
+			return mixColors(color.lcyan, color.guilavender, .5);
+		case 60:
+			return mixColors(color.lcyan, color.pink, .5);
+		case 61:
+			return mixColors(color.chart, color.pink, .5);
+		case 62:
+			return mixColors(color.pink, color.guilavender, .5);
+		case 63:
+			return mixColors(mixColors(color.lcyan, color.chart, .33), color.guilavender, .33);
+		case 64:
+			return mixColors(mixColors(color.lcyan, color.chart, .33), color.pink, .33);
+		case 65:
+			return mixColors(mixColors(color.lcyan, color.guilavender, .33), color.pink, .33);
+		case 66:
+			return mixColors(mixColors(color.chart, color.guilavender, .33), color.pink, .33);
+		case 67:
+			return color.accelred;
+		case 68:
+			return color.silence;
+		case 69:
+			return mixColors(color.grey, "#000000", .18);
+		case 70:
+			return color.infobox;
+		case 71: 
+		    return color.spore1;
+		case 72: 
+		    return color.spore2;
+		case 73: 
+		    return color.spore3;
+		case 74: 
+		    return color.spore4;
+		case 75:
+			return color.sound;
+		case 76:
+			return color.fruittree;
+		case 77:
+			return mixColors(color.waller, color.guiviolet, .5);
+		case 78:
+			return color.starfish;
+		case 79:
+			return color.seaweed;
+		case 80:
+			return color.trout;
+		case 81:
+			return color.shark;
+		case 82:
+			return color.whale;
+		case 83:
+			return color.guisalmon;
+		case 84:
+			return color.magic;
 		// Rainbow Colors
 		case 100:
 			return "#FF0000";
@@ -762,7 +790,7 @@ function getColor(colorID) {
 		case 132:
 			return "#00FF99";
 		case 133:
-			return "#00FFA5";
+			return color.ancestral;
 		case 134:
 			return "#00FFBB";
 		case 135:
@@ -782,7 +810,7 @@ function getColor(colorID) {
 		case 142:
 			return "#00BBFF";
 		case 143:
-			return "#00AEFF";
+			return color.guiazure;
 		case 144:
 			return "#00A1FF";
 		case 145:
@@ -812,15 +840,15 @@ function getColor(colorID) {
 		case 157:
 			return "#2E00FF";
 		case 158:
-			return "#3B00FF";
+			return color.voideye;
 		case 159:
 			return "#5400FF";
 		case 160:
-			return "#6A00FF";
+			return color.winduglow;
 		case 161:
 			return "#7F00FF";
 		case 162:
-			return "#9000FF";
+			return color.guiviolet;
 		case 163:
 			return "#A100FF";
 		case 164:
@@ -828,7 +856,7 @@ function getColor(colorID) {
 		case 165:
 			return "#BF00FF";
 		case 166:
-			return "#D000FF";
+			return color.teleport;
 		case 167:
 			return "#DC00FF";
 		case 168:
@@ -869,15 +897,15 @@ function getColor(colorID) {
 			return "#FF000C";
 		// Railgun Colors
 		case 186:
-			return "#AA8A8B";
+			return color.ins_1;
 		case 187:
-			return "#BC7B7D";
+			return color.ins_2;
 		case 188:
-			return "#CD6D70";
+			return color.ins_3;
 		case 189:
-			return "#DF5E62";
+			return color.ins_4;
 		case 190:
-			return "#CB6F3C";
+			return color.brown;
 		case 191:
 			return "#00D2FF";
 		case 192:
@@ -887,9 +915,9 @@ function getColor(colorID) {
 		case 194:
 			return "#B7410E";
 		case 195:
-			return "#65F0EC";
+			return color.hlcyan;
 		case 196:
-			return "#EAB57A";
+			return color.lwood;
 		case 197:
 			return "#E6E600";
 		case 198:
@@ -911,7 +939,7 @@ function getColor(colorID) {
 		case 206:
 			return "#00428B";
 		case 207:
-			return "#FF8000";
+			return color.fire;
 		case 208:
 			return "#FFB66C";
 		case 209:
@@ -929,9 +957,9 @@ function getColor(colorID) {
 		case 215:
 			return "#EFA900";
 		case 216:
-			return "#FC8208";
+			return color.grouper;
 		case 217:
-			return "#6CF1EE";
+			return color.lcyan;
 		case 218:
 			return "#FFD900";
 		case 219:
@@ -939,7 +967,7 @@ function getColor(colorID) {
 		case 220:
 			return "#FFA600";
 		case 221:
-			return "#FF0080";
+			return color.nadeshiko;
 		case 222:
 			return "#00FFFF";
 		case 223:
@@ -953,7 +981,7 @@ function getColor(colorID) {
 		case 227:
 			return "#D5095B";
 		case 228:
-			return "#FF7F00";
+			return color.shieldorange;
 		case 229:
 			return "#A277FB";
 		case 230:
@@ -973,19 +1001,21 @@ function getColor(colorID) {
 		case 237:
 			return "#434343";
 		case 238:
-			return "#D16161";
+			return color.homingred;
 		case 239:
 			return "#F0A900";
 		case 240:
 			return "#15CD2D";
 		case 241:
-			return "#56E012";
+			return color.vibgreen;
 		case 242:
-			return "#A177FC";
+			return color.lpurple;
 		case 243:
 			return util._HSL2COLOR((Date.now() % 2520) / 7, 100, 50);
+
 		case 244:
-			return "#3D79EF";
+			return color.waterblue;
+		// trans tank colors - not gonna alter these 
 		case 245:
 			return "#000CF2";
 		case 246:
@@ -1049,7 +1079,7 @@ function getColor(colorID) {
 		case 275:
 			return "#EA0017";
 		case 276:
-			return "#F20010";
+			return color.welder;
 		// Surge colors
 		case 277:
 			return "#B29272";
@@ -1102,9 +1132,9 @@ function getColor(colorID) {
 		case 301:
 			return "#B0B8FF";
 		case 302:
-			return "#7CF8AC";
+			return mixColors(color.lcyan, color.chart, .5);
 		case 303:
-			return "#1304E3";
+			return color.guiblue;
 		case 304:
 			return "#777777";
 		case 305:
@@ -1135,12 +1165,12 @@ function getColor(colorID) {
 			return "#979797";
 		case 318: // Oppressors
 			return "#a5bdd7";
-		case 319: // Sorcerer Drone
-			return "#c6d9ef";
-		case 320: // Enchantress Drone
-			return "#c65f51";
-		case 321: // the excorcist
-			return "#956db0";
+		case 319: 
+			return color.offwhite;
+		case 320: 
+			return color.offorange;
+		case 321: 
+			return color.offpurple
 		case 322: // Scorched
 			return "#fe5f00";
 		case 323: // viviyellow
@@ -1186,14 +1216,14 @@ function getColor(colorID) {
 			return "#" + Math.floor(Math.random() * 16777215).toString(16);
 		case "FFA_RED":
 			return color.red;
-		case 337: // Lavender
-			return "#AB6AB5";
+		case 337: 
+			return color.guilavender;
 		case 338:
-			return "#A39EFF";
+			return mixColors(color.chart, color.guilavender, .5);
 		case 339:
 			return "#FF7E67";
 		case 340:
-			return "#CD004C";
+			return color.drose;
 		case 341:
 			return "#5BCEF5";
 		case 342:
@@ -1239,12 +1269,12 @@ function getColor(colorID) {
 		default:
 			if (typeof colorID == "string") {
 				if (colorID.length !== 7) {
-					return "#F00000"//else it would break undefined colorID entities
+					return "#000000"//else it would break undefined colorID entities
 					throw new Error("Colors should be a 6 number hexcode (i.e. #000000), got:\"" + colorID + "\"")
 				}
 				return colorID
 			} else {
-				return "#F00000";//colorID;
+				return "#000000";//colorID;
 			}
 	}
 }
@@ -1321,6 +1351,10 @@ function getZoneColor(cell, real, seed = 1) {
 			return mixColors(color.blue, color.guiwhite, 2 / 3);
 		case "spn2":
 			return mixColors(color.red, color.guiwhite, 2 / 3);
+		case "watr":
+			return color.azure;
+		case "deep":
+			return color.deepazure;
 		// KEEP NEST AT THE BOTTOM
 		case "nest":
 			return real ? color.purple : color.lavender;
