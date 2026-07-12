@@ -152,10 +152,16 @@ function getEntityImageFromMockup(index, color) {
 					return 1;
 				},
 				getColor: function () {
-					return "#FFFFFF";
+					let out = null;
+					if (mockup.blend) out = mockup.blend.color;
+					else out = "#FFFFFF";
+					return out;
 				},
 				getBlend: function () {
-					return 0;
+					let out = null;
+					if (mockup.blend) out = mockup.blend.amount;
+					else out = 0;
+					return out;
 				},
 				health: {
 					get: function () {
@@ -172,6 +178,9 @@ function getEntityImageFromMockup(index, color) {
 		facing: mockup.facing,
 		shape: mockup.shape,
 		name: mockup.name,
+		arch: mockup.arch,
+		metatier: mockup.metatier,
+		desc: mockup.desc,
 		score: 0,
 		tiggle: 0,
 		layer: mockup.layer,
