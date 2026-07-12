@@ -35,8 +35,8 @@ const imageCache = (function loadImages() {
 		["./resources/fordf150Flipped.png", "f150Flipped", 2],
 		["./resources/treadmarks.png", "treadmarks"],
 		["./resources/seniorpentagon.png", "seniorpentagon"],
-		["https://cdn.glitch.global/6025d4c0-5676-447d-89f7-6cce3e3787a7/stars2.png?v=1745457944163", "starbackground"],
-		["https://cdn.glitch.global/6025d4c0-5676-447d-89f7-6cce3e3787a7/stars2Inverted.png?v=1745466334169", "starbackgroundInverted"]
+		["https://static.wikia.nocookie.net/1d7c7dfa-f6cc-4956-b3fb-3bfb7fec0ee2", "starbackground"],
+		["https://static.wikia.nocookie.net/06ed948b-ec0e-4d9c-b704-18fa97b16d3b", "starbackgroundInverted"]
 	]) {
 		setTimeout(() => {
 			if (image[2]) {
