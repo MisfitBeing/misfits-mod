@@ -85,7 +85,7 @@ let gameDraw = function (ratio) {
 	}
 
 	// GRID
-	ctx.lineWidth = 1;
+	/*ctx.lineWidth = 1;
 	ctx.strokeStyle = color.guiblack;
 	ctx.globalAlpha = 0.05;
 	let gridsize = 30 * ratio;//(Math.min(global._gameWidth, global._gameHeight) / roomSetup.length / 14 * ratio);
@@ -100,7 +100,7 @@ let gameDraw = function (ratio) {
 		ctx.moveTo(0, y);
 		ctx.lineTo(global._screenWidth, y);
 		ctx.stroke();
-	};
+	};*/
 
 	// ENTITIES
 	ctx.globalAlpha = 1;
@@ -136,7 +136,7 @@ let gameDraw = function (ratio) {
 			global.player._name = instance.name == null ? mockups.get(instance.index).name : instance.name;
 			global.player._label = instance.label
 			global.player._canSeeInvisible = instance.seeInvisible;
-			if (instance.alpha < 0.1) rewardManager.unlockAchievement("sneak_100");
+			//if (instance.alpha < 0.1) rewardManager.unlockAchievement("sneak_100");
 		} else {
 			instance.render.facing = motion.predictFacing(instance.render.facing, instance.facing);
 		}
@@ -154,58 +154,45 @@ let gameDraw = function (ratio) {
 	};
 
 	// LASERS
-	for(let [id, laser] of laserMap){
-		let shakeAmount = -2.5 + 5 * Math.random()
-	    const lx1 = ratio * (laser.x+shakeAmount*Math.random()) - px;
-	    const ly1 = ratio * (laser.y+shakeAmount*Math.random()) - py;
-	    const lx2 = ratio * (laser.x2+shakeAmount*Math.random()) - px;
-	    const ly2 = ratio * (laser.y2+shakeAmount*Math.random()) - py;
+	for(let [id, laser] of laserMap) {
+		let shakeAmount = -2.5 + 5 * Math.random();
+	    const lx1 = ratio * (laser.x + shakeAmount * Math.random()) - px,
+		      ly1 = ratio * (laser.y + shakeAmount * Math.random()) - py,
+			  lx2 = ratio * (laser.x2 + shakeAmount * Math.random()) - px,
+			  ly2 = ratio * (laser.y2 + shakeAmount * Math.random()) - py,
+			  
+			  dx = lx2 - lx1,
+			  dy = ly2 - ly1,
+			  len = Math.sqrt(dx * dx + dy * dy);
 	
-	    const dx = lx2 - lx1;
-	    const dy = ly2 - ly1;
-	    const len = Math.sqrt(dx * dx + dy * dy);
+	    if (len === 0) continue;
 	
-	    if(len === 0) continue;
-	
-		const laserColor = getColor(laser.color);
-		const darkColor = getColorDark(laserColor);
-	    const angle = Math.atan2(dy, dx);
+		const laserColor = getColor(laser.color),
+		      angle = Math.atan2(dy, dx);
 	    let width = laser.width * ratio * laser.fade;
 	
 	    ctx.save();
 	    ctx.translate(lx1, ly1);
 	    ctx.rotate(angle);
-	    if (config.performanceMode === false && config.animatedLasers === true) {
-	        const layers = 6;
-	        for(let i = 0; i < layers; i++){
-	            const t = i / (layers - 1);
-	            const layerWidth = (width * (1+(i/layers)*Math.random())) * (1 - t * 0.7);
-	            let lcolor;
-	            if(t < 0.5) {
-					const blend = Math.min(1, (t*2)/(config.borderChunk/4));
-	                lcolor = mixColors(darkColor, color.white, blend);
-	            } else {
-	                const blend = (t - 0.5) * 2;
-	                lcolor = mixColors(color.white, laserColor, blend);
-	            }
-			
-	            ctx.fillStyle = lcolor;
-	            ctx.globalAlpha = .25 + 1/layers
-				ctx.beginPath();
-				ctx.arc(len, 0, layerWidth/1.75, 0, Math.PI * 2);
-				ctx.arc(0, 0, layerWidth/1.25, 0, Math.PI * 2);
-	            ctx.rect(0, -layerWidth / 2, len, layerWidth);
-				ctx.fill();
-			}
-	    } else {
-	        ctx.fillStyle = laserColor
-	        ctx.globalAlpha = 0.35;
-			ctx.beginPath()
-	        ctx.rect(0, -width / 2, len, width);
-	        ctx.arc(len, 0, width/1.5, 0, Math.PI*2);
-			ctx.arc(0, 0, width, 0, Math.PI*2)
-			ctx.fill();
-	    }
+	    ctx.fillStyle = laserColor;
+	    ctx.globalAlpha = 1;
+		ctx.beginPath()
+	    ctx.rect(0, -width / 2, len, width);
+	    ctx.arc(len, 0, width / 1.5, 0, Math.PI * 2);
+		ctx.arc(0, 0, width / 1.5, 0, Math.PI * 2)
+		ctx.fill();
+		ctx.restore();
+
+	    ctx.save();
+	    ctx.translate(lx1, ly1);
+	    ctx.rotate(angle);
+	    ctx.fillStyle = "#FFFFFF";
+	    ctx.globalAlpha = 1;
+		ctx.beginPath()
+	    ctx.arc(len, 0, width / 3, 0, Math.PI * 2);
+		ctx.arc(0, 0, width / 3, 0, Math.PI * 2);
+        ctx.rect(0, -width / 2 + 5, len, width / 2);
+		ctx.fill();
 		ctx.restore();
 	}
 
@@ -233,22 +220,37 @@ let gameDraw = function (ratio) {
 		darknessCtx.globalCompositeOperation = "lighter";
 		darknessCtx.translate(global._screenWidth / 2 / divisor, global._screenHeight / 2 / divisor);
 
-		for(let [id, laser] of laserMap){
-	    	const lx1 = ratio * laser.x - px;
-	    	const ly1 = ratio * laser.y - py;
-	    	const lx2 = ratio * laser.x2 - px;
-	    	const ly2 = ratio * laser.y2 - py;
-	    	const laserColor = getColor(laser.color);
-			const ran = Math.random();
+		for(let [id, laser] of laserMap) {
+		    let shakeAmount = -2.5 + 5 * Math.random();
+	        const lx1 = ratio * laser.x - px,//(laser.x + shakeAmount * Math.random()) - px,
+		          ly1 = ratio * laser.y - py,//(laser.y + shakeAmount * Math.random()) - py,
+			      lx2 = ratio * laser.x2 - px,//(laser.x2 + shakeAmount * Math.random()) - px,
+			      ly2 = ratio * laser.y2 - py,//(laser.y2 + shakeAmount * Math.random()) - py,
+			      dx = lx2 - lx1,
+			      dy = ly2 - ly1,
+			      len = Math.sqrt(dx * dx + dy * dy);
+			let width = laser.width * ratio * laser.fade;
+	    	const laserColor = getColor(laser.color),
+			      angle = Math.atan2(dy, dx);
 	    	darknessCtx.save();
-			darknessCtx.lineWidth = (laser.width * (1.25 + .1 * ran)) * ratio * laser.fade;
+			darknessCtx.rotate(angle);
+			darknessCtx.translate(lx1, 1);
+			darknessCtx.lineWidth = (laser.width * (1.25 + .1 * shakeAmount)) * ratio * laser.fade;
 	    	darknessCtx.strokeStyle = laserColor;
-	    	darknessCtx.globalAlpha = .08 + .01 * ran
+	    	darknessCtx.globalAlpha = Math.random() * .5 + .2;
 			darknessCtx.beginPath();
-			darknessCtx.arc(lx1, ly1, darknessCtx.lineWidth/1.5, 0, Math.PI * 2);
-			darknessCtx.moveTo(lx1, ly1);
-			darknessCtx.lineTo(lx2, ly2);
-			darknessCtx.arc(lx2, ly2, darknessCtx.lineWidth, 0, Math.PI * 2);
+			darknessCtx.rect(0, -width / 2, len, width);
+			darknessCtx.stroke();
+			darknessCtx.restore();
+
+	    	darknessCtx.save();
+			darknessCtx.rotate(angle);
+			darknessCtx.translate(lx1, 1);
+			darknessCtx.lineWidth = (laser.width * (1.25 + .1 * shakeAmount)) * ratio * laser.fade;
+	    	darknessCtx.strokeStyle = "#FFFFFF";
+	    	darknessCtx.globalAlpha = 1;
+			darknessCtx.beginPath();
+			darknessCtx.rect(0, -width / 2 + 5, len, width / 4);
 			darknessCtx.stroke();
 			darknessCtx.restore();
 		}
@@ -258,20 +260,22 @@ let gameDraw = function (ratio) {
 				x = ratio * instance.render.x - px,
 				y = ratio * instance.render.y - py,
 				fade = instance.render.status.getFade(instance.size),
-				size = (((Math.min(120 + instance.size * 5, instance.size + 280)) * fade) * ratio / divisor)*1.25,
+				size = (((Math.min(120 + instance.size * 5, instance.size + 280)) * fade) * ratio / divisor) * 1.25,
 				darknessGrad = getGradient(getColor(entityArr[i].color))
+
+			if (global._space) size *= 3;
 
 			// auras
 			let mockup = mockups.get(instance.index)
 			for (let prop of mockup.props) {
-				if (prop.isAura) {
+				if (prop.isAura && prop.glows) {
 					let size = Math.round(instance.size * prop.size * ratio) / divisor
 					let xx = prop.x + x;
 					let yy = prop.y + y;
 					darknessCtx.save()
 					darknessCtx.translate(xx / divisor, yy / divisor);
-					darknessCtx.scale(size * fade, size * fade)
-					darknessCtx.fillStyle = darknessGrad;
+					darknessCtx.scale(size * fade * 3, size * fade * 3)
+					darknessCtx.fillStyle = getGradient(getColor(prop.color));
 					darknessCtx.beginPath()
 					darknessCtx.arc(0, 0, 1, 0, 2 * Math.PI)
 					darknessCtx.closePath()
@@ -314,7 +318,7 @@ let gameDraw = function (ratio) {
 		ctx.setTransform(1, 0, 0, 1, 0, 0);
 		if (global.player._canSeeInvisible) {
 			ctx.globalAlpha = .8
-		}else{
+		} else {
 			ctx.globalAlpha = 1;
 		}
 		ctx.globalCompositeOperation = "multiply";
@@ -403,16 +407,39 @@ let gameDraw = function (ratio) {
 					max = _gui._leaderboard._display.length ? _gui._leaderboard._display[0].score : false,
 					level = _gui._skill.getLevel();
 				ctx.lineWidth = 1;
-				drawBar(x, x + len, y + height / 2, height - 3 + config.barChunk, color.black);
+				drawBar(
+					x, 
+					x + len, 
+					y + height / 2, 
+					height - 3 + config.barChunk, 
+					color.black
+				);
 				drawBar(x, x + len, y + height / 2, height - 3, color.grey);
 				drawBar(x, x + len * (level > 59 ? 1 : _gui._skill.getProgress()), y + height / 2, height - 3.5, color.gold);
 				drawText("Level " + level + " " + global.player._label, x + len / 2, y + height / 2, height - 4, color.guiwhite, "center", 1);
 				height = 14;
 				y -= height + spacing;
-				drawBar(x + len * .1, x + len * .9, y + height / 2, height - 3 + config.barChunk, color.black);
-				drawBar(x + len * .1, x + len * .9, y + height / 2, height - 3, color.grey);
-				drawBar(x + len * .1, x + len * (0.1 + .8 * (max ? Math.min(1, _gui._skill.getScore() / max) : 1)), y + height / 2, height - 3.5, color.green);
-				drawText("Score: " + util._formatLargeNumber(Math.round(_gui._skill.getScore())), x + len / 2, y + height / 2, height - 2, color.guiwhite, "center", 1);
+				drawBar(
+					global.displayTextUI.enabled ? (x + len * .1) * 1.25 : (x + len * .1), 
+					global.displayTextUI.enabled ? (x + len * .9) * .9875 : (x + len * .9), 
+					y + height / 2, 
+					height - 3 + config.barChunk, 
+					color.black);
+				drawBar(
+					global.displayTextUI.enabled ? (x + len * .1) * 1.25 : (x + len * .1), 
+					global.displayTextUI.enabled ? (x + len * .9) * .9875 : (x + len * .9), 
+					y + height / 2, 
+					height - 3, 
+					color.green);
+				drawText(
+					"Score: " + util._formatLargeNumber(Math.round(_gui._skill.getScore())), 
+					global.displayTextUI.enabled ? (x + len / 2) * 1.09 : (x + len / 2),
+					y + height / 2, 
+					height - 2, 
+					color.guiwhite, 
+					"center", 
+					1
+				);
 				ctx.lineWidth = 4;
 				if (global.player._nameColor) {
 					if (global.player._nameColor.charAt("0") !== "!") {
@@ -423,8 +450,22 @@ let gameDraw = function (ratio) {
 						drawText(global.player._name, Math.round(x + len / 2) + .5, Math.round(y - 10 - spacing) + .5, 32, fill, "center", false, 1, stroke, ctx, font);
 					}
 				}
-				if (global.displayTextUI.enabled) {
-					drawText(global.displayTextUI.text, Math.round(x + len / 2) + .5, Math.round(y - 55 - spacing), 16, global.displayTextUI.color, "center", true);
+				if (global.displayTextUI) {
+				    drawBar(
+					    (x + len * .1) * 1, 
+					    (x + len * .9) * .835, 
+					    y + height / 2, 
+					    height - 3 + config.barChunk, 
+					    color.black
+					);
+				    drawBar(
+					    (x + len * .1) * 1, 
+					    (x + len * .9) * .835, 
+					    y + height / 2, 
+					    height - 3, 
+					    color[global.displayTextUI.barColor] || color.grey
+					);
+					drawText(global.displayTextUI.text, (x + len / 2) * .9, y + height / 2, height - 2,  global.displayTextUI.color, "center", true);
 				}
 			}
 
@@ -656,7 +697,7 @@ let gameDraw = function (ratio) {
 					global.canUpgrade = 1;
 					let spacing = 10,
 						x = 20,
-						tankColor = global._tankMenuColor,//global._tankMenuColor,
+						tankColor = global._tankMenuColor,
 						i = 0,
 						y = 20,
 						x2 = x,
@@ -664,8 +705,9 @@ let gameDraw = function (ratio) {
 						y2 = y,
 						ticker = 0,
 						len = alcoveSize * .45, //100
-						height = len;
-					upgradeSpin += .0025
+						height = len,
+						upgradeSpin = -45;
+
 					for (let model of _gui._upgrades) {
 						if (y > y2) y2 = y - 60;
 						x3 = x * 2 + 105;
@@ -689,17 +731,54 @@ let gameDraw = function (ratio) {
 						ctx.globalAlpha = 1;
 						let picture = getEntityImageFromMockup(model, tankColor),
 							position = mockups.get(model).position,
-							scale = .6 * len / position.axis,
-							xx = y + .5 * height - scale * position.middle.x * Math.cos(upgradeSpin),
-							yy = x + .5 * len - scale * position.middle.x * Math.sin(upgradeSpin);
+							scale = .3 * len / position.axis,
+							xx = y + .5 * height,//y + .5 * height - scale * position.middle.x * Math.cos(upgradeSpin),
+							yy = x + .5 * len
 						// Mini render
-						drawEntity(xx, yy, picture, 1, 1, scale / picture.size, upgradeSpin, 1);
-						drawText(picture.name, y + len / 2, x + height - 6, height / 8 - 3, color.guiwhite, "center");
+						drawEntity(
+							xx, 
+							yy, 
+							picture, 
+							1, 
+							1, 
+							scale / (picture.size / 2.4), 
+							0, 
+							1
+						);
+						drawText(
+							picture.name, 
+							y + len / 2, 
+							x + height - 6, 
+							picture.name.length <= 7 ? height / (7 / 1.2) : (height / (picture.name.length / 1.2)), 
+							color.guiwhite, 
+							"center"
+						);
 						ctx.strokeStyle = color.black;
 						ctx.globalAlpha = 1;
 						ctx.lineWidth = 3;
 						config.roundUpgrades ? drawGuiRoundRect(y, x, len, height, 10, false, true) : drawGuiRect(y, x, len, height, true);
-						if (++ticker % (global.mobile ? 3 : 4) === 0) {
+
+						// infobox 
+						let tx = (global.guiMouse.x) - (y + height / 2),
+							ty = (global.guiMouse.y) - (x + len / 2);
+						if (Math.sqrt(tx * tx + ty * ty) < (height * .55) - 11 && !global._died && !global._disconnected) {
+							ctx.fillStyle = color.infobox;
+							drawGuiRect(20, 500, len * Math.sqrt(picture.desc ? picture.desc.length : 1 + picture.name.length), height * 1.1);
+
+							ctx.fillStyle = mixColors(color.infobox, color.black, .5);
+							drawGuiRect(20, 500, len * Math.sqrt(picture.desc ? picture.desc.length : 1 + picture.name.length), height * .3);
+
+							drawText(picture.name, 23 * Math.sqrt(picture.name.length), 519, 15, color.guiwhite, "center");
+							if (picture.metatier) drawText(
+								`||    Tier: ${picture.metatier}    ||    Archetype: ${picture.arch}`, 
+								35 * Math.sqrt(picture.name.length * 1.6), 519, 12, color.guiwhite, "left");
+							if (picture.desc) drawText(picture.desc, 27, 545, 11.5, color.guiwhite, "left");
+
+							ctx.fillStyle = color.guiblack;
+							drawGuiRect(20, 500, len * Math.sqrt(picture.desc ? picture.desc.length : 1 + picture.name.length), height * 1.1, "center");
+						}
+						
+						if (++ticker % 3 === 0) {
 							x = x2;
 							y += height + spacing;
 						} else {
@@ -868,8 +947,7 @@ let gameDraw = function (ratio) {
 						ctx.globalAlpha = 1;
 					}
 				}
-			}
-			;
+			};
 			scaleScreenRatio(1 / ratio, true);
 		}
 	}
@@ -883,6 +961,15 @@ let gameDraw = function (ratio) {
 			global.player.pepperspray.blurAmount--
 			if (global.player.pepperspray.blurAmount == 0) global.player.pepperspray.blurMax = 0;
 		} else if (global.player.pepperspray.blurAmount < global.player.pepperspray.blurMax) global.player.pepperspray.blurAmount++;
+	}
+	if (global.player.confuse.apply || global.player.confuse.contrastMax > 0) {
+		ctx.filter = `brightness(${global.player.confuse.intensity}%)`;
+		ctx.drawImage(global._canvas._cv, 0, 0, global._screenWidth, global._screenHeight);
+		ctx.filter = "none";
+		if (!global.player.confuse.apply && global.player.confuse.intensity != 0) {
+			global.player.confuse.intensity--;
+			if (global.player.confuse.intensity == 0) global.player.confuse.contrastMax = 0;
+		} else if (global.player.confuse.intensity < global.player.confuse.contrastMax) global.player.confuse.intensity++;
 	}
 
 	if (global.player.lsd) {
