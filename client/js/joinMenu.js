@@ -43,14 +43,14 @@ const roomInfoSettingsMaxBotsInput = document.getElementById("roomInfoSettingsMa
 
 
 let playerCount = 0;
-let maxPlayerCount = 99;
+let maxPlayerCount = 80;
 let gamemodeName = "";
 let gamemodeImage = "";
 let gamemodeDescription = "";
 let selectedGamemode = "";
 let selectedRoomId = "";
-let maxPlayers = 99;
-let maxBots = 20;
+let maxPlayers = 80;
+let maxBots = 0;
 resetRoomInfo()
 function resetRoomInfo() {
 	gamemodeName = "Welcome!"
@@ -184,8 +184,330 @@ function roomFilterClick(e) {
 galleryFilter.onclick = roomFilterClick.bind("list");
 listFilter.onclick = roomFilterClick.bind("gallery");
 
-const defaultGamemodes = [
+let defaultGamemodes = [],
+      day = new Date();
+if (day.getDay() === 1) defaultGamemodes = [ // Monday 
 	{
+		name: "Free For All",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Everyone for themselves!",
+		players: 0,
+		code: "ffa.js"
+	},
+	{
+		name: "Survival FFA",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A free for all where you can't automatically level up; you gotta grind to the top like the OG diep days.",
+		players: 0,
+		code: "srvivl.js"
+	},
+	{
+		name: "Open TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight in an open world with the assistance of allies!",
+		players: 0,
+		code: "tdm.js"
+	},
+	{
+		name: "Survival TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A team mode where you can't automatically level up; you gotta grind to the top like the OG diep days.",
+		players: 0,
+		code: "tdmSurvival.js"
+	},
+	{
+		name: "Maze FFA",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defeat everyone while inside of a complex maze system!",
+		players: 0,
+		code: "maze.js"
+	},
+	{
+		name: "Secure the Crown",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Find the crown as it passively gives you score and see how long you can hold it!",
+		players: 0,
+		code: "stc.js"
+	},
+	{
+		name: "Warpzone",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Touch the borders of the map to teleport to the opposite side.",
+		players: 0,
+		code: "warpzone.js"
+	},
+];
+if (day.getDay() === 2) defaultGamemodes = [ // Tuesday 
+	{
+		name: "Enchanted Maze",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight in a maze full of paradoxically enchanting walls. Beware of what could happen to them!",
+		players: 0,
+		code: "magic_maze.js"
+	},
+	{
+		name: "Mothership",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defend your team's Mothership while trying to defeat the others!",
+		players: 0,
+		code: "mothership.js"
+	},
+	{
+		name: "Fathership",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defend your team's Fathership while trying to defeat the others!",
+		players: 0,
+		code: "fathership.js"
+	},
+	{
+		name: "Growth",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Getting kills increases your raw size!",
+		players: 0,
+		code: "growth.js"
+	},
+	/*{
+		name: "The World's Script",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A tower defense game based on the world of JavaScript coding.",
+		players: 0,
+		code: "worldScript.js"
+	},*/
+];
+if (day.getDay() === 3) defaultGamemodes = [ // Wednesday 
+	{
+		name: "Maze TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight against other teams while navigating a maze!",
+		players: 0,
+		code: "mazetdm.js"
+	},
+	{
+		name: "Boss Rush",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight against 250 waves of increasingly more difficult bosses!",
+		players: 0,
+		code: "boss.js"
+	},
+	{
+		name: "Manhunt",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "The leader is made more powerful and gives more score when killed. Are you certain you can take them down?",
+		players: 0,
+		code: "manhunt.js"
+	},
+	{
+		name: "Growth",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Getting kills increases your raw size!",
+		players: 0,
+		code: "growth.js"
+	},
+	{
+		name: "Fathership",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defend your team's Fathership while trying to defeat the others!",
+		players: 0,
+		code: "fathership.js"
+	},
+	{
+		name: "Ultimate Duelist",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A fighting game based on the mobile game Supreme Duelist. Pick between 51 different fighters and see how long you can stay alive!",
+		players: 0,
+		code: "ultimate_duelist.js"
+	},
+];
+if (day.getDay() === 4) defaultGamemodes = [ // Thursday 
+	{
+		name: "Tag",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Kill enemies to recruit them to your team until the entire server is on your side!",
+		players: 0,
+		code: "tag.js"
+	},
+	{
+		name: "Mothership",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defend your team's Mothership while trying to defeat the others!",
+		players: 0,
+		code: "mothership.js"
+	},
+	{
+		name: "Portal TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Gang up on enemies while being able to pop in and out of portals!",
+		players: 0,
+		code: "portaltdm.js"
+	},
+	{
+		name: "Free For All",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Everyone for themselves!",
+		players: 0,
+		code: "ffa.js"
+	},
+	{
+		name: "Portal FFA",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight enemies while being able to pop in and out of portals!",
+		players: 0,
+		code: "pffa.js"
+	},
+	{
+		name: "🇻​​🇴​​🇮​​🇩​ walkers",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Travel through this endless void with allies. You never know what could be staring at you in the darkness... it sure as hell isn't a tank.",
+		players: 0,
+		code: "vwalk.js"
+	},
+];
+if (day.getDay() === 5) defaultGamemodes = [ // Friday 
+	/*{
+		name: "Clan Wars",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight alongside allies of your choice by including their clan name in your own.",
+		players: 0,
+		code: "clan.js"
+	},*/
+	{
+		name: "Tag",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Kill enemies to recruit them to your team until the entire server is on your side!",
+		players: 0,
+		code: "tag.js"
+	},
+	{
+		name: "Assault",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Infiltrate the enemy's bunker to capture all of their refuges!",
+		players: 0,
+		code: "assault.js"
+	},
+	{
+		name: "Maze TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight against other teams while navigating a maze!",
+		players: 0,
+		code: "mazetdm.js"
+	},
+	{
+		name: "Siege",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Defend your sanctuaries from the increasing horde of bosses!",
+		players: 0,
+		code: "siege.js"
+	},
+	{
+		name: "Soccer",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Take a break from all the war and play some soccer to pass the time.",
+		players: 0,
+		code: "soccer.js"
+	},
+	/*{
+		name: "America Simulator",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A battle royale game based on the uncertainty and unsafeness of living in the US of A.",
+		players: 0,
+		code: "murica.js"
+	},*/
+];
+if (day.getDay() === 6) defaultGamemodes = [ // Saturday 
+	{
+		name: "Manhunt",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "The leader is made more powerful and gives more score when killed. Are you certain you can take them down?",
+		players: 0,
+		code: "manhunt.js"
+	},
+	{
+		name: "Warpzone",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Touch the borders of the map to teleport to the opposite side.",
+		players: 0,
+		code: "warpzone.js"
+	},
+	{
+		name: "Enchanted Maze",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight in a maze full of paradoxically enchanting walls. Beware of what could happen to them!",
+		players: 0,
+		code: "magic_maze.js"
+	},
+	{
+		name: "Portal TDM",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Gang up on enemies while being able to pop in and out of portals!",
+		players: 0,
+		code: "portaltdm.js"
+	},
+	{
+		name: "Portal FFA",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Fight enemies while being able to pop in and out of portals!",
+		players: 0,
+		code: "pffa.js"
+	},
+];
+if (day.getDay() === 0) defaultGamemodes = [ // Sunday 
+	{
+		name: "Secure the Crown",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Find the crown as it passively gives you score and see how long you can hold it!",
+		players: 0,
+		code: "stc.js"
+	},
+	/*{
+		name: "The World's Script",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A tower defense game based on the world of JavaScript coding.",
+		players: 0,
+		code: "worldScript.js"
+	},*/
+	{
+		name: "🇻​​🇴​​🇮​​🇩​ walkers",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "Travel through this endless void with allies. You never know what could be staring at you in the darkness... it sure as hell isn't a tank.",
+		players: 0,
+		code: "vwalk.js"
+	},
+	{
+		name: "Ultimate Duelist",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A fighting game based on the mobile game Supreme Duelist. Pick between 51 different fighters and see how long you can stay alive!",
+		players: 0,
+		code: "ultimate_duelist.js"
+	},
+	/*{
+		name: "America Simulator",
+		image: "/resources/gamemodes/placeholder.png",
+		description: "A battle royale game based on the uncertainty and unsafeness of living in the US of A.",
+		players: 0,
+		code: "murica.js"
+	},*/
+];
+defaultGamemodes.push({
+	name: "Sandbox",
+	image: "/resources/gamemodes/placeholder.png",
+	description: "Each player has their own arena. Test different combos here.",
+	players: 0,
+	code: "sbx.json"
+}/*, {
+	name: "Dev Server 1",
+	image: "/resources/gamemodes/placeholder.png",
+	description: "Each player has their own arena. Test different combos here.",
+	players: 0,
+	code: "soccer_shit.js"
+}, {
+	name: "Dev Server 2",
+	image: "/resources/gamemodes/placeholder.png",
+	description: "Each player has their own arena. Test different combos here.",
+	players: 0,
+	code: "siege_bad.js"
+}*/);
+/*
+	/*{
 		name: "1 v 1",
 		image: "/resources/gamemodes/1v1.webp",
 		description: "Duel random players in a mostly private arena.",
@@ -310,15 +632,8 @@ const defaultGamemodes = [
 		description: "Fight against other teams inside of a cave system while in the dark...",
 		players: 0,
 		code: "blackoutcavetdm.js"
-	},
-	{
-		name: "FFA",
-		image: "/resources/gamemodes/ffa.webp",
-		description: "Everyone for themselves!",
-		players: 0,
-		code: "ffa.json"
-	},
-	{
+	},*/
+	/*{
 		name: "Portal FFA",
 		image: "/resources/gamemodes/potffa.webp",
 		description: "Everyone for themselves: Now with portals!",
@@ -354,20 +669,6 @@ const defaultGamemodes = [
 		code: "boss.json"
 	},
 	{
-		name: "Siege",
-		image: "/resources/gamemodes/siege.webp",
-		description: "Defend your sanctuaries from the horde of bosses!",
-		players: 0,
-		code: "siege.js"
-	},
-	{
-		name: "Sandbox",
-		image: "/resources/gamemodes/sandbox.webp",
-		description: "Each player has their own arena. Test different combos here.",
-		players: 0,
-		code: "sbx.json"
-	},
-	{
 		name: "Hangout",
 		image: "/resources/gamemodes/hangout.webp",
 		description: "Everyone is on the same team. Sit around and chat.",
@@ -389,20 +690,6 @@ const defaultGamemodes = [
 		code: "vwalk.js"
 	},
 	{
-		name: "Murica",
-		image: "/resources/gamemodes/murica.webp",
-		description: "WHAT THE FUCK IS A KILOMETER RAHHH 🦅🦅💥💥💥",
-		players: 0,
-		code: "murica.json"
-	},
-	{
-		name: "Soccer",
-		image: "/resources/gamemodes/soccer.webp",
-		description: "Player soccer on one of two teams.",
-		players: 0,
-		code: "soccer.json"
-	},
-	{
 		name: "Squidwards Tiki Island",
 		image: "/resources/gamemodes/tiki.webp",
 		description: "Vacation yayy",
@@ -416,7 +703,7 @@ const defaultGamemodes = [
 		players: 0,
 		code: "custom.js"
 	},
-]
+*/
 let gamemodeEles = [];
 function clearGamemodes() {
 	for (let ele of gamemodeEles) ele.remove();
