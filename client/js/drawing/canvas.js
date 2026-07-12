@@ -26,8 +26,6 @@ global.mobileClickables = [function () { // Toggle menu
 	socket.talk("T", 0);
 }, function () { // Override
 	socket.talk("t", 2);
-}, function () { // Reset Tank
-	socket.talk("CTB");
 }, function () { // Fullscreen
 	if (document.body.requestFullScreen)
 		document.body.requestFullScreen();
@@ -239,6 +237,9 @@ global._canvas = new (class Canvas {
 			case global.KEY_STEALTH:
 				socket.talk("B", 10);
 				break;
+			case global.KEY_SCOPE: 
+				socket.talk("B", 16);
+				break;
 			case global.KEY_CHAT:
 				let chatBox = document.getElementById("chatBox");
 				if (!chatBox & !global._died) {
@@ -385,8 +386,8 @@ global._canvas = new (class Canvas {
 				case global.KEY_RESET_BASIC_TANK:
 					socket.talk("T", 2);
 					break;
-				case global.KEY_CHANGE_TO_BASIC:
-					socket.talk("CTB");
+				case global.KEY_CLASS_TREE:
+					socket.talk("P");
 					break;
 				case global.KEY_GODMODE:
 				case global.KEY_GODMODE_2:
@@ -399,7 +400,6 @@ global._canvas = new (class Canvas {
 				case global.KEY_RAINBOW_2:
 					socket.talk("T", 5);
 					break;
-				case global.KEY_TIER_SWITCH:
 				case global.KEY_TIER_SWITCH_2:
 					socket.talk("X");
 					break;
@@ -409,7 +409,7 @@ global._canvas = new (class Canvas {
 					break;
 				case global.KEY_INFECT_MINION:
 					//socket.talk("B", 6);
-					socket.talk("B", 14);
+					socket.talk("B", 15);
 					break;
 				case global.KEY_RESET_COLOR:
 					socket.talk("T", 7);
@@ -419,9 +419,6 @@ global._canvas = new (class Canvas {
 					break;
 				case global.KEY_TANK_JOURNEY:
 					socket.talk("B", 8);
-					break;
-				case 17:
-					socket.talk("B", 12);
 					break;
 			}
 		}
