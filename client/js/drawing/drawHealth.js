@@ -26,9 +26,9 @@ function drawHealth(x, y, instance, ratio, alpha) {
 	let size = instance.render.size * ratio,
 		m = mockups.get(instance.index),
 		realSize = size / m.size * m.realSize;
-	if (health * shield < .99) {
+	if (health * shield < .99 && instance.drawHealth) {
 		let yy = y + 1.1 * realSize + 22;
-		ctx.globalAlpha = (1 - (health * shield - 0.96) / 0.04) * (alpha*fade)*(health === 0?0:1);
+		ctx.globalAlpha = (1 - (health * shield - 0.96) / 0.04) * (alpha * fade) * (health === 0 ? 0 : 1);
 		size *= 1.1;
 		let mixc = config.coloredHealthBars ? mixColors(getColor(instance.color), color.guiwhite, .5) : config.tintedHealth ? mixColors(color.lgreen, color.red, 1 - health) : color.lgreen;
 		if (config.shieldbars) {
@@ -55,7 +55,7 @@ function drawHealth(x, y, instance, ratio, alpha) {
 
 	if (instance.nameplate) {
 		let fill = instance.nameColor;
-		let nameRatio = ((ratio * instance.size) / 20)*fade;
+		let nameRatio = ((ratio * instance.size) / 20) * fade;
 		let imageRatio = 1;
 		let stroke = undefined;
 		let font = undefined;
@@ -80,7 +80,7 @@ function drawHealth(x, y, instance, ratio, alpha) {
 	const msgFadeTime = config.chatMessageDuration*1000*.025
 	if (messages) {
 		let nameRatio = ((ratio * instance.size) / 20)*fade;
-		let nameplateOffset = y - 6 - (instance.nameplate&&instance.name!==""?30 * nameRatio:0)
+		let nameplateOffset = y - 6 - (instance.nameplate && instance.name !== "" ? 30 * nameRatio : 0)
 		let stroke = undefined;
 		let font = undefined;
 		ctx.globalAlpha = alpha;
