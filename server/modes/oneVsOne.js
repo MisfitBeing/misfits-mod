@@ -69,11 +69,8 @@ oneVsOne.runTick = function (args) {
 		const activityEntry = activity[fighter.socket.id];
 		activityEntry.isFighting = true;
 		fighter.sendMessage("Match found! Prepare yourself!")
-		fighter.define(Class.genericTank);
-		fighter.upgradeTank(Class.basic);
+		fighter.define(Class.ud_fighters);
 		fighter.roomLayer = newLayer;
-		fighter.skill.score = 59_212;
-		fighter.sendMessage("Set up your build then kill your opponent within 2 minutes")
 	}
 
 	let matchEnded = false;
