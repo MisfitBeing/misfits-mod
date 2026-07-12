@@ -1,11 +1,12 @@
 import { assets, ASSET_MAGIC } from "../shared/assets.js";
 import { oneVsOne } from "./modes/oneVsOne.js";
+import { botNames, amalNames } from "./names.js";
 
 const modeFuncs = {oneVsOne}
 
 // COMPAT //
-const worker = typeof parentPort==="undefined"?self:parentPort
-const global = globalThis
+const worker = typeof parentPort === "undefined" ? self : parentPort;
+const global = globalThis;
 if(typeof global.fs === "undefined") global.fs = undefined;
 
 global.utility = {
@@ -377,7 +378,7 @@ global.require = function (thing) {
             }
             break;
         case "./lib/random":
-            const names = ["That Guyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", "SOMEONE", "꧁༺𝓘𝓷𝓼𝓪𝓷𝓲𝓽𝔂༻꧂", "🅸 🅰🅼 🅶🅾🅳", "I", "jaffa calling", "Ill Tear your eyes out..", "Me-arac", "Aniketos", "🌌Miñe🌌", "ℭ𝔬𝔣𝔣𝔢𝔢", "Akilina", "Mythical", "exc", "=", "o o o o o o o o", "!!!", "Lixeiro do mal", "Thanks M8", "Frost? Mobile", "Dream", "We Do A Little Trolling", "earth", "NightFire", "Free to insult", "dino", "AMOGUS??????????????", "bruh", "No Surviors", "<[AXS]> RASHOT", "Pizza Bread", "[lag]Armando", "Gay Overlord", "willim", "Everything RAM Mobile", "General", "H̵͊̕ė̵̮l̷͎̈́l̵̅͛ơ̸͊", "{WOF} Nightwing", "footeloka", "[⚔️wiki]₵₳V₳ⱠłɆⱤ", "Jes;/;ter", "Team Boom", "🖤ISAAC🖤", "naruto", "занято42/Busybody42", "A+", "Raul39", "Lety <3 :)", "team protect", "i will troll :D", "heroy_105", "[FBI]Σvi₺ℭℏἏ❀₴#1628", "BigBadBoom", "nope", "glurip", "ffk the desrtroy", "Spin=Team", "comrade", "Alkali", "Impact of TY-77", "😈Stormys Domain😈", "YOUR BAD = YOUR DEAD!!!", "pushmetothe sancuary", "Im not a tank", "Snow", "Hm", "DanceTillYou'reDead", "gmonster", "Die!!!", "developer", "noob", "zX-TwinChilla-Xz", "[BK] [XC] PAKISTAN", "Bryson", "Musa♗ - The Shipwrecker", "bob", "Mothership Drone", "t-rex vs raptor", "mai", "Arisu", "gamer.io", "RİKKET FAN", "FOLLOW ME OCTO TANKS", "XP_Toxic_CJS", "TV", "constructor", "among us", "jkl", "XP_Toxic_CST", "d", "I love nahu", "Spade", "XxNicolas GamerxX", "xAd_rian", "FabianTu", "Eminx", "max", "OOOOOOOOFfffffffffffffff", "WalleeE", " KA2", "MIKE", "pedro :(", "BEDROCK", "Frostbite#6915", "koishi", "eu tenho a melhor mae^-^", "asdfghjkl;:]@ouytrewq", "😎👿david988😎👿", "Zaphkiel", "tryhard mode on !!!!!!!", "⚰️🔥👻WITNESS ME👻🔥⚰️", "[Σϰ][Ωϰ] ...", "That Guy", "Aniketos", "Play wommy-arras.io", "ARMADA", "// jAX", "🔱Ƒιяєωσяк🚫", "DEATH TO TEAMERS", "Milan", "your worst lightmare", "XxshadowxX Ilove u", "Alkaios", " 🥧π🥧", "🔱 𝓽𝓲𝓶𝓮𝓽𝓸𝓭𝓲𝓮 🚫", "Can u see me? :D", "Apollon", "ok", "Crazyattacker9YT", "XtremeJoan", "cz sk", "give me your butt dude", "[🌀]Brain𝐼nHalf", "Hexagon Temple", "-_-", "You", "CACA", "Athena", "Artemis", "DOEBLE TOP!", "the only one", "hi (original)", "SOMEONE", "can you beat me smashey", "s7ㅋㅋㅋ", "pika :P", "Fallen", "Big Papa", "m̸̐̽ᵃ𝔭ʟₑ౪🌸🎀🌺🌷🩰🧁", "GONIALS", "прівіт", "lnwZa007", "🐸🐌【HapPy】", "Daluns the one?", "CAMALEON", "factory not op :(", "/BIG BOYRockety", "circus of the dead", "𝒮𝔭00𝔡𝔢𝔯𝔪𝔞𝔫", "hackercool", "🔱⨊ $؋₲₥₳🚫", "Go Away", "Protector Of Worlds", "me", "vn", "RAHAN", "........................", "Soviet Union", "Flash", "❰𝞑𝞡𝞣❱ 𝝙𝝼𝝴𝝶𝘂𝝴", "🌌Miñe🌌", "King Pikachu", "EzzeKiel", "h", "Homeless man", "Asdfghjkjjhgfdsdfghjhgfd", "Felchas", "starwarrior", "Spin=Team", "TERA BAAP✿AYA★💓Bhagwanmr noob", "Dream", "DIEGO", "Lagmat YT = 🎷 channel", "be dum like me", "lagg", "APplayer113", "tiky", "🇧🇷HUE🇧🇷", "am low, I Need Backup!", "Thunder(Tapenty)", "Beeg Yoshi Squad", "reeeeeeee", ";]", "Arena Closer", "abd lhalim", "Badaracco", "emir", "Türk  polisi", "Paladin", "stop plz", "d", "glenn <3 rachel", "[AI] Kidell", "dan", "I am milk", "Türk'ün Gücü Adına🌸 OwO", "҉s҉h҉u҉n҉a҉", "Teuge", "Dave", "abbi_alin", "im a joke", "huy vn :D", "🌊🦈🌊", "scortt reach 1m friend", "ET", "vlasta", "𝒰𝒞ℋİℋ𝒜", "Nyroca", "German", "[ɨƙ]ɳøʘɗɫɚ", "I'm so lag(sinbadx)", "🇸🇦", "asdf", "X℘ExͥplͣoͫຮᎥveﾂ✔", "Apollon", "^^", "I", "natasha", "no me mates amigos", "dáwsda", "FEWWW....", "lol", "A team with 💚 is doomed", "Raul39", "Noob AC", "ddqdqwdqw", "[MG] GLITCH TR", "LemonTea", "Party_CZE", "Diep_daodan", "What?", "kuro", "cute pet", "demon", "ALEXANDER👑💎", "Cursed", "copy The tank", "", "dsa.", "Vinh HD", "Mago", "hi UwU", "avn", "d", "naruto", "ARRASMONSTER KILLYOUha5x", "MICAH", "Jotaro", "king vn", "𝕰𝖓𝖊𝖒𝖞_𝕯𝖔𝖌", "Raoof", "Leviathan", "SUN", "❬☬❭  ⚜️Ð𝐙𝕐 ッ 〜 🌷", "FALLEN SWORD", "🇧🇷HUE🇧🇷", "BoyFriend [FnF]", "motherhip", "𝓼𝓮𝓻𝓲𝓸𝓾𝓼𝓵𝔂", "lolera", "Dark Devil", "press F", "Detective Conan", "Pet", "MAICROFT", "Holy", "IXGAMËSS", "h", "umm,dab?", "Ihavelocty", "ewqasd2021vinicius", "[🇻🇳] Hùng", "I Love you", "Healer", "hacker lololololol", "boooster.io", "dscem", "bibi", "TEAM POLICE", "", "jj", "SHARK", "arena closer", "•长ąϮëąℓ⁀ᶜᵘᵗᵉ╰ ‿ ╯ ☂", "Weяw𝕖𝐑ώ€я𝓺q2️⃣prankeo", "nani?", "OTTOMAN EMPİRE", "------------------------", "kr9ssy", "not P", "winnner", "friendly", "genocide BBB", "HI", "I'm poor:(fortnine duo", "JSABJSAB", "jmanplays", "starwarrior", "were", "PLAYER", "mothership protrector 1", "Gamer🎮", "6109", "PRO", "enr", "_____P___E___N___E______", "annialator", "kaio", "(UwU)", "Arras.io", "...", "Denied", "Paladin", "Zaphkiel", "Pikachu ^~^", "ah~", "Steve", "{<:Void", "AƓ Aηgєℓ#Use AƓ  Tag", "Amyntas", "⁄•⁄ω⁄•⁄卡比獸🖤", "poui", "PH - r҉a҉i҉n҉", "A M O U G U S", "idk bro", "Artemis", "Hey team", "b T規RㄩIes矩W ˋ*ˊd", "한국 Lime Lemon", "phong fan vn!", "me fan valt shu lui free", "Mobile no work", "Hi 香港😘> pls don't kill�", "[/G]/O1D SL/Y3R", "mil leches", "Major Meowzer YT", "Providence", "Lore", "ОХОТНИК", "vordt", "Linghtning McQueen", "Pentagon Nest Miner", "꧁☬☬😈꧁꧂ ☠HARSH ☠꧁꧂😈 ☬☬꧂", "vovotthh", "Nope :))", "||||||||||||||||||||||||", " ꧁ℤ𝕖𝔱𝔥𝔢𝔯𝔫𝕚𝕒꧂", "CTRL+W=godmode(viet nam)", "🔱LordΛภ𝓰𝖑Ɇ🚫", "1 + 1 = 3", "XYZ", "[PFF][|| ı'ɱ ცąცყ||]", "Boop", "RAPTURE", "o", "/.//.[]", "", "Roskarya", "no. 9", "Lost MvP#7777", "Jon", "🔱Saint LilY⚜🚫", "Green.grey.purple.blue.", ":P", "C - 4 Spank Spank", "VN", "Snapwingfriendstriker007", "overlord is:):)", " pluss亗", "[Repsaj]ĎąŗĸMãştɛɾ", "Phoenix_Gamer", "Relatively Harmless Tonk", "Array.io", "Spin=Team", "I am your shield :)", "j", "1", "TheBasil", "【The L1litle One】", "X.Clamator .YT", "ENDERMÉN", "CC", "BEST", "Among Us", "lobo", "asky", "Opan Come Go Note Yeah", "Bowler", "ad", "haha bowler no 1M", "Tin", "[GZ]GESETA", "woomy arras.io", "Remuru Tempest", "PvPok", "Scarlet Rage(mobile)", "nam", "STRIKER007", "[VN] MeltedGirl", "100000000000000000000000", "eee", "Q", "mắm tôm", "REVENGE✨", "Achi", "AC Perú", "bvnfgh", "hi", "Pet :3", "little bitch", "khang", "lets be freinds guys!!!!", "sans pro", "phantanduy", "[AC] VGamerZ", "StevenUniverseFan", "azen", "Waffles", "jesian", "Ⱬł₭Ɽł₮₳Ӿ", "Gay Overlord", "pikachuboi124", "mundo x bomb", "ducky", "🌀DESTROYER🌀", "Stupid Overlord", "++", "phantantri", "VoteOutRacists", "Denied", "floof", "Bowler", "Sinbadx", "🎈IT🎈 APOCOLYPSE", "ExpectMe2BeDeadCuzOfLag", "Damage", "Aniketos", "⨝∑₮ξ₹ͶΛL⨝", "Artemis", "_", "Archimedes", "♪KING♫♕-dev#3917", "no", "Doofus", "MINI defender", "꧁✯[🕋]MÂRSHMÆLLØW 𖣘✯꧂", "Alkaios", "(・ω・＼)i am(/・ω・)/pinch!", "Việt Cường 2A5", "I Love you", "fdsmn", "!", "R", "you shall not pass!!", "harmless shower", "lol", "Mythical", "oath sign", "finland", "bob", "hetman666", "lio", "VN~I LoVe You Chu Ca Mo", "Your mom", "Friendly", "the protector", "leave me alone pls", "Grill my flippen butt", "n o i c e", "bo", "onsen", "._.", "Frostbite#6915", "💞", "CTRL+W=godmode", "noob", "ad", "Soviet Union", "be freind", "   HCM MUÔN NĂM", ":P", "FALLEN SWORD", "anh tuấn anh nè tôm", "fnf is a poop", "Zp r oZ", "꧁҈$ꫀꪖ  ,҉ℭն𝚌մꪑ𝜷ꫀ᥅ ༻", "VN:P", "margaret thatcha", "[VN]Ảo Vãi Lồn🤔", "ㅋㅋㄹㅃㅃ", "pin h 3", "Vỹ đẹp zai", "Snapwingfriendstriker007", "everybodybecomespike", "a", "1", "vyde", "Mothership Drone", "op", "click 'F'", "Noob", "🐰chiro🐰", "PJfd13", "CELESTIAL", "Team", "Pet :3", "FeZTiVAL", "anime", "t", "C - 4 Spank Spank", "Rockety", "Valley", "Im New,dont kill me pls", "Friends?", "하이루", "KILL ME I DARE YOU", "pet basic -(======>", "pet", "♕ ❤VIỆT NAM ❤♕", "team ?", "꧁༒☬✞😈VîLLãñ😈✞☬༒ ꧂", "Công", "Opan Come Go Note Yeah", "1 + 1 = 3", "Elite Knigh*", "vn{CHP}", "Dasher8162", "Xlo-250", "under_gamer092", "VN", "Mtp tv tiktoker", "Denied", "Paladin", "『YT』Just𝕸𝖟𝖆𝖍ヅ", "shame", "Corrupt Y", "spin= team", "Please no more Y team", "Syringe", "Pickerel Frog", "Bitter Dill", "Your Triggering Me 🤬", "117", "FleRex", "Archimedes", "Neonlights", "🌌Miñe🌌", "〖-9999〗-҉R҉e҉X҉x҉X҉x҉X҉", "FEWWW....", "bob", "0800 fighter¯_(ツ)_/¯", "◯ . ◯⃨̅", "𝕁𝕖𝕤𝕥𝕖𝕣", "Apollon", "Ɓṏṙḕd Ṗläÿệŕ {✨}", "i never bin 1 mill", "残念な人", "KillerTMSJ", "Дракон", "[VN]Ảo Vãi Lồn🤔", "😎", "warrion", "ARMADA", "asd", "alr-ight", "AAAAAAAAAAAAAAAAAAAAAAAA", "♣☆  ⓂⒶ𝓻s𝐇Ⓜ𝔼𝕝ᒪσω  ☯♚", "FREJEA CELESTIAL 1.48MXyn", "poker 567", "C", "4tomiX", "meliodas", "Việt Cường 2A5", "(ZV) foricor", "", "Marxtu", "me?? 😢", "m̸̐̽ᵃ𝔭ʟₑ౪🌸🎀🌺🌷🩰🧁", "PeaceKeeper", "Eeeeeeva", "diện", "[MM]  Ⓕ𝓸𝓻𝓫𝓲𝓭𝓭𝓮𝓷", "Doofus", "TS/RRRR", "Nothing.", "🐶(X)~pit¥🐺te matare jajaja", "⌿⏃⋏⎅⏃", "go", "[PFF][|| ı'ɱ ცąცყ||]", "hola", "polyagon", "Galactic slush", "9999999999999999999999dx", "zaphkiel celestial", "noob", "$$$%$la plaga$%$$$", "Sorry broh", "Roberto", "EHSY BAAA", "Nnmnnnmmmnmmmm", "use fighter plsss :)", "Mini", "spitandsteelfriend", ";)", "lol", "Mobile player", "the ultimate multitool", "i vow to protect", "oofania", "hi", "why am i here", "H̵͊̕ė̵̮l̷͎̈́l̵̅͛ơ̸͊", "A.L.", "Hi", "ONE SHOT", "luis", "saitan", "Felchas", "Im gonna knock you out", "Aquiles TEAM LOVE", "qwertyuiop", ":3", "diep.io", "invisible drones", "team plz:(", "DIONAX", "again and again", "100000000000000000000000", "nicolas123", "JESUS E AMOR", "Alice", "Bob", "Carmen", "David", "Edith", "Freddy", "Gustav", "Helga", "Janet", "Lorenzo", "Mary", "Nora", "Olivia", "Peter", "Queen", "Roger", "Suzanne", "Tommy", "Ursula", "Vincent", "Wilhelm", "Xerxes", "Yvonne", "Zachary", "Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu", "The Bron Jame", "[MG] Team", "team??!", "trump", "facu++", "TEST", "Jake", "PEST_YT", "GOKU", "big me!", "arras > diep", "k", "[MG] PRO TEAM", "Solomon", "novice", "noob", "Angel", "😈", "max", "Allah Is King", "Hug Me", "dont touch me", "leonardo", "colombia", "", "Friends ? ", "✈", "Kim Jong-Un", "1", "An unnamed player", "agar.io", "road to 1m", "FEED ME", "DOGE", "GABE", "boi", "[GZ] team", "buff arena closer", ".", "Ramen", "SPICY RAMEN", "Jera", "[insert creative name]", "Rake", "arras.io", "KOA", "die", "king of diep", "Hagalaz", "Ehwaz", "Dagaz", "Berkanan", "Algiz", "Blank", "Mango", "TOUCAN", "Bee", "Honey Bee", "oof", "Toast", "Captian", "Alexis", "FeZTiVAl", "kitten", "Derp", "Gabogc", "U S A", "name", "[IX] clan", "LOL", "ur mom", "llego el pro!", "Impeach Trump", "luka modric", "bob", "MATRIX", "no", "e", "kek", "read and u gay", "Decagon?", "take this L", "mm", "Aleph Null", "summoner", "T-REX", "buff basic", "stink", "jumla", "no team Kill", "pet", "V", "Broccoli", "toon", "Sinx", "JTG", "Hammer", " ", "Basic", "Discord", "NO WITCH-HUNTING", "salty", "CJ", "angel", "a salty discord kid", "satan", "NoCopyrightSounds", "Am I Sinbadx?", "AHHHHHH!", "rush", "squirt", "AMIGOS", "Windows 98", "FeZTivAL", "illuminati", "Fallen Bot", "Anonymous", "koala", "iXPLODE", ":D", "BrOBer The Prod", "OwO", "O_O", "UwU", "Alpha", "TheFatRat", "kokak", "D:", "YouRIP", "WOOT", "𝕯𝖆𝖙 𝕺𝖓𝖊 𝕭𝖔𝖎", "hell", "Y", "why", "Lucas", "LOCO", "FeZTi Fan", "0", "AK-47", "Friend pls", "cool", "NO U", "hmst", "Sub 2 Pewdiepie", "T-Gay", "t-series succs", "Balloon", "CX Fan", "The Nameless", "What?", "Our World of Tanks", "Real AI", "Totally Not A Bot", "...", "Fallen AI", "green square", "Dagaz 2.0", "Internet Explorer", "teamplz", "Paradox", "Fallen Nothing", "developer", "ruler of tanks", "IRS", "king slayer", "sael savage", "Zplit", "CUCK", "Popo", "¡AY PAPI!", "Vogelaj", "Ruthless", "BOMBS AWAY", "im new", "best", ".-.", "dont feed me", "rIsKy", "Brian", "Angel", "Knoz", "Caesar", "Baller", "¿Equipo?", "¡Vamos!", "Road To 10m", "Real Hellcat", "Real Kitty!", "Canada > USA", "A named player", "Tyson", "Slayer", "666", "Nooblet", "M8", "Trans Rights", "Bar Milk", "Jambi", "Elmo is gone", "The Grudge", "Rosetta Stoned", "Lateralus", "Fourty-Six & 2", "Vicarious", "Judith", "Give Me Wings", "The Pot", "look behind you", "Bruh Momentum", "Sucko mode", "ArenaC", "!foO", "Lateralus", "Disposition", "Reflection", "Triad", "Mantra", "The Patient", "Real CreepyDaPolyplanet", "Real Despacit.io", "Mew", "Magikarp", "Real Dark Knight", "ok boomer", "PP Tank", "COPPA Sucks", "meme", "Womp Womp", "W = Team", "Real CX", "Neo", "crasher", "Minecrafter", "King of Pros", "Vanze", "Have mercy...", "Im scary", "cookie", "Liberty Prime", "bruh moment", "Rubrub", "Banarama", "poyo", "Nova", "Creeper, Aw Man", "Theory of Everything", "DJVI", "jotaro kujo", "Faaip de Oiad", "MrBeast", "ForeverBound", "Are you okay?", "BUSTER WOLF", "MJK", "F-777", "Dex Arson", "alpharad", "ORA ORA ORA", "Waterflame", "DJ-Nate", "penguinz0", "#teamtrees", "Electrodynamix", "brogle", "im beef", "Salsa Verde", "The Audacity of this tank", "Joe Mamma", "Red Hot Chili Pepper", "Halal Certified Tank", "Coronavirus", "The Common Cold", "The Flu", "Ight Bro", "Little Red Rocket", "Bruh Monument", "Bruh Monumentum", "Spree", "KING CRIMSON!", "THE WORLD!", "ZA WARUDO!", "taal volcano", "Synth", "Brotherhood of Steel", "Railroad", "A Settlement Needs Your Help", "final destination, fox only", "food", "fezti fan", "FeZtiVaL", "CATS", "Careenervirus", "Dumb", "[AI]", "Insanity", "Steven Universe", "MrBeast Rules", "Oswald Veblen", "how to get testbed?", "Mahlo Cardinal?", "mf=r", "dragons go mlem", "丹†eÐiuϻbee††ℓy†", "TωorᴍaͥHoͣrͫnet", "NoͥteͣwͫoℝthyCสtHeสt", "ᴴᵃⁿʸᵐᵖᶜᵘᵗᵉᴾᵃⁿᵗˢ", "Oᶠectบสlsereedl", "CℓeDⱥiryVⱥiͥήtͣeͫℓ✨", "EyeCⱥnᖙyᖘunᖙeseg", "Witψภclคi", "⫷PนℝeMiͥℝeͣyͫ⫸", "𝓕𝓸𝓵𝓿𝓮𝓞𝓵𝓭𝓳𝓸𝓴𝓮⚔", "⦃φօʂìէìѵҽԱʂէìէմąɾ⦄", "🎻Hiקle𝔶lutקuᖙiѕh", "✐ЯΣΛ爪ΛПΣЦЯΣ", "∉Eᴍiภeภ†Miภa多iho∌", "[M๏ℝec𝔥Muy𝔊๏rᖙØ]", "やlachaҜ𝔢d๖ۣ•҉", "FicบℝneCบʝo", "Jame∂iͥPaͣtͫtψMeℓt", "PℝoͥfuͣsͫeOftsΐ", "Hiภⱥls†MiAlmⱥ", "Cสneͥຮeͣfͫight", "Ŧฬeͥirͣoͫ͢͢͢Tฬin🅺les😎", "VenomoบຮNorτnear", "🎲๖ۣۜƤⱥranAsian𐌁øyz", "StͥedͣiͫรDilrubⱥ", "ᖘiͥŇgͣeͫsτri", "Ac𐍉͢͢͢ᵐᵐSiรcuᵐMum🌼", "⫷EᴍiήentOffec☢ne⫸", "Evalingђteᖙseᖙi", "FoบຮervͥᎥdͣeͫ", "⪓Offigeร℘er⪔", "Vuͥldͣrͫatediesio", "⁅🆂🅴🅽🆂🅸🅱🅻🅴🅰🅽🆃🅴🅽🆂🅸🅾⁆", "Houℝgͥΐcͣaͫr︾", "Doe£🆄lMψSo🆄l😬", "Ǥrel𐍉resit", "𐄡𝒫𝑜𝓉𝑒𝓃𝓉𝒯𝒾𝑒𝓃𐄪", "୨𝔄𝔟𝔫𝔬𝔯𝔪𝔞𝔩𝔄𝔫𝔫𝔞𝔩𝔤𝔞𝔱⪑", "ElfuภΐBΐBαr͢͢͢rel", "Liͥveͣrͫiภgบi", "𝕆𝕗𝕗𝕠𝕦𝕝𝕕𝕠𝕨𝕚𝕥𝕚𝕝⚡", "Na†eℝaŇiŇgs⚠", "𝓗𝓪𝓭𝓭𝓚𝓱𝓪𝓷𝔃𝓲𝓻", "Partℽ𝓌𝔥ᎥꜱᎥภ∂บc", "Aήสℓroseℓ♛", "Aຮiaτinga", "⑉Elͥegͣeͫήτreα⑉", "Inͥ∂eͣlͫψຮtr", "CoϻpePregy", "〖Grͥetͣyͫdrest〗", "⑉S☢mp☢รpͥGuͣmͫp⑉", "丹pสτheτᎥcṨømpⱥthⱥ", "⁣𓆩NօthΣurΣeŇtment", "Ofͥ†eͣnͫcheye", "「FℓuͥttͣeͫriήgItingenv」", "😻SƤ𝔯iήgy🅼orkingɭ", "〖ṨoftOftwTนft〗", "GℝegⱥℝiouຮMeⱥℝee☂", "🏄", "😌CømiภgPoթcorn", "MossfนlthapeᖙyŇ☘", "๖ۣۜ山☢uͥsiͣaͫℓℓeﾂ", "A𝖙hedi🆁on", "✰QนestaΐŇgl✰", "Wⱥsͥ†iͣoͫnfℝou", "｟VoℓคtᎥℓeAtentᎥⱥt｠", "Arninℓץie", "★彡[๖ۣۜƊreคᖙ͢͢͢๖ۣۜƊeωᖙrop]彡★", "JบicץJบnᖙen", "Öµł†µÐï†ê§", "「Ate∂iͥDiͣlͫly๖ۣۜßØo」", "〖Aήthent฿ⱥdbreⱥth〗", "🎹ͲօցìօղժƓմղժ", "᚛VerรeᖙTurรeᖙΐe᚜", "Sקityℝicђe", "❅Camedΐℝ๖ۣۜƊℝedd❅", "IŇeττivie♛", "﹄𝔇𝔬𝔫𝔨𝔢𝔶𝔒𝔠𝔨𝔢𝔡𝔲﹃", "Dousermⱥi∂ﾂ", "彡ΛЯᄂƧΣᄃΛ彡", "⁣𓆩🅰🅳🅼͢͢͢🅸🅽🅴🆆🅴🆁🅴🅽🆃", "AŇergeNeesคnค", "💤Fสή†สຮ†icͥAfͣfͫic", "⌁NaτemacτᎥ⌁", "LΐvͥesͣeͫsChΐℓΐ", "íɑʍOภຮgrⱥigน", "𝓟𝓻𝓸𝓰𝓷𝓲𝔁𝓽𝓾𝓻", "😶ＧｕｔｔｕｒａｌＰｕｔｈｅｒｉｐ", "Ϛageร𐍉HϚ𐍉ℓ☢😇", "𝕹͢͢͢𐍉τempℓeᴀɾ😠", "🚣AՇitℽสrDสrͥinͣgͫ", "༺Hⱥrm๏ni๏us๖ۣۜ山ermisty༻", "CoͥŇeͣrͫŇizαr⚔", "Tormaภτmerΐcaภg", "⦇ƑⱥℓiKi𝖒多๏Ṩℓice⦈", "⚡Uppontork⚡", "C𝓪ge¥W𝓪gencie︾", "彡Ri๏ภt͢͢͢αhαbigiv彡", "😐🅲🆄🆁🅽🅰🅽🅱🅾🅽🅰🅵🅸🅳🅴", "ShⱥŇdΐDΐŇyͥerͣoͫ❥", "EήthHⱥlfPint", "𝕴ภc☢meMสch☢mคn🏀", "๖ۣۜ山Øozץ๖ۣۜ山ome♛", "J𐍉viαℓC𐍉vi𐍉", "Exͥamͣiͫckร☢ή", "🌰🆂🅴🅽🅸🅽🅶🅻🆂🅸🆁🅴🅽🅸🆃🅰", "⑉Officђ𐍉uττi⑉", "❅Ju͢͢͢diciøusᖘheสdjur❅", "Ｗｅｄｉｓｐｉｃｈａｖｉｔ▒", "▥Jeสncies†i?", "JohŇiteƤⱥ", "𐐚ewil∂ere∂Ne∂iภ", "ñê§łê§þê🐨", "Rᴇsp☢ήsΐvᴇC☢ήsi", "〖Is†rͥสlͣlͫץpe〗", "L𐍉veCaภdψMaͥภdͣeͫra✨", "F๏นghτsere", "𝕃𝕠𝕘͢͢͢𝕖𝕕𝕦𝕒𝕝𝕚𝕒", "☁Ofเrethe☢", "Aᖙeth☢☢LØυᖙmØυth💌", "CyͥniͣcͫalIntudynt", "CoภsนdBeสภs", "TheͥℝvͣeͫᖙS†aℝveᖙ", "Iτedeຮeded", "♐OfficebᵒℽOffee", "︽CӨ🅽𝔞ℓsoᴍe𝔱tee", "🐯ᎠⱥrlΐภgArҜs🅱ⱥt", "Heͥstͣsͫookerinec", "TaleήtedEήtiรa⚔", "S๏ñcͥifͣeͫ͢͢͢Mนñchie🎤", "JeͥcrͣeͫสCleʝerrℽ", "❅ᴛᴏᴀꜱᴛʏᴀꜱɪᴏɴᴅꜱᴛ❅", "թг๏Ɔoupsoɹʇɥ", "HeaຮΉ𐍉ducҜᴸᴵᶠᴱ", "⁅๖ۣۜƤoeτicViτhic⁆", "S𝒽ⁱlⁱŇgบre", "IfΐeรeŇUŇΐverรe", "Offᖙ🅰𝔶botᴳᵒ", "𝓟𝓸𝓻𝓮𝓽𝔂𝓷𝓽𝓼𝔰𝔲𝔭𝔢𝔯", "𝓗𝓮𝔂𝓸𝓗𝓸𝓷𝓮𝔂𝓬𝓪𝓴𝓮🎨", "ƤlคץรChⱥή∂☢ese", "Awes๏meStanψt๏m", "FαcͥτoͣrͫyInτorτ", "≪Nummiຮ๖ۣۜ山his𝔱l͢͢͢er≫", "IssℓαtSℓoͥppͣyͫ", "PђeαlαHitcђeภ", "ⱮօղѵҠօմҟӀąʍօմ", "🎮丹թթєɐli𝓃gQuɐli𝓃gє", "「Grǝacklψeτ」", "IήesนrͥŇeͣmͫ", "≋Beήτic͢͢͢ediή≋", "Meͥภeͣqͫuสles♦️", "😦UnwielᖙℽNexק", "WateᖙeToℝ℘eᖙo", "Veℝ∂สntͥSiͣmͫสntสc", "「ƤสrigͥCoͣrͫriᖙor」", "Anͥkeͣnͫtscru", "⪨Äภioภ§Jสภeman⪩", "ᴵᴬᴹDaͥzzͣlͫᎥŇgWᎥlieรτi", "Naΐgͥΐcͣaͫℓℓef", "『WสψstℝWสt🅲hfส🅲e』", "🐅Exקreαrfer", "OfͥfeͣcͫKΐck𐍉ff", "☽乃ץՇ๏קץՇђ๏ภ☾", "ṨuήnyAuserสny", "Meℝaͥ∂lͣyͫקen⚠", "ͲąղէìçմҍӀ", "Se∂iสCสucสsiสŇ", "OfͥfeͣcͫelŦec†𐍉", "He∂uαlrigive", "⧼Deͥpsͣeͫᄂfarg⧽", "AήixecemØcultiή", "Ŧollicuรectior", "W๏rͥteͣsͫSᴍartie", "丹ภefFคภgs", "Ot☢☢sℓคwคℓtede", "❅WђizคJคckWђi†e❅", "Heɭɭ฿☢ᴿåbo", "「Abi∂iŇgDicaŇℽ」", "Isͥheͣrͫΐτaℓes", "᚛Θficຮoภeຮ᚜", "๖ۣۜᖘⱥuͥncͣhͫyCⱥustiᴍ", "🚊Ӌeสτenͥτrͣiͫ͢͢͢n", "𝔗ec†iga†eechersҜ♐", "⚡U†eͥreͣvͫe∂a⚡", "𐄡ɢlaήsaรailØrM͢͢͢aή𐄪", "ⲘสysτᎥnⲘᎥnou😌", "°”Ṩi𝓭ityethicl”°", "J๏ѵiaℓP𝓇iaℓ", "๖ۣۜℜevⱥsนpSⱥssⱥfrⱥs", "M☢tivͥαtͣiͫngB☢nαtiff", "༺Thøuɾnᵃnꜱt༻", "I๓թe𝒸cąbℓeMusper☘", "✰Aאָiͥcaͣpͫђeℓ✰", "ᶠ͢͢͢ᵉⁱᵍⁿᵉᵈᴸᵉˢˢᵃᵐᵉᵈ", "𝒞𐍉nl𝖞r𐍉𝖇s", "Grαcΐ๏uຮCaͥ๏uͣnͫc", "Mสmm☢τhT☢τh☢ldi", "𓊈卄ανσ͢͢͢ℓ丂αναє𓊉", "✰W☢☢ℓutte∂espect✰", "⁣𓆩ⱮմʂʂҽąⱮմʂէąçհҽ", "Ofͥerͣsͫやr𐍉fess𐍉r", "๖ۣۜ฿uͥ†sͣiͫ多Mu††er", "SⱥτBigPØτⱥτØ✪", "Inf𝔞M𐍉nFr𝔞ΐรe", "〖IŇviŇci多leAdeŇƤual〗", "🐯Hคndy͢͢͢Hคtiɭity", "ˢᵐᵒᵘᵗᵉᵐᵃᶜᴳᵒᵈ", "Ofͥteͣdͫΐe฿edbeⱥuty", "⦃ExtegสExtℝ𝒶H☢t⦄", "Orͥ∂sͣmͫนcessน⚔", "Y𐍉utђr𐍉uภ", "✰Tђℝ☢titsc✰", "íɑʍ≋AℓtŁiℓŦ𝓇Øℓl≋", "FiήgtFiggץ⚔", "ScieήtificPสti", "GrͥesͣsͫB𐍉sslคdψ", "Mⱥภumbℝip", "T๏iͥndͣeͫLⱥcewing", "★Shͥouͣlͫ∂en∂ieve★", "Suallizatiᴍe", "♐P͢͢͢herstst☢", "I†iͥonͣgͫingeℝna⚠", "Ofͥfeͣdͫg๖ۣۜßαllØfFαt❥", "๖ۣۜℜaͥnsͣtͫredu", "MØcipParรήip", "Se∂iͥรhͣiͫmส∂", "𝔚𝔥𝔞𝔫𝔡𝔢𝔱𝔉𝔞𝔫𝔞𝔱𝔦𝔠⇜", "๖ۣۜOffeℝtBαffy", "AttentiveFornate", "Faͥveͣrͫnext", "UnusuⱥʟFrøungdø", "Geຮຮionͥຮtͣaͫ", "୨丹𝓃d𝓼e๖ۣۜƤⱥ𝓃cⱥce𝓼⪑", "ร๏ɭɭร๏ภɭץ", "S℘iяiᵗe∂Pie🅽t💦", "L𐍉𐍉ภψSi𐍉ภaͥlsͣeͫ❥", "🎮𝕊ecτolαrץຮτ", "◤NorNoRegαrᖙ◢", "DeͥℓiͣgͫhτfuℓAnᖙeg", "Rec†scess", "✫Itͥคlͣlͫsømme", "⧼ᴀภqͥ𝕦eͣsͫτeds⧽", "๖ۣۜ山angຮᎥRagຮ", "HeͥᴍaͣdͫeDelᎥ𝖗Ꭵum😇", "⫷M🆄ɔtsΐ𝕓lest⫸", "Iภge†eͥℝeͣdͫu", "🐥IภêℝtAshtaℝt", "Pieceℓᴮøøkie🌺", "Ƒrͥedͣeͫτw☢u", "Imק𝔯essi𝕧eや𝔯iτs", "Reͥivͣiͫ๖ۣۜᗯeiner", "ReήsecoEnglishRose", "᚛UήisliήBigHuήk᚜", "TΐrelessToήdessΐ", "Sµccessfµ͢͢͢𝖑Toccesse", "HⱥŇceIcepicҜ❥", "Trͥitͣeͫ丹ภtຮeภtr", "AlสrᴍingSђerᴍ", "୨Fei𝓈tyLexte∂i𝓈⪑", "⚡H☢sH☢neͥℽbͣuͫn⚡", "🍃𝕲rคᎥŇคÈlคᎥs", "CℝectͥℓiͣgͫŇe", "Sollℽstriongst", "⦇¢aphօℓօSnappy⦈", "◤𝓟𝓲𝓰𝓰𝔂𝓒𝓸𝓾𝓰𝓰𝓵𝓲𝓼୧", "⚡Abͥ☢nͣdͫynᎠynสm☢⚡", "∉Gℽmͥnaͣsͫт🅸𝖈丹terΐamn∌", "▥ƆouƆouʌıɔʇıou¿", "𐐚ץƬuƬtepØω", "OffeรeรSugαrͥᖘuͣfͫf♛", "【Çðñêð₥͢͢͢å¢ïł】", "Aгti𝒸ulateUภtalaภ", "🆆🅷🅴🆂🅿🅸🆂🅷🅰🅳🅾🌗", "★AbͥreͣcͫuℓCuթieDoℓℓ★", "∉𝕾nappʸ𝓝alꜱ๏∌", "Fℓน††eriή𝓰T๏ήce͢͢͢∂in", "PeℝfectIteήeℝ⚔", "😋𐌁𝔯αήgsτ𐌁ruddah", "🌳H𐍉Ňe͢͢͢st𝓘Ňew", "ℓเττℓєA𝕤𝒾𝕤͢͢͢ul🅰natedes", "Agͥreͣeͫⱥ多leCⱥ多liรรi☂", "◤AŇdสtMสŇŇeͥℚuͣiͫŇ◢", "CaภdefJefe", "Neττeຮ℘andaττr", "Ofτeᖙบree", "Ƥ𝕣αlØ𝔫scallᴳᵒᵈ", "✰Habi†ualΘn∂ingua✰", "【EaℝŇestͥIsͣtͫaŇdne】", "ArΐsVΐssψ✨", "฿eenGoatees⚔", "Atereatha", "Θffi多ℓoTrou多ℓe", "GraվรⁱRนgraτ🌻", "𝕴ñⱥτ🅸vScrⱥtchy🐆", "AƤeͥndͣiͫMonLaƤຮin", "StͥunͣnͫingAndin", "⩻๖ۣۜᗯorl𝒹ly๖ۣۜᗯonsi𝕥u⩼", "Men†e∂eem", "〖CoℝdsђWaℝdoŇ〗", "🐫PønΛctiαrsenaℓ", "ᴴᵃⁿᶜᵉˢʰᵃⁿᵍᵒ▒", "PℝocͥRoͣbͫotobαmα", "BℝeͥncͣyͫtRสncoℝ", "▓TreήdץTrคm", "𝕻𝖑𝖆𝖙𝖎𝖘𝖊𝖓𝖙𝖙єค๓", "๖ۣۜBloαtyAnat͢͢͢e", "【Cบrruτiv𝖊͢͢͢ภ】", "✰VΐcͥtoͣrͫΐousStor∂eส✰", "✹Shΐll๖ۣۜᗯildfire", "Noωαselli", "Guͥΐlͣtͫless𐐚otlץsΐs", "RⱥyRⱥyDisђirⱥƤ", "𝔚hΐ†eℽWhΐm", "「Ciaℓiͥᖘhͣoͫbia」", "𐐚eeͥᖙgͣeͫήve", "千lu🆃🆃er𝕚𝓃gṨαu🆃e🏂", "᚛BℝαzenBℝeα᚜", "CoήMonƑrสise", "๖ۣۜ山iͥggͣlͫץ๖ۣۜ山ing⇜", "FeͥllͣsͫoϻƤlo", "㍶𝕎𝕠𝕟𝕕𝕖𝕣𝕗𝕦𝕝𝕍𝕖𝕣𝕗𝕠𝕣", "Sτiᵛeʀmin〽️", "Rilαtoℝyᴍ⚔", "₧Anสτ͢͢͢Rสτit☢", "Wสs†eGℽmⲘสs†eℝ", "PlaภtøƤee", "⚾ꜱcrค℘℘yIsτraℓΐf", "DittØήSqͥuaͣtͫty", "⚡O多ʝecτiveDeco⚡", "TสiͥsiͣgͫerƤsץmend☘", "OrryᎥeรᎥ๏", "Ƒuͥℓdͣsͫhinec", "ThaͥŇkͣfͫulChaℝᴍis", "íɑʍIsτʀᴇթ๏sᴇτ", "★Θfferencesթece★", "Ar†h☢uldre🅽diส▤", "ForgivingForn", "N𐍉ᴍbec𐍉ήts✨", "๔เгєςՇгє๔เς🐵", "〖Oภvest𐍉pΐ〗", "⫷Ofteภ𐍉Gift⫸", "🚣ᴅʀɪᴠᴇɴᴇᴠᴇʀʀ", "RⱥsƤberrψ๖ۣۜ山heriesi", "Affeuredi", "MⱥiήτFunͥτoͣnͫ", "ΘffireKhⱥήzir", "Meͥdeͣmͫeήdiήgeή", "★I†uℝFuͥℝmͣuͫzzℓe★", "⫷FⱥrϻbØyFⱥϻb⫸", "Itarᖙรcreϻa", "⋉Direllooductຮe⋊", "TreαNeαt𐍉", "SuթerBoℽAvetℽթe", "°”φմէէҽԱէʂվβìէʂվ”°", "Oⁿeรsitedit⚠", "⸔Ṩaΐηg↻haΐ͢͢͢nຮ⸕", "I𝓃gMøn🅰nge", "A∂aptableやapti☢ng", "〖WⱥsτrSτⱥbͥbeͣrͫ〗", "ཌInͥgeͣdͫighØ𝓊ndད", "█▬█ █ ▀█▀Asser†iveSegingin", "Ofteᖙucee︾", "CђⱥrᴍingPⱥcerᴍⱥr♛", "฿eͥirͣoͫᴍeŇclo", "∂яα¢σηιαη卄αη∂яє∂υ", "EthΐcαlͥHoͣdͫyetre⚠", "〖Tiͥสnͣyͫouℓthom〗", "AbrasiveBrivilly", "InceirKissyFace", "Ittelitingly", "SomentsSoul", "Wooksommen", "UnizPizzawife", "FersoPowerpuff", "MelodicDell", "SoftyOffee", "Joidaskin", "WhowerHotsnap", "PassionateLasiste", "ProbseVinDiesel", "ForessiKisses", "DawbufBunrose", "JudensPendulum", "DayeSaySay", "Watertitur", "AntilkMilkman", "Magaltyea", "Houstsibl", "IngheoAngon", "Byribibeg", "Gingentray", "Hichicapho", "ResoluteAntardso", "Andivedyngstims", "BeautifulToldif", "HostilityBustay", "IngiShinyGaze", "Anytimple", "NowSnookie", "WereituAtum", "Gortaitic", "ImposingVelsical", "Witionsips", "WhiteyWhati", "Grabourch", "ToastyImpaspen", "SensibleAlsem", "Enendscandspip", "Itycomplandshor", "VictoriousWousi", "OfteOfficeboy", "Phoodyeang", "BeneficentTocen", "ItisBityarani", "Hourabony", "Autooligue", "IngenScrooge", "YoulloDulhaniya", "CoolguySkinqu", "Itiattive", "CambessCupcakes", "Oferbelogr", "Ofewposicu", "JockyAckn", "HumptyImpelic", "ComptsBaldyDom", "Whaviatte", "SoftOffel", "Werediand", "RegralPlegasus", "ReacPokerface", "OffingeCoffy", "Beedaltyo", "ConsistentOffortsi", "AstoundingEst", "Onquentabliate", "AwesomeTomostur", "DullDozyLemodu", "EsionlyGillygum", "OptimisticPtinknew", "VoluntaryRary", "SublimeItsubi", "ModestEctoormo", "AnglysSilly", "AmetionMinion", "MentMedusa", "Rompleseral", "AxiomaticMantr", "Arsecritom", "WarleffBuffalo", "YieldingForier", "Maternize", "PerfectWeregife", "Beganiateds", "EvesevStSteve", "InsibilWinkyDink", "OndoingDomino", "ProgetcBucket", "SairaciElais", "RectProject", "ObservantLarbsedi", "EthicalPriametr", "Nowerstope", "OutitiTooti", "BeautifulFoutes", "MilwaspChiliPepper", "FessoPissant", "SedoFirebred", "WasedlaTiddles", "AliveKelichap", "PuringiTinyBoo", "LincystColestah", "CentoodDoobie", "ScratchyScra", "Ityretuddynt", "Offeckert", "GymGuyMgbil", "FireBerryBethindi", "CrankyBanc", "Shitislonesp", "Whowediff", "WervidVivitar", "CarthaHatred", "EminentKinteeni", "Phystudeat", "Aneumenctr", "DiplomaticBerat", "ItyansSugarBuns", "ZealousMovereat", "MelodicOloodpor", "Fookeyedep", "BooBooKittyRettlyst", "BeirstHairBall", "IngmerRhino", "Gelsouldi", "Ingdpoici", "Ingledible", "PrettyProessi", "WherviKicker", "DalikTikku", "IninFeint", "Aestudireastal", "LumpyNemples", "SmokeyMorsiall", "Founititag", "FrownyTownswe", "AntionFunTime", "Keestingko", "AltruisticFaric", "MyonlyDestrion", "Herrionati", "Adyintred", "DevoutItlereve", "IngshiDingo", "Wormserld", "OfficeboyFillan", "PositiveNovermal", "UldfuBaldman", "Diedinsto", "CosseaPoppyseed", "Meashichem", "EtionSeatides", "KissableDontrisd", "WaysidKidSister", "AborTurboMan", "Encipansoncla", "BlueJayJaimingi", "Hissiodustomer", "Eponesibadedge", "SincereAnce", "Forightse", "Peraddiesphic", "MookyPorPooh", "Paideliti", "UnpunUnoShoten", "Elegirionvedr", "InguDerange", "Offermang", "TorClaymore", "VengefulPentse", "PrincenHitchen", "Medeconlyme", "『sʜʀᴋ』•ᴮᴬᴰʙᴏʏツ", "꧁༺₦Ї₦ℑ₳༻꧂", "༄ᶦᶰᵈ᭄✿Gᴀᴍᴇʀ࿐", "×͜×", "Sᴋ᭄Sᴀʙɪʀᴮᴼˢˢ", "亗", "꧁༒☬sunny☬༒꧂", "𝓑𝓻𝓸𝓴𝓮𝓷 𝓗𝓮𝓪𝓻𝓽♡", "༄ᶦᶰᵈ᭄✿Gᴀᴍᴇʀ࿐", "×͜×ㅤ𝙰𝙻𝙾𝙽𝙴ㅤ𝙱𝙾𝚈", "꧁▪ ＲคᎥនтαʀ ࿐", "꧁༒☬ᤂℌ໔ℜ؏ৡ☬༒꧂", "Ⓥ", "メ", "꧁༺J꙰O꙰K꙰E꙰R꙰༻꧂", "░B░O░S░S░", "Sᴋ᭄Sᴀʙɪʀᴮᴼˢˢ", "꧁༺ ₦Ї₦ℑ₳ ƤℜɆĐ₳₮Øℜ ༻꧂", "✿ • Q U E E N✿ᴳᴵᴿᴸ࿐", "🅑🅛🅐🅒🅚🅟🅐🅝🅣🅗🅔🅡", "༺Leͥgeͣnͫd༻ᴳᵒᵈ", "🌻ｓｕｎｆｌｏｗｅｒ🌻", "꧁ঔৣ☬✞𝓓𝖔𝖓✞☬ঔৣ꧂", "꧁☬⋆ТᎻᎬ༒ᏦᎥᏁᏳ⋆☬꧂", "ᴹᴿメY a h M a t i ☂️", "꧁༒Ǥ₳₦ǤֆƬᏋЯ༒꧂", "ϟ", "༄ᶦᶰᵈ᭄✿Gᴀᴍᴇʀ࿐", "ꨄ", "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑", "꧁⁣༒𓆩₦ł₦ℑ₳𓆪༒꧂", "Sᴋ᭄Sᴀʙɪʀᴮᴼˢˢ", "꧁༒☬ᤂℌ໔ℜ؏ৡ☬༒꧂", "Dɪᴏ፝֟sᴀღ᭄", "⸙", "ＦＺㅤＯＦＩＣＩＡＬ亗", "Aɴᴋᴜsʜ ᶠᶠ", "Lixツ", "♔〘Ł€Ꮆ€ŇĐ〙♔", "꧁H҉A҉C҉K҉E҉R҉꧂", "OPㅤㅤVICENZO√", "𖣘ᴰᵃʳᴋ᭄ꮯꮎᏼꭱꭺ🐲࿐", "『sᴛʀᴋ』ᴷᴺᴵᴳᴴᵀ༒࿐", "ꔪ", "『ƬƘ』 ƬƦΘレ乇メ", "Ꭺɴᴋᴜꜱʜㅤᶠᶠ", "꧁☯ℙ么ℕⅅ么☯꧂\ufeff", "Ꭵ°᭄ᶫᵒᵛᵉᵧₒᵤ࿐♥", "•`🍓Valerie xavier axelelyn🍥", "αиgєℓ _ℓιfє ❤️🥀", "ㅤㅤㅤㅤㅤ", "ᴛᴜʀᴜ ᴅᴇκ友", "━━╬٨ـﮩﮩ❤٨ـﮩﮩـ╬━❤️❥❥═══👑ľøvē👑 ═", "×͜×ㅤ𝙰𝙻𝙾𝙽𝙴ㅤ𝙱𝙾𝚈", "ᴛᴜʀᴜ ᴅᴇκ友", "『sʜʀᴋ』•ᴮᴬᴰʙᴏʏツ", "ᴶᴬᴳᴼᴬᴺ・𝙀𝙢𝙖𝙠友", "BSK・L E G E N Dᵀᵒᴾ", "亗", "꧁ঔৣ☬✞𝓓𝖔𝖓✞☬ঔৣ꧂", "BSK・L i e e Eᵀᵒᴾ", "BSK • ＫＩＬＬＥＲ亗", "ᴶᴬᴳᴼᴬᴺ 𝚃𝚞𝚛𝚞友", "🍎", "꧁༺༒〖°ⓅⓇⓄ°〗༒༻꧂", "꧁༺₦Ї₦ℑ₳༻꧂", "ᴶᴬᴳᴼᴬᴺ・Bocil 友", "꧁☆☬κɪɴɢ☬☆꧂", "꧁༺nickname༻꧂", "★彡[ᴅᴇᴀᴅ ᴋɪʟʟᴇʀ]彡★", "『Ѕʜʀ』• ℑℴƙℯℛᴾᴿᴼシ", "☯︎Ꭱ Ｏ Ƴ Ꭺ Ꮮ 亗 ×͜×", "", "matao", "kkkkkkkkkkkkkkkkkkkk", "Hiiiiiiiiiiiiiiiiiiii", "Emmett", "spencer", "copy my tank", "all i know 2x", "RATATATATATATATATATATA", "Thisislie", "jungleman", "austinz", "Austinz", "ur nub", "why yall so bad", "mi(mobile)", "awesome soccer(pog)", "2377285 auto triangle", "THE NEW BOSS", "hawaii", "M.", "turaco", "Neo", "S8NF-EB3J-FHEI-N264BR3KJ", "5555555", "ur mom", "2+3=5", "one piece", "Fallen Boss", "Roomb 2.0", "earth = sphere", "Roomba 2.0", "Dulanka", "i dont know", "Aith", "I'm your son", "TaKE LOl god shoot", "2+2=4", "Fenrir", "bewear GX", "Kalashnikov", "hey sister", "Sup :)", "wall hallo", "I stand for Liberty", ".", "OliwierQ Chojnacki", "MetatronXY", "Arcturus", "OP", "teste", "ink sans", "ropell", "PLL", "Solaris", ":v", "OBL", "teach me", "-_____________-", "rwegwerg", "n to level up", "thiago", "FAST", "This is far", "jojo", "Anak why u solo", "Lunatic", "sin", "nate", "popa peg", "Sssssssssssss", "Meepet", "hose man", "Beast", "angel", "}{eonyao", "minty fresh", "Evil }{eonyao", "Tango", "pet :3", "knbg", "underverse delta sans", "fallen booster", "COMMAND.Z ANTI BOOSTER", "ANZAI", " manu", "lawless", "I don't even care", "Tesea", "Oh", "tree'lean", "Your Drones Will Lose", "Geo", "fotosintesis", "Floofa", "Pro", "h8u", "adreszek", "JOSEF", "Waiting on a Miracle", "Jain", "ReignOfTerror", "kakyus222f", "fdgxcgvx", "DPS!!", "Sentry :3", "oh im noob", "Math you", "twilight", "Soccer", "ikandoit", "RopeSteel", "no-one", "omni", "kkk", "putre", "value1", "Fart", "REEEEEEE", "{AI} Bot", "xdnha", "Ni", "sheild", "CrAsH", "play", "Shadow closer", "Fire", "Actual Pro", "ATK_X", "Unravel", "PSYCHO", "Yrneh!", "chop", "aa", "This is the tale of Me", "ChRiS", "GABRIEL", "power", "force feild", "Drabbleasur", "JokaDa", "Pet tank", "primos bros proo", "You were so mine", "Railgun", "ARENA CLOSEA", "Force field", "duck", "X.ALEXANDER.X", "Wolfgang", "baited!?!", "PERU", "force field", "Aespa", "oni-chan~?", "copy my tank pls", "ns", "64M3R_999", "Fartington", "Yimo", "Stand For Ukraine", "hi.", "This", "Lena", "A TANK", "AA01blue", "Winterblade", "AndoKing", "alejo XD", "%Weeping_God%", "tribe", "Auto 4", "It's a lie", "bye jax", "tkdarkdomain", "Eydan ツ", "jax sucks", "Nerd", "Q8238q", "Zer0", "The cLe@nER", "Protect", "JSjs", "Angela", "neep", "", "@- @", "ducky", "bo", "_hewo", "Raganrok", "Christofer", "Saturn", "Nintendo Memes", "{RUNER}", "PUPTO", "ku", "Enter Me", "AWESOMENATEXD", "rf", "TankTankTankTankTank", "Someone", "turbo bros", "Yelloboi", "Nothing to lose Tank", "Thriller", "BING CHILLING", "xDD", "CDU No.30", "lenin12", "junhu", ",,", "super stinker", "Base", "pro", "oreo", "ggking", "GiGa LEN", "PH|Player!", "Weakest woomy player:", "Jekyllean", "TaKE LOl :D", "The Tanky", "Phong", "$shark buger$", "g  ergd", "bobbb", "your son", "das", "Guardian", "Wherly", "David Sanchez", "surprise", "comma verga", "LorcaExE", "loz.", "Mobile sucks", "Karen-SpeakToYourManager", "noir", "press n to level up", "GZGESETA", "Debreo", "Parzival", "muhahaha", "Fotosintesis", "tiler bolck man 456", "EternalMakaush", "hi8addas", "Hehehe", "reeeeeeee", "~", "yuan(hi)", "King_plays", "1 hand only", "bb", "UpdDAR3", "Music man", "RISK RISK RISK RISK RISK", "QWERTY", "12345678910", "6", "kk", "q__o__h", "USA", "NOOD --_--", "Giggity", "Kristoffer", "Nerblet", "gdfaaa", ";jl", "100000000", "drone users are weird", "Xenon", "not Devin real bruh meme", "MeepMweep", "oa", "RavenXL", "where are you fern", "AnyMore", "I", "huy vn :D", "jk", "bosss?", "Loop", "farmer's tan", "Until next time", "KK", "Ultra", "?????", "Tt", "Tal", "dddd", "998", "jUst TrolLinG aRouNd", "MK", "Don't Make Me Mad", "minh vn", "Dragon ,You Dead", "hWE", "HORRIBLE LAG i'm pacific", "You Made Me Mad!", "00", "DEMON", "Thor 4/10 :(((((", "Giant Justice", "crgine", "vnnnnnn", "Finally, 3 m on siegers", "FBI", "huy", "-  k    i    n    g  -", "ciganoit", "waste of time", "i'm a sadboiz (joke)", "imagine being nub", "solo 1v1!!!!!", "leonardo YT", "nobodynoticedyouweregone", "jack.vn", "Evan", "(:", "Astral Java", "Me n You", " hihihihuhihihihhiihhihi", "hara", "B", "Nooby", "EZ", "MrYoungSir", "manne", "Ragnarok", "Truchenco", "m", "LEGEND", "SINBADX", "let me farm alone", "Friendly /j", "bye error i gtg", "Pollo", "7/11/22", "jimmy", "Guilherme", "meb", "victor", "I use handphone", "PEGA(SUS)", "owo", "Mort", "the j", "yang", "go", "Very dangerous", "I'm harmless! -Press N", "brayan el proxd", "mateo", "back pain", "nnnnnnnnnnnnnnnnnnn nnnn", "CraZy III", "2-3-40", "Yeeeyee", "car go tornado", "hehe!", "taco", "@@@", ".v", "Roronoa Zoro +++", "yyyyyyyyyyyy", "Tki", "Siege weapon", "BDO", "bcd", "100k speedrun", "Shoot gun pls join", "random tank", "virtual machine", "Destroyer only", "DEAD", "vn <>????", "Ma$t3R", "R", "Justa_Noob", "Ma$t3R lucky", "Kaboom", "mystery", "pro vn", "YOUR JORDANS ARE FAAAAKE", "147 toxic", "e xin thua", "ew", "mega monster!", "NATHAN", "pe players be like:", "yess", "wait", "dunt kell meh plas", "FEZTIVAL", "Blyat", "wake up", "Rainforest", "duos", "PB123", "go sleep", "nieeieeeeecceeeeeeeeceee", "Eren slenderman", "rtt", "ssss", "press n = score", "Around", "1m plez", "im the best", "asdasdasd", "race me!!!!!!!!!!!!!!!!!", "lp lithium", "queue", "ttjjl", "heyy!!", "Yuck", "sus destroyer", "silent", "47/107 :(", "miIk", "water", "Sas", "The Destroyer", "Ff", "Master", "asd", "k", "dk", "Exotrezy", "qp", "3+3=6", "nreferif", "blitzburger", "Mr Shorts", "iuiui", "yu", "Mem mem", "8787", "adymin", "oooooooooooooooooooooooo", "Bots Drovtend", "Panzershreck", "nyac", "ccf", "Mh?", "joshs", "beep", "hsg is sb", "404 Not Found", "Michael", "thinh", "ABC", "ggwz", "Indo", "uwu", "THE King", "Nagi", "Pato Lime", "aaeaeae", "BUGEN", "Area closer", "Unbalanced Build", "//", "nnw'", "Door", "Matias", "ky", ";", "Gavin", "Lucy", "Kitzuneko", "This is the tale ofn", "Hank", "hiiiiiii", "^---------^", "screw", "LSV-005", "Hiary", "jonh real", "Nothing overlord", "Portaun", "20240123", "ggs you are good drone", "NoU", "mcbeef", "sg ez", "Chase", "it's a lie it's a lie", "qwertyqwerty", "LEGENDARY (VN)", "NATH", "backrooms", "Daffa", "MATHUEL", "vn luffy", "HAHAHAHAHAHA", "Oofed", "Hung dayy", "noob vn", "Sensor", "Marco the great", "Ghgft", "unscientific", "EnemyTracker (LookAtMap)", "yeey", "oh, dear", "Anderson", ":> hi", "redhood", "Volderet", "Harry Styles", "WINNER", "r u dangewus", "odo", "maksim", "Im uwu", "eryweufhw8r46yq3782edtqf", "Katya", "Unlucky", "Maga", "BASE MAKER", "td", "sure sure sure", "Zarma", "octavo", "evan", "U  N  K  N  O  W  N", "jbc", "exc (real)", "sonick12", "exc (fake)", "~A~", "shadow", "Yoriichi Tsugikuni", "p1", "Hanumanumani", "bob the builder", "BLITZKRIEG STRAT", "sus", "India", "Oof", "kiyo", "Toopy&Binoo", "I'm Innocent", "GujiGuji", "SANS", "LoSTcar", "UNGA BUNGA", "add me", "Meeps", "afafafafafaffalafel", "........................", "Vladmir Poutine", "EEEEEEEEEEEEEEEEEEEEEEEE", "SIEGE  lhaahahahahahah", "TCO (The Chosen One)", "Daizole", "BASE", "wibu king", "rainbowmonochrome", "Vincent Ling", "BruhBruhBruh", "Eternal(VN)", "sss", "testbed B", "Yeeter", "Oi", "ooooohhhhhhhhhhhhhhhhhhh", "Ardenll54", "$$$", "S", "nat", "Sheep", "Imagine", "ScoutTF2", "Saking", "Hahaha", "poppy", "skitlies", "Fallen Overlord red", "Relosa", "pacifist cant help sry", "fk demon", "Idk...", "D=EMON$ do u know?", "sinx (fk demon)", "Fruits", "Hehe", "Fallen Overlord", "Faster", "BulutMobile", "Awzcdr", "mega", "Giang~Mweo", "General", "Winner", "=)))))", "..............", "DEFEND", "Hiary4", "Eye", "Merdka!", "Just watching", "zeke", "boojawzee", "DESTROYER (VN)", "754", "hehe", "HACKER", "bugo", "RRO", "wltjdwns836", "Shadow", "JUIHAN", "66", "monke", "hi vn 1", "wltjdwns234", "GHASH", "3310", "undecidable", "10xyz", "V&N", "LintanGG", "ak", "Arena   Closer", ">", "TF2 Heavy", "feztival", "Ragnarok-eternal", "Revenge", "Ficli", "baos", "{ HEALER } +", "Ian6000", "Shhh!", "loxc", "Banned from seige?", "1457", "666", "deezs", "nn", "Use me as a shield", "Yocto To Yotta", "Dorcelessness.", "3+4=6", "superium.", "are the dominators blind", "3+4=7", "Pew", "=))) (10%streng)", "Carsonxet", "X11 | Nebuqa", "look llllllll", "kkkkkk", "Sorry!", "thebestofthebest", "god fighter", "mafia", "My Music:)", "no u", "Begone (1v1", "HAH LOLX)", "skull emoji", "free fire  max", "No Player", "Imaginary", "Yep.", "| AL | ChillOut |", "mini boss", "yayayayayan", "Huggy wuggy", "Divine", "Mumo", "No", "Pyrolysis", "narutouzumaki", "THE", "TR", " PRO", "178965", "Comeme Soy Dulceeeee ;:(", "either", "Maze Cops", "give beta tester", "-.......", "i need score", " pimp <3", "nm00{", "you are my father", "DDDDDD", "6666666666666666666666", "AUTO 555", "me best", "Crozo", "longest run", "blood for the blood god", "i m a protector", "q", ":(eu tou triste", "Sheeps", "i asia so 300ms", "not an easy target", "MyLittlePony", "little one", "oo", "cool kid", " BUB", "TTroll", "Onyx, The Fall of Hero's", "ツ", "ba", "Josh", "revenge:(", "La meilleure", "The leader", "n level up", "}{ello", " vikas", "Alpha Fart", "Matt", "fisch", "guy", "Cozy.", "Preku", "stuff", "friend to all", "Inverse", "no ;)", "Souper?", "):)                  ???", "Update", "down", "protectn", "Radiant", "gang gang", "Deadlord", "dude", "Asesinooooooooooooooo", "lucho", "Pounder | aaaaaaaaaa", "Hoping", "def", " sans", "LazuLight", "Pounder | pain.", "WHERED MY RELOAD GO", "eh", "RP", "wat?", "ehwhylag", "OFN tank", "Fundy", "how to stack fighter", "Hugo", "Ice Breaker", "Pew Pew Pew", "I eat dirt", "bla", "blue octos useless", "HAHAHAHAHAA", "Min", "Fatty", "Begone", "blue octos __", "willlddd", "what is this?", "Aleph", "Demon", "Error 505", "Horizon", "The Tale Of Tanks", "1+1=3", "sdddd", "ven", "Yujin_05", "99999999", "dead", "Flight", "ma ta", "anime", "cyan", "wreck", "senti <3", "Uh what", "Nya~", "APE", "Through the Rain", "no pew and paw here", "idol askib", "2...00++++", "jjjjj", "firework", "Jacob gomez _ Jadenian", "I'M CHILLIN", "yoavmal", "eternal.exe", "Bye :)", "no plz", "REVEnGE__+=!!!!!!!!!!!!!", "NEMDT REEEEEEEEEEEEEEEEE", "Abdurahman", "Boost", "hehehehaw", "fdb", "stay all over me", "maida", "thingy", "error", "jhh", "support tank", "HighFenrir", "B I G V I E W", "YYYYYYYYYYYYYOOOOOOOOOO", "fov", "OverGod", "Reaper", "Tanky", "Arena Close", "PPguy", "casa", "bruuur", "FALLEN. BOOSTER", "troll", "a polygon", "1st", "Abdule lah", "Fk", "can", "NUKE H", "Gutey", "42", "nobby", " //", "press n to levle up", "Pulter", "om nom nom", "+", "auto", "downside 930", "7888", "ium", "super idoi", "blessing", "Tricky", "BUILDERS!!", "Barry", "sandbox", "Y U NO?", "Let me free", "ME", "hacker", "a duck=", "Er0  VN", "legend", "zz", "epic nokia", "Gr8", "Sinx", "Hugh", "inverse square law", "Bodyguard", "Maximaths", "INDIA", "SPAXDE", "A - E - T - H - E - R", "K.I.L.L", "raoofOverlords for noobs", "seesaw", "zombie", "hhh", "The death", "im a yoututoer", "Brujh", "juan", "CCC", "Hint :D", "FnF", "uyuy", "fg", "friend of mo", "Blue are dumb players", "THE LOADROJOZ", "Test", "no plis", "HenHen", "HenHennnn", "COMEDORDEMAE", "TaserBlazer", "rococdc", "AHOI", "cocorito XD", "Yeet", "kendyl", "Adnan", "World", "THE GOD!++", "DOMINON", "sanic", "NitroX", "sonofgrits", "me noob", "dumb", "joe", "yesbody believs a lair", "Bocow", "nnnnns", "15", "kevin", "fshwel", "milena", "i see fire", "", "lopi", "over", "edan", "cats>dogs", "sedat emir", "not -_-", "motik_kotik", "Troll", "Angle", "sheeeesh", "Rigged", "pablo", "droldaed", "JokaDa: how incremente s", "Hinote", "7/11", "Arena Closer", "newae mobile", "THE SUN IS BURSTING", "o farinha SUS", "daniel zZ", "jj", "destroyah", "5664", "graumops", "Green will win", "acidre", "eutimato your bad", "kermit the frog", "jared2.0", "jjuanto", "beep boop", "tomas", "wee woo", "IwantLegs", "theres so much sercets", "da duck", "Flace_25", "Promax", "Asesino", "Manoel Rafael", "Mcmaster64", "nnn", "Dont away, noob", "zad5", "sdsd", "retard", "Add update for chat", "Bruh", "SWAT", "Vakvak", "Juan B)", "raoof", "DarkStorm3", "F-35", "Mr.Tank", "LA2T", "me no u(u know me)", "Pokey thingy", "huggi wagi", "godzilla", "Loki", "Hybrid", "Gusfin3  :)", "mAX", "Arena Closer", "Don't bother me", "Ok, Boomer", "perra el que me mate", "Mobile player", "This is the tale of you", "ducko", "Tubby", "your mom is watching you", "segurity 2", "lll", "Jr.Greeen", "Dddd", "rid", "aaaaargh", "stegosaurus", "Free Points? Nuh-Uh!", "a nuisance", "Poseidon", "Turbo Valtryek", "vz", "bryan  stichn", "urfwend", "Yodin", "hooray", "RENFORCEMENCE", "M163 SPAA", "Xant", "ayyy", "Randomness", "destroyer", "GB", "IMAXI", "F7", "twotales", "Gurmaan THE PRO", "Ayo peace", "hi ツ", "Scrub Exterminator >:D", "xia", "1{1}1", "DD", "Just Luke", "jose digma", "LORD X", "what's reload???", "AL|Air", "non't", "TryMe: DodgeBot2.0", "HexaDecagon(I grind)", "TryMe:360NoScope", "Error 404", "EDP445", "rsn.", "GEESER", "help me", "rotten punk", "solo vs 3", "all monsters", "ari", "Lore", "&__.._._:-:-:-.&", "Kalijia", "Rusty", "GUGUn", "hi :)", "truper", "goofy ah single", "ServentOfDeath", "J.L", "THUGGER", "ARKE:D", "The beep  duo", ">>>", "im bad", "Qscxz5", "CSDulce  Legend stop ._.", "poo", "StormX", "mafer bad DX", "Adymin", "FIFA", "GBQQ", "Wow that is not sure", "the 501st", "idonthavaccount", "baited??!", "Orn20", "theCityCR", "healersruseless", "Sin (watch my videos).", "list of noobs:", "extrextrehomiscopihobia", "N", "TOP X", "A3145", "letsbuildawall", "fev", "No one", "Guillotine", "Octavius", "This is the tale of a", "pain", "bgs", "auto gunner", "Necro", "antrax", "demon xd", "THe Emperor", "Stealth Jet Delta", "jace", "praca", "Arena Closer", "26.26k", "milky will eat your toes", "-K-", "TIE/IN", "u", "dez noits", "zx 33q", "heyyyy", "vvvvvvvvvvvvvvvvvvvvvvvv", "Multibot", "9999", "xan", "adelson", "1235434638968792345", "gruby", "EZNT", "cheap tank", "aaaaaaaaaa", "ryheghjt", "Celestik", "Pork", "Naruto", "GOMU GOMU NOOOOOOOOOOO", "apple", "somebody", "The gun on the wall!!!", "JK+", "starmie", "XD", "drakeredwind01", "This Is Nobody", "Arena Closer", "@ace", "Scoped", "Kazzbro", "348562347862349254127651", ".....", "NO MORE OVERLORDS!!!!!!!", "no c-", "Buzzy", "mom", "Chekks", "HAHA HEHE HUHU MOBILE", "bert", "leader Slayer", "na", "ZACHARY", " Iv", "Dogs On Mars", "Aquiner_ouo", "Thinh", "gas", "lautaro", "I also helping blue", "pet(XD)", "wow", "hj", "CraZy II", "laranon br", "XDDDDDDDDDdDDDDDDDDDDDDD", "eaeaeaeaeaeaeaeaeaeaeaea", "You", "zero to hero", ":3", "Lux", "magic_cheese", "good morning", "HAHA HEHE HUHU", "Red is best", "JK", "not onyxd", "help", "But you keep on breaking", "huttutu", "jjj", "hansith", "mds", "goofytank", "Korone Chan", "el pendejo", "razenezyou", "voltic", "qoh", "nya~~", "KL", " jeje", "asdfjkl", "Daisy", "zarity", "NobleSkele", "shhhhhhhhhhhhhhheeeeeesh", "kevynz", "Pewpew", "Star Ender", "Copy my tank ok pls", "JOIN THE PENTA PARTY", "bob AT", "basic", "jesus proooooooooooooooo", "um", "q00000", "adljsaknckjas", "OOOOOOOOOOOOOOOOOOOOOOOF", "TallStop", "Ops...", "underated tank?", "get error to 1mil", "999", "Comeme Soy Dulceee aaaaa", "Dangerous", "hyperbolica", "F-898", "Bubbles", "Mobile", "Arena Closer", "Darius", "123456", "Dev_Bs", "get rekt", "joker", "Mateus", "hvdhh", "Arcturus mobile", "PeNtaLOL", "Mr. Porridge", "go jax!", "E?", "Pew!", "BLAST", "level", "Vunda = Mythical", "Hi Levi!", "Hi Travis!", "Onyx", "T-T", "MiningMiner27", "laugh_laff", "UPdAE", "air", "C-7", "Hallo", "gonzalo whathat", "WHAT!", "NORMAL DAY", "Hi bruh guy", "VN chose machine gunner", "press N", "lets 1 v 1 bra", "rat", "asia", "HeNrY", "alp", "bayzid", "(LM)The Unknow", "aru", "DanZo", "Hii", "eeee", "nayc", "Maze", "ummm..... ok", "~Real_K~", "phong", "Support", "<1.5 is not enough", "=Z~", "Ban she", "comm ander", "Sei", "vcl", "Dapa", "T.Khang", "maikesito", "hihihi", "Dyaranhi", "W a t e r", "Fluffy", "223", "!ARNA LOSER !", "leave me alone!", "i use hacks", "EEEEEEEEE", "Always not alway kid", "GX .ver", "pro_noob", "Woomy", "boring survivor", "snaper", "val", "vex", "zander", "SPILKE", "as", "ok fine", "jimmy", "D19", "Nobody", "Paw Patrol", "pup", "eliza2", "plus points", "Egg tart", "Lava Perros", "ah, but u dont see me", "1K Followers lol", "nnnnn", "aaron", "minecraft", "I'm in school", "Necromuncher", ";v", "IW", "bruhhh", "453 sfafd", "adefe", "SUPSPRIES!!!", "messi", "Neonneosh", "spadzz", "gofra", "glacieronfire", "gal", "Ifarm", "hihi", "Sea urchin", ":')", " im crying do to U!", "dragonfruit", "FIGHT", " Friend with me", "GxngW", "Galax", "hiro", "Master Noob: Bruhhhhhhhh", "Nerdy Ball", "kumar jeremy", "wendy imposter is sus", "CAL", "Manic|Eraser|Cat110", "hara dont trust me", "its me! the", "sinx", "Dr.Tool", "pro cart pusher", "casyle on the hill", "hi im one", "Tristan", ":p", "monica", "one floofy boi", "YinYang", "supraaaaaaaaaaaaaaaaaaaa", "{ 0 _ 0 } IM Agry!!!!!!", "lena<3", "Jolo", "antontrygubO_o", "Leo hacker", "lakalaka", "1nFerN0 - 1 mil?", "UPdArE", "Tembito", "yvyg", ":(=)", "heh", "jonh", "GIGA SHRIMP", "Sky_Good", "poyo poyo", "The Beep 3", "Mine is Mine", "Yurin", "Your Pet", "7U9ukhlehpwhowiwiijji29:", "orphan destroyer", "BA.2.75 Omicron", "Astagfirulla", "Fallen Spiddy", "lee77", "ghg", "PretendToBeANoob", "zuesa", "The Void", "rdagonfruit icy", "time too tryhard", "democrats SUCK", "erro 1mil im so bad:(", " {}?{}{}{}{}{}{}{}{}{}{}", "get error to 1m", "why is anni overrated", "kakyus222", "Have you seen me", "Arena Closer", "hiiiiiiiiiiiiii", "im noob", "Tattletale", " GoodLuck", "bazooka", "FFOx", "wellerman", "dont trust anyone", "eng pa", "Summoner boss", "kostas friends ? greece", "V:", "CorruptedSpectro", "hohohoimsanta", "1M ????", "BOOSTER AIRSTRIKE ORELSE", "nashe", "Algi", "(vn) go with me pls", "FPT", "2020 im new", "Player", "jkhhgg", "Cody", "Eiffel Tower", "BEST", "EVERYONE BE DESTROYER", "Pray for Ukrainian ppl", "prb", "Attacker", "RACE", "Yael", "Q Checked These Names", "(W!) Solo w!", "111111111111111111111", "GiantJustice-", "Nate", "Can pls be your friend", "Cxrrupted", "yourself", "you(VN)", "khoa fake:)))", "1VS2?", "IDK", "plplpl", "minh7cvn", "hehe boi vn", "Sinbadx", "One.", "Q is Awesome.", "laco", "RPs", "meris", "Harder Demon", "Florentino", "Well", "jerry", "Hut", "Pet bird (eat triangles)", "mustfarm", "I bet you never", "FeZTivAL", "Kid", "ABC", "PH", "Starlight", "MOONLIGHT", "STARLIGHT", "drift", "vilad", "MURIQI 03", "The Light", "cat", "DRUNK DRIFTER", "WHy", "mmm", "arR", "FINz'D", "aaaaaaaaaaaaaaaaaaaaaaaa", "biba338", ".chao", "HNY", "$$$$", "cat o' nine tails", "Block Craft 3D", "BRUH", "-vn-", "Azra", "bin huhu", "00123", "CN Tower", "t143", "Te", "Gun", "Sans", "Fggf8ytr ftrfbtruf7rtfru", "Ryuu", "overlord king x", "emir", "empire", "Player 1", "NAtZac1424", "BOT-342465", "Hdujdb", "We_peace_farm", "tuan", "A1D2J3", "323f", "MYJ", "bbebebebe", "T", "peace_farm", "hoang118", "lol2", "lol1", "gtegnugnbdbdtui", "the guy", "sang", "/SUP Maths", "_-zErO_-", " Gaurdian", "5C", "DJT", "silvally 1v1 me pls", "Arena Closer", ">:))", "valer", "G,bdx m", "|A", "No Ski||s", "Etz", "The Comeback of 0800", "sinbadx", "QWEr", "I need 3 1m more", "Njayy", "NOBDY w", "Sh |             _", "xs", "Jet(pet)", "INDIAN", "The Immune System", "TATICAL NUKE INCOMING!!!", "bigmac", "jjjj", "woi", "protecter_of_free", "bye", "WZ_120", "let me protect u my lord", "IMAGINE DRONE IN TDM", "wewewe", "Max", "Nothin", "uh", "Ancient", "NNNNNNNNNNNNNNNNNNNNNNNN", "MAXICHIBROS", "Belowaver", "trboo", "T^2", "Carpyular", "e04", "turbo", "Sei GF:3", "trbo trbo trbo", "Hymness", "red sun in the sky", "maze goblin", "Wojak R FuNNy", "Cloudless", "Hey!", "stacked", "sudu", "Launchers no buff no gg", "Sh | cc_", "Xentnya~", "Xjso", "Void", "nobody", "Pop", ":) cavite", "ja", "THEIA CELESTIAL RULE 34", "2 0 2 2", "i Saw LimeinSoccer penta", "WatchMeDestroyYou", "the new era", "osuer", "NOOB VN", "aleph", "cjccsqb", "lusy", "uudsibfhb", "ssdd", "trying out factory", "bo ckick R", ":b", "DarkHeart", "sd", "Bi", "ax", "23", "Ht", "rest area", "korne", "Around Calm", "duo octo", "Know", "Bruh player", "huh", "LintanR", "all my friends are cool", "lth", "Ilikefarming", "mie", "yo racingboi", "Kylaura", "HI!", "Leonard", "None", "ya", "Evaden K", "AZU", "Eating Fighter ^Silvy^", "Jeff", "elecgance", "667ifjfjijfo", "Necromancer Pet", "Vakst", "Forgor", "The Sliding Door Com", "Nest Keeper", "ka boom", "niitrooooooooooooooooooo", "mada fking", "Inside Out!", "healer", "Average DPS enjoyer", "i'm friendly", "Pablo", "Necromancer", "saffy", "Manager", "nmnmn", "Leon", "(vn)TTT", "NucelAR", "benni", "-1", "proo..", "chicken wing", "Zasriel", "Ground", "Fairy", "='))", "KSA", "DOMINATOR", "packy", "rrrrrrr", "xyz", "Gianan", "=", "VEISEL", "space", "bibi a", ":3 s", "600k is how far ive got", "u POO", "dfhdhgsdgf", "pighati", "BT_O", "3w3f9", "@@@@@@@@@@@@@@@@@@@@@@@@", "rain and fezti", "Arena Closer", "Sara", "b b/", "MG Post", "Rock", "The Truth Untold", "FireStorm", "chew 5 gum", "EreN0", "", "AI", "netherlands", "la couronne", "stone", "bello", "SUS", " OVERLORD HEROBRINE", "Chaini", "nhi015042012", "meo & sup", "tomnguha123", "uoivhhfgrryttyhj", "tyty", "taem?", "Nividimmka", "I use underrated tanks", "u stupid", "ferrari", "", "thearch.hmmmm it lurks", "i won't let it end", "college sucks", "color", "l7er max", "Duy Lee", "ugok", "Booster race :D", "im a joke", "ms tang", "ssssssssusssssssssssssss", "Elson", "BILL WIN", "Root", "el pogero momento", "I'm Friendly", "huggy wuggy 2", "wibu", "Griffy", "solo1 -1", "Like crashers", "wispy", "nice", "BUB", "X-BOX", "Gregoryelproo", "NEYONSTANK", "Closeyoureyes", "Utilisateur", "1% Power...", "SillyPantalones", "over 'GOD'", "First Time Play", "Arena Closer", "BoW", "Data Expunged", "Sped demon", "JOKER", "SIRENHEADYTs lost pet", "ggs", "hfski", "Taklao", "hack", "hi!", "karol43", "Aaa", "My struggle", "Italok", "Ghi", "Phycron", "fkdla", "dinogis", "HxD", "Battle Tank", "rt", "kral kaan", "leo!", "ndn", "222222222222222222222222", "leo! hel", "lumity", "kha", "552", "V VAG", "Windows 8.1", "'>'", "888", "mwr_csqb", "ANTI OCTO TANK", "mwrtql", "2022 SUPORT UKRANIE(2)", "thomas tank engine meme", "johnrobin", "Lostvayne", "ck to la roseanne", "Guard", "Bartek", "ww3", "doomsday bunker", "Hydra", "REVIVAL:", "Gggg", "Rick Astley", " HEROBRINE", "AFK", "BaLu...", "fux", "yes", "Raul39", " Sinbadx", "SAENG", "LittleBana<3", "TAIWAN protector", "bird said the n word", "me(duh)", "19$ fortnite card", "use this tank with me", "got 3m og save cant use", "sheesh", "Override", "Xiggy", "Saika", "jeb", "sant the sant the sant t", "uYu", "Panzer", "steeg", "Arena Closer", "i go UP and DOWN", "i like walls:3", "azuris lol", "HMMMMMMMMMMM you are L", "Murdock", "Optimus Prime", "Sleak Override", "ridah", "ballistic 2.0 fnf", "pulp", "u really like to hide", "ltbc", "when the", "Gangsters_Paradise", "Cochon", "Just Having Fun", "kavin", "Good Job Chicken", "0____0", "25m", "im poppin' off", "koral", "peace :D", "Medium tank", "dark:)", "kiet", "The One", "tilvlad", "Superchad factory", "meids", "the ruler of eveything", "GetRekt", "Nothing", "h1h4", "FOLLOW ME TO VICTORY!", "ciken", "this is the tale of", "Lera", "-heix-", "insta: 'brn.o.z'", "lena", "Ur4ny4n", "Byakugan!", "Lx1000000000000000000000", "turtle", "what tis going on here??", "Comeme Soy Dulceeeee xd", "Arena Closer ", "uirouri", "bruno", "Kaiju spacegodzilla", "haiw", "Heandy", "78d", "S. Liza Yt", "I don't need a Partner.", "CS Dulce oh ok -_-", "ninja", "CS Dulce i some tired-_-", "| AL | ChillOut | WWS++", "dragonfruit icy 1212 X4", "CS Dulce u no are friend", "i like cheese too", "Don't touch me", "look llllllll kkkkkkkkkk", "Dogs On Mars | no N", "box", "super", "CSDulce  .      _      .", "hope i dont dc", "A A A", "im your pet", "venom", "Hlp my ky r brokn", "ok la :)", "ffdf", "soccer", "(-)", "Mikasa Ackerman", "peasant", "get better bozo", "CARELESS(I care less)", "xz", "MARY", "DVS|| BuiltKIDD", "|AL|ChillOut|", "jajajaj", "Yimo (Friendly forces)", "HECool", "Just Spinning", "KermitHasAGlock", "AL| JustICE-theresaclone", "Sean", "ezzzezezezezezeze", "-Corrupt3d-", "Greg the Hunter", "hypertone", "eRAnnnnnnnnnnnnnnnnnnnnn", "mafer im sad 3<", "Nageron", "Eric.  The. Unstoppable", "Earth is Super Cool", "annoying tank", "ovMasted", "Turt Talks to Much.", "tanvik", "Here Were Dragons", "Cheese and Perfect RNG", "Mega :)", "Betelguese is Super", "error error error error", "Boomer Humor", "Violin is Interesting.", "Elite Celestial", "PROFIN try's 1m scores", "Big Poppa", "BUGEN+", "Saika/Na2/500ms+", "devil", "JACKSON", "Masher", "shuna no 6m", "YOU NAAASTY", "yahhhh", "Zephr is Mod???", "$1,000,000", "Rk", "1010", "idrk", "Calob", "It's all okay.", "fr0z3n", "TRASH", "Abrar", "c@rt3r", "pwease?", "thearchy", "Zort", "pwease lemme get 1m :D", "shush cat", "Mr lord have mercy on me", "xDer", "tennis", "ZEN", "multibxersin2tdm", "Bisax", "hhhhhhhhhhhhhhhhhhhhhhhh", "Arena Opener", "This is a Laser tank", "GOTTA SWEEP SWEEP SWEEP", "167", "Rusher", "bcj8721yt", "awa", "Ron_scratch", "Ahmad", "highh", "(O.<)b", "Op", "Tenzo", "Xlemargg", "hghg", "Legend", "PewPew", "Auto factory 19187944889", "Taha and Sardar", "Cc", "Wheaple the great", "VT", "LEGENDARY BEST", "Rd h", "GX", "maxi", "Doanh: basic win vn :)??", "bb8", "breaden", "1 cannon only chall", "Kino", "quang", "FRIENDS TO ENEMY", "NB", "hoang", "Inevitable X", "say cheese", "Anken", "gun boll", "soy sauce", "PUNSIHMENT", "Domain YT mobile player", "badog", "longvn racing boiz", "nicola", "race", "RJ", "eloxus", "kjiegu835946793", "Level  fun", "Purple2", "Hmm", "vicrouss", "GIGA CHAD", "Auto factory 37448936323", "NO ONE", "cai chua", "Spring Bonnie", "ALPHA CHAD OF CHADISTAN", "ajajajjaja", "dustnine22", "let's begin....", "DuckBatmann", "125   mn", "giraia", "Shoot double", "Spawner > Factory", "Fade", "Pat", "Kol", "max", "njs", "1+1+1+1=4 OK!!!!!", "POU 2", "morbius", "Sven.", "Prm", "Arena Closer", "no teem", "forest", "Im friendri your order", "(Tank) snowy! (Tank)", "Ur momma's", "rowan", "boknoy", "Shide", "redrealm", "lor", "-CN-", "yup", "Ahmet", "-CN- ", "JUMP ROPE 10 TIME IN ROW", "YOTTA CHAD", ".ium expanDeR!", "elecgance4", "fix performanz, devz plz", "UrBadLOL", "suffer", "Destroyer", "ZZZ", "IM AWESOME", "tHE great king", "Nafi", "micsodaaaaaaaaaaa", "Raid", "W1lleZz", "saibou", "That_Thing", "hexagonal", "Panda <3 FFA", "Koala", "NEVER GONNA GIVE YOU UP", "simba", "Crush Limit", "No pp for u", "Arthur", "kiriloid", "AZERBAYCAN  TURK", "Arena Closer", "thien5011", "Raymond bince", "not  tifo", "THE FAT RAT", "greedy", "lightz squad", "64t", "Tri Angel-Booster", "sanesytp", "wasd", "Ryland", "Fallen", "PUSH ME", "dgfdgr", "Booster join", "Dorcelessness", "obed", "soy noob :,(", "Triangle Gang", "Dont pee on the floor", "Good!", "Andy", "ccc", "Gee, thanks", "WHATS UP BOI", "aronnax", "Person", "Annie", "Mellow", "TU VIEJA", "ace", "WoW", "friendn", "kirilloid", "meme", "sacapak", "Ethad", "Da boss", "XLF", "abominacja", "doge", "I'm Real", "sprotto", "Polandbanner oo", "brazen", "QUESO Y TORTILLA", "EDI", "A tank", "bvaietd?!?!", "eda", "I don't know", "badda", "threuagnduirx 1234567890", "gabi", "pastry king", "Ball", "gab", "Catalyst", "sssssssssssssuuuuuussss", "Healer", "put Factory", "Funky Fresh", "XRECS", "mlk", "3-D Julie Cat", "Elite Crasher", "Nina", "One Floofy Boi", "Tailred", "raindog", "SPEEEEEEEED", "unikit", "adrik", "Fallen Factory", "OWO", "Caca", "orange", "Cj", "carlitos pro", "ghostly_zsh", "poly :/", "imagine spinning", "kom", "austo asa", "0 helpful blues lol", "Sandwich", "The Influence", "F for Froot Loops", "Machine Gun", "Director", "ChEeSe", "Mud Muppet", "RSN", "5th base = best base", "A Poisonous Egg", "'CADO ON THE 'BOARD", "blue suck XD", "lumos - kms", "blue suck so bad XD", "Lifeless..", "igh", "<<< Saved by Grace >>>", "agdgdgdr", "youencounterHIM!yourDEAD", "dinmor", "Jess", "La-BareTTA", "Aim(^-^)Bot", "78d pounder op", "Update me", "Comeme Soy Dulce wateer", "mafer  <3<3<3<3<3<3<3<3", "Ainnim Loof", ":)           (:", "Windows8.1 Pro Build9600", "a spinner", "FAIRY", "Better Than U", "Eesti", "sssss", "Friendly Elite Crasher", "MAICK", "EIDOLON", "cx", "YO what? bro im out...", "Rest", "TheHero383", "Swohmee", "Swohmee: HowDidIDoThat!?", "pet brick", "houses", "SIUUUUUUUUUUUUUU", "S45vn steel op", "Astrageldon", "ijklmnop", "afk leave me alone", "Anti-Hax", "protec me pls", "Gonials > Bird", "Jachris", "Aj is dumb", "code master", "MONTER", "kase", "JaredUwU", "devon", "kase is good", "spider .,,.", "lily the pad", "Arena Closer", "Gorilla gang", "Alejandro 22", "botanical torture", "Egg Spawner", "ghhhhhhhhhhhtoast", "Chungus B.", "Maksim", "Enderian Overlord", "eef freefzz", "Little Timmy", "Flashbacks", "dread", "ffa till 1m!!!", "wuzz buzz chuzz", "percy", "Space", "kraken", "BR PARADO", "Sry m8", "Chobblesome", "yee", "gtrr56e4e5eerer", "ELITE", "Krystal110607", "Survivalist", "Kalijia GG", "Kalijia Let's Peace", "eeeeeeeeeeeeeeeeeeeeeehh", "coriander", "Mat (Bocow)", "SIUUU", "bro doesnt have a life", "your tail", "eeeeeee", "<call me", "Numb The Pain", "hi ;)", "pierre", "the quiet kid", "nom nomnomonm", "ggggg", "Adventure", "notable", "777 ////. ./. /./-.---77", "PowerPoint", "FALLEN BOOSTER", "Ecxel", "ye", "LIBE", "bukaka", "notlazar", "errora", "ManiaC", "NobodyIsReaching500K>:(", "pescah", "fvha", "pesca", "Innkeeper Worm", "Blarg", "=ZZZ Bannanas Are Yuky =", "GRRR", "Try Thalasin Today!", "Thalasin OH GOD HELP NO", "SILIKA", "Fallen Auto-Tank", "SYSTEM", "is op on siege mode", "G vytvyv", "guardian", "ya mom", "Lorain", "A br stranded", "matew", "matatoe", "dante", "Maize", "Arena Closer", "Ouake", "khe", "i only farm", "DESTRUYE SQUADS", "let's go!", "no pressure", "Manoso G", "Indeed", "Lets be frands", "Bunzo", "vyn", "ok so...", "haha", "cooooooooool", "Ye boi", "Quest", "GOAT", "kool", "8hu", "bryan", "Aadhy", "Basic", "Eleanor", "OXZ", "speed", "az", "ura bot", "78d 714k bruh", "Partisan", "eli", "fwen -w-", "Death", "Hewwo :3", "Stalk Is Actual Pain", "fdfdf", "extreme hapiness noise", "begone", "Apex", "Wynder", "oof", "im watching you", "chill", "p", "-heix-", "Savage xD discord?", "crocty gets 1M first", "iv vs 3", "im bored", "ERROR windows xp", "(B) Wehrmacht", "FRNDL", "Lonely :/", "The N2R", "qqqqqqqqqqqqqqqqqqqqqqqq", "sven", "phi", "Uwu", "P", "Mushroom", "1MiL", "stinky/ gg jax!", "bay sorry.", "ツSpazeツ", "Mine craft", "nob", "/:", "Legendary", "vinh", "Moragull is JOHN CENA", "A-K 8000", "CorruptedPenguin", "C@t has C@p", "Stealth Tank Delta (STD)", "I WANT A HIGH SCORE", "tim", "UltraOmega", "PPPIIIGGG", "shark bait", "nek minet", "g'day mate :)", ":_:mx", ">=<", "run", "fire exe", "The Best Player", "susicoi", "Nerdy Ball :)", "cor", "Defender", "SlowKnife", "1+1=11", "my", "HUNG", "Deep", "Emilnines", "lol:):):):)", "Orca", "the legend hero", "/donotello/raider/", "YT=GLITCHER TM", "Jagdtiger", "On mobile", "The General Lee 01", "TeSt", "The Palidin Tank", "DaRk", "0jgojettreedew089", "ghost", "213", "twan", "Spectator:)", "uywu", "{}{}ALEX{}{}", "daniel", "Sol Blaze", "poly gone :D", "im 100 years old", "Re Fachero", "Blumin", "jhonny", "supreme", "D0M1NAT1NG++", "SAS", "Nailguns HELP!!!!!!!!!!!", "Arena Closer", "darwin", "djbd65", "JustLurkin", "im sorry", "race with me!", "on de xd", "Paladin-Celestial", "russia", "CHN fed", "sj", "13isaluckynumber", "i suck", "ah, but u cant see me", "a mongoose", "rae", "Z", "323f54", "lev", "Ultimate Dominator", "WWZZX", "Goku drill", "laffy taffy", "good luck", "EpsiCron", "Eye Of The Sahara = City", "Shields and Guns", "Tester BT", "outrun my gun", "invincible man", "Necromonkey", "HENRY      ANOS7", "TailQZ", "PPANG", "Tester", "a sentilen", "Jhon the nub", "arrowz", "Annihilhator bravo 1m po", "just boone", "hybrid", "gg gmzin", "we do i little trolling", "Jorge", "NgocAnVNA", "Sh l", "DUO MONETER", "Coapc", "timi po", "Why Buff Factory?It's OP", "Storm King", "Enter to the Dungeon", "frrrrrr????", "shutgun", "debris", "NOE BODY", "Dr pizza eyes", "Protect me", "How to get you", "sit", "Caracal", "trashmxnn", "Cat", "Angel", "baLu is kinda cool", "Tanky's 30th 1mil?", "i need a pee", "josh", "ggs (1m!)", "fed", "(Ai) bot", "hijo de su putisima madr", "slowpoke", "NO IDEA", ">_>O_O<_<3456", "hi saya", "ryuuddddddd", "Random Guy", "vn nha", "Just a Spectre", "manoso", "joshkidkid", "sg", "TON | 618", "mogerath", "vc landmine", "worst impact", "Ma$t3R=No Ski||s", "aajlrtgtrtty", "korea no academy", "Behemoth", "VN TOXIC", "dh_hniV", "no vn", "bruhhh (vn)", "1M=100M", "frrrrrrr???", "ggh", "lakf", "imscared", "Wow", "(<(:)>)", "STOP", "Tale", "Leo", "!^_^D0M1N4T1NG^_^!", "vortex", "blue", "Sr. GT", "eat my bullet", "fudgg", "RATA INSANA :3", "Find Me", "PHRENTINO", "bro follow me", "Xyx Wdtcfgzezgk", "fencer add me on disc", "super shock", "GGui", "Rafael", "moblie 1.37m siege woo!", "Surprise Surprise", "king pug", "Emily", "Hm", "Marchin Through Georgia", "Aha!", "huff", "jummer", "bixent boo", "Bao", "AAAAAAAA2A22222222222222", "uhyi", "press u", "HI Yoou", "aaaaaaa1", "LMGshooter", "1922", "-KONZ-", "Waloh", ":(((((((((((((((((((((((", "obyness", "BaLu", "Zod", "spin=friend", "Ashes", "the UNTIMATE DESTROYERb", "MYLEFTBALLHURTS", "Xh", "ravi", "sorry sorry", "ZasrielDreemurr", ": )", ":?", "TaKE LOl EPIC auto 4", "Shankerith", "Hunker down", "!!!", "being afk", "TienBach", "fun.", "Zzz", "Annoying", "Juna", "new player", "Xander", "duda", "ppoppoppo", "One of your pets", "kolibri", "panzershreck", "EwE", "Deus ex Machina", "Pilav", "berd", "NO your mom", "1e+999", "Cristay", "nuiw", "UHF", "OwO", "PandaNa", "nnnnnnn", "Energized", "Cirrus5707", "Ferge", "not boster", "shuna wakuwaku", "Rongomatane", "press n to level up", "bubble shooter", "Turret", "super pro prot 4 you", "45453", "Despair", "Ho Ho Ho", "Y.S", "Arena Closer", "john", "96", "Auto's power", "2 Booster = Fun :D", "Press C+E: Octotank", "you were so mad", "Sky", "need protector", "Great Bydgoszcz Reich", "superman", "ridge", "hahaha!!!", "HELO GUYS", "vyey", "Vinaphone", "hiiii", "ZERO", "el epepep", "T   W   I   N", "5252525", "121", "iar", "avex", "Taboo", "since 1986", "meow", "AUUUUUUGH!", "xtrw", "On Mobile", "PRO123123123123123123123", "Kira", "gray", "eeeeeeeeeeeeeeeeeeeeeeee", "StUfFy_ChEeZe", "????????", "4th Form", ": ) ha ha", "OL Impossible On Mobile", "1v1", "BBoRRaBBiDDo", "hu", "pp", "slow but friendly", "vn", "loler", "Atumkj.", "fast boi", "MYRIGHTBALLHURTS", "1111WW", "odszdc", "Withering", "eafscx", "eeeee", "Sudu", " sub to", "T-Chan 13", "|^Robo-Birb^|^Silvy^|", "Korea :D", "Sidewinder-firebolt", "asdasd", "Agent Sauce", "vinud", "1 + 1 =1", "Xqaris", "WatchMeDestroyYou ol 1v1", "builder", "nnnnncaptiann", "Gawr Gura", "WatsonKong", "yx", "aewrsd", "Mmmm", "...VN", "REVENGE", "Mwoon", "turbo bro", "Hiu VN", "FF9JesT", "Fallen E", "hgdgt", "Fallen Hybrid", "SORRY..I'M..(vn)im so :(", "yaaaaaaaaaaaaaaaaaaaaaa", "supperlenny123", "The Underspeeder", "Anime", "AntsAreCool", "king of ...", "ghgh", "arslan", "I see", "chicken", "dkd", "777", "Engineering", "Push me for barrier", "oop zeros", "Mini moving safe zone", "goku", "fgg", "Jagdpanzer IV", "()UTi6", "zaq", "USSR(Russian)", "Stocxk_", "the things we do to surv", "asd fake", "HHH", "Swooper", "ayo", "hara ...", "ya YYYYYYEEEEEEEETTTTT", "Kyrie o.O", "Updog. Dying Breath. 2", "WHYANDWHY     Y_N_Y", "hara )))=", "I'm Q", "-Monster-", "Anak", "Mine says hi fake anak", "the sky", "Master Noobpet", "Viva", "maze", "oompa loompa", "Egg'in", "f(x)=k", "go to 10 mil record", "Trying to be peaceful", "Tunnel Wanderer", "Boop skdoo bep", "The Beep MAD>:(", "Speeedrun 200k plss", "The Boop", "Kaiju you", "dragon sleep no brakezzz", "kracc bacc", "24686872678", ":", "OnovonO", "Arena Defender", "Arena Closer", "naga", "asdfasdfasdfasdfasdfasdf", "Ace", "Pkao", "insta 'brn.o.z'", "aswon", "sodbazar", "The Hybrid", "aswon(ur bad)", "Troller", " nothing", "IKEA Box", "Vaskrano", "Si", "A+", "the beep !!!", "A+ Yeah spin", "Dr J.I.D eyer", "xijinping", "shheshhh", "pRo LiFe", "AZERBAYCAN  TURKIYE", "Just Existing", "3.14, 1.61, 1.41", "Ozymandias", "ok i pull up", "funnylemon", "TURK", "1212", "Learn with pibby", "LUKI", "happy mafer <3<3<3<3<3<3", "Seer", "mkZZZ", "niwa niwa", "nhan", "1223332111111111112321", "Arahana", "The Robot Kid", "vokki8skand", "Turret LV 1", "AQEEL", "AnA", "yahya", "ninjin", "Soulless", "EMO", "1010971", "pokemon", "VN 3", "alright buddy", "FR|Fajro", "Walorried-TR", "abuk", "Dead server", "Arena Closer", "zae", "zeraora", "imnew", "elecgance404", "heck", "Tomi", "SPAS-12", "tran duc hieu", "GGuisa", "viwpo", "BERD", "Blocker", "bcr", "come with me guys", "ehehe", "rule.txt", "big chungus", "t. food bc why", "lk;k", "SERIES 113 JAPAN", "sir bobybop", "G1019_t", "grendel", "andria", "VousyX", "LAINofLAIN", "ferge", "vilad pro!!!!!! :)", "Ali", "xzxz", "This is the tale of FFA", "MIKKEL ", "knjbfhiu", "Raknar", "free fire", "The Unknown", "Motar2K", "drifting", "OrangeCat", "Ddddd", "hi long tri", "some random oreo", "WEEEEEEEEEEEEEE", "speedrun", "DatBoi", "Michel", "71", "jacquie", "Exendern", "Jack Daniel", "Bob le bricoleur", "=W=W==", "ft. Karmatoken", "Arena Closer", "stfutduy", "vaboski", "HAAAAAAAAAAAAAAAAAAAAAAA", "alsterercrak", "The Big One", "Sorry", "JzF", "ZZZ ZZZ ZZZ!", "hey moskau!! moskau !!", "EL TRUENO PRO", "<3 Doreen~", "tokar6", "nho", "Dusk Defender", "ooooooooooooiygf,fss';", "Wa Sans ashinenguna!", "aeaea", "nothing's", "the  best PEOPLE IN THE", "4/4/6/6/6/6/5/4/1/0", "Kazakhstan", "starlight!thunder!", "Mr D", "protected", "Uncle Iroh", "><II  gg", "dssfb sk", "Roly poly player", "jonyy0814", "KOREA", "1 min", "Winter", "zaid x", "Will join me?", " lucas", "MATI", "xDer MY FiRST 1M", "Seig", "oopsie", "nhat", "DAN GYUL", "Claire", "567", "stalker", "kotetsu", "124", "DraXsaurus", "My 10th life", "bhosdike", "sjw", "Karthik", "hhhh53535", "ciao", "sumoga", "brrrrrrrrrrrrrrrrrrrrruh", "jony0814", "rubyslime", "Yuvyyuy vyu", "Sppooky", "THIS IS INSANE!", "Bozo", "hex", "EJIT", "+S", "RENGAR!!!", "Nelly", "sadf", "UNKNOWN LEGEND(UL)", "hi im friendly :)", "llllllm", "Jekyll Why", "AL | 2 Week No Play", "Protector", "{o} Liza <3", "toothpaste", "sasukeuchiha", "ricegrain", "Deed", "vikitor", "fIrEbOt", "Machine gunOP", "mini", "Nice~", "quant2345677", "Oxylit", "totie", "hhhhh", "scx", "Ayrton", "LETS GOO", "Izumi-san (VN)", "Panther", "meckazAN", "men treibe", "never gonna give u up", "never gonna let you down", "never gonna turn around", "Arena Closer", "never gonna let u down", "yeahs", "Ruan=_= ", "Panzerfaust", "emp", "Tiny", "THE BIG ONE", "The Ranger", "DuckBatman", "Hatsune Miku", "ara ara...", "Basic Enjoyers", "hhfggddfdf", "The Mind Flayer", "Dance", "Ar 15", "XSET", "Milton Friedman", "Mr KaRbS", "Duong 20712", "playeur", "<======Lasi======>", "Mardi 1", "Ethan", "fellen 0", "Venom", "-_-Aigle Royal 72-_-", "Alt+f4", "swrmur op", "Bean Man", "atomic", "Annoying drones", "Colors all around me", "okey", "GIANNIS ANTETOKUMPP", "it's a lie", "hy", "pc", "mustard the rohirrim!", "Kingdom Hearts", "Mebh", "Dr. Eggman", "Choose otto we stronger", "protectsage", "pov:u need 5 prot for 1m", "TR Angela", "MadCroc", "sage", "robo cop", " weirdo", "Shiny Triangle!?!?!?!?!?", "Gem!?!?!?!?!?!?!?!?!?!?!", "blon td siix", ":: Saved by Grace ::", "maze runner", "MadCroc 1.21mToday", "be free", "Carry", "I JUST SUCK", "gemgemgemgemgemgemgemgem", "ur all bAAAAAAAAD", "Spin = Free Protector", "HELPE ME FOR HELP YOU", "Rosenrotteneggs", "Mr. Lord", "PFC|| KEVYNZ", "Hybalixa", "hows your day", "b I protected u before", "awootube", "there", "Julia", "seve", "Arena Closer", "hguyuthg", "hop", "i go high", "the return of chewy pie", "Jerry", "mf yeezys", "King Hans", "sven drop", "I Voyage Around Map", "biggest noob", "dog", "IM SUPER RETARDED!!!!!!!", "The End!", "Engineer Army", "lolnub", "Salt", "MOAR OCTO TANKS!", "KN-23", "nothing", "sonic", "Nirviar", "asw", "dom is easz", "sghhgsfhgsfghsffhshg", "Jerry - LOL", "server", "D4C", "BigBrain Time", "player 8483", "Turkey", "Deve", "LintanG", "STPSPMMNGSNPR 64M3R_999", "PaX|A1ma|YT", "kaan", "afes", "ly", "ulan", "Purple", "Hahahahahahahahaha", "fahrradsattel", ":('", "he", "NoSpeak", " lu", "Fugitivo BR", "Crossboi", "Noob", "Gabriel8", "pinkie pie", "Wowkoks", "Zweilous", "oui oui", "asian kid", "top mozis xd", "Kofolka", "AcidRain", "a shield", "glitch tale", "Crong crong crong", "!!!!!!really happy!!!!?", "(vn) :p", "udhe7f", "phil", "Mort (pc)", "askib", "jygghhjj", "Last remote", "tttttttttttttttttttttttt", "asddasda", "LIGHTNING DRAGON X 96", "Minimal", "jelly", "Your Mom", "Peaceful", "respect women", "Darius_575Pro", "csabi", "7859", "tenk", "rayyan", "Fei", "Pango", "eeebot", "giranha", "spirit of the forest", "dark", "pro player", "Yeat", " %<AzEr<%", "notPickle", "Reflex", "Me", "Stalker Army", "Qin", "Predator Army", "NYADRA'ZATHA", "Roaster and Toaster", "CSDulce im boring :=", "Szymon", "es ta la vida que toca", "@RAFAEI  PR0", "$:$gc", "Suomi", "spankthemonkey", "KANG OF WAKANDA", "Ark", "tiny ones my friends", "op xd", "fence", "III", "GPA", "Bonaventure", "witherrrr", "mahiru shiina??", "(B) THE RISE OF THE FALL", "mahiru", "May I Fuq You?", "ID", "trying for world record", "75882310770", "PressNToLevelUp", "Dont TaLk 2 mE", "Do Not Disturb (oops)", "Wyd_Josh", "Pentagon protector", "tri-angle is paccific", "Good", "Do Not Touch Im AFK", "WiFi-Kun", "Bullet Bill", "pentagon protector", "%<AzEr<%", "PROOO", "ice tea for free", "Waiting", "busco pareja7w7", "agabaga", "SOLO AGO MI TRABAJO", "necro pet", "Kael", "Trash Anni", "Sev", "wypk", "G.A.P(MG)", "nokia", "Twin-Twin", "bronzzy", "Guy", "Ytt", "Ayman", "Zyiad", "Ahmed", "the general lee", "a littl' bad", "Bonk?", "SEBASTIAN.", "aIIan y sonic", "bigchad", "N05O7G", "Tengen Uzui", "Prees N", "tree", "SPILL THE BEANS BRO", "Escort Carrier", "HEEHEE", "X_DROP", "XboxUser", "55564", "porscheHUB", "Tenth Circle", "Spectator (dont attack)", "summoner2", "sentry", "The Covenant", "Storm", "itachi", "Only 1 Factory Can Stand", "TOBI MARCH", "Come Back Here!", "Spider cochon", "Crash And Burn-Dayseeker", "Clearing shapes...", "BOONE!!!", "tr ndxd", "lurker", "SONIC GO FAST!!!!!!!!!!!", "Covid 19", "tar tar teha tar sal-t", "Ray of doom!!!!!!!!!!!!!", "lautayo", "Herobrine", "let u know", "Peace and Unity", "kelly", "wingarr", "aIIan", "SEBASTIAN", "Sonic.EXE", "fghjijb", "the all seeing eye", "blitzburger is pro", "trust me do this", "Beans", "qwerty", "lucas", "Domb", "Kronos - Eternal", "45a,i", "unavaliable", "happe", "Racing?", "Buyandeho", "Mobile Not As GOod", "Arena Closer", "Ok Ur Done.", "alex", "Siren", "Defenders of The south.", "Ok Ur Done. Again", "ssad", "SAGAGH", "dwada", "Says Overlord in Green", "Wolf272", "Sry had to go afk", "WerestLuck", "press t", "corner base trust me", "nah i", "FIGHTONTHEHIGHTS", "jaxon", "Dark Pheonix", "porfavor venganxcadddddd", "Toxic", "iurgitues", "lolstar", "harnesto", "koby", "Shiny Beta Pentagon!?!?!", "Everyone Go MachGunner", ":3 hi", "GREEN Barricade", "oo i m friend", "ASKED", "Xtrem", "NopeTurtle", "porfavor vengan", "Chompy610", "Drones are gae", "Penta takeover", "one of the players", "Avenger!", "Sleeping Quadrilith", "dewfew", "king bob", "one of the newbies", "Spectator", "Fistandantilus 39 AC", "BIG POPPA", "diana <pleayr>", "Really:D", "Kenobi!!!!", "arias", "Arkaic", "i have sponks :)", "jor", "Arena CloserSinx :)", "ALL GO BENT", "Evades 2", "freee", "76...", "rigeeS", "Arena Closer", "ZEB", "koten-", "green", "little one :D", "Factory Takeover", "PRODIGGY", "Scratch", "1% Power", "Thank you", "OTD", "pet lvl 30", "world's best anni", " DONCRAK", "gnghfiukfhfj", "MASTER", "mi(moblie)", "let be friend", "defenders", "father landmine", "overlord takeover", "Bloop", "ayy", "Fighter", "W.A.R", "robococ", "TEQUILA!", "As lc", "ezz", "xQD", "AGUST-D", "USS Enterprise", "Visitor", "Wolfy_11_BR", "jonas", "Takeover", "Fall Guys", "momo", "ChickyNuggyCat", "today is christmas", "NotThebest", "NO ONE", "secks", "Overdrive", "Seb", "Machine Gunner =best", "Yevery1BetrayME:(", "Nathan_1", "Tickflung", "323f54", "boone", "ALAN PAPI", "Jikang", "lenin pro", "hydro", "Toxic sugar", "M.D", "gart", "wall", "Arena Closer", "grandmas ashes", "Eat my Doritos!", "No no!", "mr.cola", "Tundra cat", "AR", "david", "nnnnnnnnnnn", "study yo orgo (chem)", "Death Is inevitable", "Stuck", "dragon", "droplet", "HI  you mom is here", "Zeezees", "necro", "luchi", "rp - on mobile", "bored rn", "Pandrian.", "master", "Lightning", "CLEAN", "arisen", "raaaaaaaaaaaaaaaaaaaaa", "3k", "qusimocho", "Trolling Me :(", "weak tank", "HunggVn", "Touriat", "use adblock please", "Q", "Arena Closer", "I'm_Chris", "fvdr5", "bman", "skrill", "royce", "Star", "QQQ", "MONDAY", "armtumroom", "Ssunseer", "duji", "ryy", "sanggggggg", "hai", "oty", "148 toxic", "no mouse", "232523", "h..hi :S", "vvn", "sire soral", "frost", "btw", "lqkf", "Senator Armstrong", "Vn hi", "Fake.Fake.Fake", "molkin", "lEFF", "notsudon", "korean", "Henrystickcmans", "crongemaster", " dyllan", "A Goat", "TaKE LOl EPIC factory", "TaKE LOl EPIC machinegun", "Tiny Celestel", "asdfasdf", "BF An", "cooper", "Unwelcome School", "EtRNInja", "supernintendo meme", "15 fps player", "Day, day, da-da-da-da-", "i will download osu", "asdfasdfasdf", ".jpg", "Arena Closer", "kkj", "pet XD", "matias", "MAY BE HAPPEN", "heeeeeeelo", "BIG BRAIN TIME", "Koronoe Chan", "BOOOOOOOOOOOOOOOOOMM", "not the guy you just saw", "shark", "The Ghost", "get in wall", "o.o", "hara vi", " ElguerreroHastaElfinal", "literally the changelog", "top", "Minul", "Trutch", "Eternal Guardian", "JOSHUA", "End", "TANK", "531714", "senbonzakura kageyoshi", "minhhihi", "LUMBRE", "HEy Im frendly ;)", "just joe", "BonaventureVT", " i look into ur soul", "Teddybear", "Overload King", "alone", "peter", "Russo-Baltique Vodka", "Don't Let's Start", "nice one", "I Will Give U My Points", "toeless_monkey", "GANG", "0=IQ", "super booster", "seperate", "Prograde", "what does reload do", "Kevin Heckart", "CAVE- CE", "happy day", "Void Fighter", "race me?=Support <3 Bop!", "I'm protecting you! Sort", "hara- XDDDD", "Peacekeeper", "stares into ur soul", "Can I help you today?", "fdf", "Friend", "AYOOO", "odin <:)20", "Arena Closer", "Respect", "DontJudgeABookByItsCover", "OAO", "3vs2Ol", "Trinity", "yuan(A PENTAGON DDDDD:<)", "NO TIMMING", "wait in doing some work", "New", "Spin=peace", "retnuH", "Wall Protecter", "MUSTAFA/TR", "the deep", "CAN", "definitely not mq", "imbad", "Huy ;-;", "Gosu General", "Klair", "Ugly Beautifulness", "Dexter playz", "All Dead", "run  {ANGRY}", "VN.HM", "555 }{", "foon", "WHERE ARE THE DOORS", "toilet destroyer jordan", "No doors no fun", "Rico", "Giann", "SSS", "floppa", "Dominador", "ttttaaa", "ltester2000", "roberto", "Directors are Overused", "OverBrain", "Celestial", "HUH?", "Deepr", "Steve", "mathias", "1410065404", "ShinyG", "miguel", "yoyo", "subin", "Pega(SUS)", "cracked", "Arena Closer", "NO BAD WORDS", "PORT", "tale", "triangle drones = nolife", "TargetLocked", "Directors Are Overused", "(GG)", "qwe", "DUMB", "crocty poo", "creeper", "i just want shiny shapes", "Tommy Gun", "Your Mom is overused", "Overused Vibes", " jeje.2", "SONIC.EXE", "Planet", "-.-Razoix+?>", "Happe", "exc", "seensan", "cronge", "overused is overused", "Give Me Underused Vibes", "Extreme Speed", "j bert", "PARA", "Alan", "Friends?", "git gud", "Giant Justice YT", "yOU HAD YOUR CHANCE", "Jacob gomez_Jadenian", "mega monster", "Giant Justice YT - GG", "schrodinger = loser", "reaper of souls", "111111111111111111111111", "hostile", "ryuudddddddddwdw", "nononononononononononono", "Rocket shooter", "TTCBernard", "you deserve this", "raku", "why me???", "Rose", "top 1", "-KhangWasBroken-", "Uouuuuaju", "Fighter tank", "Solar Fighter", "sqrt_-1", "(<(?)>)", "du hund", "Ben", "A polygon", "AVIRA", "A.T. Beerful", "QER", ".exe", "GHHGR'986452|", "ck to la roseannenn.", "Orxan487", "zzx", "Clink", "popoi", "reicardo avocasde", "Doraemon", "Bandu", "oofoomode", "Sneaky annileatter", "Lofi", "Cancel Those Directors", "LeaderboardAllDirectors.", "1M + StormMachinegunner", "DR. BEEEEEEEESSSS!!!!!!!", "BH_FireFreezer", "frjhjhvt", "The Beast", "S u p e r", "Nice:))", "kdk", "Legacy", "jz", "ded", "yuco", "like", "rei", "atleast spare me till 1m", "Arena Closer", "Burning eye ;(", "Petsalt VN :)", "~|{boss fight}|~", "Reb", "mahluktakkasatmata", "EEEEEEEEEEE", "LowKey", "Praying for Winter", "tinh vn", "Phat", "AditGA", "cats nya nya ;)", "On the day you left me", "into my head", "CThanhYT", "NgontoL", "spin = friends", "Expand: 8(5y+88)", "Baroydroyd", "fewillos", "poper", "149 toxic", "The _________", "rsg23", "mwmwmwmwmwmwmwmwmmwmwmwm", "msalqm", "thx ", "150 toxic", "crescent", "dark karma link:wc2100", "NobleCrafter3219", "O K A Y ( ^ 3 ^ )", "egvda", "dark karma link:wc2118", "Gemma", "link ...", "DANGG", "This is the tale off", "Heeh", "The Fire Club", "c.ew.11.1.11.1.11.1.1.11", "pro is nood", "Random Tank", ":P", "Super Sonic", "Thai dark", "dfdfdf", "syron!!!", "strong tank", "main menu", "oblitereight 1000 ms", "its me pekola", "plungebob", ":(:(:(:(:(:(:(:(:((:(:(:", "ssd", ";kooo", "Kozuki Momonosuke", "SDASD", "Ha...Get Rekt", "be", "Wew", "321", "}{ex", "via", "Save The J'S", "ms. cold person", "FwgKing", "AnythonJS", "Theo", "BOB", "Mustafa", "dm", "Cgfsd", "Help", "{CHICK}", ",mnji", "<op>1", "SharkBuger$", "ATM", "Nining", "NEO ROY NEYEAH NAH", "Haunted", "Fireworks!?!?!?!?!?!?!?!", "Minhaaal", "Bobro", "YUU", "bob xllnnnnn", "Ailoki", "exu boi", "XYZ", "sus.", "star kirby", "Machine Gunners, unite!", "5min+5 overdrive", "Newsletter", "Meletiscool/", "allmyfriend.aretoxic VN", "Pet", "ivoree", "Twin Pro 3/3/4/7/7/7/7/4", "ka yawa", "SIUUUUUUUUUUUUUUUUUUUUUU", "ClosePro 2/2/4/7/8/7/6/6", "Snap ( Peace)", "???(vn)", "noob123", "Militant", "Banana", "fffffftt", "Hoi", "Ready For Another?", "Bossy", "ewltjdwns3673", "sa", "Don't worry I'm harmless", "freakshow :)", "aeaeae", "falc", "king4a", "ddt", "bangladesh", "Exterminate", "vIVIVgREYdOVE", "105050", "HI Youvn", "how? what? why?", "sdasda", "PYTHON", "lo hoc hanh", "who want race", "Arena Closer", "Xiao-Ling", "top 1000s", "A_C_L", "A flower tank", "Jash", "KRYZ", "Speed Build", "Tia", "Ha!Get Rekt", "hiboiXD", "Pro of ............", "vvv", "Rare", "draco", "Disaew", "Let's work together!", "iar chary", "Aqua", "Tgvy", "Ihv2010", "ASDUA", "Arena Closer", "chase him", "Nothing here", "Schwerer Gustav", "Dedeeeee", "Firnas", "yolo", "Psychic", "PLSSSSS FA", "mercy pls", "ur Being Fed", "FedEx Box", " not anak", "spinnnn", "proo...", "nn0", "the drones do not hurt", "Evil AliExpress Box", "Police Divo <3 XD", "pls Im friendly :)", "ldldl", "Like dat", "ytwjeit6tty", "UrBoringTbhLikeWhatsUrPt", "B(sian)", "bandit", "UnKnOwN", "TechnoBlade", "alien", "1934", "YoXieO", "why maze", "/donotello/", "Corrupt and dead.", "MAUS THE LEGEND", "WHYANDWHY     Y_N_Y", "GET MORE PEOPLE", "Bong Bong won't help you", "Pock", "CROSSIANT", "piece treaty with newbie", "too fast dident even get", "D A N I E L  bad...", " ryh'lrfh", "LEOPARD 1 WILD", "ya nos cargo la chingada", "Rainbow", "sssssssssssssssssssola", "lol darth vader noob", "AL| JustICE- sry luna", "Social Experiment Part 1", "Mercy", "take your time", "HI GONIALS", "i see who you are", "Cz Player", "Jap", "yeah yeah yeah yeah yeah", "Red Just Bled", "pounder", "eagle T", "Pet :D", "here to make friends :D", "Derniere Danse", "(Huggy wuggy) im nice", "PT5 | 03-04", "A Cat", "Skull", "PANZER VIII MAUS", "super perfect hexagon", "Rice", "protect perfert heha gon", "erf", "cable!!!", "PT5 | Tezerr", "Hi ._.", "WAAAAAAAAAAAAAAAAAAAAAA!", "xtrem", "eben", "1354", "far", "SOOOOKA", "alcatras", "mini boss spawner", "Arena Closer", "Eauletemps", "Aik", "BLITZ", "sinbadzx :)))))", "press n", "boom", "le tank", "dc yok bend", "Shay", "Solo :>", "Thunder", "best sentry", "dumdum", "Patterns", "R M", "FGDERTY", ":>PTM...''", "melee is better", "tmi 88>:?", "oooooooooo", "ffhfghu", "uuuu", "Acheron", "llol", "(vn)", "Zombie", "jellybEab", "4TDM", "pet", "ae vn", "Green Defender", "COME TO PLAY FLORR", "kr", "da", "dai", "USS Vella Gulf", "No One", "hus", "Let's work together!  N", "UNKNOW", "w r e c k", "Pobbrose", "belal abbasi", "Charles 18th", "Sir Theodore", "Arena Closer", "Hey What Happened?", "Mr.sod", "Graziani", "Ricsae", "'/;", "Anti celestial tank", "quandle dingle", "Eren noob you", "have fun crying eren hah", "MaiLotVNN", "A  l X back!!!!!", "np", "eeeeeeeee", "KHOA", "(:cai chua:)", "yulzzang", "boop", "Crazy", "MEGA MSC", "lyxn", "KarmaToken", "youssef", "LazerLOL", "HI  Five", "vvva", "GoGe", "Skawich", "Pixeljumper", "GALAXY", "Ppp", "crasher", "Min ye", "Arena Closer", "zen keon", "nzhtl1477777777", "Be Sidewinder press khh", "Indo Kok gk pro", "_blank_", "7151", "just", "tjplayz", "halo", "e5 y5gcv", "ds", "sdasdsssssssssssssssssss", "super tank", "BJ", "||H|E|L|L|O||", "swwsH", "||P|L|A|S|M|A||", "Blob", "Destructor92A", "catch me", "Coke cola espuma", "t. this green is glitch", "nhatbun", "You saw nothin", "cool dude", "Mr King", "THE PHONG", "Peace Dog", "DARRREN1407", ";D", "trust me", "2345678", "Apfel Saft", "new up :D", "Minerva", "12iiw", "Just aj", "UBER_TANK", "patata", "Minecraft", "Master of dying", "mommy long legsq", "Eauletemps why?=(", "sfdgfsgsfg", "U.A", "ze", "Eauletemps 4V1=noobs", "Qwerty", "doublade better", "sunkee", "MINI ON A LAPTOP", "snorp", "TOGESH", "GWiz", "sinx7", "Mon A", "Kartoffel", "t. green is glitch", "Nxoh", "Michael Jordan", "technically octo tank", "thick", ":cai chua:)", "Gabe Itches", "you can't see me", "TOXIC", "neph", "honesty Spectator", "Injoro", "E1", "your mum", "everyone sucks", "Charge with me/defender", "try me", "pheo", "uwj", "floofa", "Getnoobed", "test septa", "", "Pizza", "U Only Run To Ur Base?", "seb", "Maddog", "huy vn :D nhu loz", "Arena Closer", "Chicken KenChicken ken", ",l,l,l", "Comet", "Zhynt", "christopher", "The Mandalorian", "TomaToh", "tntman", "Tim", "spayer time", "piffermon", "Spectactor", "yyyyyyyyyyyyn", "left for dead", "iiiiiiiiiiiiiiiiiiiiiiii", "Pog", "BV", "burh", "ralsei with a BLUNT", "PROFIN 1000", "my guy", "Life is good", "pe11", "qqwqe", "0-=", "opp", "Panz3r of the Lake", "train", "furan", "Flawless_", "Oni-chan UwU", "Es3et", "Clorat suotn", "UNKNOWN LEGEND (UL)", "DEFENSE", "Rykav", "TYRONE GONZALEZ", "KarMaN", "urgh", "deffer in tanks", "rick astley", "BERSER", "WHY ARE YOU RUNNING", "booo", "WEST SLAVA UKRAINIA", "yups", "DEMIAN932", "THEBESTPLAYER", "8man", "Use machinegunner to win", "26317125   gff", "Joe Biden", "Nv Proxy", "Ethan david fernandez", "kbshlong", "wren", "(Very) Dangerous Pet", "police", "NEMDT playing shmart", "HEXDECA", "run.", "W", "sad", "try harder", " -_-", "a little bit of fun :)", "kendyl 1", "Ar-15", "Ha Ha Boo", "zay", "Rrennitten", "Monsia", "agus", "you dumb", "dino run", "Blood // Water", "Paradisal", ":O", "gulbos gulbos gulbos", "Dernier Danse", "La Espada", "Into the Light", "Planetoid", "...    ????", "swimsuit", "HEYYYYYYYYYYYYYYYYYYYYYY", "Q_us", "nom", "sentry strats", "josh how play?", "TheMadLad", "TheMadLad dylan strats", "THE LEADER GOES OUTSIDE?", "Eauletemps spin=screen", "Out of the Dark", "Lotus", "defender V2", "mmmmmmmmmmmmmmm", "TImmy", "ICBM", "animal", "Tezer", "Zver", "sindBax", "U2882JHS", "781", "Zorroooo", "I'm not bad", "IM WITH STUPID =>", "Miggy?", "sophia :)", "ImNew", "YoXieO_YX", "a pet", "TBB", "AICIAGOGH", "YANLUI", "facts", "XL", "DragonGOD64", "eys", "To Bee Keep", "VENOM", "pvto si lo lees", "grace.", "Speed", "289j", "A player", "cocomelon :P", "build wall :)", "Deino", "9902774653772", "Timmy, do your homework!", "elite basic lvl. 45", "MSI", "Make circle with Tri twi", "Message: Friendly uwu", "M4a1", "heist3", "Big Beep", "i like cheese", "Im weakest tank", "utifi", "jsohi", "cheese the best", "DOG", "cope", "F  A  M  I", "Little one <3", "Zoro", "DarthBader", "Mr.W", "Darth Vader's Slave", "Chroma", "demon xd:alone in life:(", "Luffy", "DOOR nr.1", "pancake", "TTroll_NEW MOUSE", "ubad", "NO MERCY", "peaceful farmer", "kokun", "This is the tale of:", "Best", "Square generator", "Corrupt Z", "angry?", "Aaaaa revenge", "DEFENDER AL FRIENDS", "partially illiterate", "Napoleon", "i destroy destroyers", "not pro", "Mr.Chaos", "~~ima try to protect U~~", "god is good", "Homing_Pigeon", "MazeDominator", "PM4037", "hehe car go vroom vroom", "gg partially you loser!", "'~Darkfiren~'", "La CFE me quito la luz", "nub7155 (Mobile)", "Chalicocerate - hu", "pew pew Gun", "yuma che3", "THOMAS crowded saturado", "TvT{ Thanh }TvT", "pentagon clean-up", "Go to Church", "Emi 10 ra ge hatag", "Im a landmine pls nohurt", "weird", "sorry Cheese", "dumpdump", "Rust", "Godzilla", "MEGAPIX", "demon:solo protejomihijo", "Your Bad :(", "a sweaty no lifer", "protecter crocty", "Caballo - horse", "my fists...", "playing from month", "trfhgyjhuiju8765t", "!emergencia!-!emergency!", "SIREN HEAD", "Yang", "pacific islander", "lucky", "MARK", "ALAN PAP", "nnnnnn", "dn", "Speedrun", "tre", "rocket", "B1 battle droid", "0,01%", "B2 super battle droid", "Your mum", "Goubekson", "Meti", "Wasap Papa", "tatut h", "LEADER = BANNED PLAYER", "shield", "afk ~30mins - stalker", "UHS23", "AlexDav", "!Hi!", "LOL ONYXD", "manager is just better", "Flying", "- - - - - - - - - - - -", "Roy", "Dank", "CrownPrincennnnn", "Gudmman", "CHAARGE", "GO TO DA TARGET STOEEE", "migel  papi", "Se", "PineapplEJuice", "lorain", "delta", "Jonk", "Endoy", "yeffri1", "luis daniel el pro", "Qpling", "An Endless Rise", "nerf", "8w329h", "Newb", "thicc", "just duo", "hahaa u noob", ";o", "xddd", "OSJJSJ", "Prime Chalicocerate - hu", "ilikemen", "IvanGG", "Ruwen", "moises", "jordan(:", "igoty", "vn exe", "TOGESH TOGESH", "Aprendo.en casa", "i only spectate", "DI", "deez", "Devourer Of Gods", "murt", "cocomelon- r u AA", "Polyhex", "KING OF DRONES", "POUNDER UPGRADER", "z54", "trees", "You show the lights", "Kirbo", "Turbo Bros", "stop me turn to stone", "Senseless", "You show the lights that", "T U R R E T", "uma delicia", "dohownik", "DESTINY PRO", "jory", "LITTLE GUY", "THE TERMINATOR", "hub", "GRAY STILL PLAYS", "Supsup", "Tedd", "Sup", "JUIDNDI", "ewres", "turu", "ffffffffffffffffffffffff", "soy susanaoria", "happy!", "Avarice", "im a cat", "protect me for 1m maby", "KEMUEL667", "Flowey723", "The shadow of none", "mebic", "Wsai12", "ALO", "oooo", "Hurricane", "i suck at bosses", "cv v", "ch.m", "Ovalsun", "rays", "naydanang bale!!!!!!! 1m", "poo face", "Akira bck!!!", "Arena Closer", "i believe in jesus", "SOFIA", "Yyfk", "Gigachad", "BANZAI", ">:v", "SUPRISE", "G l i t c h e d", "el mujahideen", "Soundwave", "torry", "AscendedCataBath", "The King", "Zac is best", "WBL", "Wait What?", "allmyfriend.aretoxic", "FNF Thorns", "L4r9", "Zzz Zzz Zzz:-)", "No Disturbing", "go away", "db", "P-Nice", "Duo", "nova", "hey vn;d", "DANCE", ":D hi", "dr.ninja", "Susana Oria", "arg", "7131", "Arena Closer", "SkuTsu\t", "Oh no Pathetic", "xeno", "y=ax+b", "Robleis", "Info?", "%t is the worst tank", "i hate %t", "%t sucks", "fallen %t", "Fallen %t", "%t", "%t is OP", "%t moment", "buff %t", "buff %t please", "nerf %t", "nerf %t please", "pet %t", "i looove %t", "green sunfish", "noew", "Charlemagne", "Drako Hyena", "long nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"];
+            const names = botNames;
             const randomRange = (min, max) => {
                 return Math.random() * (max - min) + min;
             }
@@ -505,43 +506,7 @@ global.require = function (thing) {
                 chooseBossName: (code, n) => {
                     switch (code) {
                         case 'amal':
-                            return chooseN([
-                                "Resurrection",
-								"Abomination",
-								"Corruption",
-								"ZZAZZ",
-								"Keh",
-								"W",
-								"L + ratio",
-								"die",
-								"kys",
-								":sob:",
-								"CRY ABOUT IT",
-								"horny player~",
-								"Our World of Amalgams",
-								"You're weird.",
-								"freaky crops",
-								"Meet the Grahams",
-								"</3",
-								"no",
-								"Eat Those Bullets",
-								"gottem",
-								"ggs",
-								"AMALGAM RAID",
-								"queer",
-								"Omnipotence",
-								"im ANGRY",
-								"3 * 4 = 6 + 6 = 12",
-								"HAIL NECRULL",
-								"Repent for thine ddisbelief",
-								"HBNJMKIJHUENMKIUHBNJE",
-								"queer",
-								"NIG-",
-								"control",
-								"hoax",
-								"ruin",
-								"depths"
-                            ], n);
+                            return chooseN(amalNames, n);
                         case 'splitCore':
                             return chooseN([
                                 "Host",
@@ -1204,7 +1169,7 @@ async function startServer(configSuffix, defExports, displyNameOverride, display
 
             for (let y = startY; y <= endY; y++) {
                 for (let x = startX; x <= endX; x++) {
-                    const key = (x << 16) | (y & 0xFFFF); // inlined for speed
+                    const key = (x << 64) | (y & 0xFFFF); // inlined for speed
                     const cell = this.grid.get(key);
                     if (cell) {
                         cell.push(object);
@@ -1216,7 +1181,7 @@ async function startServer(configSuffix, defExports, displyNameOverride, display
         }
 
         getCell(x, y){
-            const key = ((x >> this.cellShift) << 16) | ((y >> this.cellShift) & 0xFFFF);
+            const key = ((x >> this.cellShift) << 64) | ((y >> this.cellShift) & 0xFFFF);
             return this.grid.get(key);
         }
 
@@ -1233,13 +1198,13 @@ async function startServer(configSuffix, defExports, displyNameOverride, display
 
             // Fast path for 1x1, 2x1, or 1x2 spans
             if (startX === endX && startY === endY) {
-                const key = (startX << 16) | (startY & 0xFFFF);
+                const key = (startX << 64) | (startY & 0xFFFF);
                 const cell = this.grid.get(key);
                 if (cell) this._processCell(cell, object, objectId, result, optFunct);
             } else {
                 for (let y = startY; y <= endY; y++) {
                     for (let x = startX; x <= endX; x++) {
-                        const key = (x << 16) | (y & 0xFFFF);
+                        const key = (x << 64) | (y & 0xFFFF);
                         const cell = this.grid.get(key);
                         if (cell) {
                             this._processCell(cell, object, objectId, result, optFunct);
@@ -1719,7 +1684,7 @@ const Chain = Chainf;
             "LEVEL_ZERO_UPGRADES": false,
             "SKILL_CAP": 60,
             "SKILL_SOFT_CAP": 0,
-            "SKILL_CHEAT_CAP": 60,
+            "SKILL_CHEAT_CAP": 45,
             "SKILL_LEAK": 0,
             "STEALTH": 4,
             "MIN_SPEED": Number.MIN_VALUE,
@@ -1764,7 +1729,7 @@ const Chain = Chainf;
 
         let gamemodeConfig = {};
         let res = undefined;
-		if(!fs){
+		if(!fs) {
 			res = await fetch("../configs/config-" + configSuffix)
         	if (configSuffix.includes(".json")) {
         	    gamemodeConfig = await res.json()
@@ -1773,7 +1738,7 @@ const Chain = Chainf;
         	} else {
         	    console.error("Invalid gamemode file type " + configSuffix)
         	}
-		}else{
+		} else {
 			res = fs.readFileSync("./configs/config-" + configSuffix, "utf8")
 			if (configSuffix.includes(".json")) {
         	    gamemodeConfig = JSON.parse(res)
@@ -1783,10 +1748,10 @@ const Chain = Chainf;
         	    console.error("Invalid gamemode file type " + configSuffix)
         	}
 		}
-        if (gamemodeConfig.selectable === false) {
+        /*if (gamemodeConfig.selectable === false) {
             worker.postMessage({ type: "serverStartText", text: "This gamemode is not selectable", tip: "Only modded versions of the game can start a Modded server. Please select a different mode." })
             return;
-        }
+        }*/
         global.c = sterilize(gamemodeConfig);
         if (c.GAMEMODE_JS) {
             function getCrptFunction() {
@@ -1985,7 +1950,7 @@ const Chain = Chainf;
                     ["SW", "Southern", "SE"]
                 ];
                 this.cellTypes = (() => {
-                    const output = ["nest", "norm", "rock", "roid", "port", "wall", "door", "edge", "domi", "outb", "door", "boss", "bosp", "#08A3FC", "tree"];
+                    const output = ["nest", "norm", "rock", "roid", "port", "wall", "door", "edge", "domi", "outb", "door", "boss", "bosp", "watr", "deep", "tree"];
                     for (let i = 1; i <= 8; i++) {
                         output.push("bas" + i);
                         output.push("bad" + i);
@@ -2123,7 +2088,7 @@ const Chain = Chainf;
                     return false;
                 }
                 const v = this.setup[a][b];
-                return v !== 'norm' && v !== 'roid' && v !== 'rock' && v !== 'tree' && v !== '#08A3FC' && v !== 'wall' && v !== 'edge';
+                return v !== 'norm' && v !== 'roid' && v !== 'rock' && v !== 'tree' && v !== 'watr' && v !== 'deep' && v !== 'wall' && v !== 'edge';
             }
             gauss(clustering) {
                 let output,
@@ -2270,16 +2235,16 @@ const Chain = Chainf;
                 return this.Y
             }
             set x(value) {
-				if(isNaN(value)||value===Infinity||value===-Infinity){
+				if (isNaN(value) || value === Infinity||value === -Infinity) {
 					return;
 				}
                 this.X = value||c.MIN_SPEED;;
             }
             set y(value) {
-				if(isNaN(value)||value===Infinity||value===-Infinity){
+				if (isNaN(value) || value === Infinity||value === -Infinity) {
 					return;
 				}
-                this.Y = value||c.MIN_SPEED;;
+                this.Y = value||c.MIN_SPEED;
             }
             null() {
                 this.X = c.MIN_SPEED;
@@ -2323,7 +2288,11 @@ const Chain = Chainf;
                 aspect: 1,
                 skin: 0,
                 colorUnmix: 0,
-                angle: 0
+                angle: 0,
+                /*blend: {
+                    amount: 0,
+                    color: "#000000"
+                }*/
             };
 
             // Pre-calculate real sizes for polygons
@@ -2415,6 +2384,13 @@ const Chain = Chainf;
                     layer: e.layer,
                     statnames: e.settings.skillNames,
                     position: p,
+                    arch: e.arch,
+                    desc: e.desc,
+                    metatier: e.metatier,
+                    blend: {
+                        amount: e.blend.amount || 0,
+                        color: e.blend.color || "#27876d"
+                    },
                     upgrades: e.upgrades.map(r => ({
                         tier: r.tier,
                         index: r.index
@@ -2453,6 +2429,7 @@ const Chain = Chainf;
 						borderless: p.borderless,
                         loop: p.loop,
                         isAura: p.isAura,
+                        glows: p.glows,
                         rpm: p.rpm,
                         dip: p.dip,
                         ring: p.ring,
@@ -2756,6 +2733,9 @@ const Chain = Chainf;
                         entity.minimalReset();
                         entity.minimalDefine(entityClass);
                         entity.name = entityClass.LABEL;
+                        entity.arch = entityClass.ARCHETYPE;
+                        entity.desc = entityClass.DESCRIPTION;
+                        entity.metatier = entityClass.TIER;
 
                         // Get dimensions and camera view
                         const position = getDimensions(entity);
@@ -2937,6 +2917,45 @@ const Chain = Chainf;
             return output;
         })();
 
+        const botTanksBetter = [
+            //Class.basic,
+            Class.twin,
+            Class.sniper,
+            Class.machine,
+            Class.flank,
+            Class.director,
+            Class.pounder,
+            Class.zoomSingle,
+            Class.pellet,
+            Class.armoredTank,
+            Class.trapper,
+            /*Class.propeller,
+            Class.auto2,
+            Class.minishot,
+            Class.lancer,
+            Class.autoBasic,
+            Class.hybridBasic,
+            Class.subduer,
+            Class.yanker,
+            Class.miniGrower,
+            Class.basicIntercept,
+            Class.desmos,
+            Class.shield,
+            Class.relicary,
+            Class.uzi*/
+        ];
+
+        const fighters = [
+            Class.whistle,
+            Class.stelex,
+            Class.wana,
+            Class.fester,
+            Class.deima,
+            Class.xiphi,
+            //Class.nyx,
+            Class.vj
+        ];
+
         const spawnBot = (loc = null) => {
             let position = loc,
                 max = 100;
@@ -2953,12 +2972,15 @@ const Chain = Chainf;
             let o = new Entity(position);
             o.color = 12;
             if (room.gameMode === "tdm") {
-                let team = c.serverName === "Infiltration" ? 20 : c.serverName.includes("2nd War") ? 2 : room.nextTagBotTeam.shift() || getTeam(0);
+                let team = c.serverName === "Infiltration" ? 20 : c.serverName.includes("Script") ? 2 : room.nextTagBotTeam.shift() || getTeam(0);
                 o.team = -team;
                 o.color = team === 20 ? 17 : [10, 12, 11, 15, 3, 35, 36, 0][team - 1];
             }
             // Reload, Pen, Bullet Health, Bullet Damage, Bullet Speed, Capacity, Body Damage, Max Health, Regen, Speed
-            let tank = c.serverName === "Infiltration" ? Class[ran.choose(["infiltrator", "infiltratorFortress", "infiltratorTurrates"])] : ran.choose(botTanks),
+            let tank = ran.choose(c.serverName.includes("Duelist") ? fighters : botTanksBetter),
+                t2 = [],
+                t3 = [],
+                t4 = [],
                 botType = 
 				tank.IS_SMASHER ? "bot2" 
 				: tank.IS_FLANK ? "bot3"
@@ -2989,15 +3011,22 @@ const Chain = Chainf;
             o.define(Class[botType]);
             o.tank = tank;
 			o.define(tank);
+            o.branch1 = false;
+            o.branch2 = false;
+            o.branch3 = false;
             o.assignedName = "[AI] " + ran.chooseBotName().replaceAll("%t", o.label);
 			o.name = o.assignedName;
             o.nameColor = o.name.includes("Bee") ? "#FFF782" : o.name.includes("Honey Bee") ? "#FCCF3B" : o.name.includes("Fallen") ? "#CCCCCC" : "#C1CAFF";
             o.autoOverride = true;
             o.invuln = true;
-            o.skill.score = tank.TIER === 1 ? 1195 : tank.TIER === 2 ? 8380 : tank.TIER === 3 ? 26302 : tank.TIER === 4 || c.serverName.includes("Duelist") ? 59212 : 0;
+            o.skill.score = c.serverName.includes("Duelist") || c.serverName.includes("Walkers") || c.serverName.includes("Boss") ? 59212 : c.serverName.includes("Survival") ? 0 : 1195;//tank.TIER === 1 ? 1195 : tank.TIER === 2 ? 8380 : tank.TIER === 3 ? 26302 : tank.TIER === 4 || c.serverName.includes("Duelist") ? 59212 : 0;
             o.FOV *= c.BLACKOUT && !tank.SEE_INVISIBLE ? .23 : .85;
 			if (tank.IS_TRANS || tank.HAS_ANIMATION || tank.ON_Q || tank.IS_MEDIC || tank.IS_WALL) o.kill(); // these break the game 
 			if (c.SKILL_CHEAT_CAP === 15 && tank.TIER !== 1) o.kill();
+            if (c.ASSAULT) {
+                if (room.dom1.length === 0 && o.team === -1) o.kill();
+                if (room.dom2.length === 0 && o.team === -2) o.kill();
+            }
             setTimeout(() => {
                 o.invuln = false;
                 o.autoOverride = false;
@@ -3014,16 +3043,6 @@ const Chain = Chainf;
 				if (c.MAZE.ENABLED) o.aiSettings.IGNORE_SHAPES = true;
 				if (tank.IS_FLANK && c.gameMode === "tdm") o.aiSettings.TARGET_ALLIES = true;
 				if (c.serverName === "Boss Rush" || c.SOCCER) o.aiSettings.IGNORE_SHAPES = true;
-				// if (tank.IS_MEDIC) o.aiSettings.scoreTarget = true, o.aiSettings.TARGET_ALLIES = true;
-			    if (tank.IS_BOAT) o.facingType = 'smoothWithMotion'
-			    else if (tank.IS_FLANK) o.facingType = 'flankSpin'
-			    else if (tank.IS_MALLET) o.facingType = 'turnWithSpeed'
-			    else if (tank.IS_AUTO_N) o.facingType = 'autospin'
-			    else if (tank.MOTION_FACE) o.facingType = 'withMotion'
-			    else if (tank.IS_CONQ) o.facingType = 'conq'
-				else if (tank.FACING_TYPE === "triLance") o.facingType = "triLanceBot"
-				else if (tank.FACING_TYPE === "dodgeIIWG") o.facingType = "dodgeIIWG"
-			    else o.facingType = 'bot';
 				o.motionType = c.serverName.includes("Duelist") ? "motor3" : "motor2";
 				if (c.serverName.includes("Void")) {
 					let distanceFromOutpost = util.getDistance(o, room["domm"][0]);
@@ -3338,7 +3357,7 @@ const Chain = Chainf;
         let soccer = {
             scoreboard: [0, 0],
             timer: 60,
-            spawnBall: function () {
+            spawnBall: function() {
                 let o = new Entity({
                     x: room.width / 2,
                     y: room.height / 2
@@ -3350,17 +3369,41 @@ const Chain = Chainf;
                 o.team = -100;
                 o.alwaysActive = true;
                 o.modeDead = () => {
-                    let cell = o.myCell.slice(3);
+                    let cell = o.myCell.slice(3),
+                        noPopMessage = false;
                     if (cell == 1) {
                         soccer.scoreboard[1]++;
                         sockets.broadcast("RED Scored!");
+                        noPopMessage = true;
                     }
                     if (cell == 2) {
                         soccer.scoreboard[0]++;
                         sockets.broadcast("BLUE Scored!");
+                        noPopMessage = true;
                     }
-                    setTimeout(soccer.spawnBall, 1500);
+                    if (!noPopMessage) sockets.broadcast("The ball popped! It'll respawn momentarily, be patient.");
+                    setTimeout(soccer.spawnBall, 2000 * (Math.random() * 1.15 + 1));
                 }
+            },
+            update: function() {
+                soccer.timer--;
+                if (soccer.timer <= 0) {
+                    if (soccer.scoreboard[0] > soccer.scoreboard[1]) {
+                        sockets.broadcast("BLUE has won!");
+                        setTimeout(closeArena, 2500);
+                        return;
+                    } else if (soccer.scoreboard[0] < soccer.scoreboard[1]) {
+                        sockets.broadcast("RED has won!");
+                        setTimeout(closeArena, 2500);
+                        return;
+                    } else {
+                        sockets.broadcast("It was a tie!");
+                        soccer.timer += 3;
+                        setTimeout(() => sockets.broadcast("3 Minutes have been added to the clock!"), 1500);
+                    }
+                }
+                sockets.broadcast(soccer.timer + " minutes until the match is over!");
+                setTimeout(soccer.update, 60000);
             },
 			spawnWalls: function () {
                 for (let loc of room.wall) {
@@ -3373,30 +3416,10 @@ const Chain = Chainf;
 					wall.showsOnMap = true;
                 }
 			},
-            update: function () {
-                soccer.timer--;
-                if (soccer.timer <= 0) {
-                    if (soccer.scoreboard[0] > soccer.scoreboard[1]) {
-                        sockets.broadcast("BLUE has won!");
-                        setTimeout(closeArena, 2500);
-                        return;
-                    } else if (soccer.scoreboard[1] > soccer.scoreboard[0]) {
-                        sockets.broadcast("RED has won!");
-                        setTimeout(closeArena, 2500);
-                        return;
-                    } else {
-                        sockets.broadcast("It was a tie!");
-                        soccer.timer += 3;
-                        setTimeout(() => sockets.broadcast("3 Minutes have been added to the clock!"), 1500);
-                    }
-                }
-                if (soccer.timer % 2 === 0) sockets.broadcast(soccer.timer + " minutes until the match is over!");
-                setTimeout(soccer.update, 60000);
-            },
-            init: function () {
+            init: function() {
                 soccer.spawnBall();
                 setTimeout(soccer.update, 60000);
-				soccer.spawnWalls();
+                //soccer.spawnWalls();
             }
         };
 
@@ -3420,11 +3443,23 @@ const Chain = Chainf;
 					    if (them && them.type === "tank" && me.x === them.x && !me.sentMessage) {
 							sockets.broadcast(`The Crown has been taken by ${them.name}!`);
 							me.sentMessage = true;
+                            entities.forEach(queer => {
+                                queer.altCameraSource = [o.x, o.y];
+                                setTimeout(() => {
+                                    queer.altCameraSource = null;
+                                }, 1500);
+                            });
 							setTimeout(() => {me.sentMessage = false}, 250);
 							if (them.health.amount < .2) sockets.broadcast('The Crown has been dropped!');
 						}
 						if (them && them.type === "drone" && me.x === them.x && !me.sentMessage) {
 							sockets.broadcast(`A Drone has taken the Crown!`);
+                            entities.forEach(queer => {
+                                queer.altCameraSource = [o.x, o.y];
+                                setTimeout(() => {
+                                    queer.altCameraSource = null;
+                                }, 1500);
+                            });
 							setTimeout(() => {me.sentMessage = false}, 250);
 							if (them.health.amount < .2) sockets.broadcast('The Crown has been dropped!');
 						}
@@ -3451,6 +3486,7 @@ const Chain = Chainf;
 
         let assault = {
 			timer: 12,
+            test: 60,
 			finalTimer: 59,
 			won: false,
 			basesDown: false,
@@ -3496,137 +3532,206 @@ const Chain = Chainf;
 				};
 			},
 			update: () => {
-				if (!assault.basesDown) assault.timer--;
-				if (!assault.basesDown) sockets.broadcast(assault.timer + (assault.timer === 1 ? " MINUTE REMAINING!" : " MINUTES REMAINING!"));
+				if (!assault.basesDown) assault.test--;
+				if (assault.test === 0) {
+                    assault.timer--;
+                    sockets.broadcast(assault.timer + (assault.timer === 1 ? " MINUTE REMAINING!" : " MINUTES REMAINING!"));
+                    assault.test = 60;
+                }
 				
 				if (assault.timer === 0 && !assault.won) {
                     sockets.broadcast("Red has survived the Assault!");
-                    setTimeout(closeArena, 3000);						
+                    setTimeout(closeArena, 6000);						
 				}
-				if (assault.timer !== 0 && !assault.basesDown) setTimeout(assault.update, 60000);
+				if (assault.timer !== 0) setTimeout(assault.update, 1000);
 			},
 			check: () => {
 				if (room.dom2.length < Math.ceil(assault.maxBases / 2)) {
 					if (!assault.basesDown) sockets.broadcast(`Red bases are down. The timer will NOT continue until at least ${Math.ceil(assault.maxBases / 2)} refuges are reclaimed.`);
 					assault.basesDown = true;
 				}
-				else if (room.dom2.length >= Math.ceil(assault.maxBases / 2)) {
+				else if (room.dom2.length >= Math.ceil(assault.maxBases / 2) && assault.basesDown) {
 					assault.basesDown = false;
+                    timer += 2;
 				}
 				if (room.dom2.length === 0) {
                     sockets.broadcast("Blue has won the Assault!");
-                    setTimeout(closeArena, 3000);	
+                    setTimeout(closeArena, 6000);	
 					assault.won = true;
 				};
-				if (!assault.won) setTimeout(assault.check, 60);
+				if (!assault.won) setTimeout(assault.check, 1000);
 			},
 			finalCountdown: () => {
 				assault.finalTimer--;
 				if (assault.finalTimer === 30 || assault.finalTimer <= 10) sockets.broadcast(assault.finalTimer + (assault.finalTimer === 1 ? " SECONDS REMAINING!" : " SECONDS REMAINING!"));
 				if (assault.finalTimer !== 0 && assault.timer === 1 && !assault.won) setTimeout(assault.finalCountdown, 1000);
 			},
+			spawnWalls: function () {
+                for (let loc of room.wall) {
+                    const wall = new Entity(loc);
+                    wall.define(Class.mazeObstacle);
+                    wall.team = -101;
+                    wall.width = ((room.width / room.xgrid) * .005);
+                    wall.height = ((room.height / room.ygrid) * .005);
+                    wall.protect();
+                    wall.life();
+					wall.showsOnMap = true;
+                }
+			},
             init: function () {
                 assault.spawnDoms();
-                if (assault.timer !== 0 && !assault.basesDown) setTimeout(assault.update, 60000);
-				if (!assault.won) setTimeout(assault.check, 60);
+                assault.spawnWalls();
+                if (assault.timer !== 0) setTimeout(assault.update, 1000);
+				if (!assault.won) setTimeout(assault.check, 1000);
 				if (assault.finalTimer !== 0 && assault.timer === 1 && !assault.won) setTimeout(assault.finalCountdown, 1000);
+            }
+        };
+
+        let world = {
+            spawnMemory: function () {
+                setInterval(() => {
+                    let y = new Entity({
+                        x: Math.random() * room.width,
+                        y: Math.random() * room.height
+                    });
+                    y.define(Class.memory);
+                }, 9000);
+            },
+			spawnWalls: function () {
+                for (let loc of room.wall) {
+                    const wall = new Entity(loc);
+                    wall.define(Class.mazeObstacle);
+                    wall.team = -101;
+                    wall.SIZE = (room.width / room.xgrid) / 2;
+                    wall.protect();
+                    wall.life();
+					wall.showsOnMap = true;
+                }
+			},
+            init: function () {
+                world.spawnWalls();
+                world.spawnMemory();
             }
         };
 		
         const bossRushLoop = (function () {
             const bosses = [ // from the most likely to least likely to spawn 
                 Class.guardianAI,
-				Class.sorcererAI,
-				Class.summonerAI,
-				//Class.mk1AI,
-				Class.enchantressAI,
-				Class.fencerAI,
-				Class.pulsarAI,
-				Class.magnetarAI,
-				Class.quasarAI,
-				Class.atriumAI, 
-				Class.defenderAI,
-				Class.accretionAI,
-				//Class.eggBossTier1AI,
-				Class.eliteMinesweeperAI,
-				Class.longManAI,
-				Class.palisadeAI,
-				Class.leviathanAI,
-				Class.abstractorAI,
+                Class.sorcererAI,
 				
             ].filter(o => o != null);
             const waveAss = {
-				2: [
-					Class.armadaAI,
-					Class.lysosomeAI,
-				],
 				3: [
-					Class.exorcistorAI,
-					Class.sliderAI,
+					Class.summonerAI,
+                    Class.eggBossTier1AI,
 				],
-				4: [
-					Class.fallenBoosterAI,
-					Class.gravibusAI,
-					Class.sassafrasAI
-				],
-				5: [
-					Class.ancestralMortarAI
-				],
-				6: [
-					Class.ancestralQuadTwinAI,
-					Class.spectralSolidagoAI,
-					Class.ancestralBatteryAI,
-					Class.blitzkriegAI,
-					Class.octogeddonAI
-				],
-				7: [
-					Class.hpk1AI
-				],
-				8: [
-					Class.spectralSpreadlockAI,
-					Class.applicusAI
-				],
-				9: [
-					Class.saviorAI,
-				],
-				10: room.bas1.length >= 1 ? [
-					Class.roguePalisadeAI,
-					Class.rogueSliderAI,
-					Class.rogueBlitzkriegAI,
-					Class.vacuoleAI,
-					Class.streakAI,
-				] : [
-					Class.vacuoleAI,
-					Class.streakAI,
-				],
+                5: [
+                    Class.enchantressAI
+                ],
+                6: [
+                    Class.fencerAI,
+                    Class.defenderAI
+                ],
+                7: [
+                    Class.pulsarAI,
+                    Class.quasarAI,
+                    Class.magnetarAI,
+                    Class.accretionAI,
+                    Class.fallenBoosterAI
+                ],
+                8: [
+                    //Class.heptazoidAI0,
+                    Class.exorcistorAI,
+                    Class.mk1AI,
+                ],
+                9: [
+                    Class.ancestralBatteryAI,
+                    Class.ancestralQuadTwinAI
+                ],
+                10: [
+                    Class.palisadeAI,
+                    Class.armadaAI,
+                    Class.lysosomeAI,
+                ],
                 11: [
-					Class.trapeFighterSpawn2,
-					Class.GotS_trap,
-					Class.vanguardAI,
-				    Class.heptazoidAI0,
-					Class.cometAI
-				],
-				12: [
-					Class.ancestralLurkerAI,
-					Class.pentadecimAI
-				],
-				13: [
-					Class.spectralLancerAI,
-				],
-				15: [
-					//Class.rogueOctogeddonAI,
-					Class.morningstarAI
-				],
-				16: [
-					Class.GotS_heavy,
-					Class.GotS_range
-				],
-				20: [
-					Class.snowflakeAI,
-					Class.ultravioletAI
-				]
-                //30: [],
-                //50: []
+                    Class.ancestralMortarAI,
+                    Class.spectralSolidagoAI
+                ],
+                12: [
+                    Class.GotS_heavy,
+                ],
+                13: [
+                    Class.abstractorAI
+                ],
+                14: [
+                    Class.spectralLancerAI,
+                    Class.ancestralLurkerAI
+                ],
+                15: [
+                    Class.fallenStreamlinerAI,
+                    Class.eliteMinesweeperAI
+                ],
+                16: [
+                    Class.gravibusAI,
+                    Class.ancestralLurkerAI
+                ],
+                17: [
+                    Class.hpk1AI,
+                    Class.octogeddonAI
+                ],
+                18: [
+                    Class.sliderAI,
+                    Class.saviorAI,
+                    Class.GotS_trap
+                ],
+                19: [
+                    Class.vanguardAI
+                ],
+                20: [
+                    Class.atriumAI,
+                    Class.trapeFighterSpawn2,
+                    Class.leviathanAI,
+                    Class.closerAI
+                ],
+                21: [
+                    Class.GotS_heavy
+                ],
+                22: [
+                    Class.longManAI,
+                    Class.GotS_range
+                ],
+                23: [
+                    Class.blitzkriegAI,
+                    Class.sassafrasAI
+                ],
+                25: [
+                    Class.spectralSpreadlockAI
+                ],
+                26: [
+                    Class.streakAI,
+                    Class.cometAI
+                ],
+                28: [
+                    Class.lamperAI
+                ],
+                30: [
+                    Class.applicusAI,
+                    Class.octogeddonAI,
+                    Class.pentadecimAI
+                ],
+                35: [
+                    Class.vacuoleAI
+                ],
+                38: [
+                    Class.snowflakeAI
+                ],
+                46: [
+                    Class.GotS_pelt,
+                ],
+                50: [
+                    Class.ultravioletAI,
+                    Class.morningstarAI,
+                ]
             };
             for (const key in waveAss) {
                 waveAss[key] = waveAss[key].filter(o => o != null);
@@ -3663,7 +3768,7 @@ const Chain = Chainf;
 				let areas = 2.2 * Math.random() * ((c.WIDTH * c.HEIGHT));
 				const o = new Entity(
 					class_.IS_ROGUE ? room.randomType('bas1')
-					: class_.IS_FISH ? room.randomType('#08A3FC')
+					: class_.IS_FISH ? room.randomType('watr')
 					: room.randomType("bas2")
 				);
 				if (!class_.IS_INVIS) o.controllers.push(new ioTypes.crasherRoam(o));
@@ -3672,6 +3777,7 @@ const Chain = Chainf;
 					if (!o.isFish) o.controllers.push(new ioTypes.crasherRoam(o));
 					if (o.isFish) o.controllers.push(new ioTypes.fishRoam(o));
 				}
+                if (c.ISSIEGE && !o.isRogue) o.controllers.push(new ioTypes.bossRushAI(o));
                 o.team = o.isRogue ? -1 : o.isFish ? -80 : -100;
                 o.define(class_);
                 if (!o.isRogue) o.modeDead = entityModeDead;
@@ -3681,9 +3787,7 @@ const Chain = Chainf;
             }
             return function () {
                 room.bossRushWave++;
-				if (room.maxBots <= 10) room.maxBots++;
-				/*room.maxBots++;
-				room.maxBots++;*/
+                if (c.serverName.includes("but Ass")) room.maxBots++; 
                 let amount = room.bossRushWave; //c.MAXBOSSES ? (Math.round(Math.random() * (c.MAXBOSSES - c.MINBOSSES) + c.MINBOSSES)) : Math.round(Math.random() * 8 + 4 /*20 + 20*/);
                 /*switch (room.bossRushWave) {
                     case 10:
@@ -4683,12 +4787,12 @@ const Chain = Chainf;
 
 				// could probably be rewrote with a switch function but i dont feel like it 
 				if (((this.body.source.x - this.body.x) ** 2 + (this.body.source.y - this.body.y) ** 2) ** .5 > this.body.leash.range && this.body.leashType === 0) {
-					this.body.velocity.x += (this.body.leash.leasher.x - this.body.x) / (this.body.leash.range)
-					this.body.velocity.y += (this.body.leash.leasher.y - this.body.y) / (this.body.leash.range)
+					this.body.velocity.x += ((this.body.leash.leasher.x - this.body.x) * this.body.leashStrength * (this.body.leash.leasher.skill.pen ** 2.5)) / (this.body.leash.range)
+					this.body.velocity.y += ((this.body.leash.leasher.y - this.body.y) * this.body.leashStrength * (this.body.leash.leasher.skill.pen ** 2.5)) / (this.body.leash.range)
 				}
 				if (((this.body.x - this.body.source.x) ** 2 + (this.body.y - this.body.source.y) ** 2) ** .5 > this.body.leash.range && this.body.leashType === 1) {
-					this.body.source.velocity.x += (this.body.x - this.body.leash.leasher.x) / (this.body.leash.range)
-					this.body.source.velocity.y += (this.body.y - this.body.leash.leasher.y) / (this.body.leash.range)
+					this.body.source.velocity.x += (this.body.x - this.body.leash.leasher.x) * this.body.leashStrength / (this.body.leash.range)
+					this.body.source.velocity.y += (this.body.y - this.body.leash.leasher.y) * this.body.leashStrength / (this.body.leash.range)
 				}
 			}
 		}
@@ -4747,6 +4851,18 @@ const Chain = Chainf;
             }
             think(input) {
                 if (input.target && this.body.firingArc != null && (Math.abs(util.angleDifference(Math.atan2(input.target.y, input.target.x), this.body.firingArc[0])) >= this.body.firingArc[1])) return {
+                    fire: false,
+                    alt: false,
+                    main: false
+                };
+            }
+        }
+        ioTypes.onlyAcceptInArcOtherWay = class extends IO {
+            constructor(body) {
+                super(body);
+            }
+            think(input) {
+                if (input.target && this.body.firingArc != null && -(Math.abs(util.angleDifference(Math.atan2(input.target.y, input.target.x), this.body.firingArc[0])) >= this.body.firingArc[1])) return {
                     fire: false,
                     alt: false,
                     main: false
@@ -4828,7 +4944,9 @@ const Chain = Chainf;
 					IS_COMET,
 					IGNORE_BOSSES,
 					IGNORE_AMALGAMS,
-					TARGET_ITEMS
+					TARGET_ITEMS,
+                    TARGET_TREES,
+                    USES_ALT
 					  } = body.aiSettings;
 				const { seeInvisible, isArenaCloser, firingArc } = body;
 				const canSeeInvis = seeInvisible || isArenaCloser;
@@ -4876,12 +4994,12 @@ const Chain = Chainf;
 					if (IGNORE_RUBBERS && entity.settings.rubber) return;
 					if (entity.type === "crasher" && body.settings.isHelicopter) return;
 					if ((entity.settings.isHelicopter || entity.variables.flies) && !TARGET_FLIERS) return;
-					if (body.type === "miniboss" && entity.isFish) return;
+					if (body.type === "miniboss" && entity.type === "crasher") return;
 
 					// room zone checks 
-					if (body.isFish && entity.myCell !== "#08A3FC") return;
-					if (!body.isFish && entity.myCell === "#08A3FC" && body.myCell !== "#08A3FC" && body.type !== "miniboss" && !body.isBot) return;
-					if (body.type === "crasher" && !body.isFish && entity.myCell !== "nest") return;
+					if (body.isFish && !"watr deep".includes(entity.myCell)) return;
+					if (!body.isFish && "watr deep".includes(entity.myCell) && !"watr deep".includes(body.myCell) && body.type !== "miniboss" && !body.isBot) return;
+					if (body.type === "crasher" && !body.isFish && entity.myCell !== "nest" && !c.serverName.includes("Boss")) return;
 
 					// misc checks 
 					if (entity.label === "Misfit" && IS_VACUOLE) return;
@@ -4891,6 +5009,9 @@ const Chain = Chainf;
 
 					if (body.label === "Portal Gun" && body.variables.greenPorts.length >= 1) body.doingC = true;
 					else if (body.label === "Portal Gun" && body.variables.greenPorts.length < 1) body.doingC = false;
+
+                    if (entity.type === "crown") body.noRangeFactor = true;
+                    else if (entity.type !== "crown") body.noRangeFactor = false;
 
 					
 					// fish AI 
@@ -4907,6 +5028,8 @@ const Chain = Chainf;
 
 					if (body.label === "Whale" && entity.label === "Shark") body.treadSpeed = -1;
 					else if (body.label === "Whale" && entity.label !== "Shark") body.treadSpeed = 1;
+
+                    if (USES_ALT) body.altShit = true;
 
 					
 					// UD Switch 
@@ -4996,21 +5119,44 @@ const Chain = Chainf;
 							if (distance > 500 && distance < 870 && entity !== null) body.doingB = true;
 							else if (distance < 500 || distance > 870 || entity === null) body.doingB = false;
 					    }
+
+						if (body.label === "Xiphi") {
+							body.rangeFactor = 1;
+							if (distance > 1200) body.doingC = false; body.doingV = false; body.doingB = false;
+                            if (distance > 810) body.doingB = false, body.doingC = true;
+                            if (distance < 810) body.doingB = true;
+                            if (distance > 680) body.doingV = false;
+                            if (distance < 500) body.doingV = true;
+                        }
 					}
 
 					// v o i d switch 
-					if (body.label.includes("​🇻​​🇴​​🇮​​🇩​")) {
-						if (entity.variables.lightSource && !body.label.includes("watcher")) body.treadSpeed = -1;
-						else if (entity.variables.lightSource || body.label.includes("watcher")) body.treadSpeed = 1;
+					if (body.label && body.isVoidEntity) {
+						if (entity.settings.lightSource && !body.label.includes("watcher")) body.treadSpeed = -1;
+						else if (entity.settings.lightSource || body.label.includes("watcher")) body.treadSpeed = 1;
 
 						if (body.label.includes("sneaker")) {
-							if (distance < 570) body.treadSpeed = entity.variables.lightSource ? -1 : 1;
+							if (distance < 570) body.treadSpeed = entity.settings.lightSource ? -1 : 1;
 							else if (distance > 570) body.treadSpeed = 0.001;
 						}
 					}
 
 					if (body.label === "Fathership" && distance < 850) body.altShit = true;
 					else if (body.label === "Fathership" && distance > 850) body.altShit = false;
+
+					if (body.label === "Lamper" && distance < 620) body.altShit = true;
+					else if (body.label === "Lamper" && distance > 620) body.altShit = false;
+
+                    // S. Invader protector aliens 
+                    if (body.label === "Alien") {
+                        if ("food drone miniboss".includes(entity.type)) body.rangeFactor = .7;
+                        else if ("tank minion amal".includes(entity.type)) body.rangeFactor = 0;
+                    }
+
+                    if (body.rangeFactor === 0) {
+                        if (body.health.amount < (body.health.max * .5)) body.facingMult = -1;
+                        else if (body.health.amount > (body.health.max * .5)) body.facingMult = 1;
+                    }
 
 
 
@@ -5031,6 +5177,8 @@ const Chain = Chainf;
 						case 'bullet': if (!TARGET_BULLETS) return; break;
 						case 'crown': if (IGNORE_CROWN) return; break;
 						case 'item': if (!TARGET_ITEMS) return; break;
+                        case 'soccerBall': if (body.type !== "tank") return; break;
+                        case 'wall': if (!entity.isTree && TARGET_TREES) return; break;
 						default: if (!TARGET_EVERYTHING) return;
 					}
 					//// TONS of checks to see who can target what. 
@@ -5133,22 +5281,19 @@ const Chain = Chainf;
 				this.tick = 0;
             }
             think(input) {
-                if (input.main || input.alt || this.body.master.autoOverride) {
+                if (input.main || input.alt || this.body.master.autoOverride || this.body.invisible[0]) {
 					this.tick = 0;
                     return {};
                 }
 				if(++this.tick > room.cycleSpeed) {
 		            while (util.getDistance(this.goal, this.body) < this.body.SIZE * 2) {
                     	this.goal = c.serverName.includes("Void") ? {
-							x: room.width * (60 + 1),
+							x: room.width * (10 + 1),
 							y: room.height / 2// * (Math.random() * 60 + 1),
-						} : c.SOCCER ? {
-							x: room.width / 2,
-							y: room.height / 2
 						} : room.randomType(
-							c.serverName === "Boss Rush" ? "bas1" 
+							c.serverName.includes("Boss") ? "bas1" 
 							: c.serverName.includes("Duelist") ? "here" 
-							: c.MAZE.ENABLED ? "nest" 
+							: c.MAZE.ENABLED || c.SOCCER ? "nest" 
 							: "norm"
 						);
                 	}
@@ -5192,7 +5337,7 @@ const Chain = Chainf;
         ioTypes.fishRoam = class extends IO {
             constructor(body) {
                 super(body);
-                const goal = room.randomType("#08A3FC");
+                const goal = room.randomType("watr");
 				this.goal = goal;
 				this.tick = 0;
             }
@@ -5203,7 +5348,7 @@ const Chain = Chainf;
                 }
 				if(++this.tick > room.cycleSpeed) {
 		            while (util.getDistance(this.goal, this.body) < this.body.SIZE * 2) {
-                    	this.goal = room.randomType("#08A3FC");
+                    	this.goal = room.randomType(this.body.deepSeaFish ? "deep" : "watr");
                 	}
 				}
                	return {
@@ -5275,6 +5420,8 @@ const Chain = Chainf;
                         goal,
                         power = 1,
                         target = new Vector(input.target.x, input.target.y);
+                    if (this.body.noRangeFactor) orbit = 0;
+                    else orbit = 100 * (sizeFactor * fovFactor) * this.body.rangeFactor;
                     /*if (input.alt) {
                         if (target.length < leash) goal = {
                             x: this.body.x + target.x,
@@ -5433,7 +5580,7 @@ const Chain = Chainf;
 
             think(input) {
                 if (input.target != null && (input.alt || input.main)) {
-                    let orbit = 280;
+                    let orbit = 370;
                     let goal;
                     let power = 2.25;
                     let target = new Vector(input.target.x, input.target.y);
@@ -5975,6 +6122,9 @@ const Chain = Chainf;
                     this.body.x += this.phase * Math.cos(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
                     this.body.y += this.phase * Math.sin(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
 				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
             }
         }
         ioTypes.sineC = class extends IO {
@@ -5985,8 +6135,11 @@ const Chain = Chainf;
             }
             think(input) {
                 this.phase -= .5;
-                this.body.x += this.phase * Math.cos(this.wo) + 10 * Math.cos(this.phase) * Math.sin(this.wo);
-                this.body.y += this.phase * Math.sin(this.wo) - 10 * Math.cos(this.phase) * Math.cos(this.wo);
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y += this.phase * Math.sin(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
                 return {
                     power: 1
                 };
@@ -6000,8 +6153,86 @@ const Chain = Chainf;
             }
             think(input) {
                 this.phase -= .5;
-                this.body.x += this.phase * Math.cos(this.wo) - 10 * Math.cos(this.phase) * Math.sin(this.wo);
-                this.body.y += this.phase * Math.sin(this.wo) + 10 * Math.cos(this.phase) * Math.cos(this.wo);
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y += this.phase * Math.sin(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
+            }
+        }
+        ioTypes.sineE = class extends IO {
+            constructor(b) {
+                super(b);
+                this.phase = -5;
+                this.wo = this.body.master.facing;
+            }
+            think(input) {
+                this.phase -= .5;
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y -= this.phase * Math.sin(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
+            }
+        }
+        ioTypes.sineF = class extends IO {
+            constructor(b) {
+                super(b);
+                this.phase = -5;
+                this.wo = this.body.master.facing;
+            }
+            think(input) {
+                this.phase -= .5;
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y -= this.phase * Math.sin(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
+            }
+        }
+        ioTypes.sineG = class extends IO {
+            constructor(b) {
+                super(b);
+                this.phase = -5;
+                this.wo = this.body.master.facing;
+            }
+            think(input) {
+                this.phase += .5;
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y -= this.phase * Math.sin(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
+            }
+        }
+        ioTypes.sineH = class extends IO {
+            constructor(b) {
+                super(b);
+                this.phase = -5;
+                this.wo = this.body.master.facing;
+            }
+            think(input) {
+                this.phase += .5;
+				let amount = 4 * this.body.master.skill.spd;
+				setTimeout(() => {
+                    this.body.x += this.phase * Math.cos(this.wo) + (amount * this.body.sinePower) * Math.cos(this.phase) * Math.sin(this.wo);
+                    this.body.y -= this.phase * Math.sin(this.wo) - (amount * this.body.sinePower) * Math.cos(this.phase) * Math.cos(this.wo);
+				}, 250 * this.body.sineDelay);
+                return {
+                    power: 1
+                };
             }
         }
         ioTypes.gyrate = class extends IO {
@@ -6269,6 +6500,9 @@ const Chain = Chainf;
                     if (PROPERTIES.COLOR_OVERRIDE != null) this.colorOverride = PROPERTIES.COLOR_OVERRIDE;
                     if (PROPERTIES.CAN_SHOOT != null) this.canShoot = PROPERTIES.CAN_SHOOT;
                     this.alpha = PROPERTIES.ALPHA;
+                    this.angleMult = PROPERTIES.ANGLE_MULT || 0;
+                    this.spawnYOffset = PROPERTIES.Y_OFFSET || 0;
+                    this.spawnXOffset = PROPERTIES.X_OFFSET || 0;
 					if (PROPERTIES.IS_LANCE != null) this.isLance = PROPERTIES.IS_LANCE;
 					if (PROPERTIES.IS_MACHIN != null) this.isMachin = PROPERTIES.IS_MACHIN;
 					if (PROPERTIES.CAN_SHOOT_WHILE_INVULN != null) this.fireWhileInvuln = PROPERTIES.CAN_SHOOT_WHILE_INVULN;
@@ -6406,7 +6640,7 @@ const Chain = Chainf;
                 if (this.syncsSkills) {
                     let self = this;
                     this.childrenMap.forEach((child) => {
-						if (child.type === "item" || child.isSegment) child.kill();
+						if (child.type === "item" || child.isSegment || child.motionType === "item") child.kill();
                         child.define({
                             BODY: self.interpret(),
                             SKILL: self.getSkillRaw()
@@ -6426,12 +6660,12 @@ const Chain = Chainf;
                 this.lastShot.power = 3 * Math.log(Math.sqrt(sk.spd) + this.settings.recoil + 1) + 1;
                 this.motion += this.lastShot.power;
                 this.recoilDir = this.body.facing + this.angle;
-                this.newRecoil();
+                if (!this.body.master.settings.hasNoRecoil) this.newRecoil();
                 let ss = util.clamp(ran.gauss(0, Math.sqrt(this.settings.shudder, 1)), -1.5 * this.settings.shudder, 1.5 * this.settings.shudder),
                     sd = util.clamp(ran.gauss(0, this.settings.spray * this.settings.shudder, 1), -.5 * this.settings.spray, .5 * this.settings.spray);
                 sd *= Math.PI / 180;
                 let speed = (this.negRecoil ? -1 : 1) * this.settings.speed * c.runSpeed * sk.spd * (1 + ss);
-                let s = new Vector(speed * Math.cos(this.angle + this.body.facing + sd), speed * Math.sin(this.angle + this.body.facing + sd));
+                let s = new Vector(speed * Math.cos(this.angle + this.body.facing + sd + this.angleMult), speed * Math.sin(this.angle + this.body.facing + sd + this.angleMult));
                 const vel = this.body.velocity;
                 if (vel.length) {
                     let extraBoost = Math.max(0, s.x * vel.x + s.y * vel.y) / vel.length / s.length;
@@ -6442,16 +6676,17 @@ const Chain = Chainf;
                     }
                 }
 
-                if(this.bulletTypes[0].TYPE === "laser") {
-                    new Laser(this, this.getEnd(), sd, typeof this.bulletTypes[1] === "object" ? Object.assign({}, this.bulletTypes[0], this.bulletTypes[1]) : this.bulletTypes[0])
-					return;
-                } else {
-                    let o = new Entity(this.getEnd(s, .6), this.master.master);
+                if (this.bulletTypes[0].TYPE !== "laser") {
+                    let o = new Entity(this.getEnd(s, .6 + this.spawnXOffset), this.master.master);
+                    o.y += this.spawnYOffset;
                     // Set velocity first so bulletInit can use it to set proper facing/firing
                     o.velocity = s;
                     this.bulletInit(o);
                     return o;
-				}
+				} else if (this.bulletTypes[0].TYPE === "laser") {
+                    new Laser(this, this.getEnd(), sd, typeof this.bulletTypes[1] === "object" ? Object.assign({}, this.bulletTypes[0], this.bulletTypes[1]) : this.bulletTypes[0], this.master.master)
+					return;
+                } 
             }
             bulletInit(o) {
                 o.source = this.body;
@@ -6508,6 +6743,7 @@ const Chain = Chainf;
                 o.gunIndex = this.gunIndex;
                 o.refreshBodyAttributes();
                 o.life();
+                o.particles();
             }
             getTracking() {
                 return {
@@ -6561,7 +6797,7 @@ const Chain = Chainf;
 						break;
 					case 12: 
 					case "strike": 
-						out.RANGE = shoot.range * (Math.sqrt(sk.rld) * this.master.variables.timeout || 1);
+						out.RANGE = shoot.range * (Math.sqrt(sk.pen) * this.master.variables.timeout || 1);
 						break;
 					case 13:
 					case "fire":
@@ -6635,6 +6871,7 @@ const Chain = Chainf;
 				this.borderless = info.BORDERLESS != undefined ? info.BORDERLESS : false;
                 this.loop = info.LOOP != undefined ? info.LOOP : true;
                 this.isAura = info.IS_AURA != undefined ? info.IS_AURA : false;
+                this.glows = info.GLOWS != undefined ? info.GLOWS : true;
                 this.ring = info.RING;
                 this.arclen = info.ARCLEN != undefined ? info.ARCLEN : 1;
                 this.rpm = info.RPM != undefined ? info.RPM : false;
@@ -6797,7 +7034,7 @@ const Chain = Chainf;
 		let laserId = 0;
 
 		class Laser {
-		    constructor(gun, startPos, angle, settings = {}) {
+		    constructor(gun, startPos, angle, settings = {}, master = this) {
 		        this.id = laserId++;
 				this.settings = settings;
 				this.setGun(gun);
@@ -6994,7 +7231,7 @@ const Chain = Chainf;
 		    }
 		
             collide(entity) {
-                entity.damageReceived += "bullet trap drone boom mazeWall".includes(entity.type) ? this.damage * .05 : entity.type === "melee" ? 0 : this.damage;
+                entity.damageReceived += "bullet trap drone boom mazeWall".includes(entity.type) && this.weakToProj ? this.damage * .05 : this.damage;
 				entity.variables.isColliding = true;
 				entity.collisionArray.push(this)
 				if(this.master) {
@@ -7143,6 +7380,7 @@ const Chain = Chainf;
                 this.collisionArray = [];
 				this.collisionArray.lastUpdate = -1;
                 this.invuln = false;
+                this.blending = false;
                 this.godmode = false;
                 this.passive = false;
                 this.alpha = 1;
@@ -7154,7 +7392,7 @@ const Chain = Chainf;
                 this.rainbow = false;
                 this.intervalID = null;
                 this.rainbowLoop = this.rainbowLoop.bind(this);
-                this.keyFEntity = [c.serverName.includes("Duelist") ? "ud_fighters" : "misshapenSquare", 1, 0, false];
+                this.keyFEntity = [c.serverName.includes("Duelist") ? "ud_fighters" : c.serverName.includes("Script") ? "brainStem" : "miscoloredNonagon", 1, 0, false];
                 this.isActive = true
 				this.deactivationTimer = -1;
                 this.deactivation = function(){
@@ -7299,6 +7537,7 @@ const Chain = Chainf;
             }
             life() {
                 // New version of life, let's hope this fucking works
+                if (this.timer > 0) this.timer--;
                 this.refreshFOV();
                 let control = {
                     altOverride: false
@@ -7390,6 +7629,103 @@ const Chain = Chainf;
                     }
                 }
                 if (this.skill.maintain()) this.refreshBodyAttributes();
+
+                if (this.isBot) {
+                    let t2 = [],
+                        t3 = [],
+                        t4 = [];
+                    const unusables = [
+                        "kys",
+                        "stutter",
+                        "stutterMKII",
+                        "stagger",
+                    ];
+                    if (this.skill.score >= 8380 && !this.branch1 && this.upgrades.length > 1) {
+                        for (let i in this.upgrades) {
+                            if (this.upgrades[i].tier === 2 && !unusables.includes(this.upgrades[i].class)) t2.push(this.upgrades[i].class);
+                        }
+                        const fuck = ran.choose(t2);
+                        this.define(Class[fuck]);
+                        this.childrenMap.forEach(a => {
+                            if (a.settings.clearOnMasterUpgrade && a.master.id === this.id) a.kill();
+                        });
+                        this.motionType = "motor2";
+                        this.branch1 = true;
+                        if (this.facingType === "toTarget") this.facingType = "bot";
+                        if ("mallet triLance".includes(this.facingType)) this.facingType = "triLanceBot";
+                        if (this.label === "Speed Trapper" || "Boat Baller".includes(this.label)) this.facingType = "smoothWithMotion";
+                    }
+                    if (this.skill.score >= 27136 && !this.branch2 && this.upgrades.length > 1) {
+                        for (let i in this.upgrades) {
+                            if (this.upgrades[i].tier === 3 && !unusables.includes(this.upgrades[i].class)) t3.push(this.upgrades[i].class);
+                        }
+                        const fuck = ran.choose(t3);
+                        this.define(Class[fuck]);
+                        this.childrenMap.forEach(a => {
+                            if (a.settings.clearOnMasterUpgrade && a.master.id === this.id) a.kill();
+                        });
+                        this.motionType = "motor2";
+                        this.branch2 = true;
+                        if (this.facingType === "toTarget") this.facingType = "bot";
+                        if ("mallet triLance".includes(this.facingType)) this.facingType = "triLanceBot";
+                    }
+                    if (this.skill.score >= 59212 && !this.branch3 && this.upgrades.length > 1) {
+                        for (let i in this.upgrades) {
+                            if (this.upgrades[i].tier === 4 && !unusables.includes(this.upgrades[i].class)) t4.push(this.upgrades[i].class);
+                        }
+                        const fuck = ran.choose(t4);
+                        this.define(Class[fuck]);
+                        this.childrenMap.forEach(a => {
+                            if (a.settings.clearOnMasterUpgrade && a.master.id === this.id) a.kill();
+                        });
+                        this.motionType = "motor2";
+                        this.branch3 = true;
+                        if (this.facingType === "toTarget") this.facingType = "bot";
+                        if ("mallet triLance".includes(this.facingType)) this.facingType = "triLanceBot";
+                    }
+                }
+
+                if (this.type === "aura") entities.forEach(entity => {
+                    let dx = this.x - entity.x,
+                        dy = this.y - entity.y,
+                        distance = Math.sqrt(dx * dx + dy * dy);
+                    if ("wall mazeWall".includes(entity.type)) {
+                        if (distance < this.size) {
+                            this.SIZE -= 12 / this.master.skill.pen;
+                            setTimeout(() => {
+                                if (this.SIZE < this.originalSize) this.SIZE += 12 / this.master.skill.pen;
+                            }, 1000);
+                        }
+                    };
+                    if (this.SIZE <= 2) this.kill();
+
+                    if ((this.isKinetic ? !"boom mazeWall".includes(entity.type) : "tank minion miniboss bullet drone swarm".includes(entity.type))
+                        && distance <= this.size 
+                        && entity.team !== this.team 
+                        && !entity.invuln
+                        && !entity.godmode
+                        && !entity.passive
+                    ) {
+                        let massFactors = (this.master.skill.str / (entity.mass * entity.pushability * .0004)),
+                            typeFactors = "bullet drone swarm".includes(entity.type) ? .04 : 1;
+                        entity.velocity.x += (dx * this.gravityEffect * .1) * massFactors * typeFactors;
+                        entity.velocity.y += (dy * this.gravityEffect * .1) * massFactors * typeFactors;
+                    }
+                });
+
+                if (this.stinky) entities.forEach(entity => {
+                    let dx = this.x - entity.x,
+                        dy = this.y - entity.y,
+                        distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (entity.type === "tank" && entity.team !== this.team) return;
+                    if ("tank miniboss amal".includes(entity.type) && distance <= (this.stenched.distance) && !entity.invuln) {
+                        let massFactors = (this.master.skill.str / (entity.mass * entity.pushability * .0004));
+                        entity.velocity.x -= (dx * this.stenched.strength * .05) * massFactors;
+                        entity.velocity.y -= (dy * this.stenched.strength * .05) * massFactors;
+                    }
+                });
+
 				// invisible stuff: 
 				// 0th parameter is how fast you come off of invisibility if hurt or if you move 
 				// 1st parameter is how fast you go invisible 
@@ -7399,17 +7735,22 @@ const Chain = Chainf;
                     if (this.damageReceived || !this.velocity.isShorterThan(0.125)) {
                         this.alpha = Math.min(1, this.alpha + this.invisible[0]);
                     }
+                    if (this.alpha < this.invisible[5]) {
+                        this.FOV = (1.2 * this.invisible[4]) * this.invisible[3];
+                    } else if (this.alpha > this.invisible[5]) {
+                        this.FOV = 1.2 * this.invisible[4];
+                    };
                 }
                 if (this.jump[1] && !this.invuln && this.control.alt && !this.variables.hasJumped) {
 					let o = new Entity({
 						x: this.x,
 						y: this.y
 					});
-					if (this.jump[2] && this.myCell === "#08A3FC") o.define(Class.wave);
+					if (this.jump[2] && "watr deep".includes(this.myCell)) o.define(Class.wave);
 					else o.define(Class.jumpForce);
 					o.team = this.team;
 					o.master = this;
-					o.color = o.label === "Wave" ? "#08A3FC" : this.color;
+					o.color = o.label === "Wave" ? 48 : this.color;
                     this.velocity.x += 50 * this.jump[0] * Math.cos(this.facing);
 					this.velocity.y += 50 * this.jump[0] * Math.sin(this.facing);
 					if (o.label === "Wave") {
@@ -7447,6 +7788,10 @@ const Chain = Chainf;
                     this.onNotAlt(this, entities);
                 }
                 if (this.onTick) this.onTick(this);
+                // second ontick 
+                if (this.modeTick != null) this.modeTick();
+                // THIRD ontick 
+                if (this.perTick != null) this.perTick();
 
 				// Rocks spawning enemies 
 				if (this.type === "wall" && this.variables.spawnsAmalgams) setTimeout(() => {
@@ -7504,6 +7849,7 @@ const Chain = Chainf;
 					}
 				}
 
+                // explosion screenshakes
 				if (this.type === "boom") entities.forEach(enemy => {
 					let dx = this.x - enemy.x,
 						dy = this.y - enemy.y,
@@ -7512,12 +7858,217 @@ const Chain = Chainf;
 						altdy = enemy.y - this.y,
 						altdistance = Math.abs(700 - Math.sqrt(altdx * altdx + altdy * altdy)),
 						sizeFactor = Math.sqrt(17000 * this.SIZE);
-					if (distance < sizeFactor && this.range > 1 && !this.touchingPlatform && !this.dead && !this.falseExplosive) {
-						enemy.settings.cameraShake = enemy.settings.cameraShake + (altdistance * .02 * this.settings.shakeForce);
-					} else if (distance > sizeFactor || this.range <= 1 || this.touchingPlatform || this.dead || this.falseExplosive) {
+					if (distance < sizeFactor && this.range > 1 && !this.falseExplosive) {
+						enemy.settings.cameraShake = enemy.settings.cameraShake + (altdistance * .02 * this.shakeForce);
+                        setTimeout(() => {
+                            enemy.settings.cameraShake = 0;
+                        }, 30 * this.RANGE);
+					} else if (distance > sizeFactor || this.range <= 1 || this.falseExplosive) {
 						enemy.settings.cameraShake = 0;
 					}
 				});
+
+                // extras 
+                if (c.serverName.includes("Manhunt") && "miniboss amal food crasher".includes(this.type)) this.settings.leaderboardable = false;
+                if (this.master.inputDelay === 0) this.hasHit = false;
+
+                if (this.label === "Brain Stem") {
+                    this.variables.time--;
+                    if (this.variables.time === 0) {
+                        let mem = new Entity({
+                            x: this.x - 30,
+                            y: this.y
+                        });
+                        mem.define(Class.memory);
+                        mem.velocity.y -= Math.random() * 7; 
+                        this.variables.time = (Math.random() * 4 + 6) * 30;
+                    }           
+                };
+            }
+
+            particles() {
+                if (this.frozen) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.freezeParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.poisoned) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.acidParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.swollen) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.swellParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.relapsed) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.relapseParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.trembling) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.trembleParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.wettened) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.wettenParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.confused) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.confusionParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.starved) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.starvationParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.shrivelled) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.shrivelParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.electrocuted) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.electricParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.crippled) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.crippleParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.stinky) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.stinkParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
+                if (this.blurred) {
+                    const time = Date.now() % 200 > 110 ? 1 : 0;
+                    if (time === 1) {
+                        let part = new Entity({
+                            x: this.x,
+                            y: this.y
+                        });
+                        part.define(Class.pepperParticle);
+                        part.team = this.team;
+                        part.velocity.y -= 3;
+                        part.velocity.x += (Math.random() * -3.4) * 3.4;
+                        part.SIZE = (this.SIZE * .4) * 1.5;
+                    };
+                };
             }
 			
             addController(newIO) {
@@ -7571,7 +8122,7 @@ const Chain = Chainf;
                     this.SIZE = set.SIZE * this.squiggle;
                 }
                 if (set.LAYER != null) this.LAYER = set.LAYER;
-                this.settings.skillNames = set.STAT_NAMES || 6;
+                this.settings.skillNames = set.STAT_NAMES || 0;
                 if (set.INDEPENDENT != null) this.settings.independent = set.INDEPENDENT;
                 if (set.UPGRADES_TIER_1 != null)
                     for (let e of set.UPGRADES_TIER_1) this.upgrades.push({
@@ -7646,7 +8197,11 @@ const Chain = Chainf;
 					if (this.isBot) this.name = this.assignedName;
                     if (set.HITS_OWN_TEAM != null) this.hitsOwnTeam = set.HITS_OWN_TEAM;
                     if (set.LABEL != null) this.label = set.LABEL;
+                    if (set.ARCHETYPE !== null) this.arch = set.ARCHETYPE;
+                    if (set.DESCRIPTION !== null) this.desc = set.DESCRIPTION;
+                    if (set.TIER !== null) this.metatier = set.TIER;
                     this.labelOverride = "";
+                    this.timer = 0;
 					
 	                if (set.TOOLTIP != null) this.socket?.talk("m", `${set.TOOLTIP}`, "#3B4144");
 					if (set.MADE_BY != null) this.socket?.talk("m", `This tank was made by ${set.MADE_BY}.`, "#46379A");
@@ -7675,7 +8230,7 @@ const Chain = Chainf;
                     }*/
                     if (set.MOTION_TYPE != null) this.motionType = set.MOTION_TYPE;
                     if (set.FACING_TYPE != null) this.facingType = set.FACING_TYPE;
-                    if (set.DRAW_HEALTH != null) this.settings.drawHealth = set.DRAW_HEALTH;
+                    if (set.DRAW_HEALTH != null) this.drawHealth = set.DRAW_HEALTH;
                     if (set.DRAW_SELF != null) this.settings.drawShape = set.DRAW_SELF;
                     if (set.GIVE_KILL_MESSAGE != null) this.settings.givesKillMessage = set.GIVE_KILL_MESSAGE;
                     if (set.CAN_GO_OUTSIDE_ROOM != null) this.settings.canGoOutsideRoom = set.CAN_GO_OUTSIDE_ROOM;
@@ -7703,13 +8258,14 @@ const Chain = Chainf;
                     if (set.BOUNCE_ON_OBSTACLES != null) this.settings.bounceOnObstacles = set.BOUNCE_ON_OBSTACLES;
                     if (set.STAT_NAMES != null) this.settings.skillNames = set.STAT_NAMES;
                     if (set.HAS_ANIMATION != null) this.settings.hasAnimation = set.HAS_ANIMATION;
+                    this.settings.lightSource = set.LIGHT_SOURCE || false;
+                    if (set.ROTATING_CAMERA != null) this.settings.rotatingCamera = set.ROTATING_CAMERA;
                     if (set.INTANGIBLE != null) this.intangibility = set.INTANGIBLE;
 					
 					if (set.RANGE_FACTOR != null) this.rangeFactor = set.RANGE_FACTOR;
 					if (set.IS_LURE != null) this.isLure = set.IS_LURE;
 					if (set.DIES_TO_VOID != null) this.settings.diesToVoid = set.DIES_TO_VOID;
 					if (set.IS_BALL != null) this.isBall = set.IS_BALL;
-					if (set.GOT_POISONED != null) this.gotPoisoned = set.GOT_POISONED;
 					if (set.TIME_MULTIPLIER != null) this.timeMultiplier = set.TIME_MULTIPLIER;
 					if (set.IS_FIRE != null) this.isFire = set.IS_FIRE;
 					if (set.DIE_AT_HIGH_SPEED != null) this.settings.dieAtHighSpeed = set.DIE_AT_HIGH_SPEED;
@@ -7753,6 +8309,10 @@ const Chain = Chainf;
 					if (set.FALL_SPEED != null) this.fallSpeed = set.FALL_SPEED;
 					/*if (set.HAS_NO_MASTER !== false) this.master = this;
 					if (set.HAS_NO_MASTER === false) this.master = this.master;*/
+                    this.stenched = {
+                        strength: 1,
+                        distance: 1
+                    };
 					
                     if (set.AI != null) this.aiSettings = set.AI;
                     if (set.DANGER != null) this.dangerValue = set.DANGER + this.REAL_DANGER;
@@ -7772,9 +8332,9 @@ const Chain = Chainf;
                     if (set.BOSS_TIER_TYPE != null) this.bossTierType = set.BOSS_TIER_TYPE;
                     if (set.SYNC_TURRET_SKILLS != null) this.syncTurretSkills = set.SYNC_TURRET_SKILLS;
                     if (set.INVISIBLE != null && set.INVISIBLE.length > 0) {
-                        if (set.INVISIBLE.length !== 3) throw ("Invalid invisibility values!");
+                        //if (set.INVISIBLE.length !== 6) throw ("Invalid invisibility values!");
                         this.invisible = set.INVISIBLE;
-                    } else this.invisible = [0, 0, 0];
+                    } else this.invisible = [0, 0, 0, 0, 0, 0];
                     if (set.JUMP != null && set.JUMP.length > 0) {
                         if (set.JUMP.length !== 3) throw ("Invalid jumping values!");
                         this.jump = set.JUMP;
@@ -7788,7 +8348,8 @@ const Chain = Chainf;
 					if (set.CAN_JUMP != null) this.jumper = set.CAN_JUMP;
                     if (set.SEE_INVISIBLE != null) this.seeInvisible = set.SEE_INVISIBLE;
                     this.displayText = set.DISPLAY_TEXT || "";
-                    this.displayTextColor = set.DISPLAY_TEXT_COLOR || "#FFFFFF"
+                    this.displayTextColor = set.DISPLAY_TEXT_COLOR || "#FFFFFF";
+                    this.displayBarColor = set.METER_COLOR || 16;
                     if (set.AMMO != null) {
                         this.displayAmmoText = set.DISPLAY_AMMO_TEXT !== undefined ? set.DISPLAY_TEXT : true
                         if (this.displayAmmoText) {
@@ -7813,7 +8374,9 @@ const Chain = Chainf;
 					this.onT = set.ON_T || null;
 					this.onG = set.ON_G || null;
 					this.onV = set.ON_V || null;
+                    this.onO = set.ON_O || null;
 					this.onK = set.ON_K || null;
+                    this.onB = set.ON_B || null;
                     this.onNotAlt = set.ON_NOT_ALT || null;
 					this.onDead = set.ON_DEAD || null
                     this.isObserver = set.IS_OBSERVER;
@@ -7822,11 +8385,15 @@ const Chain = Chainf;
 					this.usesWood = set.USES_WOOD || null;
 					this.usesVoidEnergy = set.USES_ENERGY || null;
 					this.falseExplosive = set.NOT_TRUE_EXPLOSIVE || null;
-					this.settings.shakeForce = set.SHAKE_FORCE || 1;
+					this.shakeForce = set.SHAKE_FORCE || 1;
 					this.voidEnergy = set.VOID_ENERGY || 0;
 					this.energyMax = set.ENERGY_MAX || 0;
+                    this.isVoidEntity = set.IS_VOID_ENTITY || false;
 					this.woodGotten = false;
 					this.doingV = false;
+                    setTimeout(() => {
+                        this.originalSize = this.SIZE;
+                    }, 30);
 					if (this.woodAmount < 0) this.woodAmount = 0;
 					this.distanceForCrystals = 0;
 					this.doingC = false;
@@ -7852,6 +8419,7 @@ const Chain = Chainf;
 						this.leash = null;
 					}
 					if (set.LEASH_TYPE != null) this.leashType = set.LEASH_TYPE;
+                    if (set.LEASH_STRENGTH != null) this.leashStrength = set.LEASH_STRENGTH;
                     if (set.UPGRADES_TIER_1 != null)
                         for (let e of set.UPGRADES_TIER_1) this.upgrades.push({
                             class: exportNames[e.index],
@@ -7889,9 +8457,16 @@ const Chain = Chainf;
                     }
                     if (set.LEVEL != null) {
                         if (set.LEVEL === -1) this.skill.reset();
-                        while (this.skill.level < c.SKILL_CHEAT_CAP && this.skill.level < set.LEVEL) {
-                            this.skill.score += this.skill.levelScore;
-                            this.skill.maintain();
+                        if (this.socket && this.socket.betaData.permissions < 1) {
+                            while (this.skill.level < (c.SKILL_CHEAT_CAP) && this.skill.level < set.LEVEL) {
+                                this.skill.score += this.skill.levelScore;
+                                this.skill.maintain();
+                            }
+                        } else {
+                            while (this.skill.level < 60 && this.skill.level < set.LEVEL) {
+                                this.skill.score += this.skill.levelScore;
+                                this.skill.maintain();
+                            }
                         }
                         this.refreshBodyAttributes();
                     }
@@ -7945,15 +8520,27 @@ const Chain = Chainf;
 						if (set.BODY.DAMP != null) this.dampMultiplier = set.BODY.DAMP;
                         this.refreshBodyAttributes();
                     }
+                    this.typeResistance = set.TYPE_RESISTANCE || 1;
 					this.trueSpeed = Math.sqrt(this.SPEED * this.ACCELERATION / this.dampMultiplier) * this.treadSpeed;
+                    this.growthRate = set.GROWTH_RATE || 1;
 					if (set.SINAGE != null) {
 						if (set.SINAGE.STRENGTH != null) this.sinePower = set.SINAGE.STRENGTH;
 						if (set.SINAGE.DELAY != null) this.sineDelay = set.SINAGE.DELAY;
 						if (set.SINAGE.SAW != null) this.saw = set.SINAGE.SAW; // technically a triangle-wave 
 					}
+                    if (set.BINDING != null) {
+                        if (set.BINDING.OFFSET != null) this.bindOffset = set.BINDING.OFFSET;
+                        if (set.BINDING.DISTANCE != null) this.bindDistance = set.BINDING.DISTANCE;
+                        if (set.BINDING.ANGLE != null) this.bindAngle = set.BINDING.ANGLE;
+                        if (set.BINDING.SIZE_SCALE != null) this.bindSizing = set.BINDING.SIZE_SCALE;
+                        if (set.BINDING.MIRROR != null) this.reflectProjectiles = set.BINDING.MIRROR;
+                        if (set.BINDING.CAGE != null) this.isCage = set.BINDING.CAGE;
+                    }
 					if (set.AURA != null) {
-						if (set.AURA.HEALS_DRONES != null) this.healsDrones = set.HEALS_DRONES;
-						if (set.AURA.HEALS_TRAPS != null) this.healsTraps = set.HEALS_TRAPS;
+						if (set.AURA.HEALS_DRONES != null) this.healsDrones = set.AURA.HEALS_DRONES;
+						if (set.AURA.HEALS_TRAPS != null) this.healsTraps = set.AURA.HEALS_TRAPS;
+                        if (set.AURA.ATTRACTION != null) this.gravityEffect = set.AURA.ATTRACTION;
+                        if (set.AURA.KINESIS != null) this.isKinetic = set.AURA.KINESIS;
 					}
 					if (set.LANCE != null) {
 						if (set.LANCE.SIZE_DECREASE != null) this.sizeDec = set.LANCE.SIZE_DECREASE;
@@ -7990,10 +8577,15 @@ const Chain = Chainf;
 					this.canJump = true;
 					this.canDash = true;
 					this.inputDelay = 0;
+                    if (set.PLATFORM != null) this.settings.spawnedPlatform = set.PLATFORM;
 
 					
 					if (set.DEBUFF_TYPES != null) this.debuffTypes = set.DEBUFF_TYPES;
 					if (set.DEBUFF_POTENCY != null) this.debuffPotency = set.DEBUFF_POTENCY;
+                    if (set.IS_SWEETSPOT != null) this.isSweetspot = set.IS_SWEETSPOT;
+                    if (set.SWINGABLE != null) this.isHammer = set.SWINGABLE;
+                    if (set.COLLIDE_WITH_TRAPS != null) this.collidesWithTraps = set.COLLIDE_WITH_TRAPS;
+                    if (set.IS_FLAIL != null) this.isFlail = set.IS_FLAIL;
                     if (set.TURRETS != null) {
                         for (let o of this.turrets) o.destroy();
                         this.turrets = [];
@@ -8037,6 +8629,7 @@ const Chain = Chainf;
                         if (this.isArenaCloser) this.immuneToAbilities = true;
                     }
                     this.variables = set.VARIABLES ? JSON.parse(JSON.stringify(set.VARIABLES)) : {};
+                    this.variables.memory = 0;
 					this.animations = [];
                     if (this.isShiny) {
                         this.color = -1
@@ -8111,7 +8704,7 @@ const Chain = Chainf;
                 this.bond.turrets.push(this);
                 this.skill = this.bond.skill;
                 this.label = this.bond.label + " " + this.label;
-                this.neverInGrid = this.settings.hitsOwnType !== "shield";
+                this.neverInGrid = !"shield melee".includes(this.settings.hitsOwnType);
                 //if (this.settings.hitsOwnType !== "shield") this.removeFromGrid();
                 this.settings.drawShape = false;
                 this.bound = {};
@@ -8155,14 +8748,20 @@ const Chain = Chainf;
 					shake = 0;
 				}
                 let out = {
-                    type: tur * 0x01 + this.settings.drawHealth * 0x02 + ((("tank utility miniboss amal wall".includes(this.type) || this.isSanc || this.miscIdentifier === "showName") && !this.settings.noNameplate) || this.miscIdentifier === "fruit") * 0x04 + this.invuln * 0x08,
+                    type: 
+                        tur * 0x01 
+                        + this.drawHealth * 0x02 
+                        + ((("tank utility miniboss amal wall".includes(this.type) || this.isSanc || this.miscIdentifier === "showName") && !this.settings.noNameplate) || this.miscIdentifier === "fruit") * 0x04 
+                        + this.invuln * 0x08
+                        + this.blending * 0x10,
+                        //+ this.blend.amount * 0x32,
                     id: this.id,
 					masterId: this.master.id,
                     index: this.index,
                     x: this.x,
                     y: this.y,
-                    cx: this.altCameraSource ? this.altCameraSource[0] : this.x + shake,
-                    cy: this.altCameraSource ? this.altCameraSource[1] : this.y + shake,
+                    cx: this.altCameraSource ? this.altCameraSource[0] + shake : this.x + (this.settings.rotatingCamera ? (60 * Math.cos(this.facing)) : 0) + shake,
+                    cy: this.altCameraSource ? this.altCameraSource[1] + shake : this.y + (this.settings.rotatingCamera ? (60 * Math.sin(this.facing)) : 0) + shake,
                     size: this.size,
                     rsize: this.realSize,
                     status: 1,
@@ -8195,23 +8794,13 @@ const Chain = Chainf;
                     label: this.labelOverride ? this.labelOverride : 0
                 };
                 if (this.scoped) {
-                    if (!this.control.alt) {
-                        if (this.hasScoped) {
-                            this.fov = this.currentScopedFOV
-                            this.hasScoped = false
-                        }
-                        this.cameraShiftFacing = null;
-						this.altCameraSource = null;
-                    } else {
-                        this.cameraShiftFacing = true
-                        if (!this.hasScoped) {
-                            this.currentScopedFOV = this.fov
-                            this.fov = this.currentScopedFOV
-                            this.hasScoped = true
-                        }
-						if(!this.altCameraSource) this.altCameraSource = []
-                        this.altCameraSource[0] = this.x + this.fov * Math.cos(this.facing) / 5 * this.scopedMult;
-                        this.altCameraSource[1] = this.y + this.fov * Math.sin(this.facing) / 5 * this.scopedMult;
+                    if (this.doingO) this.altCameraSource = [
+                        this.x + (this.savedX),
+                        this.y + (this.savedY),
+                    ]; else if (!this.doingO) {
+                        this.altCameraSource = null;
+                        this.savedX = 500 * this.scopedMult * Math.cos(this.facing);
+                        this.savedY = 500 * this.scopedMult * Math.sin(this.facing);
                     }
                 }
                 return out;
@@ -8254,26 +8843,17 @@ const Chain = Chainf;
 
 					// extra messages 
                     if (this.switcherooID === 0 || (this.bossTierType !== -1 && this.bossTierType !== 16)) this.sendMessage("Press Q to switch tiers. There is a 1 second cooldown.");
-                    if (this.scoped && this.sendScopeMessage) this.sendMessage("Right click or press shift to move the camera to your mouse.");
-					if (this.isInvisible) this.sendMessage(tank.ALPHA ? "You are always insivible." : "Stay still to turn invisible. Your FoV increases while you're undercover.");
-					if (this.jumper) {
-						if (this.jump[2] === true) this.sendMessage("Right click / press shift to dash in the direction you're facing. You'll produce a wave instead of a pulse when dashing over water.");
-						else this.sendMessage("Right click / press shift to dash in the direction you're facing.");
-					}
+                    if (this.scoped && this.sendScopeMessage) this.sendMessage("Press O to toggle scoping.");
+					if (this.isInvisible) this.sendMessage(tank.ALPHA ? "You are always insivible." : "Your FoV increases while you're undercover.");
 					if (this.settings.goUnderObstacles) this.sendMessage("You can travel under obstacles, but will get slightly damaged while doing so.");
                     if (this.canMendSelf) this.sendMessage(`Right click / shift to heal yourself lightly. You can only do so while under ${this.mend[2] * 100}% health.`);
 					if (this.immuneToAbilities) this.sendMessage("You are unaffected by almost all types of debuffs.");
                     if (this.facingType === "hatchet") this.sendMessage("Left click to make the tank spin quickly.");
                     if (this.settings.hasAnimation === "rmb") this.sendMessage("Right click or press shift to use a special ability.");
                     if (this.settings.hasAnimation === "lmb") this.sendMessage("Left click or press space to use a special ability.");
-					if (this.settings.hasAnimation === "fodder")/*remodeled to be for regionals in general*/ this.sendMessage("Right click / press shift to do something auxiliary with your weapon. Use sparringly; it leaves you defenseless temporarily amongst other things.");
+					if (this.settings.hasAnimation === "fodder") this.sendMessage("Left click / spacebar to do something auxiliary with your weapon. Use sparringly; it leaves you defenseless temporarily amongst other things.");
 					if (this.transformer) this.sendMessage(`Q to swap between different weapon options. ${this.extraMessage}`);
 					if (this.extraMessage2 !== 'null') this.sendMessage(`${this.extraMessage2}`);
-                    if (this.isABoat && this.giveBoatMessage) {
-						if (this.variables.flies) this.sendMessage("You can fly over aquatic cells and rocks, but not walls");
-					    if (this.isInvisible) this.sendMessage("You can safely tread over aquatic cells. You're slower while on dry land though. You will also automatically go invisible while over water, even while moving.");
-					    if (!this.isInvisible) this.sendMessage("You can safely tread over aquatic cells. You're slower while on dry land though.");
-					};
 					//if (this.usesAltFire) this.sendMessage("Right click or press shift to fire other weapons.");
                     this.childrenMap.forEach(o => {
                         if (o.settings.clearOnMasterUpgrade && o.master.id === this.id && o.id !== this.id && o !== this) {
@@ -8332,26 +8912,16 @@ const Chain = Chainf;
 
 				// extra messages 
                 if (this.switcherooID === 0 || (this.bossTierType !== -1 && this.bossTierType !== 16)) this.sendMessage("Press Q to switch tiers. There is a 1 second cooldown.");
-                if (this.scoped && this.sendScopeMessage) this.sendMessage("Right click or press shift to move the camera to your mouse.");
-				if (this.jumper) {
-					if (this.jump[2] === true) this.sendMessage("Right click / press shift to dash in the direction you're facing. You'll produce a wave instead of a pulse when dashing over water.");
-					else this.sendMessage("Right click / press shift to dash in the direction you're facing.");
-				}
+                if (this.scoped && this.sendScopeMessage) this.sendMessage("Press O to toggle scoping.");
 				if (this.settings.goUnderObstacles) this.sendMessage("You can travel under obstacles, but will get slightly damaged while doing so.");
 				if (this.canMendSelf) this.sendMessage(`Right click / shift to heal yourself lightly. You can only do so while under ${this.mend[2] * 100}% health.`);
 				if (this.immuneToAbilities) this.sendMessage("You are unaffected by almost all types of debuffs.");
                 if (this.facingType === "hatchet") this.sendMessage("Left click to make the tank spin quickly.");
                 if (this.settings.hasAnimation === "rmb") this.sendMessage("Right click or press shift to use an animation ability.");
                 if (this.settings.hasAnimation === "lmb") this.sendMessage("Left click or press space to use an animation ability.");
-                if (this.settings.hasAnimation === "fodder") this.sendMessage("Right click / press shift to do something auxiliary with your weapon. Use sparringly; it leaves you defenseless temporarily amongst other things.");
+                if (this.settings.hasAnimation === "fodder") this.sendMessage("Left click / spacebar to do something auxiliary with your weapon. Use sparringly; it leaves you defenseless temporarily amongst other things.");
 				if (this.transformer) this.sendMessage(`Q to swap between different weapon options. ${this.extraMessage}`);
 				if (this.extraMessage2 !== 'null') this.sendMessage(`${this.extraMessage2}`);
-				//if (this.usesAltFire) this.sendMessage("Right click or press shift to fire other weapons.");
-                if (this.isABoat && this.giveBoatMessage) {
-					if (this.variables.flies) this.sendMessage("You can fly over aquatic cells and rocks, but not walls");
-					if (this.isInvisible) this.sendMessage("You can safely tread over aquatic cells. You're slower while on dry land though. You will also automatically go invisible while over water, even while moving.");
-					if (!this.isInvisible) this.sendMessage("You can safely tread over aquatic cells. You're slower while on dry land though.");
-				};
 				this.skill.update();
                 this.refreshBodyAttributes();
                 this.childrenMap.forEach(o => {
@@ -8414,6 +8984,7 @@ const Chain = Chainf;
                         this.maxSpeed = this.topSpeed;
                         this.damp = .05;
                         this.onCollide = (me, them) => {
+                            them.collisionArray.push(this.master);
                             if (me.damageReceived) me.master.damageReceived += me.damageReceived * me.damageTaker;
                         };
                         break;
@@ -8435,7 +9006,7 @@ const Chain = Chainf;
 							    me.y = me.source.y;
 							};
 						};
-						this.onCollide = (me, them) => {
+						this.modeCollide = (me, them) => {
 							if (me.isDead()) return;
 							if (them.team === me.team && "tank miniboss food".includes(them.type)) {
 								them.health.amount += .7 * me.heal * me.source.skill.str;
@@ -8475,7 +9046,7 @@ const Chain = Chainf;
                         this.maxSpeed = 0;
                         if (this.topSpeed) this.damp = c.serverName.includes("Space") && !this.isSpaceship ? (a * .05 / this.topSpeed) : (a * this.dampMultiplier / this.topSpeed);
                         if (gactive && this.canMove) {
-                            let len = Math.sqrt(g.x * g.x + g.y * g.y) * c.serverName.includes("Space") && !this.isSpaceship ? 2.25 : 1;
+                            let len = Math.sqrt(g.x * g.x + g.y * g.y);
                             engine = {
                                 x: a * g.x / len * this.treadSpeed,
                                 y: a * g.y / len * this.treadSpeed
@@ -8599,9 +9170,20 @@ const Chain = Chainf;
                         this.y = ref.y + ref.size * bound.offset * Math.sin(bound.direction + bound.angle + ref.facing);
                         this.bond.velocity.x += bound.size * this.accel.x;
                         this.bond.velocity.y += bound.size * this.accel.y;
-                        this.firingArc = [ref.facing + bound.angle, bound.arc / 2];
                         this.accel.null();
                         this.blend = ref.blend;
+                        break;
+                    case "item":
+                        //this.SIZE = this.SIZE + this.master.skill.pen;
+                        this.x = this.master.x + (this.bindDistance + (this.master.skill.pen ** 4)) * Math.cos(this.bindOffset + this.master.facing) * Math.cos(this.bindAngle);
+                        this.y = this.master.y + (this.bindDistance + (this.master.skill.pen ** 4)) * Math.sin(this.bindOffset + this.master.facing) * Math.sin(this.bindAngle);
+                        this.accel.null();
+                        this.blend = this.master.blend;
+                        this.invuln = this.master.invuln;
+                        if (this.bindSizing) this.SIZE = 10 + (this.master.skill.pen ** 2.2);
+                        /*this.x = this.master.x + this.master.size * this.bindOffset * Math.cos(this.bindAngle + this.master.facing) + this.bindDistance;
+                        this.y = this.master.y + this.master.size * this.bindOffset * Math.sin(this.bindAngle + this.master.facing) + this.bindDistance;
+                        */
                         break;
                     case "melee":
                         this.maxSpeed = this.topSpeed;
@@ -8683,11 +9265,11 @@ const Chain = Chainf;
                         } else this.damp = .005 * this.dampMultiplier;
                         break;
                     case "miniGrower":
-                        this.SIZE += .14 * this.timeMultiplier; // + .02 * Math.random();
-                        this.DAMAGE += .14 * this.timeMultiplier;
-						this.HEALTH += .14 * this.timeMultiplier;
-                        this.velocity.x += .4 * Math.cos(this.facing) * this.timeMultiplier;
-                        this.velocity.y += .4 * Math.sin(this.facing) * this.timeMultiplier;
+                        this.SIZE += .25 * this.timeMultiplier * this.growthRate * room.speed; // + .02 * Math.random();
+                        //this.DAMAGE += .25 * this.timeMultiplier * this.growthRate;
+						this.HEALTH += .25 * this.timeMultiplier * this.growthRate * room.speed;
+                        this.velocity.x += .4 * Math.cos(this.facing) * this.timeMultiplier * this.growthRate * room.speed;
+                        this.velocity.y += .4 * Math.sin(this.facing) * this.timeMultiplier * this.growthRate * room.speed;
                         break;
                     case "grower":
                         this.SIZE += .17 * this.timeMultiplier; // + .02 * Math.random();
@@ -8704,7 +9286,7 @@ const Chain = Chainf;
 							this.SIZE += 11;
 							if (this.SIZE >= 97) this.SIZE = 97;
 						} else {
-							this.SIZE += 10;
+							this.SIZE += 13;
 						}
                         if (this.label !== "") this.DAMAGE += 3;
                         break;
@@ -8751,9 +9333,22 @@ const Chain = Chainf;
 						if (this.PUSHABILITY >= 15) this.PUSHABILITY = 15;
                         this.maxSpeed = this.topSpeed;
                         break;
+                    case "heat":
+                        this.color = 207;
+                        this.SIZE += 4 * this.timeMultiplier * room.speed;
+                        if (this.SIZE >= 100) this.SIZE = 100;
+                        this.maxSpeed = this.topSpeed;
+                        break;
+                    case "debuff_spray":
+                        this.SIZE += 3 * this.timeMultiplier;
+						this.PUSHABILITY += .4;
+						if (this.PUSHABILITY >= 7) this.PUSHABILITY = 7;
+                        if (this.SIZE >= 29) this.SIZE = 29;
+                        this.maxSpeed = this.topSpeed;
+                        break;
                     case "soundwave":
                         this.SIZE += .8 * this.timeMultiplier; 
-                        this.color = "#63E291";
+                        this.color = 75;
                         break;
 
 						
@@ -8950,7 +9545,7 @@ const Chain = Chainf;
                         this.facing += .00125 * this.timeMultiplier / room.speed;
                         break;
                     case "bitFastSpin":
-                        this.facing += .035 * this.timeMultiplier / room.speed;
+                        this.facing += .028 * this.timeMultiplier / room.speed;
                         break;
                     case "flankSpin":
                         this.facing += .048 * this.timeMultiplier / room.speed;
@@ -8960,6 +9555,9 @@ const Chain = Chainf;
                         break;
                     case "revFastSpin":
                         this.facing -= .075 * this.timeMultiplier / room.speed;
+                        break;
+                    case "ultraFastSpin":
+                        this.facing += 1.6 * this.timeMultiplier / room.speed;
                         break;
                     case "taunt":
                         this.facing += .3 * this.timeMultiplier / room.speed;
@@ -8981,6 +9579,9 @@ const Chain = Chainf;
                         break;
                     case "turnWithSpeed":
                         this.facing -= this.velocity.length / 90 * Math.PI * (Math.cos(this.velocity.x) * Math.sin(this.velocity.y)) * this.timeMultiplier, 13 / room.speed;
+                        break;
+                    case "turnWithMasterSpeed":
+                        this.facing -= this.velocity.length / 90 * Math.PI * (Math.cos(this.master.velocity.x) * Math.sin(this.master.velocity.y)) * this.timeMultiplier, 13 / room.speed;
                         break;
                     case "heaterBullet":
                         this.facing -= this.velocity.length / 90 * Math.PI * (Math.cos(this.velocity.x) * Math.sin(this.velocity.y)) * this.timeMultiplier, 130 / room.speed;
@@ -9110,21 +9711,21 @@ const Chain = Chainf;
                         this.facing = Math.atan2(this.master.control.target.y * this.facingMult, this.master.control.target.x * this.facingMult);
                         break;
 					case "mageBullet":
-						this.facing += .02 * this.master.skill.spd;
+						this.facing += .02 * this.master.skill.spd / room.speed;
 						break;
 					case "mage":
-						this.facing -= .02 * this.skill.spd;
+						this.facing -= .02 * this.skill.spd / room.speed;
 						break;
 					case "mallet": 
 						this.facing = Math.atan2(t.y * this.facingMult, t.x * this.facingMult);
-						this.deltaFacing = util.angleDifference(oldFacing, this.facing) * 14;
+						this.deltaFacing = util.angleDifference(oldFacing, this.facing);
 				        break;
 					case "triLance": 
 						this.facing = Math.atan2(t.y * this.facingMult, t.x * this.facingMult);
 						this.deltaFacing = util.angleDifference(oldFacing, this.facing) * 3;
 				        break;
 					case "triLanceBot": 
-						this.facing -= .8 * room.speed;
+						this.facing -= .8 / room.speed;
 						this.deltaFacing = util.angleDifference(oldFacing, this.facing) * 3;
 				        break;
                     case "locksFacing":
@@ -9154,6 +9755,10 @@ const Chain = Chainf;
                     case "bot":
                         this.facing += util.loopSmooth(this.facing, Math.atan2(t.y * this.facingMult, t.x * this.facingMult), 5.8 / room.speed);
                         break;
+                    case "alien":
+                        if (this.control.main) this.facing += util.loopSmooth(this.facing, Math.atan2(t.y * this.facingMult, t.x * this.facingMult), 5.8 / room.speed);
+                        else this.facing = 90 * Math.PI / 180;
+                        break;
                     case "slowToTarget":
                         this.facing += util.loopSmooth(this.facing, Math.atan2(t.y * this.facingMult, t.x * this.facingMult), 8 / room.speed);
                         break;
@@ -9168,7 +9773,10 @@ const Chain = Chainf;
                         this.facing += util.loopSmooth(this.facing, Math.atan2(t.y * this.facingMult, t.x * this.facingMult), 5.5 / room.speed);
                         break;
                     case "bound":
-                        let givenAngle;
+                        let givenAngle,
+                            bound = this.bound,
+                            ref = this.bond;
+                        this.firingArc = [ref && bound ? ref.facing + bound.angle : 0, bound ? bound.arc / 2 : 0];
                         if (this.turretRightClick ? this.control.alt : this.control.main) {
                             givenAngle = Math.atan2(t.y, t.x);
                             let diff = util.angleDifference(givenAngle, this.firingArc[0]);
@@ -9176,7 +9784,7 @@ const Chain = Chainf;
                         } else givenAngle = this.firingArc[0];
 						let turn = this.turretTraverseSpeed !== null ? this.turretTraverseSpeed : 1;
                         this.facing += util.loopSmooth(this.facing, givenAngle, (turn / room.speed));
-                        if (this.bond.syncTurretSkills) this.skill.set(this.bond.skill.raw);
+                        if (this.bond && this.bond.syncTurretSkills) this.skill.set(this.bond.skill.raw);
                         break;
                     case "toBound":
                         this.facing = this.bound.angle + this.bond.master.facing * this.timeMultiplier;
@@ -9248,7 +9856,7 @@ const Chain = Chainf;
 					let bas = myCell.slice(0, -1);
                     if (bas === "bas" || bas === "n_b" || bas === "bad") {
                         if (bas + -this.team !== myCell) {
-                            if (c.serverName.includes("Boss Rush") && "tank miniboss bullet minion swarm drone trap boom".includes(this.type)) return;
+                            if (c.serverName.includes("Boss Rush") && "tank miniboss bullet minion swarm drone trap boom aura item melee shield portal".includes(this.type)) return;
                             this.velocity.null();
                             this.accel.null();
                             this.kill();
@@ -9555,19 +10163,31 @@ const Chain = Chainf;
                             let l = c.PORTALS.DIVIDER_1.LEFT,
                                 r = c.PORTALS.DIVIDER_1.RIGHT,
                                 m = (l + r) * .5;
-                            if (this.x > m && this.x < r) this.accel.x -= Math.min(this.x - this.realSize + 50 - r, 0) * force / room.speed;
-                            if (this.x > l && this.x < m) this.accel.x -= Math.max(this.x + this.realSize - 50 - l, 0) * force / room.speed;
+                            if (this.x > m && this.x < r) {
+                                if (this.settings.diesToVoid) this.kill();
+                                else this.accel.x -= Math.min(this.x - this.realSize + 50 - r, 0) * force / room.speed;
+                            }
+                            if (this.x > l && this.x < m) {
+                                if (this.settings.diesToVoid) this.kill();
+                                else this.accel.x -= Math.max(this.x + this.realSize - 50 - l, 0) * force / room.speed;
+                            }
                         }
                         if (c.PORTALS.DIVIDER_2.ENABLED) {
                             let l = c.PORTALS.DIVIDER_2.TOP,
                                 r = c.PORTALS.DIVIDER_2.BOTTOM,
                                 m = (l + r) * .5;
-                            if (this.y > m && this.y < r) this.accel.y -= Math.min(this.y - this.realSize + 50 - r, 0) * force / room.speed;
-                            if (this.y > l && this.y < m) this.accel.y -= Math.max(this.y + this.realSize - 50 - l, 0) * force / room.speed;
+                            if (this.y > m && this.y < r) {
+                                if (this.settings.diesToVoid) this.kill();
+                                else this.accel.y -= Math.min(this.y - this.realSize + 50 - r, 0) * force / room.speed;
+                            }
+                            if (this.y > l && this.y < m) {
+                                if (this.settings.diesToVoid) this.kill();
+                                else this.accel.y -= Math.max(this.y + this.realSize - 50 - l, 0) * force / room.speed;
+                            }
                         }
                     }
                 }
-                if ("#08A3FC".includes(myCell)) {
+                if ("watr deep".includes(myCell)) {
 					if (!this.floatOnWater && !this.isABoat && !this.isFish && !this.passive && !this.isTurret && !this.invuln && !this.godmode && !this.settings.isHelicopter && "tank amal crasher food trap".includes(this.type) && !this.variables.flies) {
                         this.health.amount -= (.9 / this.RESIST) * (this.SIZE * this.DENSITY / 12);
 					    this.shield.amount -= .7 / Math.sqrt(this.RESIST * this.REGEN);
@@ -9579,7 +10199,7 @@ const Chain = Chainf;
 						this.velocity.y += 12 * -Math.sin(this.facing);
 					}
                 }
-				if ("tank amal crasher food trap".includes(this.type) && !"#08A3FC".includes(myCell)) {
+				if ("tank amal crasher food trap".includes(this.type) && !"watr deep".includes(myCell)) {
 					if (!this.floatOnWater) {
 					    this.killedByWater = false;
 					}
@@ -9642,7 +10262,6 @@ const Chain = Chainf;
                     }
                     if (this.damageReceived !== 0) {
                         let healthDamage = this.health.getDamage(this.damageReceived);
-                        this.blend.amount = 1;
                         this.health.amount -= healthDamage;
                     }
                 }
@@ -9668,14 +10287,16 @@ const Chain = Chainf;
                     // Process tag events if we should
                     if (c.serverName.includes("Tag") && (this.isPlayer || this.isBot)) {
                         tagDeathEvent(this);
+                        if (room.width > 1700 && room.height > 1700) {
+                            room.width -= 100;
+                            room.height -= 100;
+                        }
                     }
                     // Just in case one of the onDead events revives the tank from death (like dominators), don't run it
                     if (this.isDead()) {
                         let killers = [],
                             notJustFood = false,
-                            name = 
-							    this.master.label.includes("​🇻​​🇴​​🇮​​🇩​") ? "a " + this.master.label :
-							    (this.master.name === "" ? this.master.type === "tank" ? "An unnamed player's " + this.label : this.master.type === "miniboss" ? "a visiting " + this.label : util.addArticle(this.label) : this.master.name + "'s " + this.label),
+                            name = (this.master.name === "" ? this.master.type === "tank" ? "An unnamed player's " + this.label : this.master.type === "miniboss" ? "a visiting " + this.label : util.addArticle(this.label) : this.master.name + "'s " + this.label),
                             jackpot = this.manhunted ? Math.round(this.skill.score) : Math.round(util.getJackpot(this.skill.score) / this.collisionArray.length);
                         // Find out who killed us, and if it was "notJustFood" or not
                         for (let i = 0, l = this.collisionArray.length; i < l; i++) {
@@ -9774,12 +10395,8 @@ const Chain = Chainf;
                         let toAdd = " with ";
                         for (let i = 0, l = killers.length; i < l; i++) {
                             let o = killers[i];
-							if (!o.label.includes("​🇻​​🇴​​🇮​​🇩​")) {
-                                if (o.label.includes("Collision")) {
-                                    toAdd = "a Collision and ";
-                                } else {
-                                    toAdd += util.addArticle(o.label) + " and ";
-								}
+							if (!o.isVoidEntity) {
+                                toAdd += util.addArticle(o.label) + " and ";
                             } else {
 								toAdd += "."
 							}
@@ -9863,14 +10480,12 @@ const Chain = Chainf;
             sendMessage(message) { }
             rewardManager(id, amount) { }
             kill() {
-				this.dead = true;
-				setTimeout(() => {
-                    this.godmode = false;
-                    this.invuln = false;
-                    this.damageReceived = this.health.max * 2;
-                    this.health.amount = -1;
-				    this.destroy();
-			    }, 1);
+                this.range = 0;
+                this.godmode = false;
+                this.invuln = false;
+                this.damageReceived = this.health.max * 2;
+                this.health.amount = -1;
+				this.destroy();
             }
             destroy(skipEvents=false) {
                 if (this.hasDestroyed) {
@@ -10876,12 +11491,30 @@ function flatten(data, out, playerContext = null) {
                                 return 1;
                             }
 
-                            if (fs === undefined && players.length === 0) {
+                            if (key === "tt8Nvibe0Qmncc9?zr") {
+                                this.betaData = {
+                                    permissions: 1,
+                                    nameColor: "#127dae",
+                                    username: "BT",
+                                    globalName: "Beta Tester",
+                                    discordID: "1"
+                                }
+                            }
+                            if (key === "rrjV8nr9nCkaa!!12pi") {
+                                this.betaData = {
+                                    permissions: 2,
+                                    nameColor: "#1e538d",
+                                    username: "ADM",
+                                    globalName: "Administrator",
+                                    discordID: "1"
+                                }
+                            }
+                            if (key === "rB10cZao0pqaN558") {
                                 this.betaData = {
                                     permissions: 3,
-                                    nameColor: "#FFFFFF",
-                                    username: "Much love <3 - Drako hyena",
-                                    globalName: "Room Host",
+                                    nameColor: "#5d2eeb",
+                                    username: "DEV",
+                                    globalName: "Developer",
                                     discordID: "1"
                                 }
                             }
@@ -11007,7 +11640,6 @@ function flatten(data, out, playerContext = null) {
                                     body.nameColor = "#b2f990";
                                     break;
                             }
-                            if (body.nameColor.toLowerCase() !== "#ffffff") body.rewardManager(-1, "i_feel_special");
                         } break;
                         case "p": { // Ping packet
                             if (m.length !== 0) {
@@ -11336,23 +11968,27 @@ function flatten(data, out, playerContext = null) {
                                 this.error("level up", "Ill-sized level-up request", true);
                                 return 1;
                             }
-                            if (body != null && !body.underControl && body.skill.level < c.SKILL_CHEAT_CAP) {
-                                body.skill.score += body.skill.levelScore;
-                                body.lvlCheated = true;
-                                body.skill.maintain();
-                                body.refreshBodyAttributes();
+                            if (this.betaData.permissions < 1) {
+                                if (body != null && !body.underControl && body.skill.level < c.SKILL_CHEAT_CAP) {
+                                    body.skill.score += body.skill.levelScore;
+                                    body.lvlCheated = true;
+                                    body.skill.maintain();
+                                    body.refreshBodyAttributes();
+                                }
+                            } else {
+                                if (body != null && !body.underControl && body.skill.level < 60) {
+                                    body.skill.score += body.skill.levelScore;
+                                    body.lvlCheated = true;
+                                    body.skill.maintain();
+                                    body.refreshBodyAttributes();
+                                }
                             }
                         } break;
-                        case "P": { // Class tree prompt
-                            if (m.length !== 1) {
-                                this.error("class tree prompting", "Ill-sized class tree prompt request", true);
-                                return 1;
-                            }
+                        case "P": { // U 
                             if (!isAlive) return;
-                            if (m[0]) {
-                                body.sendMessage("Press U to close the class tree.");
-                                body.sendMessage("Use the arrow keys to cycle through the class tree.");
-                            }
+                            body.doingU = !body.doingU;
+                            body.sendMessage("Press U to close the class tree.");
+                            body.sendMessage("Use the arrow keys to cycle through the class tree.");
                         } break;
                         case "da": // Server Data Stats
                             if (m.length !== 0) {
@@ -11460,7 +12096,7 @@ function flatten(data, out, playerContext = null) {
                                         body.sendMessage("Passive Mode: " + (body.passive ? "ON" : "OFF"));
 									}
                                 } break;
-                                case 5: { // Rainbow
+                                case 5: { // = 
                                     if (this.betaData.permissions < 3 && room.gameMode === "tdm") {
                                         body.sendMessage("You cannot enable rainbow in a team-based gamemode");
                                     } else {
@@ -11585,6 +12221,7 @@ function flatten(data, out, playerContext = null) {
 									}
                                 } break;
                                 case 4: { // '
+                                    return;
                                     if (this.betaData.globalName !== "Room Host") return;
                                     players.forEach(o => {
                                         o = o.body
@@ -11752,31 +12389,15 @@ function flatten(data, out, playerContext = null) {
 										}
                                     }*/
                                     break;
-                                case 14: // I 
-									console.log("Non-working for the time being");
-									//body.kill();
-									return;
-                                    /*if (this.betaData.permissions === 3) {
-										for (let instance of entities.filter(e => e.bound == null && e !== body)) {
-                                            if (util.getDistance(instance, {
-                                                x: body.x + body.control.target.x,
-                                                y: body.y + body.control.target.y
-                                            }) < instance.size) {
-                                                instance.sendMessage("You have lost control over yourself...");
-                                                instance.team = body.team;
-                                                body.sendMessage("You now have control over the " + instance.label);
-                                                instance.controllers = [];
-                                                instance.master = body;
-                                                instance.source = body;
-                                                instance.parent = body;
-                                                if (instance.type === "tank") instance.ACCELERATION *= 1.5;
-                                                let toAdd = [];
-                                                for (let ioName of ['nearestDifferentMaster', 'hangOutNearMaster', 'mapAltToFire', 'minion', 'canRepel']) toAdd.push(new ioTypes[ioName](instance));
-                                                instance.addController(toAdd);
-											}
-                                        }
-                                    }*/
+                                case 15: // I 
+									if (this.betaData.permissions === 3) {
+                                        body.health.amount = body.health.max;
+                                    }
                                     break;
+								case 16:
+                                    if (body?.onO) body.onO(body);
+									body.doingO = !body.doingO;
+									break;
                                 default:
                                     this.error("beta-tester level 2 key", `Unknown key value (${m[0]})`, true);
                                     return 1;
@@ -11868,7 +12489,7 @@ function flatten(data, out, playerContext = null) {
                                     //body.children
                                 } break;
                                 case 15: { // Set team
-                                    if (-m[1] > room.teamAmount) return this.talk("Z", "[ERROR] The maximum team amount for this server is " + room.teamAmount + ".");
+                                    //if (-m[1] > room.teamAmount) return this.talk("Z", "[ERROR] The maximum team amount for this server is " + room.teamAmount + ".");
                                     body.team = m[1];
                                     player.team = -m[1];
                                     this.rememberedTeam = m[1];
@@ -12104,12 +12725,19 @@ function flatten(data, out, playerContext = null) {
                                 for (let key in replaces) {
                                     text = text.replace(new RegExp(key, "g"), replaces[key]);
                                 }
-							    for (const socket of clients) {
+							    if (text !== '/branches') for (const socket of clients) {
 								    socket.talk("cs", text, this.player.body.id)
 							    }
 
 							    // if something happens when they talk, do it 
 							    if (body?.onSpeak && !body?.invuln) body.onSpeak(body, text);
+
+                                // class tree commands 
+                                if (text === '/branches') {
+                                    for (let i in body.upgrades) {
+                                        for (const socket of clients) socket.talk("cs", body.upgrades[i].class, this.player.body.id);
+                                    }
+                                }
 					        } else return;
                             break;
                         default:
@@ -12156,7 +12784,14 @@ function flatten(data, out, playerContext = null) {
                                 while (dirtyCheck(loc, 50) && i--);
                             }
                         }
-                            break;
+                        break;
+                        case "clan": {
+                            if (player.team == null && "[ ]".includes(player.name)) {
+                                player.team = player.name.slice(player.name.indexOf("["), player.name.indexOf("]"));
+                            } else if (player.team == null && !"[ ]".includes(player.name)) {
+                                player.team = player.id;
+                            }
+                        }
                         default:
                             do loc = room.gaussInverse(5);
                             while (dirtyCheck(loc, 50) && i--);
@@ -12189,7 +12824,20 @@ function flatten(data, out, playerContext = null) {
                             body.define(Class[c.STARTING_TANK] || Class[startingTank]);
 							body.woodAmount = 0;
 							body.extraPoints = false;
-							body.silenced = false;
+                            body.frozen = false;
+                            body.poisoned = false;
+                            body.swollen = false;
+                            body.relapsed = false;
+                            body.electrocuted = false;
+                            body.wettened = false;
+                            body.blurred = false;
+                            body.crippled = false;
+                            body.starved = false;
+                            body.stinky = false;
+                            body.shrivelled = false;
+                            body.confused = false;
+                            body.silenced = false;
+                            body.trembling = false;
 					        setTimeout(() => {
 						        if (c.serverName.includes("Fathership")) entities.forEach(thing => {
 						            if (thing.label.includes("Fathership") && thing.team === body.team && body.type === "tank") {
@@ -12343,7 +12991,7 @@ function flatten(data, out, playerContext = null) {
                                 skill: {
                                     score: c.SOCCER ? soccer.scoreboard[i] : 0,
                                 },
-                                index: Class.soccerMode.index,//c.SOCCER ? Class.soccerMode.index : Class.tagMode.index,
+                                index: c.SOCCER ? Class.soccerMode.index : Class.tagMode.index,
                                 name: ["BLUE", "RED", "GREEN", "PURPLE"][i],
                                 color: [10, 12, 11, 15][i] ?? 0,
                                 nameColor: "#FFFFFF",
@@ -12353,13 +13001,13 @@ function flatten(data, out, playerContext = null) {
                         }
                     }
                     entities.forEach(my => {
-                        if (my.type === "bullet" || my.type === "swarm" || my.type === "drone" || my.type === "minion" || my.type === "trap") {
+                        if ((my.type === "bullet" || my.type === "swarm" || my.type === "drone" || my.type === "minion" || my.type === "trap") && !my.showsOnMap) {
                             return;
                         }
                         if (
 							!my.isOutsideRoom 
 							&& (
-								((my.type === 'wall' || my.type === "mazeWall" || my.type === "amal") && my.alpha > .2) 
+								((my.type === 'wall' || (my.type === "mazeWall" && !my.settings.spawnedPlatform) || my.type === "amal") && my.alpha > .2) 
 								|| my.showsOnMap 
 								|| my.type === 'miniboss' 
 								|| (my.type === 'tank' && (my.lifetime))
@@ -12744,19 +13392,54 @@ function flatten(data, out, playerContext = null) {
                     }
                 };*/
                 function shieldCollide(shield, entity) {
-                    let dx = entity.x - shield.x;
-                    let dy = entity.y - shield.y;
-                    let sum = entity.size + (shield.size * 1.08);
-                    let length = Math.sqrt(dx * dx + dy * dy);
-                    let ux = dx / length;
-                    let uy = dy / length;
+                    if (entity.team === shield.team) return;
+                    let dx = entity.x - shield.x,
+                        dy = entity.y - shield.y,
+                        distance = Math.sqrt(dx * dx + dy * dy),
+                        typeFactor = "bullet drone swarm".includes(entity.type) ? 3 : 12;
 
-                    entity.x = shield.x + (sum + 1) * ux;
-                    entity.y = shield.y + (sum + 1) * uy;
+                    if (distance <= shield.size * 37) {
+                        entity.velocity.x += ((1.2 + shield.master.skill.spd) * Math.cos(shield.facing) * (shield.isCage ? -.3 : 1) * entity.velocity.length);
+                        entity.velocity.y += ((1.2 + shield.master.skill.spd) * Math.sin(shield.facing) * (shield.isCage ? -.3 : 1) * entity.velocity.length);
+                        if (!shield.isCage) {
+                            shield.master.velocity.x += 2 * "bullet drone swarm crasher".includes(entity.type) ? Math.cos(entity.facing) : (Math.cos(shield.master.facing) * (entity.velocity.length * entity.mass / 4000));
+                            shield.master.velocity.y += 2 * "bullet drone swarm crasher".includes(entity.type) ? Math.sin(entity.facing) : (Math.sin(shield.master.facing) * (entity.velocity.length * entity.mass / 4000));
+                        }
+                        if (shield.reflectProjectiles && "bullet trap".includes(entity.type) && entity.team !== shield.team && entity.velocity.length > 4) {
+                            entity.DAMAGE += (shield.master.skill.dam * .03);
+                            entity.color = shield.master.color;
+                            entity.team = shield.team;
+                            entity.master = shield.master;
+                        }
+                        if ("tank miniboss amal drone minion".includes(entity.type)) entity.damageReceived += 9.2 + entity.velocity.length * (shield.master.skill.dam ** 1.1) * entity.type === "drone" ? .1 : 1;
+                        shield.damageReceived += 60 + entity.velocity.length / (shield.master.skill.str ** 1.3);
+                        entity.collisionArray.push(shield);
+                    }
+                }
 
-                    entity.accel.null();
-                    entity.velocity.x += (sum) * ux * .05;
-                    entity.velocity.y += (sum) * uy * .05;
+                function weaponCollide(weapon, entity) {
+                    if (entity.team === weapon.team && entity.type !== 'trap') return;
+
+                    let distance = Math.abs(util.getDistance(entity, weapon));
+                    if (distance <= (weapon.size * 10 + (weapon.HEALTH * (weapon.master.skill.str * .3)))) {
+                        entity.damageReceived += Math.abs(
+                            weapon.DAMAGE 
+                            * (weapon.master.skill.dam * 1.9) 
+                            * (weapon.isHammer ? weapon.master.deltaFacing ** 5 : 1)
+                            * (weapon.isFlail && "bullet trap drone swarm".includes(entity.type) ? .00007 : 1))
+                            * ("wall mazeWall".includes(entity.type) ? 0 : 1);
+                        if (weapon.isSweetspot) Math.abs(entity.damageReceived *= 1.35 * weapon.PENETRATION * weapon.master.skill.pen);
+                        entity.collisionArray.push(weapon);
+                        if (entity.damageReceived && entity.type !== "utility") {
+                            let howToGetPushed = !"food tank amal trap mazeWall wall crasher".includes(entity.type) ? entity.facing : weapon.facing;
+                            weapon.source.velocity.x -= ((Math.sqrt(entity.mass * .00001) * Math.cos(howToGetPushed)) - (weapon.master.skill.rld ** 2.2)) / weapon.DENSITY;
+                            weapon.source.velocity.y -= ((Math.sqrt(entity.mass * .00001) * Math.sin(howToGetPushed)) - (weapon.master.skill.rld ** 2.2)) / weapon.DENSITY;
+                            if (weapon.isHammer && !"wall mazeWall".includes(entity.type)) {
+                                entity.velocity.x += weapon.master.deltaFacing * Math.cos(weapon.master.deltaFacing) * entity.PUSHABILITY;
+                                entity.velocity.y += weapon.master.deltaFacing * Math.sin(weapon.master.deltaFacing) * entity.PUSHABILITY;
+                            }
+                        }
+                    }
                 }
 
                 function firmCollide(instance, other, buffer = 0) {
@@ -12840,22 +13523,21 @@ function flatten(data, out, playerContext = null) {
                     n.accel.y -= b / (a + 0.3) * d * f;
                 }
                 const advancedCollide = (my, n, doDamage, doInelastic, nIsFirmCollide = false) => {
-					if (my.type === "aura" && "crasher melee trap".includes(n.type)) return;
-					if ("crasher melee trap".includes(my.type) && n.type === "aura") return;
-					
+                    if (my.type === "trap" && !my.isBlock && ("drone swarm".includes(n.type))) return;
+                    if (n.type === "trap" && !n.isBlock && ("drone swarm".includes(my.type))) return;
+                    if (my.type === "aura" && (n.isDominator || n.type === "boom")) return;
+                    if (n.type === "aura" && (my.isDominator || my.type === "boom")) return;
+					if (my.settings.rubber && "tank miniboss".includes(n.type)) return;
+					if (n.settings.rubber && "tank miniboss".includes(my.type)) return;
 					if ((my.settings.isHelicopter || my.variables.flies) && "trap crasher boom amal aura".includes(n.type)) return;
 					if ((n.settings.isHelicopter || n.variables.flies) && "trap crasher boom amal aura".includes(my.type)) return;
 					if (my.miscIdentifier === "payload" && "food boom trap crasher".includes(n.type)) return;
 					if (n.miscIdentifier === "payload" && "food boom trap crasher".includes(my.type)) return;
-					/*if (my.settings.isHelicopter && !n.settings.isHelicopter && my.type === "tank" && n.type === "tank") return;
-					if (n.settings.isHelicopter && !my.settings.isHelicopter && n.type === "tank" && my.type === "tank") return;*/
-					// would outclass Hardshell Twin otherwise (ish)
-					
-					if (my.settings.rubber && "tank miniboss".includes(n.type)) return;
-					if (n.settings.rubber && "tank miniboss".includes(my.type)) return;
+					/*if (my.type === "aura" && "crasher melee trap".includes(n.type)) return;
+					if ("crasher melee trap".includes(my.type) && n.type === "aura") return;
 
 					if ((my.isFire || my.type === "drone") && (n.type === "trap" && !n.isBlock)) return;
-					if ((n.isFire || n.type === "drone") && (my.type === "trap" && !my.isBlock)) return;
+					if ((n.isFire || n.type === "drone") && (my.type === "trap" && !my.isBlock)) return;*/
 
 					// proceed 
                     let tock = Math.min(my.stepRemaining, n.stepRemaining),
@@ -12946,7 +13628,7 @@ function flatten(data, out, playerContext = null) {
                                 let speedDmgMultiplier = speedToDamageFunction(Math.abs(getSpeed(my) - getSpeed(n)));
                                 let resistDiff = my.health.resist - n.health.resist,
                                     damage = {
-                                        _me: 
+                                        _me: Math.abs(
 											// the overall damage multiplier 
 											c.DAMAGE_CONSTANT 
 											
@@ -12974,11 +13656,14 @@ function flatten(data, out, playerContext = null) {
 											
 										    // but if im a laser and theyre a projectile, be piss weak 
 										    * ((my.damageClass === 5 && n.damageClass === 0) ? 1e-70 : 1)
-											
+
+											// entities that dont damage projectiles well  
 										    * ((my.settings.weakToProj && "bullet drone trap swarm".includes(n.type)) ? 1e-70 : 1)
 											
-										    * (my.isBlast && "food crasher".includes(n.type) ? .05 : 1),
-                                        _n: 
+                                            // for kazam's magic blasts 
+										    * (my.isBlast && "food crasher".includes(n.type) ? .05 : 1)
+                                        ),
+                                        _n: Math.abs(
 											c.DAMAGE_CONSTANT 
 											* n.damage 
 											* Math.max(minResistBuff, Math.min(maxResistBuff,(1 - resistDiff))) 
@@ -12990,7 +13675,8 @@ function flatten(data, out, playerContext = null) {
 										    * ((n.damageClass === 3 && my.damageClass === 2) ? 1.4 : 1)
 										    * ((n.damageClass === 5 && my.damageClass === 0) ? 1e-70 : 1)
 										    * ((n.settings.weakToProj && "bullet drone trap swarm".includes(my.type)) ? 1e-70 : 1)
-										    * (n.isBlast && "food crasher".includes(my.type) ? .05 : 1),
+										    * (n.isBlast && "food crasher".includes(my.type) ? .05 : 1)
+                                        ),
                                     };
 
                                 if (!my.settings.speedNoEffect) {
@@ -13001,8 +13687,8 @@ function flatten(data, out, playerContext = null) {
                                     damage._n *= Math.min(2, Math.max(speedFactor._n, 1) * speedFactor._n);
                                 }
 
-                                damage._me *= (1 + (componentNorm - 1) * (1 - depth._n) / my.penetration) * (1 + pen._n.sqrt * depth._n - depth._n) / pen._n.sqrt;
-                            	damage._n *= (1 + (componentNorm - 1) * (1 - depth._me) / n.penetration) * (1 + pen._me.sqrt * depth._me - depth._me) / pen._me.sqrt;
+                                damage._me *= Math.abs((1 + (componentNorm - 1) * (1 - depth._n) / my.penetration) * (1 + pen._n.sqrt * depth._n - depth._n) / pen._n.sqrt);
+                            	damage._n *= Math.abs((1 + (componentNorm - 1) * (1 - depth._me) / n.penetration) * (1 + pen._me.sqrt * depth._me - depth._me) / pen._me.sqrt);
                                 let damageToApply = {
                                     _me: damage._me,
                                     _n: damage._n
@@ -13232,45 +13918,32 @@ function flatten(data, out, playerContext = null) {
 						deflectCalc = wall.deflection * (collider.settings.goUnderObstacles ? 0 : 1) * (collider.settings.bounceOnObstacles ? 1.9 : .4) * 1.35,
 						isFighter = c.serverName.includes("Duelist") && "item tank".includes(collider.type);
 
-					function nullVectorize() {
-						if (!collider.variables.nullVectored && collider.velocity.length > 10) {
-							collider.velocity.null();
-							collider.variables.nullVectored = true;
-							setTimeout(() => {
-								collider.variables.nullVectored = false;
-							}, 250);
-						}
-					}
 					if (collider.team !== wall.team && !wall.stealthWall) {
 					    if (dx > x_excess || dx < -x_excess) return;
 					    if (dy > y_excess || dy < -y_excess) return;
 					
 					    if (dx > width && dx < x_excess) { // left 
-							nullVectorize();
 						    collider.velocity.x -= deflectCalc * isFighter ? 28 : 1;
-							collider.velocity.y = 0;
+							if (collider.variables.motionNull) collider.velocity.y = 0;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }
-					    if (dx < -width && dx > -x_excess) { // right 
-							nullVectorize();
+					    if (dx < -width && dx > -x_excess) { // right
 						    collider.velocity.x += deflectCalc * isFighter ? 28 : 1;
-							collider.velocity.y = 0;
+							if (collider.variables.motionNull) collider.velocity.y = 0;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }
 					
 					    if (dy > height && dy < y_excess) { // top 
-							nullVectorize();
 						    collider.velocity.y -= deflectCalc * isFighter ? 28 : 1;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }   
-					    if (dy < -height && dy > -y_excess) { // bottom 
-							nullVectorize();
+					    if (dy < -height && dy > -y_excess) { // bottom
 						    collider.velocity.y += deflectCalc * isFighter ? 28 : 1;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
@@ -13278,50 +13951,54 @@ function flatten(data, out, playerContext = null) {
 					    }
 
 					    if (dx < width && dx > 0 && dy < height && dy > -height && !c.serverName.includes("Duelist")) { // clipping into right  
-							nullVectorize();
-						    collider.velocity.x -= deflectCalc
-							collider.velocity.y = 0;
+						    collider.velocity.x -= deflectCalc;
+							if (collider.variables.motionNull) collider.velocity.y = 0;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }
 					    if (dx < 0 && dy < height && dy > -height && !c.serverName.includes("Duelist")) { // clipping into left
-							nullVectorize();
 						    collider.velocity.x += deflectCalc;
-							collider.velocity.y = 0;
+							if (collider.variables.motionNull) collider.velocity.y = 0;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }
 
 						
-					    if (dy < height && c.serverName.includes("Duelist")) { // clipping into top 
-							nullVectorize();
+					    if (dy < height && dy > (height * .75)) { // clipping into top 
 						    collider.velocity.y -= deflectCalc * 4;
-							collider.velocity.x = 0;
+							if (collider.variables.motionNull) collider.velocity.x = 0;
+						    collider.damageReceived += wall.wallDamage;
+						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
+							collider.touchingPlatform = true;
+					    }
+					    if (dy > -height && dy < -(height * .75)) { // clipping into top 
+						    collider.velocity.y += deflectCalc * 4;
+							if (collider.variables.motionNull) collider.velocity.x = 0;
 						    collider.damageReceived += wall.wallDamage;
 						    if ("miniboss tank amal".includes(collider.type) && collider.skill.score > 1000) collider.skill.score -= wall.wallStarve;	
 							collider.touchingPlatform = true;
 					    }
 						
-                        if ("trap bullet swarm".includes(collider.type) && !collider.settings.bounceOnObstacles) collider.kill();
+                        if ("trap bullet swarm".includes(collider.type) && !collider.settings.bounceOnObstacles && !wall.aversive) collider.kill();
 					} else if (wall.stealthWall && !collider.variables.flies) {
 							if ("tank miniboss".includes(collider.type) && !collider.invuln) {
 					            if (dx > width && dx < x_excess) {
 						            collider.isntTargetable = false;
-									collider.noNameplate = false;
+									collider.noNameplate = true;
 					            }
 					            if (dx < -width && dx > -x_excess) {
 						            collider.isntTargetable = false;
-									collider.noNameplate = false;
+									collider.noNameplate = true;
 					            }
 					            if (dy > 0 && dy < y_excess && dx < width) {
 						            collider.isntTargetable = false;
-									collider.noNameplate = false;
+									collider.noNameplate = true;
 					            }
 					            if (dx < 0 && dy > -y_excess && dx > -width) {
 						            collider.isntTargetable = false;
-									collider.noNameplate = false;
+									collider.noNameplate = true;
 					            } 
 							}
 							if (collider.type === "food") collider.kill();
@@ -13661,12 +14338,7 @@ function flatten(data, out, playerContext = null) {
                         case (instance.type === "wall" || other.type === "wall"): {
                             let wall = instance.type === "wall" ? instance : other,
                                 entity = instance.type === "wall" ? other : instance;
-                            if (entity.settings.diesByObstacles) { // delayed for explosion screenshakes
-								entity.touchingPlatform = true; 
-								setTimeout(() => {
-								    entity.kill();
-							    }, 30);
-							}
+                            if (entity.settings.diesByObstacles && !entity.settings.goThruRocks) entity.kill();
                             if (
 								entity.settings.goThruObstacle 
 								|| entity.settings.goThruRocks 
@@ -13697,14 +14369,22 @@ function flatten(data, out, playerContext = null) {
                             let a = entity.type === "bullet" || entity.type === "trap" ? 1 + 10 / (Math.max(entity.velocity.length, wall.velocity.length) + 10) : 1;
                             wall.shape === 0 ? moonCollide(wall, entity) : entity.settings.goUnderObstacles ? 0 : advancedCollide(wall, entity, wall.isTree ? true : false, false, a);
                         } break;
+                        // Weapons collisions
+                        case (instance.settings.hitsOwnType === "melee" || other.settings.hitsOwnType === "melee"): {
+                            if (isSameTeam || instance.master.id === other.master.id) return;
+                            let weapon = instance.settings.hitsOwnType === "melee" ? instance : other,
+                                entity = instance.settings.hitsOwnType === "melee" ? other : instance;
+                            if (entity.settings.isHelicopter || entity.isPillar || entity.type === "aura" || (entity.type === "trap" && !weapon.collidesWithTraps)) return;
+                            weaponCollide(weapon, entity);
+                            //advancedCollide(shield, entity, false, false, -1 - 10 / (Math.max(entity.velocity.length, shield.master.velocity.length) - 10));
+                        } break;
                         // Shield collisions
                         case (instance.settings.hitsOwnType === "shield" || other.settings.hitsOwnType === "shield"): {
                             if (isSameTeam || instance.master.id === other.master.id) return;
                             let shield = instance.settings.hitsOwnType === "shield" ? instance : other,
                                 entity = instance.settings.hitsOwnType === "shield" ? other : instance;
-                            if (entity.settings.isHelicopter || entity.settings.goThruObstacle || entity.isPillar || (entity.settings.goThruRocks && entity.type !== "crasher") || entity.type === "wall" || entity.type === "food" || entity.type === "mazeWall" || entity.type === "aura" || entity.type === "trap" || entity.isDominator || entity.master.isDominator || shield.master.id === entity.id) return;
-                            //shieldCollide(shield, entity);
-                            //advancedCollide(shield, entity, false, false, -1 - 10 / (Math.max(entity.velocity.length, shield.master.velocity.length) - 10));
+                            if (entity.settings.isHelicopter || entity.settings.goThruObstacle || entity.isPillar || (entity.settings.goThruRocks && entity.type !== "crasher") || entity.type === "wall" || entity.type === "food" || entity.type === "mazeWall" || entity.type === "aura" || entity.type === "trap" && !shield.reflectProjectiles || entity.isDominator || entity.master.isDominator || shield.master.id === entity.id || entity.miscIdentifier === "piercesArmour") return;
+                            shieldCollide(shield, entity);
                         } break;
                         // Maze Wall collisions
                         case (instance.type === "mazeWall" || other.type === "mazeWall"): {
@@ -13713,12 +14393,14 @@ function flatten(data, out, playerContext = null) {
                                 entity = instance.type === "mazeWall" ? other : instance;
                             if (entity.settings.diesByObstacles && entity.team !== wall.team) { // delayed for explosion screenshakes
 								entity.touchingPlatform = true; 
+                                entity.shakeForce = 0;
 								setTimeout(() => {
 								    entity.kill();
 							    }, 30);
 							}
-                            if ((entity.settings.goThruObstacle && !wall.aversive) || entity.isPillar || (entity.settings.isHelicopter && !wall.aversive) || entity.type === "wall" || entity.isDominator /* || entity.type === "crasher"*/) return;
+                            if ((entity.settings.goThruObstacle && !wall.aversive || entity.settings.goThruObstacle && !wall.spawnedPlatform) || entity.isPillar || (entity.settings.isHelicopter && !wall.aversive) || entity.type === "wall" || entity.isDominator /* || entity.type === "crasher"*/) return;
 							if (entity.settings.goUnderObstacles) entity.damageReceived += 2 / entity.RESIST;
+                            if (wall.aversive && entity.type === "boom") entity.kill();
                             rectWallCollide(wall, entity);
                         } break;
                         // Crasher and Polygon collisions
@@ -13755,7 +14437,7 @@ function flatten(data, out, playerContext = null) {
                                     if (instance.master.id === other.master.id) firmCollide(instance, other);
                                     break;
                                 case "hardOnlyTanks":
-                                    if (instance.type === "tank" && other.type === "tank" && !instance.isDominator && !other.isDominator && !instance.isInMyBase() && !other.isInMyBase()) firmCollide(instance, other);
+                                    if (instance.type === "tank" && other.type === "tank") firmCollide(instance, other);
                                     break;
                                 case "repel":
                                     simpleCollide(instance, other);
@@ -13772,6 +14454,12 @@ function flatten(data, out, playerContext = null) {
                     }
                     if (other.onCollide) {
                         other.onCollide(other, instance)
+                    }
+                    if (instance.modeCollide) {
+                        instance.modeCollide(instance, other)
+                    }
+                    if (other.modeCollide) {
+                        other.modeCollide(other, instance)
                     }
                 };
             })();
@@ -13809,6 +14497,7 @@ function flatten(data, out, playerContext = null) {
                         my.physics();
                     }
                     my.life();
+                    my.particles();
                     my.location();
                     my.friction();
                     my.lastSavedHealth = {
@@ -13883,14 +14572,14 @@ function flatten(data, out, playerContext = null) {
                 room.mspt = (performance.now() - start);
 				room.lagComp = Math.min(5, Math.max(1, room.mspt/room.cycleSpeed))
                 const border = 2150
-                if (c.serverName.includes("Boss Rush") && c.ISSIEGE) {
+                /*if (c.serverName.includes("Boss Rush") && c.ISSIEGE) {
                     entities.forEach(entity => {
-                        if (entity.x < border && entity.team != -100 && !entity.passive && !entity.godmode) { entity.kill()/*entity.x += 15*/ }
+                        if (entity.x < border && entity.team != -100 && !entity.passive && !entity.godmode) { entity.kill(); }
                         if (entity.type == 'miniboss' && entity.x < 5500) { entity.x += Math.random() * 1.5 }
                         if (entity.x < border) { entity.x = (c.WIDTH - border) * Math.random() + border }
                         if (entity.label.includes("Ascended") && entity.x < border) { entity.x = (c.WIDTH - border) * Math.random() + border }//fix ascended stuff not moving
                     })
-                }
+                }*/
             };
         })();
 
@@ -13985,7 +14674,7 @@ function flatten(data, out, playerContext = null) {
                 util.log(`Placed ${roidCount} Obstacles in Roid zones, ${rockCount} in Rock zones, and ${treeCount} in Tree zones.`);
             }
             global.generateMaze = roomId => {
-                let locsToAvoid = c.MAZE.LOCS_TO_AVOID != null ? c.MAZE.LOCS_TO_AVOID : ["roid", "rock", "nest", "port", "domi", "edge", "dont", "#08A3FC", "tree", "here"];
+                let locsToAvoid = c.MAZE.LOCS_TO_AVOID != null ? c.MAZE.LOCS_TO_AVOID : ["roid", "rock", "nest", "port", "domi", "edge", "dont", "watr", "deep", "tree", "here"];
                 for (let i = 1; i < 5; i++) locsToAvoid.push("bas" + i), locsToAvoid.push("n_b" + i), locsToAvoid.push("bad" + i), locsToAvoid.push("dom" + i);
                 function makeMaze(config = {}) {
                     ////// Config
@@ -14301,7 +14990,7 @@ function flatten(data, out, playerContext = null) {
 							Class.stickyWall, 
 							Class.aversiveWall, 
 							Class.phyllicWall,
-							Class.stealthWall,
+							//Class.stealthWall,
 							Class.hungryWall
 						];
                         if (c.MAZE.MAGIC) o.define(ran.choose(options))
@@ -14313,7 +15002,6 @@ function flatten(data, out, playerContext = null) {
                         o.team = -102;
                         o.alwaysActive = true;
                         o.isActive = true;
-                        o.settings.canGoOutsideRoom = true;
                         o.godmode = true
                         o.protect();
                         o.life();
@@ -14420,7 +15108,7 @@ function flatten(data, out, playerContext = null) {
 
 						// Undead Bosses 
 						let fallen = [{
-							spawn: [Class.fallenBoosterAI],
+							spawn: [Class.fallenBoosterAI, Class.fallenStreamlinerAI],
                             amount: Math.floor(2 * Math.random()) + 1,
                             nameType: 'fallen',
                             spawnsAt: ["roid", "rock", "norm"][Math.floor(3 * Math.random())],
@@ -14460,19 +15148,19 @@ function flatten(data, out, playerContext = null) {
 							spawn: [Class.trapeFighterSpawn2, Class.knightAI],
 							amount: Math.floor(Math.random() * 3) + 1,
 							nameType: 'fish',
-							spawnsAt: "#08A3FC",
+							spawnsAt: ["watr", "deep"][Math.floor(2 * Math.random())],
 							broadcast: `The waters quiver with an otherworldly force...`,
 							chance: 24 // 100 
 						}];
 
 						// Artificial Bosses 
-						let weirdos = [{
+						/*let weirdos = [{
 							spawn: [Class.heptazoidAI0],
 							amount: Math.floor(Math.random() * 1) + 1,
 							nameType: 'what',
 							spawnsAt: "norm",
 							broadcast: `Something stupid's about to happen...`							
-						}];
+						}];*/
 
 						let bosses = [
 							normalShapes,
@@ -14682,7 +15370,7 @@ function flatten(data, out, playerContext = null) {
                 if (census.fish < room.maxFish && room.zones.includes("water")) {
                     let spot,
                         max = 10;
-                    do spot = room.randomType("#08A3FC");
+                    do spot = room.randomType("watr");
                     while (dirtyCheck(spot, 30) && max-- > 0);
 					
                     let times = Math.floor(Math.random() * 5) + 1;
@@ -14694,19 +15382,11 @@ function flatten(data, out, playerContext = null) {
 								Class.salmon,
 								Class.trout,
 								Class.grouperCrasher,
-								Class.piranha,
-								Class.shark,
-								Class.whale,
-								Class.swordfish,
 								Class.jellyfish
 							]
 							[ran.chooseChance(
 								50,
 								32,
-								12,
-								19,
-								7,
-								7,
 								12,
 								18
 							)
@@ -14731,6 +15411,80 @@ function flatten(data, out, playerContext = null) {
                     }
                 }
             };
+            const spawnDeepAquaCrasher = (census, id) => {
+                if (room.modelMode) return;
+				//if (!"water".includes(room.zones)) return;
+                if (census.fish < room.maxFish && room.deep.length > 0) {
+                    let spot,
+                        max = 10;
+                    do spot = room.randomType("deep");
+                    while (dirtyCheck(spot, 30) && max-- > 0);
+					
+                    let times = Math.floor(Math.random() * 5) + 1;
+
+                    for (let i = 0; i < times; i++) {
+                        let o = new Entity(spot);
+                        o.define(
+							[
+								Class.piranha,
+								Class.shark,
+								Class.whale,
+								Class.swordfish,
+							]
+							[ran.chooseChance(
+								50,
+								18,
+                                9,
+                                12
+							)
+						]);
+						o.roomLayerless = true;
+						o.invuln = true;
+                        o.deepSeaFish = true;
+						setTimeout(() => {
+							o.invuln = false;
+						}, 2000);
+                        o.team = 
+							o.label === "Piranha" ? -70 
+							: o.label === "Trout" ? -79 
+							: o.label === "Shark" ? -72 
+							: o.label === "Whale" ? -74 
+							: o.label === "Salmon" ? -75 
+							: o.label === "Swordfish" ? -73
+							: o.label === "Jellyfish" ? -76
+							: -80;
+                        o.damage *= .75;
+                        o.sandboxId = id;
+						o.facing = ran.randomAngle();
+                    }
+                }
+            };
+            const spawnCrate = (census, id) => {
+                if (room.modelMode) return;
+                if (census.crate < 30) {
+                    let spot,
+                        max = 10;
+                    do spot = room.randomType("tree");
+                    while (dirtyCheck(spot, 30) && max-- > 0);
+
+                    let o = new Entity(spot);
+                    o.define(Class.crate);
+					o.roomLayerless = true;
+                    o.team = -30;
+					o.facing = Math.random() * 360;
+                    o.showsOnMap = true;
+                    o.modeDead = () => {
+                        let item = new Entity({
+                            x: o.x,
+                            y: o.y
+                        });
+                        item.define(Class.muricaPistol);
+                        item.team = o.team;
+                        item.velocity.x += 9 * Math.cos(Math.random() * 5);
+                        item.velocity.y += 9 * Math.sin(Math.random() * 5);
+                    }
+                }
+            };
             const makeNPCs = (() => {
                 if (room.modelMode) return;
                 if (c.serverName.includes("Boss")) {
@@ -14750,7 +15504,7 @@ function flatten(data, out, playerContext = null) {
                             if (o.team === -100) {
                                 spawn(loc, -1);
                                 room.setType("bas1", loc);
-                                sockets.broadcast("A sanctuary has been recaptured");
+                                sockets.broadcast("A sanctuary has been recaptured!");
                                 if (sanctuaries < 1) {
                                     sockets.broadcast("The game is saved!");
                                 }
@@ -14810,14 +15564,12 @@ function flatten(data, out, playerContext = null) {
                     if (c.SOCCER) soccer.init();
                     if (c.serverName.includes("Mothership")) for (let i = 1; i < room.teamAmount + 1; i++) for (let loc of room["mot" + i]) mothershipLoop(loc, i);
 					if (c.serverName.includes("Fathership")) for (let i = 1; i < room.teamAmount + 1; i++) for (let loc of room["fat" + i]) fathershipLoop(loc, i);
+                    if (c.serverName.includes("Script")) world.init();
                 }
-                if (c.serverName.includes("Void Walkers")) {
-                    util.log("Initializing Void Walkers")
-                    voidwalkers()
-                }
+                if (c.serverName.includes("Void Walkers")) voidwalkers();
 				if (c.SECURE) secureTheCrown.init();
 
-				for(let mode of c.modes){
+				for (let mode of c.modes) {
 					modeFuncs[mode].initNpcs({Entity: Entity})
 				}
 
@@ -14920,7 +15672,7 @@ function flatten(data, out, playerContext = null) {
                                         button.color = status ? 11 : 12
                                         button.name = status ? "Bots enabled" : "Bots disabled"
                                         if (status) {
-                                            room.botCap = 1
+                                            room.botCap = 10;
                                         } else {
                                             room.botCap = 0
                                         }
@@ -15056,7 +15808,8 @@ function flatten(data, out, playerContext = null) {
 								fish: 0,
                                 miniboss: 0,
                                 tank: 0,
-                                sancs: 0
+                                sancs: 0,
+                                crate: 0 
                             };
 
                             entities.forEach(instance => {
@@ -15069,8 +15822,10 @@ function flatten(data, out, playerContext = null) {
 
                             spawnCrasher(census);
 							spawnAquaCrasher(census);
+                            spawnDeepAquaCrasher(census);
                             spawnBosses(census);
-                            spawnSancs(census)
+                            spawnSancs(census);
+                            if (c.serverName.includes("America")) spawnCrate(census);
 
                             if (room.maxBots > 0) {
                                 bots = bots.filter(body => !body.isGhost && body.isAlive());
@@ -15189,7 +15944,11 @@ function flatten(data, out, playerContext = null) {
                     let location, i = 10;
                     do {
                         if (!i--) return;
-                        location = room.randomType("#08A3FC");
+                        let k = Math.floor(Math.random() * 2);
+                        if (room.deep.length > 1) {
+                            if (k === 0) location = room.randomType("watr");
+                            else location = room.randomType("deep");
+                        } else location = room.randomType("watr");
                     } while (dirtyCheck(location, 100))
 					
                     // Spawn groups of food
@@ -15395,7 +16154,7 @@ function flatten(data, out, playerContext = null) {
 
                 if (body != null && body.displayText !== socket.oldDisplayText) {
                     socket.oldDisplayText = body.displayText;
-                    socket.talk("displayText", true, body.displayText, body.displayTextColor);
+                    socket.talk("displayText", true, body.displayText, body.displayTextColor, body.displayBarColor);
                 } else if (body != null && !body.displayText && socket.oldDisplayText) {
                     socket.oldDisplayText = null;
                     socket.talk("displayText", false);
