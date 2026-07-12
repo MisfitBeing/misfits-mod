@@ -70,7 +70,7 @@ let drawEntity = function () {
 		context.beginPath();
 		switch (sides) {
 			case 0:
-				context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+				context.arc(centerX, centerY, Math.abs(radius), 0, 2 * Math.PI);
 				break;
 			case 102:
 				for (let [scale, theta] of [
@@ -99,7 +99,7 @@ let drawEntity = function () {
 				break;
 			default:
 				if (sides < 0) { // Trap
-					let dip = 1 - 6 / sides / sides;
+					let dip = 1 - 8 / sides / sides;
 					sides = -sides;
 					context.moveTo(centerX + radius * Math.cos(angle), centerY + radius * Math.sin(angle));
 					for (let i = 0; i < sides; i++) {
@@ -688,8 +688,18 @@ let drawEntity = function () {
 				} else if (sides === 157) { // Injector
 					context.arc(centerX, centerY, radius, 0, 2 * Math.PI, true);
 					context.arc(centerX, centerY, radius * .475, 0, 2 * Math.PI, false);
-				} else if (sides > 157 && sides < 190) { // Shape Transform
-					for (let i = 157; i < 190; i++)
+				} else if (sides === 158) { // Big Fish 
+					for (let [scale, theta] of [
+						[1, .489],
+						[-1, -1.257],
+						[-0.5, -0.96],
+						[-1.1, 0],
+						[-0.5, .96],
+						[-1, 1.257],
+						[1, -0.489]
+					]) context.lineTo(centerX + radius * scale * Math.cos(angle + theta), centerY + radius * scale * Math.sin(angle + theta));
+				} else if (sides > 158 && sides < 190) { // Shape Transform
+					for (let i = 158; i < 190; i++)
 						if (sides === i) {
 							context.save();
 							context.translate(centerX, centerY);
@@ -881,8 +891,8 @@ let drawEntity = function () {
 							radiusDiv = 80;
 							break;
 						case 213: // Bullet
-							path = new Path2D("m-164.9029 -40.75328l0 79.07611l258.03412 0l58.267723 -15.262466l152.60104 -23.582678l-147.05249 -22.19685l-58.267723 -18.03412z");
-							radiusDiv = 80;
+							path = new Path2D("M 4.25 0 L 2.15 -0.325 L 1.4 -0.575 H -2.32 V 0.575 H 1.4 L 2.15 0.325 Z");
+							radiusDiv = 3;
 							break;
 						case 214: // <3
 							path = new Path2D("M 3551.0797000000002 -81.83389999999963 C 11146.0797 2660.1661000000004 3551.0797000000002 13319.6661 -6213.9203 -90.83389999999963 3551.0797000000002 -13483.3339 11146.0797 -2809.8338999999996 3551.0797000000002 -81.83389999999963 Z");
@@ -1192,8 +1202,8 @@ let drawEntity = function () {
 							radiusDiv = 64;
 							break;
 						case 291: // Shield
-							path = new Path2D("m -45.842363,-52.890476 c 19.507044,32.14599 27.924259,65.9472 0,105.1725 30.08133,-10.54462 60.29467,-24.38994 91.082058,-52.58624447 C 13.091037,-29.007806 -16.498064,-41.714176 -45.842363,-52.890476");
-							radiusDiv = 64;
+							path = new Path2D("M 5 0 C 3 -2 1 -4 -3.5 -4.3 A 0.7 1 0 0 1 -3.5 4.3 C 1 4 3 2 5 0");
+							radiusDiv = 3;
 							break;
 						case 292: // Snowflake
 							path = new Path2D("m -56.135262,-42.203199 35.0459,5.51675 z m 12.33507,-12.577281 13.70117,2.56441 z m 35.3906811,-14.977189 -12.7453111,33.10902 z m -17.0597911,4.39384 -4.62972,13.147759 z m -13.43496,-2.00887 16.48922,28.56016 22.44233116,38.87126065 z m 95.0941,109.69334 -35.0459,-5.51675 z m -12.33507,12.577271 -13.70116,-2.56441 z M 8.4640989,69.875112 21.209398,36.766101 Z m 17.0597791,-4.39385 4.62973,-13.14776 z m 13.43495,2.00888 L 22.469618,38.929981 .02728916,0.05872165 Z M 8.5459089,-69.710439 21.291218,-36.601419 Z m 17.0597791,4.39385 4.62974,13.147759 z m 30.66597,23.16063 -35.04591,5.51675 z m -12.33508,-12.577291 -13.70115,2.56442 z m -4.97774,-12.639449 -16.48922,28.56016 L .02728916,0.05872165 Z M -8.4913309,69.827882 -21.236632,36.718861 Z m -17.0597711,-4.39385 -4.62973,-13.14776 z m -30.66597,-23.160621 35.0459,-5.51675 z m 12.33508,12.577271 13.70116,-2.56441 z m 4.97774,12.63945 16.48921,-28.560151 L .02728916,0.05872165 Z m 103.61272,-94.938651 -22.3006,27.59226065 z m 4.724697,16.97113 -9.071427,10.58334065 z M 64.708468,27.660421 42.407868,0.06816165 Z M 69.433165,10.689291 60.361738,0.10595165 Z M 77.890385,0.05872165 H 44.911958 .02728916 Z M -64.653882,27.565961 l 22.3006,-27.59225935 z m -4.724702,-16.97113 9.071427,-10.58333935 z m 4.724702,-38.13781 22.30059,27.59226065 z m -4.724702,16.97113 9.071427,10.58334065 z m -8.457218,10.63057065 h 32.97842 44.88467116 zM 21.171176,0.05872505 15.994608,9.2774532 10.59924,18.369856 .02730299,18.496181 -10.544634,18.369856 -15.940002,9.277453 -21.11657,0.05872505 l 5.176568,-9.21872815 5.395368,-9.0924029 10.57193715,-0.126325 10.57193685,0.126325 5.395369,9.0924031 z");
@@ -1324,6 +1334,116 @@ let drawEntity = function () {
 							break;
 						case 325: // half a hexagon
 							path = new Path2D("M -0.5 -0.75 L 0.5 -0.75 L 0.9 0 L -0.9 0 L -0.5 -0.75");
+							radiusDiv = .9;
+							break;
+						case 326: // swelling symbol 
+						    path = new Path2D("M 0 -1 L -0.4 -0.6 L -0.2 -0.6 Q 0.1 0 -0.34 0.7 H 0.34 Q -0.1 0 0.2 -0.6 H 0.4 Z");
+							radiusDiv = .7;
+							break;
+						case 327: // poisoning symbol 
+						    path = new Path2D("M -5.5777 7.8391 Q -2.3457 9.4372 -0.6136 8.4372 Q 2.8505 6.4372 0.2165 -0.125 L 0.2165 -0.125 Q -4.1495 -5.6872 -7.6136 -3.6872 Q -9.3457 -2.6872 -9.5777 0.9109 Q -5.3816 -3.8212 -2.3816 1.375 Q 0.1184 5.7051 -5.5777 7.8391 M 9.5777 0.9109 Q 9.3457 -2.6872 7.6136 -3.6872 Q 4.1495 -5.6872 -0.2165 -0.125 L -0.2165 -0.125 Q -2.8505 6.4372 0.6136 8.4372 Q 2.3457 9.4372 5.5777 7.8391 Q -0.6184 6.5712 2.3816 1.375 Q 4.8816 -2.9551 9.5777 0.9109 M -4 -8.75 Q -7 -6.75 -7 -4.75 Q -7 -0.75 0 0.25 L 0 0.25 Q 7 -0.75 7 -4.75 Q 7 -6.75 4 -8.75 Q 6 -2.75 0 -2.75 Q -5 -2.75 -4 -8.75");
+							radiusDiv = 7;
+							break;
+						case 328: // freezing symbol 
+						    path = new Path2D("M -4.4641 -0.2679 L -9.6603 -3.268 L -15.6244 -0.9378 L -18.2224 -2.4378 L -12.2584 -4.7679 L -15.7225 -6.7679 L -21.6865 -4.4378 L -24.2846 -5.9378 L -18.3205 -8.2679 L -22.6507 -10.7679 L -25.1147 -14.5 L -20.6505 -14.232 L -16.3205 -11.7321 L -17.2846 -18.0622 L -14.6865 -16.5622 L -13.7223 -10.232 L -10.2582 -8.232 L -11.2224 -14.5622 L -8.6244 -13.0622 L -7.6602 -6.7321 L -2.4641 -3.7321 M -2.4641 3.7321 L -7.6603 6.7321 L -8.6244 13.0622 L -11.2224 14.5622 L -10.2583 8.2321 L -13.7224 10.2321 L -14.6865 16.5622 L -17.2846 18.0622 L -16.3205 11.7321 L -20.6506 14.2321 L -25.1147 14.5 L -22.6505 10.7679 L -18.3205 8.2679 L -24.2846 5.9378 L -21.6865 4.4378 L -15.7223 6.7679 L -12.2582 4.7679 L -18.2224 2.4378 L -15.6244 0.9378 L -9.6603 3.2679 L -4.4641 0.2679 M 2 4 L 2 10.0001 L 7 14 L 7 17 L 2.0001 13 L 2.0001 17 L 7 21 L 7 24 L 2 20 L 2.0001 25 L 0 29 L -2 24.9999 L -2 20 L -7 24 L -7 21 L -2 16.9999 L -2 12.9999 L -7 17 L -7 14 L -2.0001 10 L -2 4 M 4.4641 0.2679 L 9.6603 3.268 L 15.6244 0.9378 L 18.2224 2.4378 L 12.2584 4.7679 L 15.7225 6.7679 L 21.6865 4.4378 L 24.2846 5.9378 L 18.3205 8.2679 L 22.6507 10.7679 L 25.1147 14.5 L 20.6506 14.232 L 16.3205 11.7321 L 17.2846 18.0622 L 14.6865 16.5622 L 13.7224 10.232 L 10.2583 8.232 L 11.2224 14.5622 L 8.6244 13.0622 L 7.6602 6.7321 L 2.4641 3.7321 M 2.4641 -3.7321 L 7.6603 -6.7321 L 8.6244 -13.0622 L 11.2224 -14.5622 L 10.2583 -8.2321 L 13.7224 -10.2321 L 14.6865 -16.5622 L 17.2846 -18.0622 L 16.3205 -11.7321 L 20.6506 -14.2321 L 25.1147 -14.5 L 22.6506 -10.7679 L 18.3205 -8.2679 L 24.2846 -5.9378 L 21.6865 -4.4378 L 15.7224 -6.7679 L 12.2583 -4.7679 L 18.2224 -2.4378 L 15.6244 -0.9378 L 9.6603 -3.2679 L 4.4641 -0.2679 M -2 -4 L -2 -10 L -7 -14 L -7 -17 L -2 -13 L -2 -17 L -7 -21 L -7 -24 L -2 -20 L -2 -25 L 0 -29 L 2 -25 L 2 -20 L 7 -24 L 7 -21 L 2 -17 L 2 -13 L 7 -17 L 7 -14 L 2 -10 L 2 -4 M 0 -3 A 1 1 0 0 0 0 3 A 1 1 0 0 0 0 -3");
+							radiusDiv = 18;
+							break;
+						case 329: // trembling symbol 
+						    path = new Path2D("M 2 -7 L 5 -1 L 1 -2 L 3 1 L 0 4 L 3 13 L -3 4 L 0 1 L -3 -4 L 2 -3 L -2 -7 L -12 -9 L -23 0 L -18 14 L 18 14 L 23 0 L 16 -9 Z M -0.67 -6.965 L -3 -9 L -0.788 -10.158 Z M 1.064 -9.345 L 0.158 -13.877 L 2.995 -13.483 Z M 2.692 -8.02 L 4.161 -8.837 L 4.365 -7.857 Z");
+							radiusDiv = 18;
+							break;
+						case 330: // relapsing symbol 
+						    path = new Path2D("M -16 6 C -17 6 -17 4 -14.932 3.735 C -12 3 -8 3 0 5 C 7 7 12 7 14.899 5.184 C 17 4 17 7 16.204 7.214 C 11 9 7 10 0 8 C -6 6 -10 5 -16 6 M -16 0 C -17 0 -17 -2 -14.932 -2.265 C -12 -3 -8 -3 0 -1 C 7 1 12 1 14.899 -0.816 C 17 -2 17 1 16.204 1.214 C 11 3 7 4 0 2 C -6 0 -10 -1 -16 0 M -16 -6 C -17 -6 -17 -8 -14.932 -8.265 C -12 -9 -8 -9 0 -7 C 7 -5 12 -5 14.899 -6.816 C 17 -8 17 -5 16.204 -4.786 C 11 -3 7 -2 0 -4 C -6 -6 -10 -7 -16 -6");
+							radiusDiv = 18;
+							break;
+						case 331: // nail 
+						    path = new Path2D("M -0.654 -0.654 L -0.778 -0.545 V 0.65 L -0.654 0.778 H -0.348 L -0.228 0.654 V -0.545 L -0.331 -0.654 Z M 1.6 0 L -0.1 -0.332 V 0.332 Z");
+							radiusDiv = 1;
+							break;
+						case 333: // line 
+						    path = new Path2D("M 2 0 L -2 0");
+							radiusDiv = 1;
+							break;
+						case 334: // staple
+						    path = new Path2D("M 0 1 L -1 1 V -1 L 0 -1 V -0.89 H -0.906 V 0.89 H 0 Z");
+							radiusDiv = 1;
+							break;
+						case 335: // wettening symbol 
+						    path = new Path2D("M 0 -16 C -14 -6 -16 3 -15 8 Q -14 12 -13 13 C -10 17 0 19 4 11 Q 6 3 0 -1 Q -6 -7 0 -16");
+							radiusDiv = 18;
+							break;
+						case 336: // confusion symbol 
+						    path = new Path2D("M -9.9 -8.1 A 0.9 0.9 90 0 1 7.2 -9 Q 6.3 -2.7 0.9 -0.9 Q -1.8 0 -0.9 3.6 L 0.9 12.6 A 0.9 0.9 90 0 1 -2.7 13.5 L -3.6 0 Q -3.6 -2.7 0.9 -3.6 Q 4.5 -4.5 4.5 -9 A 0.9 0.9 90 0 0 -7.2 -8.1 A 0.9 0.9 90 0 1 -9.9 -8.1 M 0 18 A 0.9 0.9 90 0 0 0 22.5 A 0.9 0.9 90 0 0 0 18");
+							radiusDiv = 18;
+							break;
+						case 337: // starvation symbol 
+						    path = new Path2D("M -5.8462 1.3497 L -3.4476 2.8485 L -3.972 5.0222 L -1.3485 7.4954 L -5.9208 5.4721 L -5.3963 3.2984 L -8.7693 2.0246 L -6.2961 -0.599 L -7.7204 -2.3228 L -4.4978 -6.1457 L -5.7717 -2.7727 L -4.3474 -1.0489 Z M -9.7437 2.2495 L -7.3451 3.7483 L -7.8695 5.922 L -3.2972 7.9453 L -3.8217 10.119 L -4.2716 8.1703 L -8.8439 6.147 L -8.3194 3.9733 L -11.6924 2.6994 L -9.2192 0.0758 L -10.6435 -1.648 L -7.4209 -5.4709 L -7.8708 -7.4196 L -6.4465 -5.6958 L -9.6691 -1.8729 L -8.2449 -0.1491 Z M 5.8462 -1.3497 L 3.4476 -2.8485 L 3.972 -5.0222 L 1.3485 -7.4954 L 5.9208 -5.4721 L 5.3963 -3.2984 L 8.7693 -2.0246 L 6.2961 0.599 L 7.7204 2.3228 L 4.4978 6.1457 L 5.7717 2.7727 L 4.3474 1.0489 Z M 9.7437 -2.2495 L 7.3451 -3.7483 L 7.8695 -5.922 L 3.2972 -7.9453 L 3.8217 -10.119 L 4.2716 -8.1703 L 8.8439 -6.147 L 8.3194 -3.9733 L 11.6924 -2.6994 L 9.2192 -0.0758 L 10.6435 1.648 L 7.4209 5.4709 L 7.8708 7.4196 L 6.4465 5.6958 L 9.6691 1.8729 L 8.2449 0.1491 Z M -0.6749 -2.9231 A 1 1 -13 0 0 0.6749 2.9231 A 1 1 -13 0 0 -0.6749 -2.9231");
+							radiusDiv = 18;
+							break;
+						case 338: // shrivelling symbol 
+						    path = new Path2D("M 0 1 L 0.4 0.6 L 0.2 0.6 Q -0.1 0 0.34 -0.7 H -0.34 Q 0.1 -0 -0.2 0.6 H -0.4 Z");
+							radiusDiv = .7;
+							break;
+						case 339: // carbone bullet
+							path = new Path2D("M 4.25 0 L 2.15 -0.325 L 1.1 -0.7 L -2.32 -1.2 V 1.2 L 1.1 0.7 L 2.15 0.325 Z");
+							radiusDiv = 3;
+							break;
+						case 340: // normal archer bow 
+						    path = new Path2D("M -1 -4 C -1 -4 -1 -3 0 -2 C 0 -1.8 1 -1 1 -0.3 L 1.4 0 L 1 0.3 C 1 1 0 1.8 0 2 C -1 3 -1 4 -1 4 L -1 3 Q 1 1 0 0 Q 1 -1 -1 -3 L -1 -4");
+							radiusDiv = 1.2;
+							break;
+						case 341: // electrocution symbol 
+						    path = new Path2D("M 5.5 -7 L 4 -1 L 7.5 -1.5 L 5 4 L 10 -3.5 L 6.5 -3 L 8.5 -7 Z M -11.5 -7 L -13 -1 L -9.5 -1.5 L -12 4 L -7 -3.5 L -10.5 -3 L -8.5 -7 Z M -4 -14 L -7 -2 L 0 -3 L -5 8 L 5 -7 L -2 -6 L 2 -14 Z");
+							radiusDiv = 13;
+							break;
+						case 342: // fist 
+						    path = new Path2D('M -3 6 H 5 C 5 3 8 0 9 -2 Q 10 -6 8 -9 L 5 -9 L 5 -4 H 4.85 V -9 L 5 -9 L 2 -9 L 2 -4 H 1.802 V -9 L 2 -9 L -1 -9 L -1 -4 H -1.346 V -9 L -1 -9 L -4 -9 L -4 -4.7 H -4.526 C -4.722 -6.771 -4.591 -7.853 -4.034 -8.968 L -4 -9 L 0 -9 Q 0 -11 -2 -11 L -6 -11 L -8 -7 C -9 -2 -3 0 -3 6');
+							radiusDiv = 9;
+							break;
+						case 343: // cursor 
+						    path = new Path2D('M -2.8557 4.8789 L -2.9729 -6.4323 L 5.7747 0.9078 L 1.9333 0.8317 L 4.0149 5.532 L 1.7136 6.4005 L -0.4142 1.9281 L -2.8557 4.8789');
+							radiusDiv = 4.6;
+							break;
+						case 344: // alien 
+						    path = Date.now() % 800 > 400 ? 
+							    new Path2D('M -1397 -996 c 7 -2 69 -3 138 -2 l 124 3 l 3 138 l 3 137 l -141 -0 l -140 -0 l 0 -135 c 0 -102 3 -137 13 -141 z M -1270 720 l 141 0 l -3 138 l -3 137 l -135 -0 l -135 -0 l -3 -137 l -3 -138 l 141 0 z M -980 -710 l 140 0 l 0 -133 c 0 -90 4 -137 12 -145 c 8 -8 55 -12 145 -12 l 133 0 l 0 -140 l 0 -140 l 140 0 l 139 0 l 3 -143 l 3 -142 l 423 -3 l 422 -2 l -0 140 l -0 140 l -282 2 l -283 3 l -3 142 l -3 143 l 283 2 l 283 3 l 3 138 l 3 137 l -141 -0 l -140 -0 l -0 720 l -0 720 l 140 0 l 140 0 l -0 134 c -0 113 -2 135 -16 140 c -9 3 -137 6 -285 6 l -270 -0 l 3 143 l 3 142 l 282 3 l 283 2 l -0 140 l -0 140 l -422 -2 l -423 -3 l -3 -142 l -3 -143 l -139 -0 l -140 -0 l 0 -140 l 0 -140 l -133 -0 c -90 -0 -137 -4 -145 -12 c -8 -8 -12 -55 -12 -145 l 0 -133 l -140 -0 l -140 -0 l 0 -140 l 0 -140 l 140 0 l 140 0 l 0 -430 l 0 -430 l -140 -0 l -140 -0 l 0 -140 l 0 -140 l 140 0 z m 565 285 l 140 0 l 3 -147 l 3 -148 l -139 -0 c -76 -0 -142 3 -146 7 c -3 4 -5 70 -4 147 l 3 141 l 140 0 z m 3 1143 l 143 3 l -3 -148 l -3 -148 l -129 -3 c -72 -1 -136 -0 -143 2 c -11 4 -13 37 -11 148 l 3 143 l 143 3 z M 730 -710 l 140 0 l -0 280 l -0 280 l -140 -0 l -140 -0 l 0 -280 l 0 -280 l 140 0 z M 730 150 l 140 0 l -0 280 l -0 280 l -140 -0 l -140 -0 l 0 -280 l 0 -280 l 140 0 z') 
+								: new Path2D('M -1444.8 -1593.6 l 206.4 -0 l 0 230.4 l 0 230.4 l 201.6 -0 l 201.6 -0 l -0 -230.4 l -0 -230.4 l 230.4 -0 l 230.4 -0 l -0 -206.4 l -0 -206.4 l -432 0 l -432 0 l -0 -230.4 l -0 -230.4 l 844.8 -0 l 844.8 -0 l 0 206.4 l 0 206.4 l 230.4 -0 l 230.4 -0 l 0 230.4 l 0 230.4 l 196.8 -0 l 196.8 -0 l -0 -206.4 l -0 -206.4 l 211.2 -0 l 211.2 -0 l 0 199.68 l 0 200.64 l -137.28 5.76 c -74.88 3.84 -168 6.72 -206.4 6.72 l -69.12 0 l 0 230.4 l 0 230.4 l -201.6 0 l -201.6 0 l 0 1123.2 l 0 1123.2 l 201.6 -0 l 201.6 -0 l 0 230.4 l 0 230.4 l 69.12 -0 c 38.4 -0 131.52 2.88 207.36 6.72 l 136.32 5.76 l 0 200.64 l 0 199.68 l -211.2 0 l -211.2 0 l -0 -206.4 l -0 -206.4 l -196.8 0 l -196.8 0 l 0 230.4 l 0 230.4 l -230.4 0 l -230.4 0 l 0 206.4 l 0 206.4 l -844.8 0 l -844.8 0 l -0 -230.4 l -0 -230.4 l 432 -0 l 432 -0 l -0 -206.4 l -0 -206.4 l -230.4 0 l -230.4 0 l -0 -230.4 l -0 -230.4 l -201.6 0 l -201.6 0 l 0 230.4 l 0 230.4 l -206.4 0 l -206.4 0 l -0 -230.4 l -0 -230.4 l 206.4 -0 l 206.4 -0 l -0 -230.4 l -0 -230.4 l 201.6 -0 l 201.6 -0 l -0 -662.4 l -0 -662.4 l -201.6 0 l -201.6 0 l -0 -230.4 l -0 -230.4 l -206.4 0 l -206.4 0 l -0 -230.4 l -0 -230.4 l 206.4 -0 z m 1533.12 919.68 l 204.48 -2.88 l 2.88 -227.52 l 1.92 -228.48 l -206.4 0 l -206.4 0 l 0 230.4 l 0 230.4 l 203.52 -1.92 z m 2.88 1787.52 l 206.4 -0 l -1.92 -227.52 l -2.88 -228.48 l -204.48 -2.88 l -203.52 -1.92 l 0 230.4 l 0 230.4 l 206.4 -0 z');
+							radiusDiv = Date.now() % 500 > 250 ? 1370 : 1900;
+							break;
+						case 345: // s. invader
+						    path = new Path2D('M -4 -3 L 0 -3 L 2 -1 L 5 -1 L 5 1 L 2 1 L 0 3 L -4 3 L -5 1 L -2 1 L -2 -1 L -5 -1 Z');
+							radiusDiv = 3.3;
+							break;
+						case 346: // asteroidian 
+						    path = new Path2D('M 1.3 0 L -1 -1 L -0.3 0 L -1 1 z');
+							radiusDiv = .9;
+							break;
+						case 347: // paralysis symbol 
+						    path = new Path2D("M -14 5 L 14 5 L 14 7 L -14 7 L -14 5 M -14 -1 L 14 -1 L 14 1 L -14 1 L -14 -1 M -14 -1 L 14 -1 L 14 1 L -14 1 L -14 -1 M -14 -7 L 14 -7 L 14 -5 L -14 -5 L -14 -7");
+							radiusDiv = 16.25;
+							break;
+						case 348: // soundwave 
+						    path = new Path2D("M -2 -3 Q 1.5 -2.5 1.5 0 Q 1.5 2.5 -2 3 C 1 2 1 -2 -2 -3");
+							radiusDiv = 2.5;
+							break;
+						case 349: // stink symbol 
+						    path = new Path2D("M -1 -11 C -5 -8 -5 -4 -1 0 C 3 4 3 7 -1 11 C 4 9 4 1 1 -1 C -3 -4 -3 -7 -1 -11 M -11 -11 C -15 -8 -15 -4 -11 0 C -7 4 -7 7 -11 11 C -6 9 -6 1 -9 -1 C -13 -4 -13 -7 -11 -11 M 9 -11 C 5 -8 5 -4 9 0 C 13 4 13 7 9 11 C 14 9 14 1 11 -1 C 7 -4 7 -7 9 -11");
+							radiusDiv = 16.25;
+							break;
+						case 350: // blurring symbol 
+						    path = new Path2D("M -4.48 10 L 4.48 -10 L 2.56 -10 L -6.4 10 Z M 0.64 -8 L -6.4 8 C -8.96 8 -11.52 7 -17.92 0 C -11.52 -7 -11 -8 0.64 -8 M 4.48 -10 L -4.48 10 L -2.56 10 L 6.4 -10 Z M -0.64 8 L 6.4 -8 C 8.96 -8 11.52 -7 17.92 0 C 11.52 7 11 8 -0.64 8");
+							radiusDiv = 17;
+							break;
+						case 351: // better star
+						    path = new Path2D("M 0.618 -1.9021 l 0.0362 1.4418 l 1.3695 0.445 l -1.3371 0.4908 l -0.0398 1.417 l -0.8941 -1.1317 l -1.3885 0.39 l 0.8007 -1.1698 l -0.7932 -1.183 l 1.3695 0.445 z");
+							radiusDiv = .95;
+							break;
+						case 352: // chip 
+						    path = new Path2D("M 2 0 C 1 -1 -1 -1 -2 0 C -1 1 1 1 2 0");
+							radiusDiv = 1.8;
+							break;
+						case 353: // swirl 
+						    path = new Path2D("M 1 -0 A 1 1 180 0 0 -1 0 A 1 1 180 0 0 1 -0 M -2 0 A 1 1 180 0 0 2 -0 L 4 -0 L 2.4 0.8 A 1 1 180 0 1 -2 0 M 2 0 A 1 1 0 0 0 -2 0 L -4 0 L -2.4 -0.8 A 1 1 0 0 1 2 0");
 							radiusDiv = .9;
 							break;
 					}
@@ -1499,21 +1619,63 @@ let drawEntity = function () {
 				context.lineTo(length, -h[0]);
 				break;
 			case 19: // Laser
-				let count = length*4;
+				let count = length * 4;
 				const maxCount = count;
-				const unit = length/count
-				context.roundRect(-length, -unit/4, length*2-unit/2, unit/2, 5); // Rod
-				while(count > 0){
-					let alpha = (maxCount - count+1)/maxCount
+				const unit = length / count
+				context.roundRect(-length, -unit / 4, length * 2 - unit / 2, unit / 2, 5); // Rod
+				while(count > 0) {
+					let alpha = (maxCount - count+1) / maxCount
 					context.roundRect(
-						length*(1-alpha),
-						-height*alpha,
-						unit/2,
-						2*height*alpha,
+						length * (1 - alpha),
+						-height * alpha,
+						unit / 2,
+						2 * height * alpha,
 						5
 					)
 					count--;
 				}
+				break;
+			case 20: // scythe 
+				context.lineTo(length, h[0]); // top right 
+				context.lineTo(length * .5, length + Math.sin(h[1] * 1.3));
+				context.lineTo(-length, h[1]); // bottom right 
+				context.lineTo(-length, -h[1]); // bottom left 
+				context.lineTo(length * .5, length + Math.sin(-h[1] * 1.3));
+				context.lineTo(length, -h[0]); // top left 
+				break;
+			case 21: // twin twin holster 
+				context.lineTo(length, h[0]); // top right 
+				context.lineTo(-length * .3, length + Math.sin(h[1] * 1.3));
+				context.lineTo(-length, h[1]); // bottom right 
+				context.lineTo(-length, -h[1]); // bottom left 
+				context.lineTo(-length * .3, -length - Math.sin(h[1] * 1.3));
+				context.lineTo(length, -h[0]); // top left 
+				break;
+			case 22: // twin twin twin holster 1
+				context.lineTo(length, h[0]); // top right 
+				context.lineTo(-length, h[1]); // bottom right 
+				context.lineTo(-length, -h[1]); // bottom left 
+				context.lineTo(-length * .3, -length - Math.sin(h[1] * 1.3));
+				context.lineTo(length, -h[0]); // top left 
+				break;
+			case 23: // twin twin twin holster 2 
+				context.lineTo(length, h[0]); // top right 
+				context.lineTo(-length * .3, length + Math.sin(h[1] * 1.3));
+				context.lineTo(-length, h[1]); // bottom right 
+				context.lineTo(-length, -h[1]); // bottom left 
+				context.lineTo(length, -h[0]); // top left 
+				break;
+			case 24: // dropship gun 1
+				context.lineTo(length, h[0]); // tr
+				context.lineTo(-length, height); // br
+				context.lineTo(-length, -h[1]); // bl
+				context.lineTo(length, -h[0]); // tl
+				break;
+			case 25: // dropship gun 2
+				context.lineTo(length, h[0]); // tr
+				context.lineTo(-length, h[1]); // br
+				context.lineTo(-length, -height); // bl
+				context.lineTo(length, -h[0]); // tl
 				break;
 			case 100: // Tachyon
 				break;
@@ -1527,14 +1689,14 @@ let drawEntity = function () {
 		let animations = _anims.get(id);
 		if (animations) {
 			const props = []
-			for(let obj of ogProps){
+			for(let obj of ogProps) {
 				const newObj = {}
-				for(let key2 in obj){
+				for(let key2 in obj) {
 					newObj[key2] = obj[key2]
 				}
 				props.push(newObj)
 			}
-			for(let animation of animations){
+			for(let animation of animations) {
 				let prop = props[animation.index]
 				if(!prop) return props;
 				prop.shape = animation.shape;
@@ -1819,12 +1981,13 @@ let drawEntity = function () {
 		let tankDrawX = x;
 		let tankDrawY = y;
 
-		const useOffscreenCanvas = ((alpha < 1 || fade < 1 ) && turretInfo === 0);
+		const useOffscreenCanvas = ((alpha < 1 || fade < 1) && turretInfo === 0);
 		if (useOffscreenCanvas) {
 			currentContext = ctx2;
 
 			// Dynamically size offscreen canvas.
-			currentContext.canvas.width = Math.max(currentContext.canvas.height = drawSize * m.position.axis + ratio * 7.5 * instance.size, 1);
+			currentContext.canvas.width = Math.max(drawSize * m.position.axis + ratio * 7.5 * instance.size, 0);
+			currentContext.canvas.height = Math.max(drawSize * m.position.axis + ratio * 7.5 * instance.size, 0);
 
 			// Recalculate tank center for offscreen canvas.
 			tankDrawX = currentContext.canvas.width / 2 - drawSize * 2 * m.position.axis * m.position.middle.x * Math.cos(rot) / 4;
@@ -1926,8 +2089,10 @@ let drawEntity = function () {
 			finalColor = mixColors(finalColor, color.dgrey, 1 - fade);
 		}
 		if (instance === global.player.instance) global._tankMenuColor = finalColor // dont include invuln bc it looks bad
-		let invulnTicker = instance.invuln && (Date.now() - instance.invuln) % 200 > 110;
-		if (invulnTicker) finalColor = mixColors(finalColor, color.vlgrey, .5);
+		let invulnTicker = instance.invuln && (Date.now() - instance.invuln) % 200 > 110,
+		    debuffTicker = instance.blending && (Date.now() - instance.blending) % 200 > 120;
+		if (invulnTicker) finalColor = mixColors(finalColor, "#E1B0FF", .5);
+		if (debuffTicker) finalColor = mixColors(finalColor, renderColor, renderBlend);
 
 		let adjustedRot = rot;
 		if (fade > 0) adjustedRot += (((90 * Math.PI) / 180) * (1 - fade)) * Math.sign(rot);
@@ -1990,7 +2155,7 @@ let drawEntity = function () {
 			for (let i = 0; i < props.length; i++) {
 				let p = props[i];
 				let pColor = getColor(p.color == -1 ? instance.color : p.color);
-				if (invulnTicker) pColor = mixColors(pColor, color.vlgrey, .5);
+				if (invulnTicker) pColor = mixColors(pColor, "#E1B0FF", .5);
 				setColors(currentContext, pColor);
 				if(!p.stroke) currentContext.strokeStyle = currentContext.fillStyle;
 				if (p.layer === -2) drawProp(currentContext, p, pColor, adjustedRot, tankDrawX, tankDrawY, drawSize, m, source);
@@ -2002,6 +2167,8 @@ let drawEntity = function () {
 			for (let i = 0; i < m.turrets.length; i++) {
 				if (!source.turrets[i]) continue;
 				let t = m.turrets[i];
+				let tColor = mixColors(getColor(t.color == -1 ? instance.color : t.color), renderColor, renderBlend);
+				if (invulnTicker) tColor = mixColors(tColor, "#E1B0FF", .5);
 				if (t.layer === 0) {
 					let ang = t.direction + t.angle + adjustedRot,
 						len = t.offset * drawSize;
@@ -2016,7 +2183,7 @@ let drawEntity = function () {
 			for (let i = 0; i < props.length; i++) {
 				let p = props[i];
 				let pColor = getColor(p.color == -1 ? instance.color : p.color);
-				if (invulnTicker) pColor = mixColors(pColor, color.vlgrey, .5);
+				if (invulnTicker) pColor = mixColors(pColor, "#E1B0FF", .5);
 				setColors(currentContext, pColor);
 				if(!p.stroke) currentContext.strokeStyle = currentContext.fillStyle;
 				if (p.layer === -1) drawProp(currentContext, p, pColor, adjustedRot, tankDrawX, tankDrawY, drawSize, m, source);
@@ -2053,7 +2220,7 @@ let drawEntity = function () {
 
 				let gColor = mixColors(getColor(gunBaseColor), renderColor, renderBlend);
 				if (invulnTicker) {
-					gColor = mixColors(gColor, color.vlgrey, .5);
+					gColor = mixColors(gColor, "#E1B0FF", .5);
 				}
 
 				switch (g.color_unmix) {
@@ -2091,7 +2258,7 @@ let drawEntity = function () {
 			for (let i = 0; i < props.length; i++) {
 				let p = props[i];
 				let pColor = mixColors(getColor(p.color == -1 ? instance.color : p.color), renderColor, renderBlend);
-				if (invulnTicker) pColor = mixColors(pColor, color.vlgrey, .5);
+				if (invulnTicker) pColor = mixColors(pColor, "#E1B0FF", .5);
 				setColors(currentContext, pColor);
 				if(!p.stroke) currentContext.strokeStyle = currentContext.fillStyle;
 				if (p.layer === 0) drawProp(currentContext, p, pColor, adjustedRot, tankDrawX, tankDrawY, drawSize, m, source);
@@ -2117,7 +2284,7 @@ let drawEntity = function () {
 			for (let i = 0; i < props.length; i++) {
 				let p = props[i];
 				let pColor = mixColors(getColor(p.color == -1 ? instance.color : p.color), renderColor, renderBlend);
-				if (invulnTicker) pColor = mixColors(pColor, color.vlgrey, .5);
+				if (invulnTicker) pColor = mixColors(pColor, "#E1B0FF", .5);
 				setColors(currentContext, pColor);
 				if(!p.stroke) currentContext.strokeStyle = currentContext.fillStyle;
 				if (p.layer === 1) drawProp(currentContext, p, pColor, adjustedRot, tankDrawX, tankDrawY, drawSize, m, source);
@@ -2128,6 +2295,8 @@ let drawEntity = function () {
 		if (source.turrets.length === m.turrets.length) {
 			for (let i = 0; i < m.turrets.length; i++) {
 				let t = m.turrets[i];
+				let tColor = mixColors(getColor(t.color == -1 ? instance.color : t.color), renderColor, renderBlend);
+				if (invulnTicker) tColor = mixColors(tColor, "#E1B0FF", .5);
 				if (t.layer === 1) {
 					let ang = t.direction + t.angle + adjustedRot,
 						len = t.offset * drawSize;
@@ -2142,7 +2311,7 @@ let drawEntity = function () {
 			for (let i = 0; i < props.length; i++) {
 				let p = props[i];
 				let pColor = mixColors(getColor(p.color == -1 ? instance.color : p.color), renderColor, renderBlend);
-				if (invulnTicker) pColor = mixColors(pColor, color.vlgrey, .5);
+				if (invulnTicker) pColor = mixColors(pColor, "#E1B0FF", .5);
 				setColors(currentContext, pColor);
 				if(!p.stroke) currentContext.strokeStyle = currentContext.fillStyle;
 				if (p.layer === 2) drawProp(currentContext, p, pColor, adjustedRot, tankDrawX, tankDrawY, drawSize, m, source);
