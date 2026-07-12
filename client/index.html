@@ -8,20 +8,20 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Woomy Online</title>
+	<title>Vallidom</title>
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<meta name="description" content="A multiplayer modding platform for simplistic top-down 2d tank games.">
+	<meta name="description" content="Woomy if it was actually balanced and good.">
 	<meta name="robots" content="index, follow">
-	<meta property="og:image" content="./resources/favicon-66x66-k.png" />
+	<meta property="og:image" content="./resources/vallidom_favicon.png" />
 	<meta property="og:image:width" content="52" />
 	<meta property="og:image:height" content="52" />
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" sizes="192x192" href="./resources/favicon-66x66-k.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="./resources/favicon-66x66-k.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="./resources/favicon-66x66-k.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="./resources/favicon-66x66-k.png">
-	<meta name="theme-color" content="#8ABC3F">
+	<link rel="icon" type="image/png" sizes="192x192" href="./resources/vallidom_favicon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./resources/vallidom_favicon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./resources/vallidom_favicon.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./resources/vallidom_favicon.png">
+	<meta name="theme-color" content="#8518F3">
 
 	<script src="/js/extLib/peerjs.min.js"></script>
 	<link rel="stylesheet" href="./menu.css">
@@ -162,7 +162,7 @@
 				<div class="joinInfo">
 					<h1>This is the tale of...</h1>
 					<input id="nameInput" class="joinNameInput" placeholder="Enter Name Here">
-					<input id="tokenInput" class="joinTokenInput" placeholder="Token (Optional)" type="password">
+					<input id="tokenInput" class="joinTokenInput" placeholder="Enter Token Here" type="password">
 				</div>
 				<div class="joinRoomInfo">
 					<h2>Players: <span id="roomInfoPlayerAmount">0</span></h2>
@@ -170,8 +170,8 @@
 					<img id="roomInfoGamemodeImage" alt="Gamemode Image">
 					<p id="roomInfoGamemodeDescription">Gamemode Description</p>
 					<h2>Settings:</h2>
-					<p class="joinRoomSetting">Max Players: <input autocomplete="false" type="number" value="99" min="1" class="joinRoomSettingInput" id="roomInfoSettingsMaxPlayerInput"></p>
-					<p class="joinRoomSetting">Bot Amount: <input autocomplete="false" type="number" value="20" min="0" class="joinRoomSettingInput" id="roomInfoSettingsMaxBotsInput"></p>
+					<p class="joinRoomSetting">Max Players: <input autocomplete="false" type="number" value="80" min="1" class="joinRoomSettingInput" id="roomInfoSettingsMaxPlayerInput"></p>
+					<p class="joinRoomSetting">Bot Amount: <input autocomplete="false" type="number" value="0" min="0" class="joinRoomSettingInput" id="roomInfoSettingsMaxBotsInput"></p>
 					<h2 style="display: none;">Mods:</h2>
 					<div class="joinRoomModList" style="display: none;">
 						<div id="modListTemplate" class="modListEntry" style="display: none;">
@@ -230,10 +230,10 @@
 				</div>
 				<div class="startMenuHolder">
 					<center>
-						<a href="//woomy-site.glitch.me/" tabindex="-1"><img class="icon"
-								src="./resources/woomy-arras.io.png" alt="woomy" /></a>
+						<a href="//woomy.online/" tabindex="-1"><img class="icon"
+								src="./resources/vallidom_favicon.png" alt="woomy" /></a>
 					</center>
-					<h1>Woomy Online</h1>
+					<h1>Vallidom</h1>
 					<button id="startButton" tabindex="2">Play</button>
 					<div class="miniButtonList">
 						<button id="controlsButton">Controls</button>
@@ -241,8 +241,8 @@
 						<!-- Hidden untill implementation -->
 						<button id="modBrowserButton" style="display: none;">Mod Browser</button>
 						<!---->
-						<button id="historyAndCreditsButton">History & Credits</button>
-						<button id="wikiButton">Fan-made Wiki</button>
+						<button id="historyAndCreditsButton" style="display: none;">History & Credits</button>
+						<button id="wikiButton">Official Wiki</button>
 					</div>
 				</div>
 				<div class="startMenuHolder shadowScroll" id="patchHolder" style="padding-left: 18px;">
