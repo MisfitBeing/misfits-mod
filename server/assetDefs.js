@@ -224,6 +224,13 @@ setAsset("poison", "https://static.wikia.nocookie.net/070911c3-6450-4a23-b9c5-7e
 	p3:4,
 	p4:4
 });
+setAsset("swell", "https://static.wikia.nocookie.net/db6b84f9-8280-497e-9b70-8b99fd671dd6", {
+	image:true,
+	p1:2,
+	p2:2,
+	p3:4,
+	p4:4
+});
 setAsset("relapse", "https://static.wikia.nocookie.net/a2830b6c-4534-4c34-bece-d3ccc4edda32", {
 	image:true,
 	p1:2,
@@ -339,6 +346,36 @@ setAsset("milkBucket", "https://static.wikia.nocookie.net/46a9a835-918e-4c53-99f
 	p4: 4 
 });
 
+// loopy 
+setAsset("scepter", "https://static.wikia.nocookie.net/43a6f103-c60b-46c8-9163-ae6d44e83c7b", {
+	image: true,
+	p1: 8, // x axis 
+	p2: 2, // y axis 
+	p3: 9.75, // length 
+	p4: 4 // width 
+});
+setAsset("ZAMNALLATICE", "https://static.wikia.nocookie.net/0d4611e3-7ca0-481c-89da-d2004e178305", {
+	image: true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+setAsset("red_crystal", "https://static.wikia.nocookie.net/75bddcf8-77a9-457e-80e8-e445282ad061", {
+	image: true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+setAsset("mag_crystal", "https://static.wikia.nocookie.net/836eaa7f-8c5a-4215-b30f-c6bef18f74cc", {
+	image: true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+
 // fester 
 setAsset("magicHat", "https://static.wikia.nocookie.net/3258fb3a-7cc2-478f-b34d-9d82f3357605", {
 	image:true,
@@ -436,6 +473,29 @@ setAsset("redBub", "https://static.wikia.nocookie.net/0e5cb6d5-a311-42f7-ab6f-73
 	p4: 4
 });
 setAsset("greenBub", "https://static.wikia.nocookie.net/a13d7a2e-1772-43c9-ab56-b10bab854d37", {
+	image:true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+
+// xiphi 
+setAsset("homingShell", "https://static.wikia.nocookie.net/19f636b0-2e58-4728-9716-03fe18b659cc", {
+	image:true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+setAsset("greenShell", "https://static.wikia.nocookie.net/fee9195f-62a8-4a5e-b6a5-0954bdab7288", {
+	image:true,
+	p1: 2,
+	p2: 2,
+	p3: 4,
+	p4: 4
+});
+setAsset("flightedShell", "https://static.wikia.nocookie.net/8913d4e3-632e-42e6-947a-a3d760ff1499", {
 	image:true,
 	p1: 2,
 	p2: 2,
