@@ -9,7 +9,16 @@
 
     // Button onclicks
     window.servers = [
-        { rivetGamemode: "2dom.js", serverGamemode: "2 TDM Domination" },
+        { rivetGamemode: "ffa.js", serverGamemode: "Free for All" },
+        { rivetGamemode: "tdm.js", serverGamemode: "Open TDM" },
+        { rivetGamemode: "magic_maze.js", serverGamemode: "Enchanted Maze" },
+        { rivetGamemode: "boss.js", serverGamemode: "Boss Rush" },
+        { rivetGamemode: "manhunt.js", serverGamemode: "Manhunt" },
+        { rivetGamemode: "space.js", serverGamemode: "Space" },
+        { rivetGamemode: "assault.js", serverGamemode: "Assault" },
+        { rivetGamemode: "warpzone.js", serverGamemode: "Warpzone" },
+        { rivetGamemode: "vwalk.js", serverGamemode: "🇻​​🇴​​🇮​​🇩​ walkers" },
+        /*{ rivetGamemode: "2dom.js", serverGamemode: "2 TDM Domination" },
         { rivetGamemode: "2mot.json", serverGamemode: "2 TDM Mothership" },
         { rivetGamemode: "2tag.json", serverGamemode: "2 TDM Tag" },
         { rivetGamemode: "2tdmhell.json", serverGamemode: "2 TDM Heck" },
@@ -23,7 +32,6 @@
         { rivetGamemode: "cavetdm.js", serverGamemode: "Cave TDM" },
         { rivetGamemode: "blackoutcavetdm.js", serverGamemode: "Blackout Cave TDM" },
         { rivetGamemode: "crptTanks.json", serverGamemode: "Corrupted Tanks" },
-        { rivetGamemode: "ffa.json", serverGamemode: "FFA" },
         { rivetGamemode: "growth.json", serverGamemode: "Growth" },
         { rivetGamemode: "hangout.js", serverGamemode: "Hangout" },
         { rivetGamemode: "maze.js", serverGamemode: "Maze" },
@@ -35,14 +43,13 @@
         { rivetGamemode: "sbx.json", serverGamemode: "Sandbox" },
         { rivetGamemode: "siege.js", serverGamemode: "Siege" },
         { rivetGamemode: "soccer.json", serverGamemode: "Soccer" },
-        { rivetGamemode: "space.json", serverGamemode: "Space" },
         { rivetGamemode: "srvivl.json", serverGamemode: "Survival" },
         { rivetGamemode: "tdm.js", serverGamemode: "TDM" },
         { rivetGamemode: "testbed.json", serverGamemode: "Testbed Event" },
         { rivetGamemode: "tiki.json", serverGamemode: "Squidwards Tiki Island" },
         { rivetGamemode: "vwalk.js", serverGamemode: "Void Walkers" },
         { rivetGamemode: "blackoutvwalk.js", serverGamemode: "Blackout Void Walkers" },
-        { rivetGamemode: "custom.js", serverGamemode: "Modded" }
+        { rivetGamemode: "custom.js", serverGamemode: "Modded" }*/
     ]
     window.preloadsDoneCooking = true
 })();
@@ -58,11 +65,11 @@ function displayCanvasNotSupported() {
 }
 
 
-document.getElementById("controlsButton").onclick = displayHowToPlay
+document.getElementById("controlsButton").onclick = displayHowToPlay;
 function displayHowToPlay() {
     popup.style.display = "block";
-    popupTitle.textContent = "How to play:";
-    popupMessage.textContent = "Woomy has a wide range of different features and mechanics. The basics of movement involve using the WASD keys, which make your tank move around. You use your mouse to control where your target location is, which your tank will face torwards. To fire your tank, you can press down on the left button of your mouse. You can use E and C keys for AutoFire and AutoSpin. Your goal is to kill other players and AIs, while trying to keep your own tank alive. Killing entities in Woomy gives you score. People with the most score are shown on the leaderboard. Polygons (or Food) give score aswell. Most tanks that branch from the director branch work differently, as they have drones instead of bullets. Drones are controlled by holding down your mouse and using your cursor to controll where they go to on your screen. You can also not hold down on the mouse button, to allow them to roam freely around you and protect you. Not all drones are controllable. There is alot more to this game, but I am running out of screenspace. Go ahead and play the game yourself and lets see what you discover.";
+    popupTitle.textContent = "Standard Controls:";
+    popupMessage.textContent = "• WASD / Arrows - Standard Movement (Up keys usually don't work in UD Switch)\n• Spacebar / Left Click - Primary Attacks\n• Right Click / Shift - Secondary Attacks or Abilities\n• Q - Tertiary Attacks or extra abilities\n• E - Autofire toggle\n• C - Ancilliary toggles; defaulted to Autospin for most tanks\n• R - Override all of your AI to control them better\n• Enter - Chatting; 60 characters per message max\n• N - Automatically level up to up to lvl. 45; doesn't work in Survival modes";
 }
 
 document.getElementById("achievementsButton").onclick = displayAchievements
@@ -72,7 +79,7 @@ function displayAchievements() {
 
 document.getElementById("wikiButton").onclick = gotoWiki
 function gotoWiki() {
-    window.open("https://woomyarrasio.fandom.com/wiki/", "_blank")
+    window.open("https://misfits-mod.fandom.com/", "_blank")
 }
 
 document.getElementById("historyAndCreditsButton").onclick = openHaCPage
