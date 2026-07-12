@@ -1,0 +1,35 @@
+let map = {
+        "WIDTH": 6500,
+        "HEIGHT": 6500,
+        "MODE": "tdm",
+        "serverName": "The World's Script",
+        "TEAM_AMOUNT": 1,
+        "BOSS_SPAWN_TIMER": Infinity,
+        "ROOM_SETUP": [
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+            ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"]
+        ],
+        "X_GRID": 12,
+        "Y_GRID": 12,
+        "MAX_FOOD": 0,
+        "MAX_NEST_FOOD": 0,
+        "MAX_CRASHERS": 0,
+		"MAX_FISH": 0,
+        "MAX_ROID_FOOD": 0,
+		"MAX_AQUA_FOOD": 0,
+        "MAX_SANCS": 0,
+		"ARENA_TYPE": 0,
+		"BORDER_FORCE": .2,
+        "STARTING_TANK": "programmerGuy"
+}
+map

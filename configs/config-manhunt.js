@@ -1,0 +1,38 @@
+let map = {
+        "WIDTH": 6200,
+        "HEIGHT": 6200,
+        "MODE": "ffa",
+        "serverName": "Manhunt",
+        "BOSS_SPAWN_TIMER": 670, 
+        "MAZE": {
+            "ENABLED": true,
+            "cellSize": 150,
+            "stepOneSpacing": 3,
+            "fillChance": .33,
+            "sparedChance": .65,
+            "cavey": false,
+            "lineAmount": false,
+            "margin": 1.75,
+            "posMulti": .25,
+            "MAGIC": false 
+        },
+        "ROOM_SETUP": [
+            ["tree", "tree", "norm", "norm", "norm", "norm", "norm", "tree", "tree"],
+			["tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree"],
+			["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+			["norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm"],
+			["norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm"],
+			["norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm"],
+			["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+			["tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree"],
+			["tree", "tree", "norm", "norm", "norm", "norm", "norm", "tree", "tree"],
+        ],
+        "X_GRID": 9,
+        "Y_GRID": 9,
+        "MAX_FOOD": 50,
+        "MAX_NEST_FOOD": 30,
+        "MAX_CRASHERS": 27,
+        "MAX_SANCS": 1,
+		"ZONES": "nest woods",
+}
+map

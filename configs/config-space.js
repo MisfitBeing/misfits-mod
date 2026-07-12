@@ -1,0 +1,47 @@
+let maps = [{
+        "WIDTH": 12000,
+        "HEIGHT": 12000,
+        "MODE": "tdm",
+        "serverName": "Space TDM",
+        "TEAM_AMOUNT": Math.floor(Math.random() * 2 + 2),
+        "BOSS_SPAWN_TIMER": 521, 
+        "ROOM_SETUP": [
+            ["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+			["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+        ],
+        "X_GRID": 7,
+        "Y_GRID": 7,
+        "MAX_FOOD": 0,
+        "MAX_SANCS": 0,
+        "BLACKOUT": true,
+		"ZONES": "space",
+        "SPACE": true
+}, {
+    "MODE": "ffa",
+    "serverName": "Space FFA",
+    "WIDTH": 12000,
+    "HEIGHT": 12000,
+    "BOSS_SPAWN_TIMER": 521, 
+    "ROOM_SETUP": [
+        ["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+		["#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E", "#1D192E"],
+    ],
+    "X_GRID": 7,
+    "Y_GRID": 7,
+    "MAX_FOOD": 0,
+    "MAX_SANCS": 0,
+    "BLACKOUT": true,
+	"ZONES": "space",
+    "SPACE": true
+}]
+maps[Math.floor(Math.random() * maps.length)];

@@ -1,0 +1,31 @@
+let map = {
+        "selectable": true,
+        
+        "WIDTH": 1900,
+        "HEIGHT": 1900,
+        "MODE": "tdm",
+        "serverName": "Void Walkers",
+        "TEAM_AMOUNT": 1,
+        "BOSS_SPAWN_TIMER": Infinity, 
+        "ROOM_SETUP": [
+            ["wall", "wall", "door", "wall", "wall"],
+            ["wall", "norm", "norm", "norm", "wall"],
+            ["door", "norm", "domm" ,"norm", "door"],
+            ["wall", "norm", "norm", "norm", "wall"],
+            ["wall", "wall", "door", "wall", "wall"],
+        ],
+        "X_GRID": 5,
+        "Y_GRID": 5,
+        "PLAYER_SPAWN_TILES": ["norm"],
+        "BOT_SPAWN_TILES": ["norm"],
+	    "MAX_FOOD": 0,
+	    "MAX_NEST_FOOD": 0,
+	    "MAX_ROID_FOOD": 0,
+        "MAX_SANCS": 0,
+        "DO_BASE_DAMAGE": true,
+		"ARENA_TYPE": 0,
+		"BORDER_FORCE": 0,
+        "BLACKOUT": true,
+		"ZONES": "",
+}
+map

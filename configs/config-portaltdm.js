@@ -1,0 +1,166 @@
+let maps = [{
+    "WIDTH": 8000,
+    "HEIGHT": 8000,
+    "MODE": "tdm",
+    "serverName": "Portal TDM",
+    "TEAM_AMOUNT": 2,
+    "BOSS_SPAWN_TIMER": 170,
+        "PORTALS": {
+            "ENABLED": true,
+            "THRESHOLD": 500,
+            "LAUNCH_FORCE": 500,
+            "GRAVITY": 20000,
+            "DIVIDER_1": {
+                "ENABLED": true,
+                "LEFT": 3666.6666666666665,
+                "RIGHT": 4333.333333333333
+            },
+            "DIVIDER_2": {
+                "ENABLED": true,
+                "TOP": 3666.6666666666665,
+                "BOTTOM": 4333.333333333333
+            }
+        },
+    "ROOM_SETUP": [
+        ["por1", "n_b1", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "norm", "edge", "edge", "roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "n_b2", "por2"],
+        ["n_b1", "bas1", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas2", "n_b2"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "tree", "edge", "edge", "tree", "roid", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "norm", "roid"],
+        ["edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge"],
+        ["edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge"],
+        ["roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "tree", "edge", "edge", "tree", "roid", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "norm", "roid"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["n_b2", "bas2", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas1", "n_b1"],
+        ["por2", "n_b2", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "norm", "edge", "edge", "roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "n_b1", "por1"]
+    ],
+    "X_GRID": 24,
+    "Y_GRID": 24,
+    //"PLAYER_SPAWN_TILES": ["norm"],
+    "BOT_SPAWN_TILES": ["n_b1", "n_b2"],
+    "ZONES": "nest woods rocks",
+    "MAX_SANCS": 0,
+    "MAX_FOOD": 0,
+    "NEST_FOOD": 7,
+    "MAX_NEST_FOOD": 11,
+    "MAX_CRASHERS": 60
+}, {
+    "WIDTH": 8000,
+    "HEIGHT": 8000,
+    "MODE": "tdm",
+    "serverName": "Portal TDM",
+    "TEAM_AMOUNT": 4,
+    "BOSS_SPAWN_TIMER": 277,
+        "PORTALS": {
+            "ENABLED": true,
+            "THRESHOLD": 500,
+            "LAUNCH_FORCE": 500,
+            "GRAVITY": 20000,
+            "DIVIDER_1": {
+                "ENABLED": true,
+                "LEFT": 3666.6666666666665,
+                "RIGHT": 4333.333333333333
+            },
+            "DIVIDER_2": {
+                "ENABLED": true,
+                "TOP": 3666.6666666666665,
+                "BOTTOM": 4333.333333333333
+            }
+        },
+    "ROOM_SETUP": [
+        ["n_b1", "n_b1", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "norm", "edge", "edge", "roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "n_b4", "n_b4"],
+        ["n_b1", "bas1", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas4", "n_b4"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "tree", "edge", "edge", "tree", "roid", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "norm", "roid"],
+        ["edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge"],
+        ["edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge", "edge"],
+        ["roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "tree", "edge", "edge", "tree", "roid", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "norm", "roid"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "tree", "edge", "edge", "tree", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "port", "nest", "norm", "norm", "norm", "rock"],
+        ["rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "rock", "norm", "edge", "edge", "rock", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "rock"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm"],
+        ["n_b2", "bas2", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "edge", "edge", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas3", "n_b3"],
+        ["n_b2", "n_b2", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "roid", "norm", "edge", "edge", "roid", "norm", "norm", "norm", "rock", "rock", "rock", "norm", "norm", "n_b3", "n_b3"]
+    ],
+    "X_GRID": 24,
+    "Y_GRID": 24,
+    //"PLAYER_SPAWN_TILES": ["norm"],
+    "BOT_SPAWN_TILES": ["n_b1", "n_b2", "n_b3", "n_b4"],
+    "ZONES": "nest woods rocks",
+    "MAX_SANCS": 0,
+    "MAX_FOOD": 0,
+    "NEST_FOOD": 7,
+    "MAX_NEST_FOOD": 11,
+    "MAX_CRASHERS": 60
+}, {
+    "MODE": "tdm",
+    "serverName": "Portal TDM",
+    "TEAM_AMOUNT": Math.floor(Math.random() * 2 + 2),
+    "BOSS_SPAWN_TIMER": 503,
+    "WIDTH": 10800,
+    "HEIGHT": 5000,
+    "ROOM_SETUP": [
+        ["watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "edge", "edge", "edge", "edge", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "nest", "nest", "port", "nest", "nest", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "nest", "nest", "port", "nest", "nest", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr", "edge", "edge", "edge", "edge", "watr", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "watr"],
+        ["watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "edge", "edge", "edge", "edge", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr", "watr"]
+    ],
+    "X_GRID": 30,
+    "Y_GRID": 13,
+    "PORTALS": {
+        "ENABLED": true,
+        "THRESHOLD": 500,
+        "LAUNCH_FORCE": 500,
+        "GRAVITY": 20000,
+        "DIVIDER_1": {
+            "ENABLED": true,
+            "LEFT": 4860,
+            "RIGHT": 5940
+        },
+        "DIVIDER_2": {
+            "ENABLED": false
+        }
+    },
+    "PLAYER_SPAWN_TILES": ["norm"],
+    "BOT_SPAWN_TILES": ["norm"],
+    "ZONES": "nest water",
+    "MAX_SANCS": 0,
+    "MAX_FOOD": 0,
+    "NEST_FOOD": 7,
+    "MAX_NEST_FOOD": 11,
+    "MAX_CRASHERS": 60
+}];
+maps[Math.floor(Math.random() * maps.length)];

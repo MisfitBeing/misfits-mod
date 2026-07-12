@@ -1,0 +1,50 @@
+let maps = [{
+    "MODE": "tdm",
+    "serverName": "Boss Rush",
+    "TEAM_AMOUNT": 1,
+    "ROOM_SETUP": [
+        ["roid", "nest", "nest", "nest", "nest", "nest", "nest", "nest", "roid"],
+        ["nest", "nest", "norm", "norm", "nest", "norm", "norm", "nest", "nest"],
+        ["nest", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "nest"],
+        ["nest", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "nest"],
+        ["nest", "nest", "nest", "nest", "roid", "nest", "nest", "nest", "nest"],
+        ["nest", "norm", "norm", "nest", "nest", "nest", "norm", "norm", "nest"],
+        ["nest", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "nest"],
+        ["nest", "nest", "norm", "norm", "nest", "norm", "norm", "nest", "nest"],
+        ["roid", "nest", "nest", "nest", "nest", "nest", "nest", "nest", "roid"]
+    ],
+    "X_GRID": 9,
+    "Y_GRID": 9,
+    "WIDTH": 5500,
+    "HEIGHT": 5500,
+    "MAX_CRASHERS": 125,
+    "MAX_AMALGAMS": 0,
+    "MAX_FOOD": 0,
+    "MAX_NEST_FOOD": 0,
+    "MAX_SANCS": 0,
+}, {
+    "MODE": "tdm",
+    "serverName": "Boss Rush",
+    "TEAM_AMOUNT": 1,
+    "ROOM_SETUP": [
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"],
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"],
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"],
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"],
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"],
+        ["bas2", "bas2", "bas2", "nest", "norm", "tree"]
+    ],
+    "PLAYER_SPAWN_TILES": ["norm", "tree"],
+    "BOT_SPAWN_TILES": ["norm", "tree"],
+    "X_GRID": 6,
+    "Y_GRID": 6,
+    "WIDTH": 5200,
+    "HEIGHT": 1400,
+    "MAX_CRASHERS": 125,
+    "MAX_AMALGAMS": 0,
+    "MAX_FOOD": 0,
+    "MAX_NEST_FOOD": 0,
+    "MAX_SANCS": 0,
+    "ZONES": 'woods'
+}];
+maps[Math.floor(Math.random() * maps.length)];

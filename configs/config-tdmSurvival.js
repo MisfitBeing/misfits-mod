@@ -1,0 +1,33 @@
+let maps = [{
+        "WIDTH": 6900,
+        "HEIGHT": 6900,
+        "MODE": "tdm",
+        "serverName": "Survival TDM",
+        "TEAM_AMOUNT": Math.floor(Math.random() * 2 + 2),
+        "BOSS_SPAWN_TIMER": 93, 
+        "ROOM_SETUP": [
+            ["roid", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "roid"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "nest", "nest", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "roid", "nest", "nest", "nest", "nest", "roid", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "nest", "nest", "nest", "nest", "nest", "nest", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "nest", "nest", "nest", "roid", "roid", "nest", "nest", "nest", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "nest", "nest", "nest", "roid", "roid", "nest", "nest", "nest", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "nest", "nest", "nest", "nest", "nest", "nest", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "roid", "nest", "nest", "nest", "nest", "roid", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "nest", "nest", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock"],
+            ["roid", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "rock", "roid"]
+        ],
+        "MAX_ROID_FOOD": 70,
+        "MAX_AMALGAMS": 10,
+        "SKILL_CHEAT_CAP": 0,
+		"ZONES": "nest rock",
+}];
+maps[Math.floor(Math.random() * maps.length)];
