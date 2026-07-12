@@ -52,7 +52,7 @@ var global = {
 	KEY_TESTBED_FIREFOX: 111,
 	KEY_TESTBED_ALT: 192,
 	KEY_RESET_BASIC_TANK: 80,
-	KEY_CHANGE_TO_BASIC: 85,
+	KEY_CLASS_TREE: 85,
 	KEY_SUICIDE: 75,
 	KEY_MAX_STATS: 77,
 	KEY_GODMODE: 186,
@@ -67,8 +67,7 @@ var global = {
 	KEY_RAINBOW: 187,
 	KEY_RAINBOW_2: 61,
 	KEY_DEBUG: 76,
-	//KEY_CLASS_TREE: -69, //85, Disabled for now due to new mockup system
-	KEY_TIER_SWITCH: 79,
+	KEY_SCOPE: 79,
 	KEY_TIER_SWITCH_2: 81,
 	KEY_OVERRIDE_ENTITY: 86,
 	KEY_INFECT_MINION: 73,
@@ -102,6 +101,7 @@ var global = {
 	_disconnectReason: "The connection was lost for an unknown reason.\nPlease press F12 or ctrl+shift+i then click on the console tab and take a screenshot, then send it in the discord.",
 	_disableEnter: false,
 	_seeInvisible: false,
+
 	_tipSplash: [
 		"Press the E key to enable autofire.",
 		"Press the C key to enable autospin.",
@@ -169,7 +169,8 @@ var global = {
 		"I heard trying again with zero changes works wonders..",
 		"All players stop just before their big run!",
 		"That's all folks!",
-		"*Crickets*"
+		"*Crickets*",
+		"That was just embarrassing."
 	],
 	_deathSplashOverride: 0,
 	_deathSplashChoice: 0,
@@ -192,7 +193,8 @@ var global = {
 	displayTextUI: {
 		enabled: false,
 		text: "",
-		color: "#FFFFFF"
+		color: "#FFFFFF",
+		barColor: 16
 	},
 	_waterAnimation: .5,
 	_waterDirection: 1,
@@ -266,9 +268,14 @@ global.player = {
 			1,
 			1
 		],
-		"drawsHealth": 2,
+		"tier": 0,
+		"drawHealth": 2,
 		"nameplate": 4,
 		"invuln": 1,
+		"blend": {
+            "color": "#000000",
+			"amount": .5
+		},
 		"name": "Whygena",
 		"score": 0,
 		"render": {
@@ -302,7 +309,12 @@ global.player = {
 		blurAmount: 0,
 		blurMax: 0
 	},
-	lsd: false
+	lsd: false,
+	confuse: {
+		apply: false,
+		intensity: 0,
+		contrastMax: 0 // actually brightness not contrast but fuck you
+	}
 }
 
 window._anims = new Map()
@@ -318,7 +330,7 @@ window._gui = {
 			case 4:
 				return ["Body Damage", "Max Health", "Swarm Speed", "Swarm Health", "Swarm Penetration", "Swarm Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 5:
-				return ["Body Damage", "Max Health", "Trap Speed", "Trap Health", "Trap Penetration", "Trap Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+				return ["Body Damage", "Max Health", "Launch Speed", "Trap Health", "Trap Penetration", "Trap Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 6:
 				return ["Body Damage", "Max Health", "Weapon Speed", "Weapon Health", "Weapon Penetration", "Weapon Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 7:
@@ -332,13 +344,28 @@ window._gui = {
 			case 11:
 				return ["Body Damage", "Max Health", "Rebound Speed", "Boomerang Health", "Boomerang Penetration", "Boomerang Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 12:
-				return ["Body Damage", "Max Health", "Lance Range", "Lance Longevity", "Lance Sharpness", "Lance Damage", "Lance Density", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+				return ["Body Damage", "Max Health", "Projectile Speed", "Hitbox Size", "Lance Sharpness", "Lance Damage", "Lance Density", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 13:
-				return ["Body Damage", "Max Health", "Flail Speed", "Flail Resistance", "Flail Penetration", "Flail Damage", "Flail Density", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+				return ["Body Damage", "Max Health", "Projectile Speed", "Hitbox Size", "", "Flail Damage", "Flail Density", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 14:
 				return ["Body Damage", "Max Health", "Syringe Range", "Syringe Longevity", "Syringe Sharpness", "Syringe Damage", "Refill Time", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 			case 15:
 				return ["Body Damage", "Max Health", "Laser Length", "Laser Duration", "Laser Pierce", "Laser Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];	
+			case 16:
+				return ["Body Damage", "Max Health", "Aura Size", "Aura Gravitation", "Aura Permeation", "Aura Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];	
+			case 17:
+				return ["Body Damage", "Max Health", "Deflection Intensity", "Shield Health", "Shield Proportions", "Shield Sharpness", "Respawn Rate", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+			case 18:
+				return ["Body Damage", "Max Health", "Projectile Speed", "Hitbox Size", "Lance Sharpness", "Lance Damage", "Lance Density", "Movement Speed", "Shield Regeneration", "Field of View"];
+			case 19:
+				return ["Body Damage", "Max Health", "Bullet Speed", "Bullet Health", "Bullet Penetration", "Bullet Damage", "Reload", "Movement Speed", "Shield Regeneration", "Field of View"];	
+			case 20:
+				return ["Body Damage", "Max Health", "Launch Speed", "Ball Health", "Leash Strength", "Ball Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+			case 21:
+				return ["Body Damage", "Max Health", "Trap Speed", "Trap Health", "Trap Penetration", "Trap Damage", "Reload", "Movement Speed", "Shield Regeneration", "Rotation Speed"];
+			case 22:
+				return ["Body Damage", "Max Health", "Projectile Speed", "Pillar Lifetime", "Calldown Time", "Pillar Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
+			case 0:
 			default:
 				return ["Body Damage", "Max Health", "Bullet Speed", "Bullet Health", "Bullet Penetration", "Bullet Damage", "Reload", "Movement Speed", "Shield Regeneration", "Shield Capacity"];
 		}
