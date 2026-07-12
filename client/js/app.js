@@ -55,7 +55,7 @@ function RememberScriptingIsBannable() {
             } else {
 
             };
-            if (rewardManager._statistics[5] < ++time) rewardManager.increaseStatistic(5, time, true);
+            /*if (rewardManager._statistics[5] < ++time) rewardManager.increaseStatistic(5, time, true);
             switch (time) {
                 case 1800:
                     rewardManager.unlockAchievement("hope_you_are_having_fun");
@@ -91,7 +91,7 @@ function RememberScriptingIsBannable() {
                 case 604800:
                     rewardManager.unlockAchievement("wake_up_wake_up_wake_up");
                     break;
-            }
+            }*/
 
             if (time % 3 === 0) {
                 if (_gui._skills[0].cap !== 0 && _gui._skills[0].amount === _gui._skills[0].cap) rewardManager.unlockAchievement("shielded_from_your_bs");
@@ -108,10 +108,13 @@ function RememberScriptingIsBannable() {
                 if (rewardManager._statistics[8] > 199) rewardManager.unlockAchievement("nuisance_exterminator");
                 if (rewardManager._statistics[8] > 0) rewardManager.unlockAchievement("they_seek");
 
-                if (rewardManager._statistics[10] > 99) rewardManager.unlockAchievement("drones_are_life");
+                if (rewardManager._statistics[11] > 0) rewardManager.unlockAchievement("t_l_t");
+                if (rewardManager._statistics[12] > 0) rewardManager.unlockAchievement("big_guys");
+
+                //if (rewardManager._statistics[10] > 99) rewardManager.unlockAchievement("drones_are_life");
 
                 let max = _gui._leaderboard._display.length ? _gui._leaderboard._display[0].score : false;
-                if (!global._died && time > 30 && Math.min(1, _gui._skill.getScore() / max) === 1) rewardManager.unlockAchievement("the_leader");
+                //if (!global._died && time > 30 && Math.min(1, _gui._skill.getScore() / max) === 1) rewardManager.unlockAchievement("the_leader");
             }
         }
         setInterval(func, 1000);
@@ -167,7 +170,7 @@ async function _startGame(gamemodeCode, joinRoomId, maxPlayers, maxBots) {
     window.selectedRoomId = joinRoomId;
     //window.roomManager.send(window.addMetaData(1, 4, fasttalk.encode([window.selectedRoomId])))
 
-    if (global.playerName === "") rewardManager.unlockAchievement("anonymous");
+    //if (global.playerName === "") rewardManager.unlockAchievement("anonymous");
     if (document.getElementById("mainMenu")) {
         document.getElementById("mainMenu").remove();
     } else {
