@@ -83,7 +83,7 @@
 			};
 
 			try {
-				const filePaths = await (await fetch("/jsFileList.json")).json();
+				const filePaths = await (await fetch("/api/getJsFileList")).json();
 
 				await Promise.all(
 					filePaths.map(path => loadModule(`/js/${path.replaceAll("\\", "/")}`))
