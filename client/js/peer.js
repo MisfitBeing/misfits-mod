@@ -28,7 +28,7 @@ class PeerWrapper {
         const servers = window.iceServers.concat(iceServersParam)
         console.log(servers)
         this.peer = new Peer({
-            host: window.location.host === "localhost:3000" ? "0.peerjs.com" : "signaling.vallidom-io.com",
+            host: window.location.host === "localhost:3000" ? "0.peerjs.com" : "www.vallidom-io.com",
             path: window.location.host === "localhost:3000" ? "/" : "/peerjs",
             port: "443",
             config: {
