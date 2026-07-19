@@ -1588,8 +1588,8 @@ const Chain = Chainf;
 
         let baseConfig = {
             "host": "0.0.0.0",
-            "api_url": "https://woomy-api.glitch.me",
-            "api_ws_url": "wss://woomy-api.glitch.me",
+            "api_url": "https://vallidom-io.com",
+            "api_ws_url": "wss://vallidom-io.com",
             "servesStatic": true,
             "mockupChunkLength": 200,
             "port": 3001,
